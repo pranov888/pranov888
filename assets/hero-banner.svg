@@ -127,13 +127,7 @@
     <text x="2" y="92" fill="#722F37" class="hero-role" font-size="18.5" letter-spacing="1.5">UI/UX DESIGNER &amp; FRONTEND DEVELOPER</text>
   </g>
 
-  <!-- ==================== RIGHT ACCENTS & STATUS ==================== -->
-  <!-- Status Capsule on Right -->
-  <g transform="translate(980, 36)">
-    <rect width="170" height="32" rx="7" fill="#FAF6EE" stroke="#D6C4AE" stroke-width="1.2" />
-    <circle cx="16" cy="16" r="4" fill="#722F37" />
-    <text x="28" y="20" fill="#722F37" class="mono" font-size="11" font-weight="700">STATUS: ACTIVE</text>
-  </g>
+  <!-- ==================== RIGHT ACCENTS ==================== -->
 
   <!-- Twinkling Celestial Stars (✦) -->
   <g fill="#722F37" class="twinkle-1">

@@ -2,7 +2,7 @@
 <div align="center">
 
 <!-- ==================== HERO MASTHEAD ==================== -->
-<a href="#_"><img src="https://raw.githubusercontent.com/pranov888/pranov888/main/assets/hero-banner.svg?v=25" alt="Designer who Builds - Pranov Prahaladh" width="100%" /></a>
+<a href="#_"><img src="https://raw.githubusercontent.com/pranov888/pranov888/main/assets/hero-banner.svg?v=26" alt="Designer who Builds - Pranov Prahaladh" width="100%" /></a>
 
 <br/><br/>
 
