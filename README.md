@@ -32,7 +32,7 @@
 <br/><br/>
 
 <!-- ==================== CONTRIBUTIONS MATRIX RADAR ==================== -->
-<a href="#_"><img src="https://raw.githubusercontent.com/pranov888/pranov888/main/assets/contribution-matrix.svg?v=25" alt="52-Week Chrono Activity Matrix &amp; Kinetic Radar" width="100%" /></a>
+<a href="#_"><img src="https://raw.githubusercontent.com/pranov888/pranov888/main/assets/contribution-matrix.svg?v=26" alt="52-Week Chrono Activity Matrix &amp; Kinetic Radar" width="100%" /></a>
 
 <br/><br/>
 

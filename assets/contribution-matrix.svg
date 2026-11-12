@@ -28,9 +28,9 @@
 
       /* Horizontal Laser Scan Sweep across 52 weeks */
       @keyframes sweepScan {
-        0% { transform: translateX(0px); }
-        50% { transform: translateX(995px); }
-        100% { transform: translateX(0px); }
+        0% { transform: translateX(98px); }
+        50% { transform: translateX(1108px); }
+        100% { transform: translateX(98px); }
       }
       .scanner-beam {
         animation: sweepScan 11s ease-in-out infinite;
