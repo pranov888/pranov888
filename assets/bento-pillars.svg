@@ -266,9 +266,6 @@
         <circle cx="0" cy="0" r="5.5" fill="#722F37" class="pulse-anchor" />
         <circle cx="0" cy="0" r="2.2" fill="#FAF6EE" />
       </g>
-
-      <!-- Precision Easing Physics Readout -->
-      <text x="0" y="38" fill="#886D5B" class="mono" font-size="8" font-weight="700" text-anchor="middle">SPRING_EASING // CUBIC-BEZIER</text>
     </g>
 
     <!-- Content: Pranov's Motion Focus -->

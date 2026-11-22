@@ -92,12 +92,8 @@
   <!-- Section Title -->
   <text x="114" y="53" fill="#722F37" class="mono" font-size="14.5" font-weight="700" letter-spacing="1.5">> CONTRIBUTIONS --RADAR // CHRONO ACTIVITY MATRIX</text>
 
-  <!-- Professional Telemetry Status Chip -->
-  <g transform="translate(905, 35)">
-    <rect width="255" height="26" rx="5" fill="#FAF7F2" stroke="#D6C4AE" stroke-width="1" />
-    <circle cx="14" cy="13" r="3.5" fill="#722F37" class="status-dot" />
-    <text x="26" y="17" fill="#722F37" class="mono" font-size="10.5" font-weight="700" letter-spacing="0.6">ANNUAL ACTIVITY CADENCE</text>
-  </g>
+  <!-- Annual Activity Cadence (Clean, borderless, perfectly aligned) -->
+  <text x="1160" y="53" text-anchor="end" fill="#722F37" class="mono" font-size="12" font-weight="700" letter-spacing="0.8">ANNUAL ACTIVITY CADENCE</text>
 
   <!-- Header Divider Line -->
   <line x1="40" y1="80" x2="1160" y2="80" stroke="#D6C4AE" stroke-width="1" />
@@ -111,7 +107,7 @@
     <rect width="1120" height="28" rx="12" fill="#EFE3D3" />
     <rect y="16" width="1120" height="12" fill="#EFE3D3" />
     <line x1="0" y1="28" x2="1120" y2="28" stroke="#D6C4AE" stroke-width="1" />
-    <text x="24" y="19" fill="#886D5B" class="mono" font-size="11" font-weight="700" letter-spacing="0.8">ACTIVITY_MATRIX // 52 WEEKS • 365 DAYS ANNUAL CADENCE</text>
+    <text x="24" y="19" fill="#886D5B" class="mono" font-size="11" font-weight="700" letter-spacing="0.8">ACTIVITY_MATRIX // 52 WEEKS · 365 DAYS ANNUAL CADENCE</text>
     <text x="1096" y="19" text-anchor="end" fill="#722F37" class="mono" font-size="10.5" font-weight="700">PRANOV888 // QUANTUM SCANNER</text>
 
     <!-- Velocity Equalizer Wave Strip -->
@@ -181,7 +177,7 @@
 
     <!-- Center: Craft Engineering Cadence Readout -->
     <g transform="translate(560, 264)">
-      <text x="0" y="12" text-anchor="middle" fill="#722F37" class="mono" font-size="11" font-weight="700" letter-spacing="0.6">CHRONO ACTIVITY RADAR // 52 WEEKS • 365 DAYS CONTINUOUS FLOW</text>
+      <text x="0" y="12" text-anchor="middle" fill="#722F37" class="mono" font-size="11" font-weight="700" letter-spacing="0.6">CHRONO ACTIVITY RADAR // 52 WEEKS · 365 DAYS CONTINUOUS FLOW</text>
     </g>
 
     <!-- Right: Distinct Anti-Snake Verification Tag -->

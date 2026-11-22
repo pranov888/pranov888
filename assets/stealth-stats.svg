@@ -51,12 +51,8 @@
   <!-- Section Title -->
   <text x="114" y="53" fill="#722F37" class="mono" font-size="14.5" font-weight="700" letter-spacing="1.5">> GIT LOG --ONELINE --STATS // CLASSIFIED ACTIVITY</text>
 
-  <!-- Stealth Mode Badge Pill -->
-  <g transform="translate(920, 32)">
-    <rect width="240" height="32" rx="16" fill="#FAF7F2" stroke="#722F37" stroke-width="1.4" />
-    <circle cx="22" cy="16" r="4.5" fill="#722F37" class="pulse-dot" />
-    <text x="36" y="20" fill="#722F37" class="mono" font-size="11" font-weight="700" letter-spacing="0.8">STEALTH MODE // ENGAGED</text>
-  </g>
+  <!-- Stealth Mode Telemetry (Clean, borderless, perfectly aligned) -->
+  <text x="1160" y="53" text-anchor="end" fill="#722F37" class="mono" font-size="12" font-weight="700" letter-spacing="0.8">STEALTH MODE // ENGAGED</text>
 
   <!-- Header Divider Line -->
   <line x1="40" y1="80" x2="1160" y2="80" stroke="#D6C4AE" stroke-width="1" />
