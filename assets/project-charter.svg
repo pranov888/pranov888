@@ -31,13 +31,30 @@
       }
 
 
-      /* Laser Scanner Beam */
-      .laser-line {
-        animation: scanAnim 3.5s ease-in-out infinite alternate;
+      /* Biometric Laser Scanner & Organic Reveal Shield */
+      @keyframes biometricScan {
+        0% { transform: translateY(0px); opacity: 0.85; }
+        48% { transform: translateY(175px); opacity: 1; }
+        76% { transform: translateY(175px); opacity: 1; }
+        88% { opacity: 0; }
+        94% { transform: translateY(0px); opacity: 0; }
+        100% { transform: translateY(0px); opacity: 0.85; }
       }
-      @keyframes scanAnim {
-        0% { transform: translateY(0px); opacity: 0.3; }
-        100% { transform: translateY(140px); opacity: 1; }
+      .laser-line {
+        animation: biometricScan 4.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      }
+      .scan-shield {
+        animation: biometricScan 4.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      }
+
+      /* Biometric Match Glow & Telemetry Lock */
+      @keyframes biometricLock {
+        0%, 46% { opacity: 0.4; }
+        50%, 76% { opacity: 1; filter: drop-shadow(0 0 4px rgba(114, 47, 55, 0.3)); }
+        86%, 100% { opacity: 0.4; }
+      }
+      .sensor-sub-badge {
+        animation: biometricLock 4.2s ease-in-out infinite;
       }
 
       /* Data Conduit Flow */
@@ -54,9 +71,43 @@
     <!-- Laser Beam Gradient -->
     <linearGradient id="laser-grad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#722F37" stop-opacity="0" />
-      <stop offset="50%" stop-color="#722F37" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#722F37" stop-opacity="0.95" />
       <stop offset="100%" stop-color="#722F37" stop-opacity="0" />
     </linearGradient>
+
+    <!-- Laser Sweep Soft Glow Wash Gradient -->
+    <linearGradient id="laser-wash-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#722F37" stop-opacity="0" />
+      <stop offset="100%" stop-color="#722F37" stop-opacity="0.15" />
+    </linearGradient>
+
+    <!-- Biometric Sensor Pad Clip Path -->
+    <clipPath id="sensor-pad-clip">
+      <rect x="95" y="72" width="160" height="175" rx="14" />
+    </clipPath>
+
+    <!-- Reusable Master Fingerprint Whorl Paths -->
+    <g id="fingerprint-whorls">
+      <!-- Core Whorls -->
+      <path d="M 175 145 C 172 138 168 138 166 145 C 164 152 165 160 172 168 C 176 172 181 172 183 166 C 185 160 183 148 178 135 C 174 125 165 125 160 135 C 156 145 156 165 168 178 C 174 185 186 185 190 175 C 194 165 194 145 186 128 C 178 112 160 112 152 128 C 146 142 146 170 162 188 C 170 196 188 196 196 184 C 202 172 202 142 192 120 C 182 100 155 100 144 120 C 136 138 136 175 156 198 C 166 208 192 208 202 192 C 210 178 210 138 198 112 C 185 88 150 88 136 112 C 126 132 126 182 150 208 C 162 218 196 218 208 200" 
+            stroke-linecap="round" />
+      
+      <!-- Outer Arches -->
+      <path d="M 130 130 C 122 148 122 178 138 202 C 144 212 156 220 170 224" 
+            stroke-linecap="round" />
+      <path d="M 125 145 C 118 162 118 186 130 208 C 136 218 148 226 160 230" 
+            stroke-linecap="round" />
+      
+      <path d="M 205 125 C 215 142 216 170 206 194 C 200 206 188 216 175 222" 
+            stroke-linecap="round" />
+      <path d="M 212 140 C 220 156 220 180 212 202 C 206 214 196 222 185 228" 
+            stroke-linecap="round" />
+      
+      <!-- Top Crest Loops -->
+      <path d="M 148 102 C 165 92 185 92 202 102" stroke-linecap="round" />
+      <path d="M 142 94 C 164 82 188 82 208 94" stroke-linecap="round" />
+      <path d="M 138 86 C 162 72 190 72 214 86" stroke-linecap="round" />
+    </g>
   </defs>
 
   <!-- Container Base -->
@@ -81,46 +132,42 @@
     <text x="326" y="36" class="mono" font-size="10.5" font-weight="700" fill="#722F37" text-anchor="end">[VERIFIED]</text>
     <line x1="24" y1="52" x2="326" y2="52" stroke="#D6C4AE" stroke-width="1" />
 
-    <!-- Biometric Fingerprint Sensor Pad -->
+    <!-- Biometric Fingerprint Sensor Pad Base -->
     <rect x="95" y="72" width="160" height="175" rx="14" fill="#FAF6EE" stroke="#D6C4AE" stroke-width="1.2" />
-    
+
+    <!-- Revealing Fingerprint Engine (Clipped strictly inside sensor pad) -->
+    <g clip-path="url(#sensor-pad-clip)">
+      <!-- Layer 1: Active Crisp Burgundy Fingerprint (Progressively revealed as laser sweeps) -->
+      <use href="#fingerprint-whorls" fill="none" stroke="#722F37" stroke-width="2" opacity="0.95" />
+
+      <!-- Layer 2: Moving Shield that unmasks the active print in sync with laser -->
+      <g class="scan-shield">
+        <rect x="95" y="72" width="160" height="175" fill="#FAF6EE" />
+      </g>
+    </g>
+
+    <!-- Layer 3: Faint Phantom Guide Ridges (Subtle biometric presence prior to scan) -->
+    <use href="#fingerprint-whorls" fill="none" stroke="#722F37" stroke-width="2" opacity="0.14" />
+
     <!-- Corner Technical Brackets on Sensor Pad -->
     <path d="M 103 84 L 103 78 L 109 78" fill="none" stroke="#722F37" stroke-width="1.5" />
     <path d="M 247 84 L 247 78 L 241 78" fill="none" stroke="#722F37" stroke-width="1.5" />
     <path d="M 103 235 L 103 241 L 109 241" fill="none" stroke="#722F37" stroke-width="1.5" />
     <path d="M 247 235 L 247 241 L 241 241" fill="none" stroke="#722F37" stroke-width="1.5" />
 
-    <!-- Fingerprint Whorls -->
-    <g>
-      <!-- Core Whorls -->
-      <path d="M 175 145 C 172 138 168 138 166 145 C 164 152 165 160 172 168 C 176 172 181 172 183 166 C 185 160 183 148 178 135 C 174 125 165 125 160 135 C 156 145 156 165 168 178 C 174 185 186 185 190 175 C 194 165 194 145 186 128 C 178 112 160 112 152 128 C 146 142 146 170 162 188 C 170 196 188 196 196 184 C 202 172 202 142 192 120 C 182 100 155 100 144 120 C 136 138 136 175 156 198 C 166 208 192 208 202 192 C 210 178 210 138 198 112 C 185 88 150 88 136 112 C 126 132 126 182 150 208 C 162 218 196 218 208 200" 
-            fill="none" stroke="#722F37" stroke-width="2" stroke-linecap="round" opacity="0.85" />
-      
-      <!-- Outer Arches -->
-      <path d="M 130 130 C 122 148 122 178 138 202 C 144 212 156 220 170 224" 
-            fill="none" stroke="#722F37" stroke-width="1.8" stroke-linecap="round" opacity="0.7" />
-      <path d="M 125 145 C 118 162 118 186 130 208 C 136 218 148 226 160 230" 
-            fill="none" stroke="#722F37" stroke-width="1.6" stroke-linecap="round" opacity="0.55" />
-      
-      <path d="M 205 125 C 215 142 216 170 206 194 C 200 206 188 216 175 222" 
-            fill="none" stroke="#722F37" stroke-width="1.8" stroke-linecap="round" opacity="0.7" />
-      <path d="M 212 140 C 220 156 220 180 212 202 C 206 214 196 222 185 228" 
-            fill="none" stroke="#722F37" stroke-width="1.6" stroke-linecap="round" opacity="0.55" />
-      
-      <!-- Top Crest Loops -->
-      <path d="M 148 102 C 165 92 185 92 202 102" fill="none" stroke="#722F37" stroke-width="1.8" stroke-linecap="round" opacity="0.75" />
-      <path d="M 142 94 C 164 82 188 82 208 94" fill="none" stroke="#722F37" stroke-width="1.8" stroke-linecap="round" opacity="0.65" />
-      <path d="M 138 86 C 162 72 190 72 214 86" fill="none" stroke="#722F37" stroke-width="1.6" stroke-linecap="round" opacity="0.5" />
-    </g>
-
-    <!-- Laser Scanner Beam -->
+    <!-- Laser Scanner Beam Assembly (Locked in sync with the shield leading edge) -->
     <g class="laser-line">
-      <line x1="102" y1="90" x2="248" y2="90" stroke="url(#laser-grad)" stroke-width="2.2" />
-      <circle cx="175" cy="90" r="2.5" fill="#722F37" />
+      <!-- Soft Luminescent Scan Wash (Trailing 24px above laser) -->
+      <rect x="95" y="48" width="160" height="24" fill="url(#laser-wash-grad)" />
+      <!-- High-Intensity Laser Line -->
+      <line x1="97" y1="72" x2="253" y2="72" stroke="url(#laser-grad)" stroke-width="2.2" />
+      <!-- Center Sensor Node -->
+      <circle cx="175" cy="72" r="3" fill="#722F37" />
+      <circle cx="175" cy="72" r="1.2" fill="#FAF6EE" />
     </g>
 
-    <!-- Sensor Sub-Badge -->
-    <text x="175" y="264" fill="#722F37" class="mono" font-size="9.5" font-weight="700" text-anchor="middle" letter-spacing="1">THUMBPRINT MATCHED · 100%</text>
+    <!-- Sensor Sub-Badge with Synchronized Lock Glow -->
+    <text x="175" y="264" fill="#722F37" class="mono sensor-sub-badge" font-size="9.5" font-weight="700" text-anchor="middle" letter-spacing="1">THUMBPRINT MATCHED · 100%</text>
 
     <!-- Telemetry Data Block -->
     <g transform="translate(25, 290)" class="mono" font-size="10" font-weight="700">
