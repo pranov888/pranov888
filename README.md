@@ -2,37 +2,37 @@
 <div align="center">
 
 <!-- ==================== HERO MASTHEAD ==================== -->
-<a href="#_"><img src="https://raw.githubusercontent.com/pranov888/pranov888/main/assets/hero-banner.svg?v=29" alt="Designer who Builds - Pranov Prahaladh" width="100%" /></a>
+<a href="#_"><img src="https://raw.githubusercontent.com/pranov888/pranov888/main/assets/hero-banner.svg?v=30" alt="Designer who Builds - Pranov Prahaladh" width="100%" /></a>
 
 <br/><br/>
 
 <!-- ==================== IMPACT METRICS STRIP ==================== -->
-<a href="#_"><img src="https://raw.githubusercontent.com/pranov888/pranov888/main/assets/metrics-strip.svg?v=29" alt="Impact Metrics &amp; Experience" width="100%" /></a>
+<a href="#_"><img src="https://raw.githubusercontent.com/pranov888/pranov888/main/assets/metrics-strip.svg?v=30" alt="Impact Metrics &amp; Experience" width="100%" /></a>
 
 <br/><br/>
 
 <!-- ==================== CORE PILLARS BENTO ==================== -->
-<a href="#_"><img src="https://raw.githubusercontent.com/pranov888/pranov888/main/assets/bento-pillars.svg?v=29" alt="001-004 Core Design &amp; Engineering Pillars" width="100%" /></a>
+<a href="#_"><img src="https://raw.githubusercontent.com/pranov888/pranov888/main/assets/bento-pillars.svg?v=30" alt="001-004 Core Design &amp; Engineering Pillars" width="100%" /></a>
 
 <br/><br/>
 
 <!-- ==================== PROJECT CHARTER ==================== -->
-<a href="#_"><img src="https://raw.githubusercontent.com/pranov888/pranov888/main/assets/project-charter.svg?v=29" alt="Project Charter &amp; Technical Execution" width="100%" /></a>
+<a href="#_"><img src="https://raw.githubusercontent.com/pranov888/pranov888/main/assets/project-charter.svg?v=30" alt="Project Charter &amp; Technical Execution" width="100%" /></a>
 
 <br/><br/>
 
 <!-- ==================== STACK MATRIX ==================== -->
-<a href="#_"><img src="https://raw.githubusercontent.com/pranov888/pranov888/main/assets/stack-matrix.svg?v=29" alt="Core Technologies &amp; Collaboration" width="100%" /></a>
+<a href="#_"><img src="https://raw.githubusercontent.com/pranov888/pranov888/main/assets/stack-matrix.svg?v=30" alt="Core Technologies &amp; Collaboration" width="100%" /></a>
 
 <br/><br/>
 
 <!-- ==================== STEALTH STATS & GIT ACTIVITY ==================== -->
-<a href="#_"><img src="https://raw.githubusercontent.com/pranov888/pranov888/main/assets/stealth-stats.svg?v=29" alt="Git Activity &amp; Classified Stealth Stats" width="100%" /></a>
+<a href="#_"><img src="https://raw.githubusercontent.com/pranov888/pranov888/main/assets/stealth-stats.svg?v=30" alt="Git Activity &amp; Classified Stealth Stats" width="100%" /></a>
 
 <br/><br/>
 
 <!-- ==================== CONTRIBUTIONS MATRIX RADAR ==================== -->
-<a href="#_"><img src="https://raw.githubusercontent.com/pranov888/pranov888/main/assets/contribution-matrix.svg?v=29" alt="52-Week Chrono Activity Matrix &amp; Kinetic Radar" width="100%" /></a>
+<a href="#_"><img src="https://raw.githubusercontent.com/pranov888/pranov888/main/assets/contribution-matrix.svg?v=30" alt="52-Week Chrono Activity Matrix &amp; Kinetic Radar" width="100%" /></a>
 
 <br/><br/>
 

@@ -33,28 +33,28 @@
 
       /* Biometric Laser Scanner & Organic Reveal Shield */
       @keyframes biometricScan {
-        0% { transform: translateY(0px); opacity: 0.85; }
-        48% { transform: translateY(175px); opacity: 1; }
+        0% { transform: translateY(0px); opacity: 0.9; }
+        50% { transform: translateY(175px); opacity: 1; }
         76% { transform: translateY(175px); opacity: 1; }
-        88% { opacity: 0; }
-        94% { transform: translateY(0px); opacity: 0; }
-        100% { transform: translateY(0px); opacity: 0.85; }
+        86% { opacity: 0; }
+        92% { transform: translateY(0px); opacity: 0; }
+        100% { transform: translateY(0px); opacity: 0.9; }
       }
       .laser-line {
-        animation: biometricScan 4.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        animation: biometricScan 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
       }
       .scan-shield {
-        animation: biometricScan 4.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        animation: biometricScan 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
       }
 
       /* Biometric Match Glow & Telemetry Lock */
       @keyframes biometricLock {
-        0%, 46% { opacity: 0.4; }
-        50%, 76% { opacity: 1; filter: drop-shadow(0 0 4px rgba(114, 47, 55, 0.3)); }
-        86%, 100% { opacity: 0.4; }
+        0%, 46% { opacity: 0.35; }
+        50%, 78% { opacity: 1; filter: drop-shadow(0 0 5px rgba(114, 47, 55, 0.4)); }
+        86%, 100% { opacity: 0.35; }
       }
       .sensor-sub-badge {
-        animation: biometricLock 4.2s ease-in-out infinite;
+        animation: biometricLock 3.2s ease-in-out infinite;
       }
 
       /* Data Conduit Flow */
@@ -138,7 +138,7 @@
     <!-- Revealing Fingerprint Engine (Clipped strictly inside sensor pad) -->
     <g clip-path="url(#sensor-pad-clip)">
       <!-- Layer 1: Active Crisp Burgundy Fingerprint (Progressively revealed as laser sweeps) -->
-      <use href="#fingerprint-whorls" fill="none" stroke="#722F37" stroke-width="2" opacity="0.95" />
+      <use href="#fingerprint-whorls" fill="none" stroke="#722F37" stroke-width="2.2" opacity="1.0" />
 
       <!-- Layer 2: Moving Shield that unmasks the active print in sync with laser -->
       <g class="scan-shield">
@@ -147,7 +147,7 @@
     </g>
 
     <!-- Layer 3: Faint Phantom Guide Ridges (Subtle biometric presence prior to scan) -->
-    <use href="#fingerprint-whorls" fill="none" stroke="#722F37" stroke-width="2" opacity="0.14" />
+    <use href="#fingerprint-whorls" fill="none" stroke="#722F37" stroke-width="1.8" opacity="0.10" />
 
     <!-- Corner Technical Brackets on Sensor Pad -->
     <path d="M 103 84 L 103 78 L 109 78" fill="none" stroke="#722F37" stroke-width="1.5" />
