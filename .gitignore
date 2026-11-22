@@ -1,0 +1,6 @@
+# Agent and planning continuity files (Confidential)
+AGENTS.md
+PLAN.md
+.gemini/
+.agents/
+*.png
