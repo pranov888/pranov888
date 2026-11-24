@@ -41,28 +41,33 @@
 
       /* ==================== ANIMATIONS FOR ALL BESPOKE SHAPES ==================== */
 
-      /* SHAPE 001: Research Sonar & Triangle Flow */
-      .sonar-pulse {
-        animation: sonarExpand 3s ease-out infinite;
-        transform-origin: 142px 130px;
+      /* SHAPE 001: 3D Deconstructed UX Architecture & Spatial Flow */
+      .flow-screen-float {
+        animation: screenFloat 3.6s ease-in-out infinite alternate;
       }
-      .triangle-flow {
-        animation: dashMove 2.5s linear infinite;
-        stroke-dasharray: 8 6;
+      .sonar-3d-pulse {
+        animation: sonar3D 2.8s ease-out infinite;
+      }
+      .conduit-flow {
+        stroke-dasharray: 6 5;
+        animation: flowDash 2s linear infinite;
       }
       .core-pulse {
-        animation: pulseHeart 2s ease-in-out infinite alternate;
-        transform-origin: 142px 130px;
+        animation: pulseCore 2.2s ease-in-out infinite alternate;
       }
-      @keyframes sonarExpand {
-        0% { transform: scale(0.6); opacity: 0.9; }
-        100% { transform: scale(1.4); opacity: 0; }
+      @keyframes screenFloat {
+        0% { transform: translateY(0px); }
+        100% { transform: translateY(-7px); }
       }
-      @keyframes dashMove {
+      @keyframes sonar3D {
+        0% { transform: scale(0.5); opacity: 0.9; }
+        100% { transform: scale(1.5); opacity: 0; }
+      }
+      @keyframes flowDash {
         from { stroke-dashoffset: 0; }
-        to { stroke-dashoffset: -28; }
+        to { stroke-dashoffset: -22; }
       }
-      @keyframes pulseHeart {
+      @keyframes pulseCore {
         0% { transform: scale(0.9); }
         100% { transform: scale(1.15); }
       }
@@ -136,30 +141,89 @@
     <text x="24" y="38" class="cat-tag">001 // RESEARCH</text>
     <line x1="24" y1="48" x2="260" y2="48" stroke="#E4D7C5" stroke-width="1" />
     
-    <!-- Bespoke Graphic 001: Interactive Sonar & Knowledge Network -->
-    <g transform="translate(0, 10)">
-      <circle cx="142" cy="130" r="48" fill="none" stroke="#D6C4AE" stroke-width="1.2" stroke-dasharray="4 4" />
-      <circle cx="142" cy="130" r="32" fill="none" stroke="#886D5B" stroke-width="1.2" class="sonar-pulse" />
-      
-      <!-- Interconnected Node Triangle -->
-      <path d="M 142 94 L 176 152 L 108 152 Z" fill="none" stroke="#C7B49D" stroke-width="1.4" />
-      <path d="M 142 94 L 176 152 L 108 152 Z" fill="none" stroke="#722F37" stroke-width="2.2" class="triangle-flow" />
+    <!-- Bespoke Graphic 001: 3D Deconstructed UX Architecture & Spatial Flow -->
+    <g transform="translate(142, 130)">
+      <!-- 1. Isometric Base Ground Ambient Shadow -->
+      <ellipse cx="0" cy="48" rx="48" ry="16" fill="rgba(114, 47, 55, 0.07)" />
 
-      <!-- Orbiting Data Nodes -->
-      <circle cx="142" cy="94" r="5.5" fill="#722F37" />
-      <circle cx="142" cy="94" r="2.5" fill="#FAF6EE" />
-      
-      <circle cx="176" cy="152" r="5.5" fill="#722F37" />
-      <circle cx="176" cy="152" r="2.5" fill="#FAF6EE" />
+      <!-- 2. 3D Isometric Cube Base Body (Left & Right Faces) -->
+      <!-- Left Face: Information Architecture Hierarchy & Wireframe Rows -->
+      <polygon points="-38,-6 0,14 0,50 -38,30" fill="rgba(114, 47, 55, 0.08)" stroke="#886D5B" stroke-width="1.3" />
+      <!-- Wireframe Hierarchy Rows on Left Face -->
+      <line x1="-30" y1="10" x2="-10" y2="20" stroke="#886D5B" stroke-width="1.2" opacity="0.75" />
+      <circle cx="-32" cy="9" r="1.6" fill="#722F37" />
+      <line x1="-30" y1="20" x2="-14" y2="28" stroke="#886D5B" stroke-width="1.2" opacity="0.75" />
+      <circle cx="-32" cy="19" r="1.6" fill="#722F37" />
+      <line x1="-30" y1="30" x2="-8" y2="41" stroke="#886D5B" stroke-width="1.2" opacity="0.75" />
+      <circle cx="-32" cy="29" r="1.6" fill="#722F37" />
 
-      <circle cx="108" cy="152" r="5.5" fill="#722F37" />
-      <circle cx="108" cy="152" r="2.5" fill="#FAF6EE" />
+      <!-- Right Face: User Journey Decision Branches -->
+      <polygon points="0,14 38,-6 38,30 0,50" fill="rgba(214, 196, 174, 0.28)" stroke="#C7B49D" stroke-width="1.3" />
+      <!-- Wireframe Decision Branch Pathways -->
+      <path d="M 8 20 L 22 13 L 22 28" fill="none" stroke="#886D5B" stroke-width="1.2" opacity="0.75" />
+      <circle cx="8" cy="20" r="2.2" fill="#886D5B" />
+      <circle cx="22" cy="13" r="2.2" fill="#886D5B" />
+      <circle cx="22" cy="28" r="2.5" fill="#722F37" />
+      <circle cx="22" cy="28" r="1" fill="#FAF6EE" />
 
-      <!-- Center Pulse Core -->
-      <circle cx="142" cy="130" r="7.5" fill="#722F37" class="core-pulse" />
-      <circle cx="142" cy="130" r="3" fill="#FAF6EE" />
-      <line x1="130" y1="130" x2="154" y2="130" stroke="#FAF6EE" stroke-width="1.2" />
-      <line x1="142" y1="118" x2="142" y2="142" stroke="#FAF6EE" stroke-width="1.2" />
+      <!-- Floor of the Open Cube (Visible Interior Chamber) -->
+      <polygon points="0,-26 38,-6 0,14 -38,-6" fill="#EFE5D6" stroke="#D6C4AE" stroke-width="1" />
+      <!-- Interior Perspective Floor Grid -->
+      <line x1="-19" y1="-16" x2="19" y2="4" stroke="#D6C4AE" stroke-width="0.8" stroke-dasharray="2 2" />
+      <line x1="-19" y1="4" x2="19" y2="-16" stroke="#D6C4AE" stroke-width="0.8" stroke-dasharray="2 2" />
+
+      <!-- 3. Interior 3D Research Beacon (Suspended Core) -->
+      <!-- 3D Isometric Elliptical Sonar Pulse -->
+      <g class="sonar-3d-pulse">
+        <ellipse cx="0" cy="-6" rx="26" ry="13" fill="none" stroke="#886D5B" stroke-width="1.2" />
+      </g>
+      <!-- Core Beacon Sphere with Specular Core -->
+      <g class="core-pulse">
+        <circle cx="0" cy="-6" r="6.5" fill="#722F37" />
+        <circle cx="0" cy="-6" r="2.5" fill="#FAF6EE" />
+      </g>
+      <!-- 3D Coordinate Axis Stems -->
+      <line x1="0" y1="-18" x2="0" y2="6" stroke="#722F37" stroke-width="0.9" stroke-dasharray="1.5 1.5" />
+
+      <!-- 4. Floating Deconstructed Top Wireframe Screen (Levitating in 3D) -->
+      <g class="flow-screen-float">
+        <!-- 3D Thickness Bevel Edge -->
+        <polygon points="-42,-34 0,-12 42,-34 42,-30 0,-8 -42,-30" fill="#886D5B" stroke="#722F37" stroke-width="1" />
+        <!-- Top Screen Surface -->
+        <polygon points="0,-56 42,-34 0,-12 -42,-34" fill="#FAF7F2" stroke="#722F37" stroke-width="1.8" />
+
+        <!-- Wireframe UI Architecture on Screen -->
+        <!-- App Top Bar -->
+        <polygon points="-28,-39 -6,-28 6,-34 -16,-45" fill="rgba(114, 47, 55, 0.12)" stroke="#886D5B" stroke-width="0.9" />
+        <!-- Action Dot / User Profile Icon -->
+        <circle cx="-22" cy="-39" r="2" fill="#722F37" />
+        
+        <!-- User Journey Interactive Nodes on Wireframe Surface -->
+        <circle cx="-12" cy="-24" r="3.5" fill="#722F37" />
+        <circle cx="-12" cy="-24" r="1.5" fill="#FAF6EE" />
+        <circle cx="12" cy="-24" r="4.5" fill="#722F37" />
+        <circle cx="12" cy="-24" r="2" fill="#FAF6EE" />
+        <!-- Step Conduit Connecting Surface Nodes -->
+        <line x1="-8" y1="-24" x2="7" y2="-24" stroke="#722F37" stroke-width="1.3" stroke-dasharray="2 2" />
+
+        <!-- Wireframe Skeleton Content Block -->
+        <polygon points="-24,-23 -12,-17 -6,-20 -18,-26" fill="rgba(214, 196, 174, 0.45)" stroke="#C7B49D" stroke-width="0.8" />
+
+        <!-- Dimension Tag Anchor: FLOW -->
+        <line x1="-42" y1="-34" x2="-60" y2="-34" stroke="#722F37" stroke-width="1.1" />
+        <line x1="-60" y1="-40" x2="-60" y2="-28" stroke="#722F37" stroke-width="1" />
+        <rect x="-88" y="-42" width="26" height="15" rx="3.5" fill="#FAF6EE" stroke="#D6C4AE" stroke-width="0.9" />
+        <text x="-75" y="-31" fill="#722F37" class="mono" font-size="8" font-weight="700" text-anchor="middle">FLOW</text>
+      </g>
+
+      <!-- 5. 3D Spatial Flow Conduit (Connecting Floating Screen to Base Node) -->
+      <!-- Static Conduit Track -->
+      <path d="M 12 -24 C 36 -20 48 -2 32 20" fill="none" stroke="#D6C4AE" stroke-width="1.4" stroke-dasharray="3 3" />
+      <!-- Animated Kinetic Data Signal -->
+      <path d="M 12 -24 C 36 -20 48 -2 32 20" fill="none" stroke="#722F37" stroke-width="2.2" class="conduit-flow" />
+      <!-- Destination Interaction Bead -->
+      <circle cx="32" cy="20" r="4.5" fill="#722F37" />
+      <circle cx="32" cy="20" r="1.8" fill="#FAF6EE" />
     </g>
 
     <!-- Content: Pranov's Research & UX Focus -->
