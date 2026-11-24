@@ -43,66 +43,70 @@
         line-height: 1.4;
       }
 
-      /* Kinetic Differentiated Card Movements (8s Cycle) */
-      .roll-num-1 { animation: rollCraft 8s cubic-bezier(0.25, 1, 0.5, 1) infinite; }
-      .roll-num-2 { animation: rollShipped 8s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
-      .roll-num-3 { animation: rollFidelity 8s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
-      .roll-num-4 { animation: rollDedication 8s cubic-bezier(0.2, 1, 0.3, 1) infinite; }
+      /* Kinetic Differentiated Card Movements (10s Harmonious Wave) */
+      .roll-num-1 { animation: rollCraft 10s cubic-bezier(0.25, 0.1, 0.25, 1) infinite; }
+      .roll-num-2 { animation: rollShipped 10s cubic-bezier(0.25, 0.1, 0.25, 1) infinite; }
+      .roll-num-3 { animation: rollFidelity 10s cubic-bezier(0.25, 0.1, 0.25, 1) infinite; }
+      .roll-num-4 { animation: rollDedication 10s cubic-bezier(0.25, 0.1, 0.25, 1) infinite; }
 
-      /* 01 CRAFT: Rhythmic Calibrated Stepping (Clean Center Stops) */
+      /* 01 CRAFT: Smooth Continuous Odometer Sweep (Wave 1: 0.5s - 2.3s) */
       @keyframes rollCraft {
-        0%, 5%   { transform: translateY(360px); }
-        8.5%, 12%{ transform: translateY(240px); }
-        15.5%, 19%{ transform: translateY(120px); }
-        23%, 90% { transform: translateY(0px); }
-        95%, 100%{ transform: translateY(360px); }
+        0%, 5%   { transform: translateY(360px); opacity: 1; }
+        23%, 82% { transform: translateY(0px); opacity: 1; }
+        88%      { transform: translateY(0px); opacity: 0; }
+        91%      { transform: translateY(360px); opacity: 0; }
+        97%, 100%{ transform: translateY(360px); opacity: 1; }
       }
 
-      /* 02 SHIPPED: High-Velocity Continuous Odometer Spin */
+      /* 02 SHIPPED: Smooth Continuous Odometer Sweep (Wave 2: 1.4s - 3.2s) */
       @keyframes rollShipped {
-        0%, 14%  { transform: translateY(360px); }
-        28%, 90% { transform: translateY(0px); }
-        95%, 100%{ transform: translateY(360px); }
+        0%, 14%  { transform: translateY(360px); opacity: 1; }
+        32%, 82% { transform: translateY(0px); opacity: 1; }
+        88%      { transform: translateY(0px); opacity: 0; }
+        91%      { transform: translateY(360px); opacity: 0; }
+        97%, 100%{ transform: translateY(360px); opacity: 1; }
       }
 
-      /* 03 FIDELITY: 60FPS Fluid Momentum Surge */
+      /* 03 FIDELITY: Smooth Continuous Odometer Sweep (Wave 3: 2.3s - 4.1s) */
       @keyframes rollFidelity {
-        0%, 22%  { transform: translateY(360px); }
-        29%, 33% { transform: translateY(120px); }
-        40%, 90% { transform: translateY(0px); }
-        95%, 100%{ transform: translateY(360px); }
+        0%, 23%  { transform: translateY(360px); opacity: 1; }
+        41%, 82% { transform: translateY(0px); opacity: 1; }
+        88%      { transform: translateY(0px); opacity: 0; }
+        91%      { transform: translateY(360px); opacity: 0; }
+        97%, 100%{ transform: translateY(360px); opacity: 1; }
       }
 
-      /* 04 DEDICATION: Grand Finale Surge & Hero Reveal */
+      /* 04 DEDICATION: Smooth Continuous Odometer Sweep (Wave 4: 3.2s - 5.0s) */
       @keyframes rollDedication {
-        0%, 34%  { transform: translateY(360px); }
-        41%, 45% { transform: translateY(120px); }
-        52%, 90% { transform: translateY(0px); }
-        95%, 100%{ transform: translateY(360px); }
+        0%, 32%  { transform: translateY(360px); opacity: 1; }
+        50%, 82% { transform: translateY(0px); opacity: 1; }
+        88%      { transform: translateY(0px); opacity: 0; }
+        91%      { transform: translateY(360px); opacity: 0; }
+        97%, 100%{ transform: translateY(360px); opacity: 1; }
       }
 
       /* Celestial Floating Star with Synchronized Hero Flare */
       .star-float {
-        animation: starPulse 8s ease-in-out infinite;
+        animation: starPulse 10s ease-in-out infinite;
         transform-origin: 1146px 48px;
       }
       @keyframes starPulse {
-        0%, 45%  { transform: translateY(0px) rotate(0deg) scale(1); }
+        0%, 46%  { transform: translateY(0px) rotate(0deg) scale(1); }
         48%      { transform: translateY(-4px) rotate(45deg) scale(1.15); }
-        52%      { transform: translateY(-2px) rotate(360deg) scale(1.25); }
-        56%      { transform: translateY(0px) rotate(360deg) scale(1); }
-        88%      { transform: translateY(-3px) rotate(375deg) scale(1.05); }
-        95%, 100%{ transform: translateY(0px) rotate(0deg) scale(1); }
+        50%      { transform: translateY(-2px) rotate(360deg) scale(1.3); }
+        53%      { transform: translateY(0px) rotate(360deg) scale(1); }
+        82%      { transform: translateY(-3px) rotate(375deg) scale(1.05); }
+        91%, 100%{ transform: translateY(0px) rotate(0deg) scale(1); }
       }
 
       /* Subtle Specular Rim Accent on Hero Card */
       .burgundy-border {
-        animation: borderGlow 8s ease-in-out infinite;
+        animation: borderGlow 10s ease-in-out infinite;
       }
       @keyframes borderGlow {
-        0%, 48%  { stroke: rgba(250, 246, 238, 0.2); stroke-width: 1; }
-        52%      { stroke: rgba(250, 246, 238, 0.6); stroke-width: 1.5; }
-        58%      { stroke: rgba(250, 246, 238, 0.2); stroke-width: 1; }
+        0%, 46%  { stroke: rgba(250, 246, 238, 0.2); stroke-width: 1; }
+        50%      { stroke: rgba(250, 246, 238, 0.65); stroke-width: 1.5; }
+        55%      { stroke: rgba(250, 246, 238, 0.2); stroke-width: 1; }
         100%     { stroke: rgba(250, 246, 238, 0.2); stroke-width: 1; }
       }
     ]]></style>
