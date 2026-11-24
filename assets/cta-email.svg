@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 386 76" width="100%" height="auto">
+  <defs><style><![CDATA[
+    svg { pointer-events: none; user-select: none; }
+    .sans { font-family: 'Inter', 'SF Pro Display', 'Segoe UI', 'Lato', 'Noto Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
+    .mono { font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'DejaVu Sans Mono', ui-monospace, Menlo, Consolas, monospace; }
+  ]]></style></defs>
+  <rect width="386" height="76" rx="12" fill="#F2EFE9" stroke="#D2CBC0" stroke-width="1.5" />
+  <rect x="16" y="16" width="44" height="44" rx="9" fill="#FF4422" />
+  <!-- Envelope Icon -->
+  <rect x="27" y="30" width="22" height="16" rx="2.5" fill="none" stroke="#FAF8F4" stroke-width="1.8" />
+  <path d="M 28 31.5 L 38 39.5 L 48 31.5" fill="none" stroke="#FAF8F4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+
+  <text x="74" y="31" fill="#E03416" class="mono" font-size="10" font-weight="700" letter-spacing="1.4">03 // DIRECT CONTACT</text>
+  <text x="74" y="52" fill="#111318" class="sans" font-size="16" font-weight="800" letter-spacing="-0.3">pranov888@gmail.com</text>
+  <path d="M 352 43 L 362 33 M 354 33 L 362 33 L 362 41" fill="none" stroke="#111318" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

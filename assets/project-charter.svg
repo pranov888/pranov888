@@ -1,288 +1,180 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" width="100%" height="auto">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 476" width="100%" height="auto">
   <defs>
-    <!-- Background Gradient: Light Mocha Cream -->
-    <linearGradient id="charter-light-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F8F3EA" />
-      <stop offset="100%" stop-color="#EFE4D3" />
+    <linearGradient id="charter-paper" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5F2EC" />
+      <stop offset="100%" stop-color="#EAE4D9" />
     </linearGradient>
-
-    <!-- Document Card Surface Gradient -->
-    <linearGradient id="sheet-light-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#FAF7F2" />
-      <stop offset="100%" stop-color="#F2E7D8" />
+    <linearGradient id="charter-sheet" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#FAF8F4" />
+    </linearGradient>
+    <linearGradient id="charter-dark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#151820" />
+      <stop offset="100%" stop-color="#0B0C10" />
     </linearGradient>
 
     <style><![CDATA[
-      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;800&family=Space+Mono:wght@400;700&display=swap');
       svg { pointer-events: none; user-select: none; }
+      .sans { font-family: 'Inter', 'SF Pro Display', 'Segoe UI', 'Lato', 'Noto Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
+      .mono { font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'DejaVu Sans Mono', ui-monospace, Menlo, Consolas, monospace; }
 
-      .mono { font-family: 'Space Mono', 'SFMono-Regular', Menlo, Monaco, Consolas, monospace; }
-      .grotesk { font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-      .code-mono { font-family: 'Space Mono', 'Fira Code', Menlo, Monaco, Consolas, monospace; font-size: 13px; }
-
-      /* Animated Signal Flow along the Bezier Curve */
-      .curve-flow {
-        stroke-dasharray: 8 6;
-        animation: flowCurve 3s linear infinite;
+      .cursor-blink {
+        animation: blink 1.05s step-start infinite;
       }
-      @keyframes flowCurve {
+      @keyframes blink {
+        0%, 49%   { opacity: 1; }
+        50%, 100% { opacity: 0; }
+      }
+
+      .bridge-flow {
+        stroke-dasharray: 5 4;
+        animation: flowSignal 1.4s linear infinite;
+      }
+      @keyframes flowSignal {
         from { stroke-dashoffset: 0; }
-        to { stroke-dashoffset: -28; }
+        to   { stroke-dashoffset: -18; }
       }
 
-
-      /* Biometric Laser Scanner & Organic Reveal Shield */
-      @keyframes biometricScan {
-        0% { transform: translateY(0px); opacity: 0.9; }
-        50% { transform: translateY(175px); opacity: 1; }
-        76% { transform: translateY(175px); opacity: 1; }
-        86% { opacity: 0; }
-        92% { transform: translateY(0px); opacity: 0; }
-        100% { transform: translateY(0px); opacity: 0.9; }
+      .preview-pill {
+        animation: slideEase 4.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
       }
-      .laser-line {
-        animation: biometricScan 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-      }
-      .scan-shield {
-        animation: biometricScan 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      @keyframes slideEase {
+        0%, 12%  { transform: translateX(0px); }
+        52%, 82% { transform: translateX(176px); }
+        94%, 100%{ transform: translateX(0px); }
       }
 
-      /* Biometric Match Glow & Telemetry Lock */
-      @keyframes biometricLock {
-        0%, 46% { opacity: 0.35; }
-        50%, 78% { opacity: 1; filter: drop-shadow(0 0 5px rgba(114, 47, 55, 0.4)); }
-        86%, 100% { opacity: 0.35; }
+      .curve-dot {
+        animation: traceCurve 4.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
       }
-      .sensor-sub-badge {
-        animation: biometricLock 3.2s ease-in-out infinite;
-      }
-
-      /* Data Conduit Flow */
-      .conduit-flow {
-        stroke-dasharray: 4 3;
-        animation: conduitAnim 1.2s linear infinite;
-      }
-      @keyframes conduitAnim {
-        from { stroke-dashoffset: 0; }
-        to { stroke-dashoffset: -14; }
+      @keyframes traceCurve {
+        0%, 12%  { transform: translate(0px, 0px); }
+        52%, 82% { transform: translate(188px, -74px); }
+        94%, 100%{ transform: translate(0px, 0px); }
       }
     ]]></style>
-
-    <!-- Laser Beam Gradient -->
-    <linearGradient id="laser-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#722F37" stop-opacity="0" />
-      <stop offset="50%" stop-color="#722F37" stop-opacity="0.95" />
-      <stop offset="100%" stop-color="#722F37" stop-opacity="0" />
-    </linearGradient>
-
-    <!-- Laser Sweep Soft Glow Wash Gradient -->
-    <linearGradient id="laser-wash-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#722F37" stop-opacity="0" />
-      <stop offset="100%" stop-color="#722F37" stop-opacity="0.15" />
-    </linearGradient>
-
-    <!-- Biometric Sensor Pad Clip Path -->
-    <clipPath id="sensor-pad-clip">
-      <rect x="95" y="72" width="160" height="175" rx="14" />
-    </clipPath>
-
-    <!-- Reusable Master Fingerprint Whorl Paths -->
-    <g id="fingerprint-whorls">
-      <!-- Core Whorls -->
-      <path d="M 175 145 C 172 138 168 138 166 145 C 164 152 165 160 172 168 C 176 172 181 172 183 166 C 185 160 183 148 178 135 C 174 125 165 125 160 135 C 156 145 156 165 168 178 C 174 185 186 185 190 175 C 194 165 194 145 186 128 C 178 112 160 112 152 128 C 146 142 146 170 162 188 C 170 196 188 196 196 184 C 202 172 202 142 192 120 C 182 100 155 100 144 120 C 136 138 136 175 156 198 C 166 208 192 208 202 192 C 210 178 210 138 198 112 C 185 88 150 88 136 112 C 126 132 126 182 150 208 C 162 218 196 218 208 200" 
-            stroke-linecap="round" />
-      
-      <!-- Outer Arches -->
-      <path d="M 130 130 C 122 148 122 178 138 202 C 144 212 156 220 170 224" 
-            stroke-linecap="round" />
-      <path d="M 125 145 C 118 162 118 186 130 208 C 136 218 148 226 160 230" 
-            stroke-linecap="round" />
-      
-      <path d="M 205 125 C 215 142 216 170 206 194 C 200 206 188 216 175 222" 
-            stroke-linecap="round" />
-      <path d="M 212 140 C 220 156 220 180 212 202 C 206 214 196 222 185 228" 
-            stroke-linecap="round" />
-      
-      <!-- Top Crest Loops -->
-      <path d="M 148 102 C 165 92 185 92 202 102" stroke-linecap="round" />
-      <path d="M 142 94 C 164 82 188 82 208 94" stroke-linecap="round" />
-      <path d="M 138 86 C 162 72 190 72 214 86" stroke-linecap="round" />
-    </g>
   </defs>
 
-  <!-- Container Base -->
-  <rect width="1200" height="520" fill="url(#charter-light-bg)" rx="16" />
-  <rect x="1" y="1" width="1198" height="518" fill="none" stroke="#D6C4AE" stroke-width="1.5" rx="15" />
+  <rect width="1200" height="476" rx="18" fill="url(#charter-paper)" />
+  <rect x="1" y="1" width="1198" height="474" rx="17" fill="none" stroke="#D2CBC0" stroke-width="1.5" />
 
-  <!-- Data Conduit Bridge Linking Code Charter to Biometric Auth Card -->
-  <line x1="738" y1="253" x2="770" y2="253" stroke="#722F37" stroke-width="2" class="conduit-flow" />
-  <circle cx="738" cy="253" r="4" fill="#722F37" />
-  <circle cx="770" cy="253" r="4" fill="#722F37" />
+  <line x1="734" y1="238" x2="778" y2="238" stroke="#FF4422" stroke-width="2" class="bridge-flow" />
+  <circle cx="734" cy="238" r="4" fill="#FF4422" />
+  <circle cx="778" cy="238" r="4" fill="#FF4422" />
 
-  <!-- ==================== BIOMETRIC IDENTITY AUTH CARD ==================== -->
-  <!-- Layered Shadow Sheet (Back) -->
-  <rect x="778" y="46" width="350" height="430" rx="6" fill="#E4D5BF" stroke="#CBBBA4" stroke-width="1" />
+  <!-- LEFT: TYPESCRIPT MANIFESTO WITH EXACT COLUMN ALIGNMENT -->
+  <rect x="44" y="42" width="690" height="402" rx="12" fill="#DDD7CA" />
 
-  <!-- Main Card Sheet (Front) -->
-  <g transform="translate(770, 38)">
-    <rect width="350" height="430" rx="6" fill="url(#sheet-light-grad)" stroke="#C7B49D" stroke-width="1.4" />
-    
-    <!-- Card Header -->
-    <text x="24" y="36" class="mono" font-size="10.5" font-weight="700" fill="#886D5B" letter-spacing="0.8">AUTH // BIOMETRICS</text>
-    <text x="326" y="36" class="mono" font-size="10.5" font-weight="700" fill="#722F37" text-anchor="end">[VERIFIED]</text>
-    <line x1="24" y1="52" x2="326" y2="52" stroke="#D6C4AE" stroke-width="1" />
+  <g transform="translate(36, 34)">
+    <rect width="690" height="402" rx="12" fill="url(#charter-sheet)" stroke="#CFC8BA" stroke-width="1.3" />
 
-    <!-- Biometric Fingerprint Sensor Pad Base -->
-    <rect x="95" y="72" width="160" height="175" rx="14" fill="#FAF6EE" stroke="#D6C4AE" stroke-width="1.2" />
-
-    <!-- Revealing Fingerprint Engine (Clipped strictly inside sensor pad) -->
-    <g clip-path="url(#sensor-pad-clip)">
-      <!-- Layer 1: Active Crisp Burgundy Fingerprint (Progressively revealed as laser sweeps) -->
-      <use href="#fingerprint-whorls" fill="none" stroke="#722F37" stroke-width="2.2" opacity="1.0" />
-
-      <!-- Layer 2: Moving Shield that unmasks the active print in sync with laser -->
-      <g class="scan-shield">
-        <rect x="95" y="72" width="160" height="175" fill="#FAF6EE" />
-      </g>
+    <g transform="translate(28, 34)">
+      <text x="0" y="0" fill="#6D685F" class="mono" font-size="11" font-weight="700" letter-spacing="1.2">PRANOV // CRAFT MANIFESTO</text>
+      <text x="412" y="0" fill="#E03416" class="mono" font-size="11" font-weight="700">WHOAMI.TS</text>
+      <line x1="412" y1="7" x2="478" y2="7" stroke="#FF4422" stroke-width="2" />
+      <text x="498" y="0" fill="#8C867B" class="mono" font-size="11" font-weight="700">TOKENS</text>
+      <text x="554" y="0" fill="#C4BEB2" class="mono" font-size="11">/</text>
+      <text x="572" y="0" fill="#8C867B" class="mono" font-size="11" font-weight="700">MOTION</text>
     </g>
 
-    <!-- Layer 3: Faint Phantom Guide Ridges (Subtle biometric presence prior to scan) -->
-    <use href="#fingerprint-whorls" fill="none" stroke="#722F37" stroke-width="1.8" opacity="0.10" />
+    <line x1="28" y1="54" x2="662" y2="54" stroke="#E5DFD3" stroke-width="1" />
 
-    <!-- Corner Technical Brackets on Sensor Pad -->
-    <path d="M 103 84 L 103 78 L 109 78" fill="none" stroke="#722F37" stroke-width="1.5" />
-    <path d="M 247 84 L 247 78 L 241 78" fill="none" stroke="#722F37" stroke-width="1.5" />
-    <path d="M 103 235 L 103 241 L 109 241" fill="none" stroke="#722F37" stroke-width="1.5" />
-    <path d="M 247 235 L 247 241 L 241 241" fill="none" stroke="#722F37" stroke-width="1.5" />
+    <!-- Line Numbers -->
+    <g transform="translate(32, 92)" fill="#ADA79B" class="mono" font-size="11.5" font-weight="700">
+      <text x="0" y="0">01</text><text x="0" y="31">02</text><text x="0" y="62">03</text>
+      <text x="0" y="93">04</text><text x="0" y="124">05</text><text x="0" y="155">06</text>
+      <text x="0" y="186">07</text><text x="0" y="217">08</text>
+    </g>
+    <line x1="62" y1="74" x2="62" y2="332" stroke="#EDE8DE" stroke-width="1.2" />
 
-    <!-- Laser Scanner Beam Assembly (Locked in sync with the shield leading edge) -->
-    <g class="laser-line">
-      <!-- Soft Luminescent Scan Wash (Trailing 24px above laser) -->
-      <rect x="95" y="48" width="160" height="24" fill="url(#laser-wash-grad)" />
-      <!-- High-Intensity Laser Line -->
-      <line x1="97" y1="72" x2="253" y2="72" stroke="url(#laser-grad)" stroke-width="2.2" />
-      <!-- Center Sensor Node -->
-      <circle cx="175" cy="72" r="3" fill="#722F37" />
-      <circle cx="175" cy="72" r="1.2" fill="#FAF6EE" />
+    <!-- Aligned Code Block -->
+    <g transform="translate(78, 92)" class="mono" font-size="12.5" font-weight="700">
+      <text x="0" y="0"><tspan fill="#E03416">const</tspan> <tspan fill="#111318">pranov</tspan> <tspan fill="#E03416">=</tspan> <tspan fill="#111318">{</tspan></text>
+
+      <text x="16" y="31" fill="#62656E">role</text>
+      <text x="108" y="31" fill="#E03416">:</text>
+      <text x="122" y="31" fill="#111318">"UI/UX Designer &amp; Frontend Developer"<tspan fill="#8C867B">,</tspan></text>
+
+      <text x="16" y="62" fill="#62656E">portfolio</text>
+      <text x="108" y="62" fill="#E03416">:</text>
+      <text x="122" y="62" fill="#111318">"pranovdesign.vercel.app"<tspan fill="#8C867B">,</tspan></text>
+
+      <text x="16" y="93" fill="#62656E">philosophy</text>
+      <text x="108" y="93" fill="#E03416">:</text>
+      <text x="122" y="93" fill="#111318">"Design is not how it looks. It's how it works."<tspan fill="#8C867B">,</tspan></text>
+
+      <text x="16" y="124" fill="#62656E">currently</text>
+      <text x="108" y="124" fill="#E03416">:</text>
+      <text x="122" y="124" fill="#111318">"Building things I can't stop thinking about."<tspan fill="#8C867B">,</tspan></text>
+
+      <text x="16" y="155" fill="#62656E">focus</text>
+      <text x="108" y="155" fill="#E03416">:</text>
+      <text x="122" y="155"><tspan fill="#E03416">[</tspan><tspan fill="#15803D">"Motion Design"</tspan><tspan fill="#8C867B">, </tspan><tspan fill="#15803D">"Design Systems"</tspan><tspan fill="#8C867B">, </tspan><tspan fill="#15803D">"Spatial UI"</tspan><tspan fill="#E03416">]</tspan><tspan fill="#8C867B">,</tspan></text>
+
+      <text x="16" y="186" fill="#62656E">rhythm</text>
+      <text x="108" y="186" fill="#E03416">:</text>
+      <text x="122" y="186" fill="#111318">"Debug at midnight, ship before sunrise."</text>
+
+      <text x="0" y="217" fill="#111318">};</text>
+      <rect x="24" y="205" width="8" height="15" rx="1.5" fill="#FF4422" class="cursor-blink" />
     </g>
 
-    <!-- Sensor Sub-Badge with Synchronized Lock Glow -->
-    <text x="175" y="264" fill="#722F37" class="mono sensor-sub-badge" font-size="9.5" font-weight="700" text-anchor="middle" letter-spacing="1">THUMBPRINT MATCHED · 100%</text>
-
-    <!-- Telemetry Data Block -->
-    <g transform="translate(25, 290)" class="mono" font-size="10" font-weight="700">
-      <text x="0" y="0" fill="#886D5B">IDENTITY : <tspan fill="#241117">PRANOV PRAHALADH</tspan></text>
-      <text x="0" y="18" fill="#886D5B">SPECIALTY: <tspan fill="#722F37">FULL-STACK &amp; UI SYSTEMS</tspan></text>
-      <text x="0" y="36" fill="#886D5B">PROTOCOL : <tspan fill="#241117">UI/UX &amp; FRONTEND ARCH</tspan></text>
-      <text x="0" y="54" fill="#886D5B">KEY      : <tspan fill="#722F37">ED25519 // VERIFIED</tspan></text>
-    </g>
-
-    <line x1="24" y1="365" x2="326" y2="365" stroke="#D6C4AE" stroke-width="1" />
-
-    <!-- Production Directive Action Capsule -->
-    <g transform="translate(25, 378)">
-      <rect width="300" height="36" rx="6" fill="#FAF6EE" stroke="#722F37" stroke-width="1.4" />
-      <text x="150" y="23" fill="#722F37" class="mono" font-size="10.5" font-weight="700" text-anchor="middle" letter-spacing="0.8">PRODUCTION DIRECTIVE // VERIFIED</text>
+    <line x1="28" y1="352" x2="662" y2="352" stroke="#E5DFD3" stroke-width="1" />
+    <g transform="translate(28, 380)">
+      <text x="0" y="0" fill="#6D685F" class="mono" font-size="10.5" font-weight="700">EDITION 03 // ARCHITECTURE CHARTER</text>
+      <text x="634" y="0" text-anchor="end" fill="#E03416" class="mono" font-size="10.5" font-weight="700">FIGMA · TYPESCRIPT · 60FPS</text>
     </g>
   </g>
 
-  <!-- ==================== TECHNICAL DOCUMENT MEMO SHEET ==================== -->
-  <!-- Layered Shadow Sheet (Back) -->
-  <rect x="86" y="46" width="660" height="430" rx="6" fill="#E4D5BF" stroke="#CBBBA4" stroke-width="1" />
+  <!-- RIGHT: MOTION & CRAFT SPECIMEN -->
+  <g transform="translate(778, 34)">
+    <rect width="386" height="402" rx="12" fill="url(#charter-dark)" stroke="#242934" stroke-width="1.3" />
 
-  <!-- Main Card Sheet (Front) -->
-  <g transform="translate(78, 38)">
-    <rect width="660" height="430" rx="6" fill="url(#sheet-light-grad)" stroke="#C7B49D" stroke-width="1.4" />
+    <text x="24" y="34" fill="#8E95A2" class="mono" font-size="10.5" font-weight="700" letter-spacing="1.1">SPECIMEN // MOTION &amp; SCALE</text>
+    <text x="362" y="34" text-anchor="end" fill="#22C55E" class="mono" font-size="10.5" font-weight="700">[60FPS]</text>
+    <line x1="24" y1="54" x2="362" y2="54" stroke="#222632" stroke-width="1" />
 
-    <!-- Sheet Header with Pranov's tabs -->
-    <g transform="translate(30, 36)">
-      <text x="0" y="0" fill="#886D5B" class="mono" font-size="11.5" font-weight="700" letter-spacing="1">PRANOV // ARCHITECTURE CHARTER</text>
-      
-      <!-- Tabs on Right -->
-      <text x="380" y="0" fill="#722F37" class="mono" font-size="11.5" font-weight="700">WHOAMI.TS</text>
-      <line x1="380" y1="6" x2="455" y2="6" stroke="#722F37" stroke-width="2" />
-      <text x="475" y="0" fill="#886D5B" class="mono" font-size="11.5">STACK</text>
-      <text x="520" y="0" fill="#886D5B" class="mono" font-size="11.5">/</text>
-      <text x="535" y="0" fill="#886D5B" class="mono" font-size="11.5">PROCESS</text>
+    <g transform="translate(24, 70)">
+      <rect width="338" height="176" rx="10" fill="#090A0D" stroke="#1E232E" stroke-width="1" />
+
+      <rect x="20" y="18" width="298" height="22" rx="6" fill="#12151D" stroke="#222734" stroke-width="1" />
+      <g class="preview-pill">
+        <rect x="24" y="21" width="114" height="16" rx="4" fill="#FF4422" />
+        <text x="81" y="32.5" text-anchor="middle" fill="#FAF8F4" class="mono" font-size="8.5" font-weight="700">EASE_OUT_EXPO</text>
+      </g>
+
+      <line x1="74" y1="150" x2="268" y2="150" stroke="#232835" stroke-width="1" stroke-dasharray="3 3" />
+      <line x1="74" y1="64" x2="74" y2="150" stroke="#232835" stroke-width="1" stroke-dasharray="3 3" />
+
+      <line x1="74" y1="150" x2="115" y2="76" stroke="#4D5466" stroke-width="1.2" />
+      <line x1="262" y1="76" x2="142" y2="76" stroke="#4D5466" stroke-width="1.2" />
+      <circle cx="115" cy="76" r="3.5" fill="#090A0D" stroke="#FF4422" stroke-width="1.5" />
+      <circle cx="142" cy="76" r="3.5" fill="#090A0D" stroke="#FF4422" stroke-width="1.5" />
+
+      <path d="M 74 150 C 115 76, 142 76, 262 76" fill="none" stroke="#FF4422" stroke-width="2.6" stroke-linecap="round" />
+
+      <g class="curve-dot">
+        <circle cx="74" cy="150" r="6" fill="#FF4422" opacity="0.28" />
+        <circle cx="74" cy="150" r="3.5" fill="#FAF8F4" stroke="#FF4422" stroke-width="1.5" />
+      </g>
+
+      <text x="20" y="164" fill="#6F7685" class="mono" font-size="8.5">P0(0,0)</text>
+      <text x="318" y="164" text-anchor="end" fill="#6F7685" class="mono" font-size="8.5">P3(1,1)</text>
     </g>
 
-    <line x1="30" y1="55" x2="630" y2="55" stroke="#D6C4AE" stroke-width="1" />
-
-    <!-- Code Block: Bold, Syntax Highlighted TypeScript Object -->
-    <g transform="translate(30, 90)" class="code-mono">
-      <!-- Line 1: const pranov = { -->
-      <text x="0" y="0">
-        <tspan fill="#722F37" font-weight="700">const</tspan>
-        <tspan fill="#241117" font-weight="700"> pranov </tspan>
-        <tspan fill="#722F37" font-weight="700">=</tspan>
-        <tspan fill="#241117" font-weight="700"> {</tspan>
-      </text>
-
-      <!-- Line 2: role -->
-      <text x="0" y="30">
-        <tspan fill="#8C3B45" font-weight="700">  role      </tspan>
-        <tspan fill="#722F37" font-weight="700">: </tspan>
-        <tspan fill="#241117" font-weight="700">"UI/UX Designer &amp; Frontend Developer"</tspan>
-        <tspan fill="#722F37" font-weight="700">,</tspan>
-      </text>
-
-      <!-- Line 3: portfolio -->
-      <text x="0" y="60">
-        <tspan fill="#8C3B45" font-weight="700">  portfolio </tspan>
-        <tspan fill="#722F37" font-weight="700">: </tspan>
-        <tspan fill="#241117" font-weight="700">"pranovdesign"</tspan>
-        <tspan fill="#722F37" font-weight="700">,</tspan>
-      </text>
-
-      <!-- Line 4: philosophy -->
-      <text x="0" y="90">
-        <tspan fill="#8C3B45" font-weight="700">  philosophy</tspan>
-        <tspan fill="#722F37" font-weight="700">: </tspan>
-        <tspan fill="#241117" font-weight="700">"Design is not how it looks. It's how it works."</tspan>
-        <tspan fill="#722F37" font-weight="700">,</tspan>
-      </text>
-
-      <!-- Line 5: currently -->
-      <text x="0" y="120">
-        <tspan fill="#8C3B45" font-weight="700">  currently </tspan>
-        <tspan fill="#722F37" font-weight="700">: </tspan>
-        <tspan fill="#241117" font-weight="700">"Building things I can't stop thinking about."</tspan>
-        <tspan fill="#722F37" font-weight="700">,</tspan>
-      </text>
-
-      <!-- Line 6: learning -->
-      <text x="0" y="150">
-        <tspan fill="#8C3B45" font-weight="700">  learning  </tspan>
-        <tspan fill="#722F37" font-weight="700">: </tspan>
-        <tspan fill="#722F37" font-weight="700">[</tspan>
-        <tspan fill="#241117" font-weight="700">"Motion Design"</tspan>
-        <tspan fill="#722F37" font-weight="700">, </tspan>
-        <tspan fill="#241117" font-weight="700">"Design Systems"</tspan>
-        <tspan fill="#722F37" font-weight="700">, </tspan>
-        <tspan fill="#241117" font-weight="700">"Micro-interactions"</tspan>
-        <tspan fill="#722F37" font-weight="700">],</tspan>
-      </text>
-
-      <!-- Line 7: funFact -->
-      <text x="0" y="180">
-        <tspan fill="#8C3B45" font-weight="700">  funFact   </tspan>
-        <tspan fill="#722F37" font-weight="700">: </tspan>
-        <tspan fill="#241117" font-weight="700">"I debug at midnight and ship before sunrise."</tspan>
-        <tspan fill="#722F37" font-weight="700">,</tspan>
-      </text>
-
-      <!-- Line 8: }; -->
-      <text x="0" y="210">
-        <tspan fill="#241117" font-weight="700">};</tspan>
-      </text>
+    <!-- Aligned Spec Readout -->
+    <g transform="translate(24, 272)" class="mono" font-size="10.5" font-weight="700">
+      <text x="0" y="0" fill="#747C8B">IDENTITY</text><text x="74" y="0" fill="#747C8B">:</text><text x="88" y="0" fill="#FAF8F4">PRANOV PRAHALADH</text>
+      <text x="0" y="21" fill="#747C8B">SPECIALTY</text><text x="74" y="21" fill="#747C8B">:</text><text x="88" y="21" fill="#FF5738">FULL-STACK &amp; UI SYSTEMS</text>
+      <text x="0" y="42" fill="#747C8B">DISCIPLINE</text><text x="74" y="42" fill="#747C8B">:</text><text x="88" y="42" fill="#FAF8F4">UI/UX &amp; FRONTEND ARCH</text>
+      <text x="0" y="63" fill="#747C8B">BENCHMARK</text><text x="74" y="63" fill="#747C8B">:</text><text x="88" y="63" fill="#22C55E">WCAG AA · ZERO CLS</text>
     </g>
 
-    <line x1="30" y1="375" x2="630" y2="375" stroke="#D6C4AE" stroke-width="1" />
+    <line x1="24" y1="352" x2="362" y2="352" stroke="#222632" stroke-width="1" />
 
-    <!-- Sheet Footer -->
-    <g transform="translate(30, 405)">
-      <text x="0" y="0" fill="#886D5B" class="mono" font-size="11" font-weight="700">v2.5 // Verified Profile Directive</text>
-      <text x="600" y="0" fill="#722F37" class="mono" font-size="11" font-weight="700" text-anchor="end">Pranov Prahaladh // SEALED</text>
+    <g transform="translate(24, 364)">
+      <rect width="338" height="28" rx="6" fill="#171A22" stroke="#FF4422" stroke-width="1.1" />
+      <text x="169" y="18" text-anchor="middle" fill="#FAF8F4" class="mono" font-size="10" font-weight="700" letter-spacing="1">DESIGN TOKENS  &lt;-&gt;  PRODUCTION CODE</text>
     </g>
   </g>
 </svg>

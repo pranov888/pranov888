@@ -1,1143 +1,772 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="100%" height="auto">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 416" width="100%" height="auto">
   <defs>
-    <!-- Background Gradient: Signature Light Mocha Cream -->
-    <linearGradient id="contrib-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F8F3EA" />
-      <stop offset="100%" stop-color="#EFE4D3" />
+    <linearGradient id="cm-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0C0E13" />
+      <stop offset="100%" stop-color="#08090C" />
     </linearGradient>
 
-    <!-- Card Sheet Surface Gradient -->
-    <linearGradient id="inner-sheet" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#FAF7F2" />
-      <stop offset="100%" stop-color="#F3E9DD" />
+    <linearGradient id="cm-sheet" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#141720" />
+      <stop offset="100%" stop-color="#0E1016" />
     </linearGradient>
 
-    <!-- Scanner Laser Beam Gradient -->
     <linearGradient id="laser-beam" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#722F37" stop-opacity="0" />
-      <stop offset="60%" stop-color="#722F37" stop-opacity="0.25" />
-      <stop offset="100%" stop-color="#722F37" stop-opacity="0.75" />
+      <stop offset="0%" stop-color="#FF4422" stop-opacity="0" />
+      <stop offset="65%" stop-color="#FF4422" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#FF4422" stop-opacity="0.72" />
     </linearGradient>
 
-    <!-- Velocity Cadence Wave Surface Gradient -->
-    <linearGradient id="velocity-wave-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#722F37" stop-opacity="0.25" />
-      <stop offset="100%" stop-color="#722F37" stop-opacity="0.02" />
+    <linearGradient id="vel-fill" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FF4422" stop-opacity="0.34" />
+      <stop offset="100%" stop-color="#FF4422" stop-opacity="0.02" />
     </linearGradient>
 
     <style><![CDATA[
-      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800;900&family=Space+Mono:wght@400;700&display=swap');
       svg { pointer-events: none; user-select: none; }
+      .sans { font-family: 'Inter', 'SF Pro Display', 'Segoe UI', 'Lato', 'Noto Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
+      .mono { font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'DejaVu Sans Mono', ui-monospace, Menlo, Consolas, monospace; }
 
-      .mono { font-family: 'Space Mono', 'SFMono-Regular', Menlo, Monaco, Consolas, monospace; }
-      .grotesk { font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-
-      /* Horizontal Laser Scan Sweep across 52 weeks */
       @keyframes sweepScan {
-        0% { transform: translateX(98px); }
-        50% { transform: translateX(1108px); }
+        0%   { transform: translateX(98px); }
+        50%  { transform: translateX(1108px); }
         100% { transform: translateX(98px); }
       }
-      .scanner-beam {
-        animation: sweepScan 11s ease-in-out infinite;
-      }
+      .scanner-beam { animation: sweepScan 11s ease-in-out infinite; }
 
-      /* Autonomous Quantum Probe Drone Flight Path */
       @keyframes probeFlight {
-        0%   { transform: translate(140px, 115px); }
-        20%  { transform: translate(360px, 185px); }
-        40%  { transform: translate(620px, 125px); }
-        60%  { transform: translate(860px, 195px); }
-        80%  { transform: translate(1040px, 135px); }
-        100% { transform: translate(140px, 115px); }
+        0%   { transform: translate(195px, 122px); }
+        25%  { transform: translate(430px, 180px); }
+        50%  { transform: translate(710px, 130px); }
+        75%  { transform: translate(945px, 178px); }
+        100% { transform: translate(195px, 122px); }
       }
-      .quantum-probe {
-        animation: probeFlight 14s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
-      }
+      .reticle-probe { animation: probeFlight 14s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite; }
 
-      /* Shimmer on Hot Nodes */
-      @keyframes cellShimmer {
-        0%, 100% { opacity: 0.95; }
-        50% { opacity: 1; filter: brightness(1.18); }
+      @keyframes cellPulse {
+        0%, 100% { opacity: 0.9; }
+        50%      { opacity: 1; }
       }
-      .cell-hot {
-        animation: cellShimmer 3s ease-in-out infinite alternate;
-      }
+      .cell-hot { animation: cellPulse 2.8s ease-in-out infinite alternate; }
 
-      /* Status Beacon Pulsing */
-      @keyframes beaconBlink {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.35; }
-      }
-      .status-dot {
-        animation: beaconBlink 2s infinite ease-in-out;
-      }
-
-      @keyframes cellWave-0 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        0.00% { transform: scale(1.0); filter: none; }
-        1.49% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        3.09% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        4.69% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        6.29% { transform: scale(1.0); filter: none; }
-        93.71% { transform: scale(1.0); filter: none; }
-        95.31% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        96.91% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        98.51% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        100.00% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-0 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-0 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-1 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        2.60% { transform: scale(1.0); filter: none; }
-        4.20% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        5.80% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        7.40% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        9.00% { transform: scale(1.0); filter: none; }
-        91.00% { transform: scale(1.0); filter: none; }
-        92.60% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        94.20% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        95.80% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        97.40% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-1 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-1 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-2 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        4.37% { transform: scale(1.0); filter: none; }
-        5.97% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        7.57% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        9.17% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        10.77% { transform: scale(1.0); filter: none; }
-        89.23% { transform: scale(1.0); filter: none; }
-        90.83% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        92.43% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        94.03% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        95.63% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-2 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-2 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-3 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        5.77% { transform: scale(1.0); filter: none; }
-        7.37% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        8.97% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        10.57% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        12.17% { transform: scale(1.0); filter: none; }
-        87.83% { transform: scale(1.0); filter: none; }
-        89.43% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        91.03% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        92.63% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        94.23% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-3 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-3 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-4 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        6.98% { transform: scale(1.0); filter: none; }
-        8.58% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        10.18% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        11.78% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        13.38% { transform: scale(1.0); filter: none; }
-        86.62% { transform: scale(1.0); filter: none; }
-        88.22% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        89.82% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        91.42% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        93.02% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-4 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-4 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-5 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        8.05% { transform: scale(1.0); filter: none; }
-        9.65% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        11.25% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        12.85% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        14.45% { transform: scale(1.0); filter: none; }
-        85.55% { transform: scale(1.0); filter: none; }
-        87.15% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        88.75% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        90.35% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        91.95% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-5 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-5 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-6 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        9.02% { transform: scale(1.0); filter: none; }
-        10.62% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        12.22% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        13.82% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        15.42% { transform: scale(1.0); filter: none; }
-        84.58% { transform: scale(1.0); filter: none; }
-        86.18% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        87.78% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        89.38% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        90.98% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-6 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-6 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-7 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        9.92% { transform: scale(1.0); filter: none; }
-        11.52% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        13.12% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        14.72% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        16.32% { transform: scale(1.0); filter: none; }
-        83.68% { transform: scale(1.0); filter: none; }
-        85.28% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        86.88% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        88.48% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        90.08% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-7 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-7 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-8 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        10.76% { transform: scale(1.0); filter: none; }
-        12.36% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        13.96% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        15.56% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        17.16% { transform: scale(1.0); filter: none; }
-        82.84% { transform: scale(1.0); filter: none; }
-        84.44% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        86.04% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        87.64% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        89.24% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-8 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-8 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-9 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        11.55% { transform: scale(1.0); filter: none; }
-        13.15% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        14.75% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        16.35% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        17.95% { transform: scale(1.0); filter: none; }
-        82.05% { transform: scale(1.0); filter: none; }
-        83.65% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        85.25% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        86.85% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        88.45% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-9 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-9 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-10 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        12.31% { transform: scale(1.0); filter: none; }
-        13.91% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        15.51% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        17.11% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        18.71% { transform: scale(1.0); filter: none; }
-        81.29% { transform: scale(1.0); filter: none; }
-        82.89% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        84.49% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        86.09% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        87.69% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-10 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-10 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-11 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        13.03% { transform: scale(1.0); filter: none; }
-        14.63% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        16.23% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        17.83% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        19.43% { transform: scale(1.0); filter: none; }
-        80.57% { transform: scale(1.0); filter: none; }
-        82.17% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        83.77% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        85.37% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        86.97% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-11 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-11 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-12 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        13.73% { transform: scale(1.0); filter: none; }
-        15.33% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        16.93% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        18.53% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        20.13% { transform: scale(1.0); filter: none; }
-        79.87% { transform: scale(1.0); filter: none; }
-        81.47% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        83.07% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        84.67% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        86.27% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-12 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-12 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-13 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        14.40% { transform: scale(1.0); filter: none; }
-        16.00% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        17.60% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        19.20% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        20.80% { transform: scale(1.0); filter: none; }
-        79.20% { transform: scale(1.0); filter: none; }
-        80.80% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        82.40% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        84.00% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        85.60% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-13 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-13 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-14 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        15.05% { transform: scale(1.0); filter: none; }
-        16.65% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        18.25% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        19.85% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        21.45% { transform: scale(1.0); filter: none; }
-        78.55% { transform: scale(1.0); filter: none; }
-        80.15% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        81.75% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        83.35% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        84.95% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-14 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-14 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-15 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        15.69% { transform: scale(1.0); filter: none; }
-        17.29% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        18.89% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        20.49% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        22.09% { transform: scale(1.0); filter: none; }
-        77.91% { transform: scale(1.0); filter: none; }
-        79.51% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        81.11% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        82.71% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        84.31% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-15 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-15 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-16 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        16.31% { transform: scale(1.0); filter: none; }
-        17.91% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        19.51% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        21.11% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        22.71% { transform: scale(1.0); filter: none; }
-        77.29% { transform: scale(1.0); filter: none; }
-        78.89% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        80.49% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        82.09% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        83.69% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-16 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-16 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-17 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        16.92% { transform: scale(1.0); filter: none; }
-        18.52% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        20.12% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        21.72% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        23.32% { transform: scale(1.0); filter: none; }
-        76.68% { transform: scale(1.0); filter: none; }
-        78.28% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        79.88% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        81.48% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        83.08% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-17 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-17 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-18 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        17.51% { transform: scale(1.0); filter: none; }
-        19.11% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        20.71% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        22.31% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        23.91% { transform: scale(1.0); filter: none; }
-        76.09% { transform: scale(1.0); filter: none; }
-        77.69% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        79.29% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        80.89% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        82.49% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-18 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-18 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-19 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        18.10% { transform: scale(1.0); filter: none; }
-        19.70% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        21.30% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        22.90% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        24.50% { transform: scale(1.0); filter: none; }
-        75.50% { transform: scale(1.0); filter: none; }
-        77.10% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        78.70% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        80.30% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        81.90% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-19 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-19 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-20 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        18.68% { transform: scale(1.0); filter: none; }
-        20.28% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        21.88% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        23.48% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        25.08% { transform: scale(1.0); filter: none; }
-        74.92% { transform: scale(1.0); filter: none; }
-        76.52% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        78.12% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        79.72% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        81.32% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-20 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-20 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-21 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        19.26% { transform: scale(1.0); filter: none; }
-        20.86% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        22.46% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        24.06% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        25.66% { transform: scale(1.0); filter: none; }
-        74.34% { transform: scale(1.0); filter: none; }
-        75.94% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        77.54% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        79.14% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        80.74% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-21 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-21 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-22 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        19.83% { transform: scale(1.0); filter: none; }
-        21.43% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        23.03% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        24.63% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        26.23% { transform: scale(1.0); filter: none; }
-        73.77% { transform: scale(1.0); filter: none; }
-        75.37% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        76.97% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        78.57% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        80.17% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-22 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-22 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-23 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        20.39% { transform: scale(1.0); filter: none; }
-        21.99% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        23.59% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        25.19% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        26.79% { transform: scale(1.0); filter: none; }
-        73.21% { transform: scale(1.0); filter: none; }
-        74.81% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        76.41% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        78.01% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        79.61% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-23 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-23 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-24 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        20.95% { transform: scale(1.0); filter: none; }
-        22.55% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        24.15% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        25.75% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        27.35% { transform: scale(1.0); filter: none; }
-        72.65% { transform: scale(1.0); filter: none; }
-        74.25% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        75.85% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        77.45% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        79.05% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-24 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-24 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-25 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        21.51% { transform: scale(1.0); filter: none; }
-        23.11% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        24.71% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        26.31% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        27.91% { transform: scale(1.0); filter: none; }
-        72.09% { transform: scale(1.0); filter: none; }
-        73.69% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        75.29% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        76.89% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        78.49% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-25 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-25 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-26 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        22.07% { transform: scale(1.0); filter: none; }
-        23.67% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        25.27% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        26.87% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        28.47% { transform: scale(1.0); filter: none; }
-        71.53% { transform: scale(1.0); filter: none; }
-        73.13% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        74.73% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        76.33% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        77.93% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-26 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-26 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-27 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        22.63% { transform: scale(1.0); filter: none; }
-        24.23% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        25.83% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        27.43% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        29.03% { transform: scale(1.0); filter: none; }
-        70.97% { transform: scale(1.0); filter: none; }
-        72.57% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        74.17% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        75.77% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        77.37% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-27 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-27 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-28 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        23.20% { transform: scale(1.0); filter: none; }
-        24.80% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        26.40% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        28.00% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        29.60% { transform: scale(1.0); filter: none; }
-        70.40% { transform: scale(1.0); filter: none; }
-        72.00% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        73.60% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        75.20% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        76.80% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-28 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-28 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-29 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        23.76% { transform: scale(1.0); filter: none; }
-        25.36% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        26.96% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        28.56% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        30.16% { transform: scale(1.0); filter: none; }
-        69.84% { transform: scale(1.0); filter: none; }
-        71.44% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        73.04% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        74.64% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        76.24% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-29 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-29 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-30 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        24.33% { transform: scale(1.0); filter: none; }
-        25.93% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        27.53% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        29.13% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        30.73% { transform: scale(1.0); filter: none; }
-        69.27% { transform: scale(1.0); filter: none; }
-        70.87% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        72.47% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        74.07% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        75.67% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-30 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-30 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-31 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        24.90% { transform: scale(1.0); filter: none; }
-        26.50% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        28.10% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        29.70% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        31.30% { transform: scale(1.0); filter: none; }
-        68.70% { transform: scale(1.0); filter: none; }
-        70.30% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        71.90% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        73.50% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        75.10% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-31 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-31 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-32 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        25.48% { transform: scale(1.0); filter: none; }
-        27.08% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        28.68% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        30.28% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        31.88% { transform: scale(1.0); filter: none; }
-        68.12% { transform: scale(1.0); filter: none; }
-        69.72% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        71.32% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        72.92% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        74.52% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-32 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-32 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-33 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        26.07% { transform: scale(1.0); filter: none; }
-        27.67% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        29.27% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        30.87% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        32.47% { transform: scale(1.0); filter: none; }
-        67.53% { transform: scale(1.0); filter: none; }
-        69.13% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        70.73% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        72.33% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        73.93% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-33 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-33 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-34 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        26.67% { transform: scale(1.0); filter: none; }
-        28.27% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        29.87% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        31.47% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        33.07% { transform: scale(1.0); filter: none; }
-        66.93% { transform: scale(1.0); filter: none; }
-        68.53% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        70.13% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        71.73% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        73.33% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-34 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-34 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-35 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        27.27% { transform: scale(1.0); filter: none; }
-        28.87% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        30.47% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        32.07% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        33.67% { transform: scale(1.0); filter: none; }
-        66.33% { transform: scale(1.0); filter: none; }
-        67.93% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        69.53% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        71.13% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        72.73% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-35 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-35 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-36 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        27.90% { transform: scale(1.0); filter: none; }
-        29.50% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        31.10% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        32.70% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        34.30% { transform: scale(1.0); filter: none; }
-        65.70% { transform: scale(1.0); filter: none; }
-        67.30% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        68.90% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        70.50% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        72.10% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-36 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-36 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-37 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        28.53% { transform: scale(1.0); filter: none; }
-        30.13% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        31.73% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        33.33% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        34.93% { transform: scale(1.0); filter: none; }
-        65.07% { transform: scale(1.0); filter: none; }
-        66.67% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        68.27% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        69.87% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        71.47% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-37 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-37 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-38 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        29.18% { transform: scale(1.0); filter: none; }
-        30.78% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        32.38% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        33.98% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        35.58% { transform: scale(1.0); filter: none; }
-        64.42% { transform: scale(1.0); filter: none; }
-        66.02% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        67.62% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        69.22% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        70.82% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-38 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-38 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-39 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        29.85% { transform: scale(1.0); filter: none; }
-        31.45% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        33.05% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        34.65% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        36.25% { transform: scale(1.0); filter: none; }
-        63.75% { transform: scale(1.0); filter: none; }
-        65.35% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        66.95% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        68.55% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        70.15% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-39 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-39 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-40 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        30.55% { transform: scale(1.0); filter: none; }
-        32.15% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        33.75% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        35.35% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        36.95% { transform: scale(1.0); filter: none; }
-        63.05% { transform: scale(1.0); filter: none; }
-        64.65% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        66.25% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        67.85% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        69.45% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-40 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-40 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-41 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        31.27% { transform: scale(1.0); filter: none; }
-        32.87% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        34.47% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        36.07% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        37.67% { transform: scale(1.0); filter: none; }
-        62.33% { transform: scale(1.0); filter: none; }
-        63.93% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        65.53% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        67.13% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        68.73% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-41 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-41 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-42 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        32.03% { transform: scale(1.0); filter: none; }
-        33.63% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        35.23% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        36.83% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        38.43% { transform: scale(1.0); filter: none; }
-        61.57% { transform: scale(1.0); filter: none; }
-        63.17% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        64.77% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        66.37% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        67.97% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-42 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-42 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-43 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        32.82% { transform: scale(1.0); filter: none; }
-        34.42% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        36.02% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        37.62% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        39.22% { transform: scale(1.0); filter: none; }
-        60.78% { transform: scale(1.0); filter: none; }
-        62.38% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        63.98% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        65.58% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        67.18% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-43 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-43 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-44 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        33.66% { transform: scale(1.0); filter: none; }
-        35.26% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        36.86% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        38.46% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        40.06% { transform: scale(1.0); filter: none; }
-        59.94% { transform: scale(1.0); filter: none; }
-        61.54% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        63.14% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        64.74% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        66.34% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-44 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-44 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-45 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        34.56% { transform: scale(1.0); filter: none; }
-        36.16% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        37.76% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        39.36% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        40.96% { transform: scale(1.0); filter: none; }
-        59.04% { transform: scale(1.0); filter: none; }
-        60.64% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        62.24% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        63.84% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        65.44% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-45 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-45 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-46 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        35.53% { transform: scale(1.0); filter: none; }
-        37.13% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        38.73% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        40.33% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        41.93% { transform: scale(1.0); filter: none; }
-        58.07% { transform: scale(1.0); filter: none; }
-        59.67% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        61.27% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        62.87% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        64.47% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-46 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-46 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-47 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        36.59% { transform: scale(1.0); filter: none; }
-        38.19% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        39.79% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        41.39% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        42.99% { transform: scale(1.0); filter: none; }
-        57.01% { transform: scale(1.0); filter: none; }
-        58.61% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        60.21% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        61.81% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        63.41% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-47 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-47 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-48 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        37.79% { transform: scale(1.0); filter: none; }
-        39.39% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        40.99% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        42.59% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        44.19% { transform: scale(1.0); filter: none; }
-        55.81% { transform: scale(1.0); filter: none; }
-        57.41% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        59.01% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        60.61% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        62.21% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-48 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-48 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-49 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        39.19% { transform: scale(1.0); filter: none; }
-        40.79% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        42.39% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        43.99% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        45.59% { transform: scale(1.0); filter: none; }
-        54.41% { transform: scale(1.0); filter: none; }
-        56.01% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        57.61% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        59.21% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        60.81% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-49 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-49 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-50 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        40.94% { transform: scale(1.0); filter: none; }
-        42.54% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        44.14% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        45.74% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        47.34% { transform: scale(1.0); filter: none; }
-        52.66% { transform: scale(1.0); filter: none; }
-        54.26% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        55.86% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        57.46% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        59.06% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-50 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-50 11s ease-in-out infinite;
-      }
-      @keyframes cellWave-51 {
-        0%, 100% { transform: scale(1.0); filter: none; }
-        43.61% { transform: scale(1.0); filter: none; }
-        45.21% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        46.81% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        48.41% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        50.01% { transform: scale(1.0); filter: none; }
-        49.99% { transform: scale(1.0); filter: none; }
-        51.59% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        53.19% { transform: scale(1.24) translateY(-2.5px); filter: drop-shadow(0 4px 6px rgba(114, 47, 55, 0.45)) brightness(1.28); }
-        54.79% { transform: scale(1.10) translateY(-1px); filter: drop-shadow(0 2px 3px rgba(114, 47, 55, 0.25)) brightness(1.12); }
-        56.39% { transform: scale(1.0); filter: none; }
-      }
-      .cell-col-51 {
-        transform-box: fill-box;
-        transform-origin: center;
-        animation: cellWave-51 11s ease-in-out infinite;
-      }
+      @keyframes cw-0 {
+        0%, 100% { transform: scale(1.18) translateY(-1.5px); }
+        3.5%, 96.5% { transform: scale(1); }
+      }
+      .c-col-0 { transform-box: fill-box; transform-origin: center; animation: cw-0 11s ease-in-out infinite; }
+      @keyframes cw-1 {
+        0%, 0.00%, 3.57%, 96.43%, 100.00%, 100% { transform: scale(1); }
+        0.97%, 99.03% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-1 { transform-box: fill-box; transform-origin: center; animation: cw-1 11s ease-in-out infinite; }
+      @keyframes cw-2 {
+        0%, 0.00%, 4.53%, 95.47%, 100.00%, 100% { transform: scale(1); }
+        1.93%, 98.07% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-2 { transform-box: fill-box; transform-origin: center; animation: cw-2 11s ease-in-out infinite; }
+      @keyframes cw-3 {
+        0%, 0.30%, 5.50%, 94.50%, 99.70%, 100% { transform: scale(1); }
+        2.90%, 97.10% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-3 { transform-box: fill-box; transform-origin: center; animation: cw-3 11s ease-in-out infinite; }
+      @keyframes cw-4 {
+        0%, 1.26%, 6.46%, 93.54%, 98.74%, 100% { transform: scale(1); }
+        3.86%, 96.14% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-4 { transform-box: fill-box; transform-origin: center; animation: cw-4 11s ease-in-out infinite; }
+      @keyframes cw-5 {
+        0%, 2.23%, 7.43%, 92.57%, 97.77%, 100% { transform: scale(1); }
+        4.83%, 95.17% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-5 { transform-box: fill-box; transform-origin: center; animation: cw-5 11s ease-in-out infinite; }
+      @keyframes cw-6 {
+        0%, 3.19%, 8.39%, 91.61%, 96.81%, 100% { transform: scale(1); }
+        5.79%, 94.21% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-6 { transform-box: fill-box; transform-origin: center; animation: cw-6 11s ease-in-out infinite; }
+      @keyframes cw-7 {
+        0%, 4.16%, 9.36%, 90.64%, 95.84%, 100% { transform: scale(1); }
+        6.76%, 93.24% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-7 { transform-box: fill-box; transform-origin: center; animation: cw-7 11s ease-in-out infinite; }
+      @keyframes cw-8 {
+        0%, 5.12%, 10.32%, 89.68%, 94.88%, 100% { transform: scale(1); }
+        7.72%, 92.28% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-8 { transform-box: fill-box; transform-origin: center; animation: cw-8 11s ease-in-out infinite; }
+      @keyframes cw-9 {
+        0%, 6.09%, 11.29%, 88.71%, 93.91%, 100% { transform: scale(1); }
+        8.69%, 91.31% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-9 { transform-box: fill-box; transform-origin: center; animation: cw-9 11s ease-in-out infinite; }
+      @keyframes cw-10 {
+        0%, 7.05%, 12.25%, 87.75%, 92.95%, 100% { transform: scale(1); }
+        9.65%, 90.35% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-10 { transform-box: fill-box; transform-origin: center; animation: cw-10 11s ease-in-out infinite; }
+      @keyframes cw-11 {
+        0%, 8.02%, 13.22%, 86.78%, 91.98%, 100% { transform: scale(1); }
+        10.62%, 89.38% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-11 { transform-box: fill-box; transform-origin: center; animation: cw-11 11s ease-in-out infinite; }
+      @keyframes cw-12 {
+        0%, 8.98%, 14.18%, 85.82%, 91.02%, 100% { transform: scale(1); }
+        11.58%, 88.42% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-12 { transform-box: fill-box; transform-origin: center; animation: cw-12 11s ease-in-out infinite; }
+      @keyframes cw-13 {
+        0%, 9.95%, 15.15%, 84.85%, 90.05%, 100% { transform: scale(1); }
+        12.55%, 87.45% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-13 { transform-box: fill-box; transform-origin: center; animation: cw-13 11s ease-in-out infinite; }
+      @keyframes cw-14 {
+        0%, 10.91%, 16.11%, 83.89%, 89.09%, 100% { transform: scale(1); }
+        13.51%, 86.49% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-14 { transform-box: fill-box; transform-origin: center; animation: cw-14 11s ease-in-out infinite; }
+      @keyframes cw-15 {
+        0%, 11.88%, 17.08%, 82.92%, 88.12%, 100% { transform: scale(1); }
+        14.48%, 85.52% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-15 { transform-box: fill-box; transform-origin: center; animation: cw-15 11s ease-in-out infinite; }
+      @keyframes cw-16 {
+        0%, 12.85%, 18.05%, 81.95%, 87.15%, 100% { transform: scale(1); }
+        15.45%, 84.55% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-16 { transform-box: fill-box; transform-origin: center; animation: cw-16 11s ease-in-out infinite; }
+      @keyframes cw-17 {
+        0%, 13.81%, 19.01%, 80.99%, 86.19%, 100% { transform: scale(1); }
+        16.41%, 83.59% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-17 { transform-box: fill-box; transform-origin: center; animation: cw-17 11s ease-in-out infinite; }
+      @keyframes cw-18 {
+        0%, 14.78%, 19.98%, 80.02%, 85.22%, 100% { transform: scale(1); }
+        17.38%, 82.62% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-18 { transform-box: fill-box; transform-origin: center; animation: cw-18 11s ease-in-out infinite; }
+      @keyframes cw-19 {
+        0%, 15.74%, 20.94%, 79.06%, 84.26%, 100% { transform: scale(1); }
+        18.34%, 81.66% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-19 { transform-box: fill-box; transform-origin: center; animation: cw-19 11s ease-in-out infinite; }
+      @keyframes cw-20 {
+        0%, 16.71%, 21.91%, 78.09%, 83.29%, 100% { transform: scale(1); }
+        19.31%, 80.69% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-20 { transform-box: fill-box; transform-origin: center; animation: cw-20 11s ease-in-out infinite; }
+      @keyframes cw-21 {
+        0%, 17.67%, 22.87%, 77.13%, 82.33%, 100% { transform: scale(1); }
+        20.27%, 79.73% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-21 { transform-box: fill-box; transform-origin: center; animation: cw-21 11s ease-in-out infinite; }
+      @keyframes cw-22 {
+        0%, 18.64%, 23.84%, 76.16%, 81.36%, 100% { transform: scale(1); }
+        21.24%, 78.76% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-22 { transform-box: fill-box; transform-origin: center; animation: cw-22 11s ease-in-out infinite; }
+      @keyframes cw-23 {
+        0%, 19.60%, 24.80%, 75.20%, 80.40%, 100% { transform: scale(1); }
+        22.20%, 77.80% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-23 { transform-box: fill-box; transform-origin: center; animation: cw-23 11s ease-in-out infinite; }
+      @keyframes cw-24 {
+        0%, 20.57%, 25.77%, 74.23%, 79.43%, 100% { transform: scale(1); }
+        23.17%, 76.83% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-24 { transform-box: fill-box; transform-origin: center; animation: cw-24 11s ease-in-out infinite; }
+      @keyframes cw-25 {
+        0%, 21.53%, 26.73%, 73.27%, 78.47%, 100% { transform: scale(1); }
+        24.13%, 75.87% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-25 { transform-box: fill-box; transform-origin: center; animation: cw-25 11s ease-in-out infinite; }
+      @keyframes cw-26 {
+        0%, 22.50%, 27.70%, 72.30%, 77.50%, 100% { transform: scale(1); }
+        25.10%, 74.90% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-26 { transform-box: fill-box; transform-origin: center; animation: cw-26 11s ease-in-out infinite; }
+      @keyframes cw-27 {
+        0%, 23.46%, 28.66%, 71.34%, 76.54%, 100% { transform: scale(1); }
+        26.06%, 73.94% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-27 { transform-box: fill-box; transform-origin: center; animation: cw-27 11s ease-in-out infinite; }
+      @keyframes cw-28 {
+        0%, 24.43%, 29.63%, 70.37%, 75.57%, 100% { transform: scale(1); }
+        27.03%, 72.97% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-28 { transform-box: fill-box; transform-origin: center; animation: cw-28 11s ease-in-out infinite; }
+      @keyframes cw-29 {
+        0%, 25.40%, 30.60%, 69.40%, 74.60%, 100% { transform: scale(1); }
+        28.00%, 72.00% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-29 { transform-box: fill-box; transform-origin: center; animation: cw-29 11s ease-in-out infinite; }
+      @keyframes cw-30 {
+        0%, 26.36%, 31.56%, 68.44%, 73.64%, 100% { transform: scale(1); }
+        28.96%, 71.04% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-30 { transform-box: fill-box; transform-origin: center; animation: cw-30 11s ease-in-out infinite; }
+      @keyframes cw-31 {
+        0%, 27.33%, 32.53%, 67.47%, 72.67%, 100% { transform: scale(1); }
+        29.93%, 70.07% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-31 { transform-box: fill-box; transform-origin: center; animation: cw-31 11s ease-in-out infinite; }
+      @keyframes cw-32 {
+        0%, 28.29%, 33.49%, 66.51%, 71.71%, 100% { transform: scale(1); }
+        30.89%, 69.11% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-32 { transform-box: fill-box; transform-origin: center; animation: cw-32 11s ease-in-out infinite; }
+      @keyframes cw-33 {
+        0%, 29.26%, 34.46%, 65.54%, 70.74%, 100% { transform: scale(1); }
+        31.86%, 68.14% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-33 { transform-box: fill-box; transform-origin: center; animation: cw-33 11s ease-in-out infinite; }
+      @keyframes cw-34 {
+        0%, 30.22%, 35.42%, 64.58%, 69.78%, 100% { transform: scale(1); }
+        32.82%, 67.18% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-34 { transform-box: fill-box; transform-origin: center; animation: cw-34 11s ease-in-out infinite; }
+      @keyframes cw-35 {
+        0%, 31.19%, 36.39%, 63.61%, 68.81%, 100% { transform: scale(1); }
+        33.79%, 66.21% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-35 { transform-box: fill-box; transform-origin: center; animation: cw-35 11s ease-in-out infinite; }
+      @keyframes cw-36 {
+        0%, 32.15%, 37.35%, 62.65%, 67.85%, 100% { transform: scale(1); }
+        34.75%, 65.25% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-36 { transform-box: fill-box; transform-origin: center; animation: cw-36 11s ease-in-out infinite; }
+      @keyframes cw-37 {
+        0%, 33.12%, 38.32%, 61.68%, 66.88%, 100% { transform: scale(1); }
+        35.72%, 64.28% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-37 { transform-box: fill-box; transform-origin: center; animation: cw-37 11s ease-in-out infinite; }
+      @keyframes cw-38 {
+        0%, 34.08%, 39.28%, 60.72%, 65.92%, 100% { transform: scale(1); }
+        36.68%, 63.32% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-38 { transform-box: fill-box; transform-origin: center; animation: cw-38 11s ease-in-out infinite; }
+      @keyframes cw-39 {
+        0%, 35.05%, 40.25%, 59.75%, 64.95%, 100% { transform: scale(1); }
+        37.65%, 62.35% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-39 { transform-box: fill-box; transform-origin: center; animation: cw-39 11s ease-in-out infinite; }
+      @keyframes cw-40 {
+        0%, 36.01%, 41.21%, 58.79%, 63.99%, 100% { transform: scale(1); }
+        38.61%, 61.39% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-40 { transform-box: fill-box; transform-origin: center; animation: cw-40 11s ease-in-out infinite; }
+      @keyframes cw-41 {
+        0%, 36.98%, 42.18%, 57.82%, 63.02%, 100% { transform: scale(1); }
+        39.58%, 60.42% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-41 { transform-box: fill-box; transform-origin: center; animation: cw-41 11s ease-in-out infinite; }
+      @keyframes cw-42 {
+        0%, 37.94%, 43.14%, 56.86%, 62.06%, 100% { transform: scale(1); }
+        40.54%, 59.46% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-42 { transform-box: fill-box; transform-origin: center; animation: cw-42 11s ease-in-out infinite; }
+      @keyframes cw-43 {
+        0%, 38.91%, 44.11%, 55.89%, 61.09%, 100% { transform: scale(1); }
+        41.51%, 58.49% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-43 { transform-box: fill-box; transform-origin: center; animation: cw-43 11s ease-in-out infinite; }
+      @keyframes cw-44 {
+        0%, 39.88%, 45.08%, 54.92%, 60.12%, 100% { transform: scale(1); }
+        42.48%, 57.52% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-44 { transform-box: fill-box; transform-origin: center; animation: cw-44 11s ease-in-out infinite; }
+      @keyframes cw-45 {
+        0%, 40.84%, 46.04%, 53.96%, 59.16%, 100% { transform: scale(1); }
+        43.44%, 56.56% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-45 { transform-box: fill-box; transform-origin: center; animation: cw-45 11s ease-in-out infinite; }
+      @keyframes cw-46 {
+        0%, 41.81%, 47.01%, 52.99%, 58.19%, 100% { transform: scale(1); }
+        44.41%, 55.59% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-46 { transform-box: fill-box; transform-origin: center; animation: cw-46 11s ease-in-out infinite; }
+      @keyframes cw-47 {
+        0%, 42.77%, 47.97%, 52.03%, 57.23%, 100% { transform: scale(1); }
+        45.37%, 54.63% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-47 { transform-box: fill-box; transform-origin: center; animation: cw-47 11s ease-in-out infinite; }
+      @keyframes cw-48 {
+        0%, 43.74%, 48.94%, 51.06%, 56.26%, 100% { transform: scale(1); }
+        46.34%, 53.66% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-48 { transform-box: fill-box; transform-origin: center; animation: cw-48 11s ease-in-out infinite; }
+      @keyframes cw-49 {
+        0%, 44.70%, 49.90%, 50.10%, 55.30%, 100% { transform: scale(1); }
+        47.30%, 52.70% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-49 { transform-box: fill-box; transform-origin: center; animation: cw-49 11s ease-in-out infinite; }
+      @keyframes cw-50 {
+        0%, 45.67%, 50.87%, 49.13%, 54.33%, 100% { transform: scale(1); }
+        48.27%, 51.73% { transform: scale(1.22) translateY(-2px); }
+      }
+      .c-col-50 { transform-box: fill-box; transform-origin: center; animation: cw-50 11s ease-in-out infinite; }
+      @keyframes cw-51 {
+        0%, 46.5%, 53.5%, 100% { transform: scale(1); }
+        50% { transform: scale(1.18) translateY(-1.5px); }
+      }
+      .c-col-51 { transform-box: fill-box; transform-origin: center; animation: cw-51 11s ease-in-out infinite; }
     ]]></style>
   </defs>
 
-  <!-- Container Base & Cosmic Latte Border -->
-  <rect width="1200" height="420" rx="16" fill="url(#contrib-bg)" />
-  <rect x="1" y="1" width="1198" height="418" rx="15" fill="none" stroke="#D6C4AE" stroke-width="1.5" />
+  <rect width="1200" height="416" rx="18" fill="url(#cm-bg)" />
+  <rect x="1" y="1" width="1198" height="414" rx="17" fill="none" stroke="#222631" stroke-width="1.5" />
 
-  <!-- ==================== HEADER STRIP ==================== -->
-  <!-- Terminal Window Control Dots -->
-  <circle cx="48" cy="48" r="6" fill="#722F37" />
-  <circle cx="68" cy="48" r="6" fill="#A0505A" />
-  <circle cx="88" cy="48" r="6" fill="#D6C4AE" />
+  <!-- HEADER -->
+  <rect x="40" y="40" width="8" height="8" rx="2" fill="#FF4422" />
+  <text x="58" y="48" fill="#FAF8F4" class="mono" font-size="13.5" font-weight="700" letter-spacing="1.4">&gt; CHRONO ACTIVITY MATRIX // 52-WEEK TELEMETRY</text>
+  <text x="1160" y="48" text-anchor="end" fill="#8E95A2" class="mono" font-size="11.5" font-weight="700" letter-spacing="1">365 DAYS · CONTINUOUS CADENCE</text>
+  <line x1="40" y1="72" x2="1160" y2="72" stroke="#20242F" stroke-width="1.1" />
 
-  <!-- Section Title -->
-  <text x="114" y="53" fill="#722F37" class="mono" font-size="14.5" font-weight="700" letter-spacing="1.5">> CONTRIBUTIONS --RADAR // CHRONO ACTIVITY MATRIX</text>
+  <!-- MATRIX CARD -->
+  <g transform="translate(40, 86)">
+    <rect width="1120" height="304" rx="12" fill="url(#cm-sheet)" stroke="#242934" stroke-width="1.2" />
+    <rect width="1120" height="28" rx="12" fill="#181C25" />
+    <rect y="16" width="1120" height="12" fill="#181C25" />
+    <line x1="0" y1="28" x2="1120" y2="28" stroke="#242934" stroke-width="1" />
 
-  <!-- Annual Activity Cadence (Clean, borderless, perfectly aligned) -->
-  <text x="1160" y="53" text-anchor="end" fill="#722F37" class="mono" font-size="12" font-weight="700" letter-spacing="0.8">ANNUAL ACTIVITY CADENCE</text>
+    <text x="24" y="18.5" fill="#8E95A2" class="mono" font-size="10.5" font-weight="700" letter-spacing="0.9">ACTIVITY_MATRIX // 52 WEEKS · PRIVATE &amp; PRODUCTION RELEASES</text>
+    <text x="1096" y="18.5" text-anchor="end" fill="#FF5738" class="mono" font-size="10" font-weight="700">PRANOV888 // TELEMETRY ENGINE</text>
 
-  <!-- Header Divider Line -->
-  <line x1="40" y1="80" x2="1160" y2="80" stroke="#D6C4AE" stroke-width="1" />
-
-  <!-- ==================== MAIN RADAR MATRIX SURFACE ==================== -->
-  <g transform="translate(40, 92)">
-    <!-- Main Window Card -->
-    <rect width="1120" height="302" rx="12" fill="url(#inner-sheet)" stroke="#C7B49D" stroke-width="1.2" />
-
-    <!-- Terminal Sub-Header -->
-    <rect width="1120" height="28" rx="12" fill="#EFE3D3" />
-    <rect y="16" width="1120" height="12" fill="#EFE3D3" />
-    <line x1="0" y1="28" x2="1120" y2="28" stroke="#D6C4AE" stroke-width="1" />
-    <text x="24" y="19" fill="#886D5B" class="mono" font-size="11" font-weight="700" letter-spacing="0.8">ACTIVITY_MATRIX // 52 WEEKS · 365 DAYS ANNUAL CADENCE</text>
-    <text x="1096" y="19" text-anchor="end" fill="#722F37" class="mono" font-size="10.5" font-weight="700">PRANOV888 // QUANTUM SCANNER</text>
-
-    <!-- Quarterly Cadence & Velocity Wave Track -->
+    <!-- Quarterly Velocity Track -->
     <g>
-      <!-- Subtle Timeline Baseline -->
-      <line x1="98" y1="66" x2="1108" y2="66" stroke="#D6C4AE" stroke-width="0.8" stroke-dasharray="3 3" />
+      <line x1="98" y1="66" x2="1108" y2="66" stroke="#232835" stroke-width="0.9" stroke-dasharray="3 3" />
+      <line x1="351.5" y1="31" x2="351.5" y2="66" stroke="#232835" stroke-width="0.9" />
+      <line x1="605.0" y1="31" x2="605.0" y2="66" stroke="#232835" stroke-width="0.9" />
+      <line x1="858.5" y1="31" x2="858.5" y2="66" stroke="#232835" stroke-width="0.9" />
 
-      <!-- Quarterly Milestone Boundaries -->
-      <line x1="351.5" y1="31" x2="351.5" y2="66" stroke="#D6C4AE" stroke-width="0.8" />
-      <line x1="605.0" y1="31" x2="605.0" y2="66" stroke="#D6C4AE" stroke-width="0.8" />
-      <line x1="858.5" y1="31" x2="858.5" y2="66" stroke="#D6C4AE" stroke-width="0.8" />
+      <text x="114" y="40" fill="#767E8D" class="mono" font-size="8.5" font-weight="700" letter-spacing="0.8">Q1 // ARCHITECTURE &amp; UX</text>
+      <text x="366" y="40" fill="#767E8D" class="mono" font-size="8.5" font-weight="700" letter-spacing="0.8">Q2 // CORE ENGINES</text>
+      <text x="619" y="40" fill="#767E8D" class="mono" font-size="8.5" font-weight="700" letter-spacing="0.8">Q3 // STATE &amp; APIS</text>
+      <text x="873" y="40" fill="#767E8D" class="mono" font-size="8.5" font-weight="700" letter-spacing="0.8">Q4 // PRODUCTION SHIP</text>
 
-      <!-- Quarterly Cadence Labels -->
-      <text x="116" y="39" fill="#886D5B" class="mono" font-size="8.5" font-weight="700" letter-spacing="0.8">Q1 // ARCHITECTURE &amp; UX</text>
-      <text x="365" y="39" fill="#886D5B" class="mono" font-size="8.5" font-weight="700" letter-spacing="0.8">Q2 // CORE ENGINES</text>
-      <text x="618" y="39" fill="#886D5B" class="mono" font-size="8.5" font-weight="700" letter-spacing="0.8">Q3 // STATE &amp; APIS</text>
-      <text x="872" y="39" fill="#886D5B" class="mono" font-size="8.5" font-weight="700" letter-spacing="0.8">Q4 // PRODUCTION SHIP</text>
-
-      <!-- Smooth Commit Velocity Area Fill -->
-      <path d="M 98.0 63 C 104.5 62.2, 124.0 59.8, 137.0 58.0 C 150.0 56.2, 163.0 53.5, 176.0 52.0 C 189.0 50.5, 202.0 48.5, 215.0 49.0 C 228.0 49.5, 241.0 53.2, 254.0 55.0 C 267.0 56.8, 280.0 60.8, 293.0 60.0 C 306.0 59.2, 319.0 51.0, 332.0 50.0 C 345.0 49.0, 358.0 54.3, 371.0 54.0 C 384.0 53.7, 397.0 48.7, 410.0 48.0 C 423.0 47.3, 436.0 48.3, 449.0 50.0 C 462.0 51.7, 475.0 56.0, 488.0 58.0 C 501.0 60.0, 514.0 63.3, 527.0 62.0 C 540.0 60.7, 553.0 52.3, 566.0 50.0 C 579.0 47.7, 592.0 48.3, 605.0 48.0 C 618.0 47.7, 631.0 47.3, 644.0 48.0 C 657.0 48.7, 670.0 50.7, 683.0 52.0 C 696.0 53.3, 709.0 55.8, 722.0 56.0 C 735.0 56.2, 748.0 54.2, 761.0 53.0 C 774.0 51.8, 787.0 49.8, 800.0 49.0 C 813.0 48.2, 826.0 48.2, 839.0 48.0 C 852.0 47.8, 865.0 47.5, 878.0 48.0 C 891.0 48.5, 904.0 51.0, 917.0 51.0 C 930.0 51.0, 943.0 48.5, 956.0 48.0 C 969.0 47.5, 982.0 47.8, 995.0 48.0 C 1008.0 48.2, 1021.0 48.3, 1034.0 49.0 C 1047.0 49.7, 1060.7 50.2, 1073.0 52.0 C 1085.3 53.8, 1102.2 58.7, 1108.0 60.0 L 1108.0 66 L 98.0 66 Z" fill="url(#velocity-wave-grad)" />
-
-      <!-- Smooth Commit Velocity Spline Stroke -->
-      <path d="M 98.0 63 C 104.5 62.2, 124.0 59.8, 137.0 58.0 C 150.0 56.2, 163.0 53.5, 176.0 52.0 C 189.0 50.5, 202.0 48.5, 215.0 49.0 C 228.0 49.5, 241.0 53.2, 254.0 55.0 C 267.0 56.8, 280.0 60.8, 293.0 60.0 C 306.0 59.2, 319.0 51.0, 332.0 50.0 C 345.0 49.0, 358.0 54.3, 371.0 54.0 C 384.0 53.7, 397.0 48.7, 410.0 48.0 C 423.0 47.3, 436.0 48.3, 449.0 50.0 C 462.0 51.7, 475.0 56.0, 488.0 58.0 C 501.0 60.0, 514.0 63.3, 527.0 62.0 C 540.0 60.7, 553.0 52.3, 566.0 50.0 C 579.0 47.7, 592.0 48.3, 605.0 48.0 C 618.0 47.7, 631.0 47.3, 644.0 48.0 C 657.0 48.7, 670.0 50.7, 683.0 52.0 C 696.0 53.3, 709.0 55.8, 722.0 56.0 C 735.0 56.2, 748.0 54.2, 761.0 53.0 C 774.0 51.8, 787.0 49.8, 800.0 49.0 C 813.0 48.2, 826.0 48.2, 839.0 48.0 C 852.0 47.8, 865.0 47.5, 878.0 48.0 C 891.0 48.5, 904.0 51.0, 917.0 51.0 C 930.0 51.0, 943.0 48.5, 956.0 48.0 C 969.0 47.5, 982.0 47.8, 995.0 48.0 C 1008.0 48.2, 1021.0 48.3, 1034.0 49.0 C 1047.0 49.7, 1060.7 50.2, 1073.0 52.0 C 1085.3 53.8, 1102.2 58.7, 1108.0 60.0" fill="none" stroke="#8E3E4B" stroke-width="1.3" opacity="0.8" />
+      <path d="M 105.5 55.9 C 115.2 55.9, 115.2 55.2, 125.0 55.2 C 134.8 55.2, 134.8 55.9, 144.5 55.9 C 154.2 55.9, 154.2 55.9, 164.0 55.9 C 173.8 55.9, 173.8 55.2, 183.5 55.2 C 193.2 55.2, 193.2 55.2, 203.0 55.2 C 212.8 55.2, 212.8 54.5, 222.5 54.5 C 232.2 54.5, 232.2 52.5, 242.0 52.5 C 251.8 52.5, 251.8 49.1, 261.5 49.1 C 271.2 49.1, 271.2 49.1, 281.0 49.1 C 290.8 49.1, 290.8 49.8, 300.5 49.8 C 310.2 49.8, 310.2 50.4, 320.0 50.4 C 329.8 50.4, 329.8 52.5, 339.5 52.5 C 349.2 52.5, 349.2 56.5, 359.0 56.5 C 368.8 56.5, 368.8 59.2, 378.5 59.2 C 388.2 59.2, 388.2 61.3, 398.0 61.3 C 407.8 61.3, 407.8 62.0, 417.5 62.0 C 427.2 62.0, 427.2 61.3, 437.0 61.3 C 446.8 61.3, 446.8 60.6, 456.5 60.6 C 466.2 60.6, 466.2 58.6, 476.0 58.6 C 485.8 58.6, 485.8 58.6, 495.5 58.6 C 505.2 58.6, 505.2 57.9, 515.0 57.9 C 524.8 57.9, 524.8 57.9, 534.5 57.9 C 544.2 57.9, 544.2 57.9, 554.0 57.9 C 563.8 57.9, 563.8 59.2, 573.5 59.2 C 583.2 59.2, 583.2 59.2, 593.0 59.2 C 602.8 59.2, 602.8 57.2, 612.5 57.2 C 622.2 57.2, 622.2 53.8, 632.0 53.8 C 641.8 53.8, 641.8 52.5, 651.5 52.5 C 661.2 52.5, 661.2 49.8, 671.0 49.8 C 680.8 49.8, 680.8 48.4, 690.5 48.4 C 700.2 48.4, 700.2 48.4, 710.0 48.4 C 719.8 48.4, 719.8 51.8, 729.5 51.8 C 739.2 51.8, 739.2 52.5, 749.0 52.5 C 758.8 52.5, 758.8 55.2, 768.5 55.2 C 778.2 55.2, 778.2 58.6, 788.0 58.6 C 797.8 58.6, 797.8 59.2, 807.5 59.2 C 817.2 59.2, 817.2 59.9, 827.0 59.9 C 836.8 59.9, 836.8 59.2, 846.5 59.2 C 856.2 59.2, 856.2 58.6, 866.0 58.6 C 875.8 58.6, 875.8 59.2, 885.5 59.2 C 895.2 59.2, 895.2 57.9, 905.0 57.9 C 914.8 57.9, 914.8 59.2, 924.5 59.2 C 934.2 59.2, 934.2 60.6, 944.0 60.6 C 953.8 60.6, 953.8 61.3, 963.5 61.3 C 973.2 61.3, 973.2 61.3, 983.0 61.3 C 992.8 61.3, 992.8 59.9, 1002.5 59.9 C 1012.2 59.9, 1012.2 58.6, 1022.0 58.6 C 1031.8 58.6, 1031.8 55.2, 1041.5 55.2 C 1051.2 55.2, 1051.2 51.1, 1061.0 51.1 C 1070.8 51.1, 1070.8 50.4, 1080.5 50.4 C 1090.2 50.4, 1090.2 49.8, 1100.0 49.8 L 1100.0 66 L 105.5 66 Z" fill="url(#vel-fill)" />
+      <path d="M 105.5 55.9 C 115.2 55.9, 115.2 55.2, 125.0 55.2 C 134.8 55.2, 134.8 55.9, 144.5 55.9 C 154.2 55.9, 154.2 55.9, 164.0 55.9 C 173.8 55.9, 173.8 55.2, 183.5 55.2 C 193.2 55.2, 193.2 55.2, 203.0 55.2 C 212.8 55.2, 212.8 54.5, 222.5 54.5 C 232.2 54.5, 232.2 52.5, 242.0 52.5 C 251.8 52.5, 251.8 49.1, 261.5 49.1 C 271.2 49.1, 271.2 49.1, 281.0 49.1 C 290.8 49.1, 290.8 49.8, 300.5 49.8 C 310.2 49.8, 310.2 50.4, 320.0 50.4 C 329.8 50.4, 329.8 52.5, 339.5 52.5 C 349.2 52.5, 349.2 56.5, 359.0 56.5 C 368.8 56.5, 368.8 59.2, 378.5 59.2 C 388.2 59.2, 388.2 61.3, 398.0 61.3 C 407.8 61.3, 407.8 62.0, 417.5 62.0 C 427.2 62.0, 427.2 61.3, 437.0 61.3 C 446.8 61.3, 446.8 60.6, 456.5 60.6 C 466.2 60.6, 466.2 58.6, 476.0 58.6 C 485.8 58.6, 485.8 58.6, 495.5 58.6 C 505.2 58.6, 505.2 57.9, 515.0 57.9 C 524.8 57.9, 524.8 57.9, 534.5 57.9 C 544.2 57.9, 544.2 57.9, 554.0 57.9 C 563.8 57.9, 563.8 59.2, 573.5 59.2 C 583.2 59.2, 583.2 59.2, 593.0 59.2 C 602.8 59.2, 602.8 57.2, 612.5 57.2 C 622.2 57.2, 622.2 53.8, 632.0 53.8 C 641.8 53.8, 641.8 52.5, 651.5 52.5 C 661.2 52.5, 661.2 49.8, 671.0 49.8 C 680.8 49.8, 680.8 48.4, 690.5 48.4 C 700.2 48.4, 700.2 48.4, 710.0 48.4 C 719.8 48.4, 719.8 51.8, 729.5 51.8 C 739.2 51.8, 739.2 52.5, 749.0 52.5 C 758.8 52.5, 758.8 55.2, 768.5 55.2 C 778.2 55.2, 778.2 58.6, 788.0 58.6 C 797.8 58.6, 797.8 59.2, 807.5 59.2 C 817.2 59.2, 817.2 59.9, 827.0 59.9 C 836.8 59.9, 836.8 59.2, 846.5 59.2 C 856.2 59.2, 856.2 58.6, 866.0 58.6 C 875.8 58.6, 875.8 59.2, 885.5 59.2 C 895.2 59.2, 895.2 57.9, 905.0 57.9 C 914.8 57.9, 914.8 59.2, 924.5 59.2 C 934.2 59.2, 934.2 60.6, 944.0 60.6 C 953.8 60.6, 953.8 61.3, 963.5 61.3 C 973.2 61.3, 973.2 61.3, 983.0 61.3 C 992.8 61.3, 992.8 59.9, 1002.5 59.9 C 1012.2 59.9, 1012.2 58.6, 1022.0 58.6 C 1031.8 58.6, 1031.8 55.2, 1041.5 55.2 C 1051.2 55.2, 1051.2 51.1, 1061.0 51.1 C 1070.8 51.1, 1070.8 50.4, 1080.5 50.4 C 1090.2 50.4, 1090.2 49.8, 1100.0 49.8" fill="none" stroke="#FF5333" stroke-width="1.5" opacity="0.9" />
     </g>
 
-    <!-- Month Axis Labels -->
-    <text x="98.0" y="82" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">JAN</text><text x="176.0" y="82" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">FEB</text><text x="254.0" y="82" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">MAR</text><text x="351.5" y="82" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">APR</text><text x="429.5" y="82" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">MAY</text><text x="527.0" y="82" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">JUN</text><text x="605.0" y="82" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">JUL</text><text x="683.0" y="82" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">AUG</text><text x="780.5" y="82" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">SEP</text><text x="858.5" y="82" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">OCT</text><text x="956.0" y="82" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">NOV</text><text x="1034.0" y="82" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">DEC</text>
-
-    <!-- Day Axis Labels -->
-    <text x="68" y="125.0" fill="#886D5B" class="mono" font-size="10" font-weight="700">MON</text><text x="68" y="164.0" fill="#886D5B" class="mono" font-size="10" font-weight="700">WED</text><text x="68" y="203.0" fill="#886D5B" class="mono" font-size="10" font-weight="700">FRI</text>
-
-    <!-- 52x7 Contribution Cells Grid -->
-    <g>
-      <rect class="cell cell-col-0" x="98.0" y="94.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-0" x="98.0" y="113.5" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-0" x="98.0" y="133.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-0" x="98.0" y="152.5" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-0" x="98.0" y="172.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-0" x="98.0" y="191.5" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-0" x="98.0" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-1" x="117.5" y="94.0" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-1" x="117.5" y="113.5" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-1" x="117.5" y="133.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-1" x="117.5" y="152.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-1" x="117.5" y="172.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-1" x="117.5" y="191.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-1" x="117.5" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-2" x="137.0" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-2" x="137.0" y="113.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-2" x="137.0" y="133.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-2" x="137.0" y="152.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-2" x="137.0" y="172.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-2" x="137.0" y="191.5" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-2" x="137.0" y="211.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-3" x="156.5" y="94.0" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-3" x="156.5" y="113.5" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-3" x="156.5" y="133.0" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-3" x="156.5" y="152.5" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-3" x="156.5" y="172.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-3" x="156.5" y="191.5" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-3" x="156.5" y="211.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-4" x="176.0" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-4" x="176.0" y="113.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-4" x="176.0" y="133.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-4" x="176.0" y="152.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-4" x="176.0" y="172.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-4" x="176.0" y="191.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-4" x="176.0" y="211.0" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-5" x="195.5" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-5" x="195.5" y="113.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-5" x="195.5" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-5" x="195.5" y="152.5" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-5" x="195.5" y="172.0" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-5" x="195.5" y="191.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-5" x="195.5" y="211.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-6" x="215.0" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-6" x="215.0" y="113.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-6" x="215.0" y="133.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-6" x="215.0" y="152.5" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-6" x="215.0" y="172.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-6" x="215.0" y="191.5" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-6" x="215.0" y="211.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-7" x="234.5" y="94.0" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-7" x="234.5" y="113.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-7" x="234.5" y="133.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-7" x="234.5" y="152.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-7" x="234.5" y="172.0" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-7" x="234.5" y="191.5" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-7" x="234.5" y="211.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-8" x="254.0" y="94.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-8" x="254.0" y="113.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-8" x="254.0" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-hot cell-col-8" x="254.0" y="152.5" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-8" x="254.0" y="172.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-8" x="254.0" y="191.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-8" x="254.0" y="211.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-9" x="273.5" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-9" x="273.5" y="113.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-9" x="273.5" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-9" x="273.5" y="152.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-hot cell-col-9" x="273.5" y="172.0" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-9" x="273.5" y="191.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-9" x="273.5" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-10" x="293.0" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-hot cell-col-10" x="293.0" y="113.5" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-10" x="293.0" y="133.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-10" x="293.0" y="152.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-10" x="293.0" y="172.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-10" x="293.0" y="191.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-10" x="293.0" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-11" x="312.5" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-11" x="312.5" y="113.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-11" x="312.5" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-11" x="312.5" y="152.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-hot cell-col-11" x="312.5" y="172.0" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-11" x="312.5" y="191.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-11" x="312.5" y="211.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-12" x="332.0" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-12" x="332.0" y="113.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-12" x="332.0" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-12" x="332.0" y="152.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-12" x="332.0" y="172.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-hot cell-col-12" x="332.0" y="191.5" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-12" x="332.0" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-13" x="351.5" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-hot cell-col-13" x="351.5" y="113.5" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-13" x="351.5" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-13" x="351.5" y="152.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-13" x="351.5" y="172.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-hot cell-col-13" x="351.5" y="191.5" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-13" x="351.5" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-14" x="371.0" y="94.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-hot cell-col-14" x="371.0" y="113.5" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-14" x="371.0" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-hot cell-col-14" x="371.0" y="152.5" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-14" x="371.0" y="172.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-14" x="371.0" y="191.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-14" x="371.0" y="211.0" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-15" x="390.5" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-15" x="390.5" y="113.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-15" x="390.5" y="133.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-15" x="390.5" y="152.5" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-15" x="390.5" y="172.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-15" x="390.5" y="191.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-15" x="390.5" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-16" x="410.0" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-16" x="410.0" y="113.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-16" x="410.0" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-16" x="410.0" y="152.5" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-16" x="410.0" y="172.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-16" x="410.0" y="191.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-16" x="410.0" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-17" x="429.5" y="94.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-17" x="429.5" y="113.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-17" x="429.5" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-17" x="429.5" y="152.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-17" x="429.5" y="172.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-17" x="429.5" y="191.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-17" x="429.5" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-18" x="449.0" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-18" x="449.0" y="113.5" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-18" x="449.0" y="133.0" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-18" x="449.0" y="152.5" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-18" x="449.0" y="172.0" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-18" x="449.0" y="191.5" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-18" x="449.0" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-19" x="468.5" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-19" x="468.5" y="113.5" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-19" x="468.5" y="133.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-19" x="468.5" y="152.5" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-19" x="468.5" y="172.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-19" x="468.5" y="191.5" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-19" x="468.5" y="211.0" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-20" x="488.0" y="94.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-20" x="488.0" y="113.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-20" x="488.0" y="133.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-hot cell-col-20" x="488.0" y="152.5" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-20" x="488.0" y="172.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-20" x="488.0" y="191.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-20" x="488.0" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-21" x="507.5" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-21" x="507.5" y="113.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-21" x="507.5" y="133.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-21" x="507.5" y="152.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-21" x="507.5" y="172.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-21" x="507.5" y="191.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-21" x="507.5" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-22" x="527.0" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-hot cell-col-22" x="527.0" y="113.5" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-22" x="527.0" y="133.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-22" x="527.0" y="152.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-22" x="527.0" y="172.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-hot cell-col-22" x="527.0" y="191.5" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-22" x="527.0" y="211.0" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-23" x="546.5" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-23" x="546.5" y="113.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-23" x="546.5" y="133.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-23" x="546.5" y="152.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-hot cell-col-23" x="546.5" y="172.0" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-23" x="546.5" y="191.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-23" x="546.5" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-24" x="566.0" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-24" x="566.0" y="113.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-24" x="566.0" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-24" x="566.0" y="152.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-24" x="566.0" y="172.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-24" x="566.0" y="191.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-24" x="566.0" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-25" x="585.5" y="94.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-25" x="585.5" y="113.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-25" x="585.5" y="133.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-25" x="585.5" y="152.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-25" x="585.5" y="172.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-25" x="585.5" y="191.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-25" x="585.5" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-26" x="605.0" y="94.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-26" x="605.0" y="113.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-26" x="605.0" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-hot cell-col-26" x="605.0" y="152.5" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-hot cell-col-26" x="605.0" y="172.0" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-26" x="605.0" y="191.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-26" x="605.0" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-27" x="624.5" y="94.0" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-hot cell-col-27" x="624.5" y="113.5" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-27" x="624.5" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-27" x="624.5" y="152.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-hot cell-col-27" x="624.5" y="172.0" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-27" x="624.5" y="191.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-27" x="624.5" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-28" x="644.0" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-hot cell-col-28" x="644.0" y="113.5" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-28" x="644.0" y="133.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-hot cell-col-28" x="644.0" y="152.5" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-28" x="644.0" y="172.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-28" x="644.0" y="191.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-28" x="644.0" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-29" x="663.5" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-29" x="663.5" y="113.5" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-29" x="663.5" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-29" x="663.5" y="152.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-29" x="663.5" y="172.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-29" x="663.5" y="191.5" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-29" x="663.5" y="211.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-30" x="683.0" y="94.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-30" x="683.0" y="113.5" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-30" x="683.0" y="133.0" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-30" x="683.0" y="152.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-30" x="683.0" y="172.0" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-30" x="683.0" y="191.5" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-30" x="683.0" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-31" x="702.5" y="94.0" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-31" x="702.5" y="113.5" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-31" x="702.5" y="133.0" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-31" x="702.5" y="152.5" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-31" x="702.5" y="172.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-31" x="702.5" y="191.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-31" x="702.5" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-32" x="722.0" y="94.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-32" x="722.0" y="113.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-32" x="722.0" y="133.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-32" x="722.0" y="152.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-32" x="722.0" y="172.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-32" x="722.0" y="191.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-32" x="722.0" y="211.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-33" x="741.5" y="94.0" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-33" x="741.5" y="113.5" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-33" x="741.5" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-33" x="741.5" y="152.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-33" x="741.5" y="172.0" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-33" x="741.5" y="191.5" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-33" x="741.5" y="211.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-34" x="761.0" y="94.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-34" x="761.0" y="113.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-34" x="761.0" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-hot cell-col-34" x="761.0" y="152.5" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-34" x="761.0" y="172.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-34" x="761.0" y="191.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-34" x="761.0" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-35" x="780.5" y="94.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-hot cell-col-35" x="780.5" y="113.5" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-35" x="780.5" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-35" x="780.5" y="152.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-hot cell-col-35" x="780.5" y="172.0" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-35" x="780.5" y="191.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-35" x="780.5" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-36" x="800.0" y="94.0" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-hot cell-col-36" x="800.0" y="113.5" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-36" x="800.0" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-36" x="800.0" y="152.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-36" x="800.0" y="172.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-36" x="800.0" y="191.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-36" x="800.0" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-37" x="819.5" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-37" x="819.5" y="113.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-37" x="819.5" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-hot cell-col-37" x="819.5" y="152.5" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-hot cell-col-37" x="819.5" y="172.0" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-37" x="819.5" y="191.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-37" x="819.5" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-38" x="839.0" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-38" x="839.0" y="113.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-38" x="839.0" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-38" x="839.0" y="152.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-hot cell-col-38" x="839.0" y="172.0" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-hot cell-col-38" x="839.0" y="191.5" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-38" x="839.0" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-39" x="858.5" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-39" x="858.5" y="113.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-39" x="858.5" y="133.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-hot cell-col-39" x="858.5" y="152.5" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-39" x="858.5" y="172.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-39" x="858.5" y="191.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-39" x="858.5" y="211.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-40" x="878.0" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-40" x="878.0" y="113.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-40" x="878.0" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-hot cell-col-40" x="878.0" y="152.5" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-40" x="878.0" y="172.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-40" x="878.0" y="191.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-40" x="878.0" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-41" x="897.5" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-41" x="897.5" y="113.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-41" x="897.5" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-41" x="897.5" y="152.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-hot cell-col-41" x="897.5" y="172.0" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-41" x="897.5" y="191.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-41" x="897.5" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-42" x="917.0" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-42" x="917.0" y="113.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-42" x="917.0" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-42" x="917.0" y="152.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-42" x="917.0" y="172.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-42" x="917.0" y="191.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-42" x="917.0" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-43" x="936.5" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-43" x="936.5" y="113.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-43" x="936.5" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-hot cell-col-43" x="936.5" y="152.5" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-43" x="936.5" y="172.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-43" x="936.5" y="191.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-43" x="936.5" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-44" x="956.0" y="94.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-44" x="956.0" y="113.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-44" x="956.0" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-44" x="956.0" y="152.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-hot cell-col-44" x="956.0" y="172.0" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-44" x="956.0" y="191.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-44" x="956.0" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-45" x="975.5" y="94.0" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-45" x="975.5" y="113.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-hot cell-col-45" x="975.5" y="133.0" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-45" x="975.5" y="152.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-hot cell-col-45" x="975.5" y="172.0" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-45" x="975.5" y="191.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-45" x="975.5" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-46" x="995.0" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-46" x="995.0" y="113.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-46" x="995.0" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-46" x="995.0" y="152.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-46" x="995.0" y="172.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-46" x="995.0" y="191.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-46" x="995.0" y="211.0" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-47" x="1014.5" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-47" x="1014.5" y="113.5" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-47" x="1014.5" y="133.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-47" x="1014.5" y="152.5" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-47" x="1014.5" y="172.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-47" x="1014.5" y="191.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-47" x="1014.5" y="211.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-48" x="1034.0" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-hot cell-col-48" x="1034.0" y="113.5" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-48" x="1034.0" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-48" x="1034.0" y="152.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-48" x="1034.0" y="172.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-48" x="1034.0" y="191.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-48" x="1034.0" y="211.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-49" x="1053.5" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-49" x="1053.5" y="113.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-49" x="1053.5" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-49" x="1053.5" y="152.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-49" x="1053.5" y="172.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-49" x="1053.5" y="191.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-49" x="1053.5" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-50" x="1073.0" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-hot cell-col-50" x="1073.0" y="113.5" width="15" height="15" rx="3.5" fill="#722F37" /><rect class="cell cell-col-50" x="1073.0" y="133.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-50" x="1073.0" y="152.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-50" x="1073.0" y="172.0" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-50" x="1073.0" y="191.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-50" x="1073.0" y="211.0" width="15" height="15" rx="3.5" fill="#D6BDA4" /><rect class="cell cell-col-51" x="1092.5" y="94.0" width="15" height="15" rx="3.5" fill="#E9DBCA" /><rect class="cell cell-col-51" x="1092.5" y="113.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-51" x="1092.5" y="133.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-51" x="1092.5" y="152.5" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-51" x="1092.5" y="172.0" width="15" height="15" rx="3.5" fill="#B26E7A" /><rect class="cell cell-col-51" x="1092.5" y="191.5" width="15" height="15" rx="3.5" fill="#8E3E4B" /><rect class="cell cell-col-51" x="1092.5" y="211.0" width="15" height="15" rx="3.5" fill="#E9DBCA" />
+    <!-- Month Labels -->
+    <g fill="#767E8D" class="mono" font-size="10" font-weight="700">
+      <text x="98.0" y="82">JAN</text><text x="176.0" y="82">FEB</text><text x="254.0" y="82">MAR</text>
+      <text x="351.5" y="82">APR</text><text x="429.5" y="82">MAY</text><text x="527.0" y="82">JUN</text>
+      <text x="605.0" y="82">JUL</text><text x="683.0" y="82">AUG</text><text x="780.5" y="82">SEP</text>
+      <text x="858.5" y="82">OCT</text><text x="956.0" y="82">NOV</text><text x="1034.0" y="82">DEC</text>
     </g>
 
-    <!-- ==================== ANIMATION 1: QUANTUM LASER SWEEPER ==================== -->
-    <g class="scanner-beam" transform="translate(98, 0)">
-      <!-- Soft Light Wash trailing the scanner on the grid -->
+    <!-- Day Labels -->
+    <g fill="#767E8D" class="mono" font-size="10" font-weight="700">
+      <text x="56" y="125.0">MON</text>
+      <text x="56" y="164.0">WED</text>
+      <text x="56" y="203.0">FRI</text>
+    </g>
+
+    <!-- 52x7 Heatmap Cells -->
+    <g>
+      <rect class="c-col-0" x="98.0" y="94.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-0" x="98.0" y="113.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-0" x="98.0" y="133.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-0" x="98.0" y="152.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-0" x="98.0" y="172.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-0" x="98.0" y="191.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-0" x="98.0" y="211.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-1" x="117.5" y="94.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-1" x="117.5" y="113.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-1" x="117.5" y="133.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-1" x="117.5" y="152.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-1" x="117.5" y="172.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-1" x="117.5" y="191.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-1" x="117.5" y="211.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-2" x="137.0" y="94.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-2" x="137.0" y="113.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-2" x="137.0" y="133.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-2" x="137.0" y="152.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-2" x="137.0" y="172.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-2" x="137.0" y="191.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-2" x="137.0" y="211.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-3" x="156.5" y="94.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-3" x="156.5" y="113.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-3" x="156.5" y="133.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-3" x="156.5" y="152.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-3" x="156.5" y="172.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-3" x="156.5" y="191.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-3" x="156.5" y="211.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-4" x="176.0" y="94.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-4" x="176.0" y="113.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-4" x="176.0" y="133.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-4" x="176.0" y="152.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-4" x="176.0" y="172.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-4" x="176.0" y="191.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-4" x="176.0" y="211.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-5" x="195.5" y="94.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-5" x="195.5" y="113.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-5" x="195.5" y="133.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-5" x="195.5" y="152.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-5" x="195.5" y="172.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-5" x="195.5" y="191.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-5" x="195.5" y="211.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-6" x="215.0" y="94.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-6" x="215.0" y="113.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-6" x="215.0" y="133.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-6" x="215.0" y="152.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-6" x="215.0" y="172.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-6" x="215.0" y="191.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-6" x="215.0" y="211.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-7" x="234.5" y="94.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-7 cell-hot" x="234.5" y="113.5" width="15" height="15" rx="3.5" fill="#FF5333" />
+      <rect class="c-col-7" x="234.5" y="133.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-7" x="234.5" y="152.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-7" x="234.5" y="172.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-7" x="234.5" y="191.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-7" x="234.5" y="211.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-8" x="254.0" y="94.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-8" x="254.0" y="113.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-8" x="254.0" y="133.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-8 cell-hot" x="254.0" y="152.5" width="15" height="15" rx="3.5" fill="#FF5333" />
+      <rect class="c-col-8" x="254.0" y="172.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-8" x="254.0" y="191.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-8" x="254.0" y="211.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-9" x="273.5" y="94.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-9" x="273.5" y="113.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-9 cell-hot" x="273.5" y="133.0" width="15" height="15" rx="3.5" fill="#FF5333" />
+      <rect class="c-col-9" x="273.5" y="152.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-9" x="273.5" y="172.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-9 cell-hot" x="273.5" y="191.5" width="15" height="15" rx="3.5" fill="#FF5333" />
+      <rect class="c-col-9" x="273.5" y="211.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-10" x="293.0" y="94.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-10 cell-hot" x="293.0" y="113.5" width="15" height="15" rx="3.5" fill="#FF5333" />
+      <rect class="c-col-10 cell-hot" x="293.0" y="133.0" width="15" height="15" rx="3.5" fill="#FF5333" />
+      <rect class="c-col-10" x="293.0" y="152.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-10 cell-hot" x="293.0" y="172.0" width="15" height="15" rx="3.5" fill="#FF5333" />
+      <rect class="c-col-10" x="293.0" y="191.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-10" x="293.0" y="211.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-11" x="312.5" y="94.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-11 cell-hot" x="312.5" y="113.5" width="15" height="15" rx="3.5" fill="#FF5333" />
+      <rect class="c-col-11" x="312.5" y="133.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-11 cell-hot" x="312.5" y="152.5" width="15" height="15" rx="3.5" fill="#FF5333" />
+      <rect class="c-col-11" x="312.5" y="172.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-11" x="312.5" y="191.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-11" x="312.5" y="211.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-12" x="332.0" y="94.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-12" x="332.0" y="113.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-12" x="332.0" y="133.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-12" x="332.0" y="152.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-12" x="332.0" y="172.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-12" x="332.0" y="191.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-12" x="332.0" y="211.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-13" x="351.5" y="94.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-13" x="351.5" y="113.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-13" x="351.5" y="133.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-13" x="351.5" y="152.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-13" x="351.5" y="172.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-13" x="351.5" y="191.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-13" x="351.5" y="211.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-14" x="371.0" y="94.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-14" x="371.0" y="113.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-14" x="371.0" y="133.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-14" x="371.0" y="152.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-14" x="371.0" y="172.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-14" x="371.0" y="191.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-14" x="371.0" y="211.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-15" x="390.5" y="94.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-15" x="390.5" y="113.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-15" x="390.5" y="133.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-15" x="390.5" y="152.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-15" x="390.5" y="172.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-15" x="390.5" y="191.5" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-15" x="390.5" y="211.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-16" x="410.0" y="94.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-16" x="410.0" y="113.5" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-16" x="410.0" y="133.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-16" x="410.0" y="152.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-16" x="410.0" y="172.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-16" x="410.0" y="191.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-16" x="410.0" y="211.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-17" x="429.5" y="94.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-17" x="429.5" y="113.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-17" x="429.5" y="133.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-17" x="429.5" y="152.5" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-17" x="429.5" y="172.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-17" x="429.5" y="191.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-17" x="429.5" y="211.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-18" x="449.0" y="94.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-18" x="449.0" y="113.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-18" x="449.0" y="133.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-18" x="449.0" y="152.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-18" x="449.0" y="172.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-18" x="449.0" y="191.5" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-18" x="449.0" y="211.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-19" x="468.5" y="94.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-19" x="468.5" y="113.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-19" x="468.5" y="133.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-19" x="468.5" y="152.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-19" x="468.5" y="172.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-19" x="468.5" y="191.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-19" x="468.5" y="211.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-20" x="488.0" y="94.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-20" x="488.0" y="113.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-20" x="488.0" y="133.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-20" x="488.0" y="152.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-20" x="488.0" y="172.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-20" x="488.0" y="191.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-20" x="488.0" y="211.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-21" x="507.5" y="94.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-21" x="507.5" y="113.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-21" x="507.5" y="133.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-21" x="507.5" y="152.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-21" x="507.5" y="172.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-21" x="507.5" y="191.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-21" x="507.5" y="211.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-22" x="527.0" y="94.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-22" x="527.0" y="113.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-22" x="527.0" y="133.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-22" x="527.0" y="152.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-22" x="527.0" y="172.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-22" x="527.0" y="191.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-22" x="527.0" y="211.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-23" x="546.5" y="94.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-23" x="546.5" y="113.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-23" x="546.5" y="133.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-23" x="546.5" y="152.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-23" x="546.5" y="172.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-23" x="546.5" y="191.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-23" x="546.5" y="211.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-24" x="566.0" y="94.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-24" x="566.0" y="113.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-24" x="566.0" y="133.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-24" x="566.0" y="152.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-24" x="566.0" y="172.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-24" x="566.0" y="191.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-24" x="566.0" y="211.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-25" x="585.5" y="94.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-25" x="585.5" y="113.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-25" x="585.5" y="133.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-25" x="585.5" y="152.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-25" x="585.5" y="172.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-25" x="585.5" y="191.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-25" x="585.5" y="211.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-26" x="605.0" y="94.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-26" x="605.0" y="113.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-26" x="605.0" y="133.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-26" x="605.0" y="152.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-26" x="605.0" y="172.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-26" x="605.0" y="191.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-26" x="605.0" y="211.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-27" x="624.5" y="94.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-27" x="624.5" y="113.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-27" x="624.5" y="133.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-27" x="624.5" y="152.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-27" x="624.5" y="172.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-27" x="624.5" y="191.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-27" x="624.5" y="211.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-28" x="644.0" y="94.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-28" x="644.0" y="113.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-28 cell-hot" x="644.0" y="133.0" width="15" height="15" rx="3.5" fill="#FF5333" />
+      <rect class="c-col-28" x="644.0" y="152.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-28" x="644.0" y="172.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-28" x="644.0" y="191.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-28" x="644.0" y="211.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-29" x="663.5" y="94.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-29 cell-hot" x="663.5" y="113.5" width="15" height="15" rx="3.5" fill="#FF5333" />
+      <rect class="c-col-29" x="663.5" y="133.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-29" x="663.5" y="152.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-29 cell-hot" x="663.5" y="172.0" width="15" height="15" rx="3.5" fill="#FF5333" />
+      <rect class="c-col-29" x="663.5" y="191.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-29" x="663.5" y="211.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-30" x="683.0" y="94.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-30 cell-hot" x="683.0" y="113.5" width="15" height="15" rx="3.5" fill="#FF5333" />
+      <rect class="c-col-30" x="683.0" y="133.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-30 cell-hot" x="683.0" y="152.5" width="15" height="15" rx="3.5" fill="#FF5333" />
+      <rect class="c-col-30" x="683.0" y="172.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-30" x="683.0" y="191.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-30" x="683.0" y="211.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-31" x="702.5" y="94.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-31" x="702.5" y="113.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-31 cell-hot" x="702.5" y="133.0" width="15" height="15" rx="3.5" fill="#FF5333" />
+      <rect class="c-col-31 cell-hot" x="702.5" y="152.5" width="15" height="15" rx="3.5" fill="#FF5333" />
+      <rect class="c-col-31" x="702.5" y="172.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-31 cell-hot" x="702.5" y="191.5" width="15" height="15" rx="3.5" fill="#FF5333" />
+      <rect class="c-col-31" x="702.5" y="211.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-32" x="722.0" y="94.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-32" x="722.0" y="113.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-32 cell-hot" x="722.0" y="133.0" width="15" height="15" rx="3.5" fill="#FF5333" />
+      <rect class="c-col-32" x="722.0" y="152.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-32 cell-hot" x="722.0" y="172.0" width="15" height="15" rx="3.5" fill="#FF5333" />
+      <rect class="c-col-32" x="722.0" y="191.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-32" x="722.0" y="211.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-33" x="741.5" y="94.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-33 cell-hot" x="741.5" y="113.5" width="15" height="15" rx="3.5" fill="#FF5333" />
+      <rect class="c-col-33" x="741.5" y="133.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-33" x="741.5" y="152.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-33" x="741.5" y="172.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-33" x="741.5" y="191.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-33" x="741.5" y="211.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-34" x="761.0" y="94.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-34" x="761.0" y="113.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-34" x="761.0" y="133.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-34" x="761.0" y="152.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-34" x="761.0" y="172.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-34" x="761.0" y="191.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-34" x="761.0" y="211.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-35" x="780.5" y="94.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-35" x="780.5" y="113.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-35" x="780.5" y="133.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-35" x="780.5" y="152.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-35" x="780.5" y="172.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-35" x="780.5" y="191.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-35" x="780.5" y="211.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-36" x="800.0" y="94.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-36" x="800.0" y="113.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-36" x="800.0" y="133.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-36" x="800.0" y="152.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-36" x="800.0" y="172.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-36" x="800.0" y="191.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-36" x="800.0" y="211.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-37" x="819.5" y="94.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-37" x="819.5" y="113.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-37" x="819.5" y="133.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-37" x="819.5" y="152.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-37" x="819.5" y="172.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-37" x="819.5" y="191.5" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-37" x="819.5" y="211.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-38" x="839.0" y="94.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-38" x="839.0" y="113.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-38" x="839.0" y="133.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-38" x="839.0" y="152.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-38" x="839.0" y="172.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-38" x="839.0" y="191.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-38" x="839.0" y="211.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-39" x="858.5" y="94.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-39" x="858.5" y="113.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-39" x="858.5" y="133.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-39" x="858.5" y="152.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-39" x="858.5" y="172.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-39" x="858.5" y="191.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-39" x="858.5" y="211.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-40" x="878.0" y="94.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-40" x="878.0" y="113.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-40" x="878.0" y="133.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-40" x="878.0" y="152.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-40" x="878.0" y="172.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-40" x="878.0" y="191.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-40" x="878.0" y="211.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-41" x="897.5" y="94.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-41" x="897.5" y="113.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-41" x="897.5" y="133.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-41" x="897.5" y="152.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-41" x="897.5" y="172.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-41" x="897.5" y="191.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-41" x="897.5" y="211.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-42" x="917.0" y="94.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-42" x="917.0" y="113.5" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-42" x="917.0" y="133.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-42" x="917.0" y="152.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-42" x="917.0" y="172.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-42" x="917.0" y="191.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-42" x="917.0" y="211.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-43" x="936.5" y="94.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-43" x="936.5" y="113.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-43" x="936.5" y="133.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-43" x="936.5" y="152.5" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-43" x="936.5" y="172.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-43" x="936.5" y="191.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-43" x="936.5" y="211.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-44" x="956.0" y="94.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-44" x="956.0" y="113.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-44" x="956.0" y="133.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-44" x="956.0" y="152.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-44" x="956.0" y="172.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-44" x="956.0" y="191.5" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-44" x="956.0" y="211.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-45" x="975.5" y="94.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-45" x="975.5" y="113.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-45" x="975.5" y="133.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-45" x="975.5" y="152.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-45" x="975.5" y="172.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-45" x="975.5" y="191.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-45" x="975.5" y="211.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-46" x="995.0" y="94.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-46" x="995.0" y="113.5" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-46" x="995.0" y="133.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-46" x="995.0" y="152.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-46" x="995.0" y="172.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-46" x="995.0" y="191.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-46" x="995.0" y="211.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-47" x="1014.5" y="94.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-47" x="1014.5" y="113.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-47" x="1014.5" y="133.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-47" x="1014.5" y="152.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-47" x="1014.5" y="172.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-47" x="1014.5" y="191.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-47" x="1014.5" y="211.0" width="15" height="15" rx="3.5" fill="#191C25" />
+      <rect class="c-col-48" x="1034.0" y="94.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-48" x="1034.0" y="113.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-48" x="1034.0" y="133.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-48" x="1034.0" y="152.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-48" x="1034.0" y="172.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-48" x="1034.0" y="191.5" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-48" x="1034.0" y="211.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-49" x="1053.5" y="94.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-49" x="1053.5" y="113.5" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-49" x="1053.5" y="133.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-49 cell-hot" x="1053.5" y="152.5" width="15" height="15" rx="3.5" fill="#FF5333" />
+      <rect class="c-col-49" x="1053.5" y="172.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-49" x="1053.5" y="191.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-49" x="1053.5" y="211.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-50" x="1073.0" y="94.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-50" x="1073.0" y="113.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-50 cell-hot" x="1073.0" y="133.0" width="15" height="15" rx="3.5" fill="#FF5333" />
+      <rect class="c-col-50" x="1073.0" y="152.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-50" x="1073.0" y="172.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-50 cell-hot" x="1073.0" y="191.5" width="15" height="15" rx="3.5" fill="#FF5333" />
+      <rect class="c-col-50" x="1073.0" y="211.0" width="15" height="15" rx="3.5" fill="#4A1D19" />
+      <rect class="c-col-51" x="1092.5" y="94.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+      <rect class="c-col-51 cell-hot" x="1092.5" y="113.5" width="15" height="15" rx="3.5" fill="#FF5333" />
+      <rect class="c-col-51" x="1092.5" y="133.0" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-51" x="1092.5" y="152.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-51 cell-hot" x="1092.5" y="172.0" width="15" height="15" rx="3.5" fill="#FF5333" />
+      <rect class="c-col-51" x="1092.5" y="191.5" width="15" height="15" rx="3.5" fill="#CE381E" />
+      <rect class="c-col-51" x="1092.5" y="211.0" width="15" height="15" rx="3.5" fill="#872A1D" />
+    </g>
+
+    <!-- Bounded Horizontal Scanner Sweep -->
+    <g class="scanner-beam">
       <polygon points="-24,90 0,90 0,228 -24,228" fill="url(#laser-beam)" />
-      <!-- Unified Full-Height Laser Line from Velocity Track to Grid -->
-      <line x1="0" y1="34" x2="0" y2="232" stroke="#722F37" stroke-width="1.8" />
-      <!-- Velocity Track Tracker Node -->
-      <circle cx="0" cy="50" r="3" fill="#722F37" />
-      <circle cx="0" cy="50" r="1.2" fill="#FAF6EE" />
-      <line x1="-5" y1="50" x2="5" y2="50" stroke="#722F37" stroke-width="1.2" />
-      <!-- Reticle at Grid Top -->
-      <polygon points="0,88 -3.5,91.5 0,95 3.5,91.5" fill="#722F37" />
-      <!-- Reticle at Grid Bottom -->
-      <polygon points="0,228 -3.5,231.5 0,235 3.5,231.5" fill="#722F37" />
+      <line x1="0" y1="34" x2="0" y2="232" stroke="#FF4422" stroke-width="1.8" />
+      <circle cx="0" cy="52" r="3.2" fill="#FF4422" />
+      <circle cx="0" cy="52" r="1.2" fill="#FAF8F4" />
+      <polygon points="0,88 -3.5,91.5 0,95 3.5,91.5" fill="#FF4422" />
+      <polygon points="0,228 -3.5,231.5 0,235 3.5,231.5" fill="#FF4422" />
     </g>
 
-    <!-- ==================== ANIMATION 2: THE AUTONOMOUS QUANTUM PROBE ==================== -->
-    <g class="quantum-probe">
-      <!-- Crosshair Target Reticle -->
-      <!-- Top-left bracket -->
-      <path d="M -12 -6 L -12 -12 L -6 -12" fill="none" stroke="#722F37" stroke-width="1.8" />
-      <!-- Top-right bracket -->
-      <path d="M 6 -12 L 12 -12 L 12 -6" fill="none" stroke="#722F37" stroke-width="1.8" />
-      <!-- Bottom-left bracket -->
-      <path d="M -12 6 L -12 12 L -6 12" fill="none" stroke="#722F37" stroke-width="1.8" />
-      <!-- Bottom-right bracket -->
-      <path d="M 6 12 L 12 12 L 12 6" fill="none" stroke="#722F37" stroke-width="1.8" />
-      
-      <!-- Core Probe Beacon -->
-      <circle cx="0" cy="0" r="4.5" fill="#722F37" />
-      <circle cx="0" cy="0" r="1.8" fill="#FAF7F2" />
-
-      <!-- Floating Coordinate HUD Badge -->
-      <g transform="translate(16, -16)">
-        <rect width="108" height="19" rx="4" fill="#722F37" />
-        <text x="54" y="13" text-anchor="middle" fill="#FAF7F2" class="mono" font-size="8.5" font-weight="700" letter-spacing="0.5">DEPLOY_BURST ✦</text>
+    <!-- Floating Target Probe (strictly bounded inside active grid) -->
+    <g class="reticle-probe">
+      <path d="M -11 -5 L -11 -11 L -5 -11 M 5 -11 L 11 -11 L 11 -5 M -11 5 L -11 11 L -5 11 M 5 11 L 11 11 L 11 5" fill="none" stroke="#FAF8F4" stroke-width="1.6" />
+      <circle cx="0" cy="0" r="4" fill="#FF4422" />
+      <circle cx="0" cy="0" r="1.5" fill="#FAF8F4" />
+      <g transform="translate(15, -15)">
+        <rect width="98" height="19" rx="4" fill="#0A0B0E" stroke="#FF4422" stroke-width="1.1" />
+        <text x="49" y="12.5" text-anchor="middle" fill="#FAF8F4" class="mono" font-size="8.2" font-weight="700" letter-spacing="0.5">PEAK_CADENCE</text>
       </g>
     </g>
 
-    <!-- ==================== BOTTOM HUD & HEATMAP LEGEND ==================== -->
-    <line x1="24" y1="248" x2="1096" y2="248" stroke="#D6C4AE" stroke-width="1" />
-
-    <!-- Left: Activity Heatmap Legend -->
-    <g transform="translate(24, 264)">
-      <text x="0" y="12" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">Less</text>
-      <rect x="36" y="1" width="14" height="14" rx="3.5" fill="#E9DBCA" stroke="#D6BDA4" stroke-width="0.8" />
-      <rect x="56" y="1" width="14" height="14" rx="3.5" fill="#D6BDA4" />
-      <rect x="76" y="1" width="14" height="14" rx="3.5" fill="#B26E7A" />
-      <rect x="96" y="1" width="14" height="14" rx="3.5" fill="#8E3E4B" />
-      <rect x="116" y="1" width="14" height="14" rx="3.5" fill="#722F37" />
-      <text x="138" y="12" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">More</text>
+    <!-- Bottom Heatmap Legend -->
+    <line x1="24" y1="248" x2="1096" y2="248" stroke="#222734" stroke-width="1" />
+    <g transform="translate(24, 265)">
+      <text x="0" y="12" fill="#767E8D" class="mono" font-size="10.5" font-weight="700">Less</text>
+      <rect x="36" y="1" width="14" height="14" rx="3.5" fill="#191C25" stroke="#2C3242" stroke-width="0.8" />
+      <rect x="56" y="1" width="14" height="14" rx="3.5" fill="#4A1D19" />
+      <rect x="76" y="1" width="14" height="14" rx="3.5" fill="#872A1D" />
+      <rect x="96" y="1" width="14" height="14" rx="3.5" fill="#CE381E" />
+      <rect x="116" y="1" width="14" height="14" rx="3.5" fill="#FF5333" />
+      <text x="138" y="12" fill="#767E8D" class="mono" font-size="10.5" font-weight="700">More</text>
     </g>
 
-    <!-- Center: Craft Engineering Cadence Readout -->
-    <g transform="translate(560, 264)">
-      <text x="0" y="12" text-anchor="middle" fill="#722F37" class="mono" font-size="11" font-weight="700" letter-spacing="0.6">CHRONO ACTIVITY RADAR // 52 WEEKS · 365 DAYS CONTINUOUS FLOW</text>
-    </g>
+    <text x="560" y="277" text-anchor="middle" fill="#C7CCD6" class="mono" font-size="10.5" font-weight="700" letter-spacing="0.8">CHRONO ACTIVITY MATRIX // 52 WEEKS · 365 DAYS CONTINUOUS FLOW</text>
 
-    <!-- Right: Distinct Anti-Snake Verification Tag -->
-    <g transform="translate(1096, 264)">
-      <text x="0" y="12" text-anchor="end" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">VECTOR RADAR ENGINE ✓</text>
+    <g transform="translate(1096, 265)">
+      <circle cx="-148" cy="8" r="3" fill="#FF4422" />
+      <text x="0" y="12" text-anchor="end" fill="#8E95A2" class="mono" font-size="10.5" font-weight="700">CUSTOM VECTOR MATRIX</text>
     </g>
   </g>
 </svg>

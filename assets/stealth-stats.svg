@@ -1,92 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="100%" height="auto">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="100%" height="auto">
   <defs>
-    <!-- Background Gradient: Signature Light Mocha Cream -->
-    <linearGradient id="stealth-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F8F3EA" />
-      <stop offset="100%" stop-color="#EFE4D3" />
+    <linearGradient id="stealth-paper" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5F2EC" />
+      <stop offset="100%" stop-color="#EAE4D9" />
     </linearGradient>
 
-    <!-- Card Sheet Surface Gradient -->
-    <linearGradient id="card-surface" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#FAF7F2" />
-      <stop offset="100%" stop-color="#F2E8DC" />
+    <linearGradient id="stealth-sheet" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#FAF8F4" />
     </linearGradient>
 
-    <!-- Specular Hairline Sheen Gradient for Card Rims -->
-    <linearGradient id="rim-sheen-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#722F37" stop-opacity="0" />
-      <stop offset="25%" stop-color="#FAF7F2" stop-opacity="0.85" />
-      <stop offset="50%" stop-color="#722F37" stop-opacity="0.4" />
-      <stop offset="75%" stop-color="#FAF7F2" stop-opacity="0.85" />
-      <stop offset="100%" stop-color="#722F37" stop-opacity="0" />
+    <linearGradient id="stealth-dark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14171F" />
+      <stop offset="100%" stop-color="#0B0D12" />
     </linearGradient>
 
-    <!-- Terminal Viewport Clip Path (masks only the 2 pill rows; keeps steady quote below untouched) -->
-    <clipPath id="terminal-viewport">
-      <rect x="20" y="35" width="1080" height="72" rx="4" />
+    <clipPath id="term-viewport">
+      <rect x="20" y="38" width="1080" height="72" rx="4" />
     </clipPath>
 
     <style><![CDATA[
-      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800;900&family=Space+Mono:wght@400;700&display=swap');
       svg { pointer-events: none; user-select: none; }
+      .sans { font-family: 'Inter', 'SF Pro Display', 'Segoe UI', 'Lato', 'Noto Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
+      .mono { font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'DejaVu Sans Mono', ui-monospace, Menlo, Consolas, monospace; }
 
-      .mono { font-family: 'Space Mono', 'SFMono-Regular', Menlo, Monaco, Consolas, monospace; }
-      .grotesk { font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-      .quote-font { font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-style: italic; }
+      .beacon-dot { animation: beacon 2.4s ease-in-out infinite; }
+      @keyframes beacon { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
 
-      /* ==================== 01. HEADER TELEMETRY & BEACON ==================== */
-      .beacon-dot {
-        animation: beaconBlink 2.4s ease-in-out infinite;
-      }
-      @keyframes beaconBlink {
-        0%, 100% { opacity: 1; filter: drop-shadow(0 0 5px rgba(114, 47, 55, 0.75)); }
-        50%      { opacity: 0.35; filter: none; }
-      }
-
-      .telemetry-pulse {
-        animation: teleBreathe 3.2s ease-in-out infinite;
-      }
-      @keyframes teleBreathe {
-        0%, 100% { opacity: 0.85; filter: none; }
-        50%      { opacity: 1; filter: drop-shadow(0 0 3px rgba(114, 47, 55, 0.4)); }
-      }
-
-      /* ==================== 02. DYNAMIC TERMINAL MESSAGE STACKING FROM BELOW ==================== */
-      .cursor-blink {
-        animation: termCursor 1s step-start infinite;
-      }
-      @keyframes termCursor {
-        0%, 49%   { opacity: 1; }
-        50%, 100% { opacity: 0; }
-      }
-
-      .diff-green-pulse {
-        animation: greenSoftGlow 6s ease-in-out infinite;
-      }
-      @keyframes greenSoftGlow {
-        0%, 100% { stroke: #B7E1CD; stroke-width: 0.8px; filter: none; }
-        50%      { stroke: #34A853; stroke-width: 1.1px; filter: drop-shadow(0 1px 4px rgba(52, 168, 83, 0.18)); }
-      }
-
-      .quote-bar {
-        animation: quoteBarPulse 4s ease-in-out infinite;
-      }
-      @keyframes quoteBarPulse {
-        0%, 100% { stroke: #722F37; filter: none; }
-        50%      { stroke: #8F3A44; filter: drop-shadow(0 0 4px rgba(114, 47, 55, 0.5)); }
-      }
+      .cursor-blink { animation: blink 1s step-start infinite; }
+      @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
 
       .term-msg-1, .term-msg-2, .term-msg-3 {
         will-change: transform, opacity;
-        animation: rollTermMsg 24s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+        animation: rollMsg 24s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
       }
-
-      /* 3-Message Rolling Feed (24s cycle = 8s per step: ~6.7s calm reading hold + ~1.2s smooth glide) */
       .term-msg-1 { animation-delay: 0s; }
       .term-msg-2 { animation-delay: -16s; }
       .term-msg-3 { animation-delay: -8s; }
-
-      @keyframes rollTermMsg {
+      @keyframes rollMsg {
         0%, 28%      { transform: translateY(0px); opacity: 1; }
         33%          { transform: translateY(-35px); opacity: 0; }
         35%          { transform: translateY(-35px); opacity: 0; }
@@ -97,289 +48,158 @@
         99.67%, 100% { transform: translateY(0px); opacity: 1; }
       }
 
-      /* ==================== 03. METRIC QUAD-TILES (8s HOROLOGICAL SWEEP) ==================== */
       @keyframes tileSweep {
-        0%, 18%  { stroke: #722F37; stroke-width: 1.5px; fill: #FFFFFF; filter: drop-shadow(0 2px 7px rgba(114, 47, 55, 0.18)); }
-        24%, 94% { stroke: #D8C7B2; stroke-width: 1px; fill: #FAF7F2; filter: none; }
-        100%     { stroke: #722F37; stroke-width: 1.5px; fill: #FFFFFF; filter: drop-shadow(0 2px 7px rgba(114, 47, 55, 0.18)); }
+        0%, 18%  { stroke: #FF4422; stroke-width: 1.6px; fill: #FFFFFF; }
+        24%, 94% { stroke: #DDD6C8; stroke-width: 1px; fill: #F7F4EE; }
+        100%     { stroke: #FF4422; stroke-width: 1.6px; fill: #FFFFFF; }
       }
       .tile-1 { animation: tileSweep 8s 0s ease-in-out infinite; }
       .tile-2 { animation: tileSweep 8s -6s ease-in-out infinite; }
       .tile-4 { animation: tileSweep 8s -4s ease-in-out infinite; }
       .tile-3 { animation: tileSweep 8s -2s ease-in-out infinite; }
-
-      /* ==================== 04. LANGUAGE ENGINE BARS & DOTS ==================== */
-      .bar-ts { animation: barGlowTS 4s ease-in-out infinite alternate; }
-      .bar-js { animation: barGlowJS 4.4s -1.1s ease-in-out infinite alternate; }
-      .bar-py { animation: barGlowPY 4.8s -2.2s ease-in-out infinite alternate; }
-      .bar-ui { animation: barGlowUI 5.2s -3.3s ease-in-out infinite alternate; }
-
-      @keyframes barGlowTS {
-        0%   { filter: drop-shadow(0 0 0px rgba(114, 47, 55, 0)); opacity: 0.95; }
-        100% { filter: drop-shadow(0 0 5px rgba(114, 47, 55, 0.45)); opacity: 1; }
-      }
-      @keyframes barGlowJS {
-        0%   { filter: drop-shadow(0 0 0px rgba(138, 59, 69, 0)); opacity: 0.95; }
-        100% { filter: drop-shadow(0 0 5px rgba(138, 59, 69, 0.45)); opacity: 1; }
-      }
-      @keyframes barGlowPY {
-        0%   { filter: drop-shadow(0 0 0px rgba(74, 37, 45, 0)); opacity: 0.95; }
-        100% { filter: drop-shadow(0 0 4px rgba(74, 37, 45, 0.4)); opacity: 1; }
-      }
-      @keyframes barGlowUI {
-        0%   { filter: drop-shadow(0 0 0px rgba(120, 90, 72, 0)); opacity: 0.95; }
-        100% { filter: drop-shadow(0 0 4px rgba(120, 90, 72, 0.4)); opacity: 1; }
-      }
-
-      /* ==================== 05. BOTTOM 3 CONTENTS: LUXURY SYNCHRONIZED CADENCE ==================== */
-      /* Top Bevel Sheen */
-      .rim-sheen {
-        animation: sheenGlide 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-      }
-      @keyframes sheenGlide {
-        0%, 100% { opacity: 0.25; }
-        50%      { opacity: 0.85; filter: drop-shadow(0 0 3px rgba(250, 247, 242, 0.8)); }
-      }
-
-      /* Divider Soft Pulses */
-      .div-glow-1 { animation: divPulse 6s 1.5s ease-in-out infinite; }
-      .div-glow-2 { animation: divPulse 6s 3.5s ease-in-out infinite; }
-      @keyframes divPulse {
-        0%, 100% { stroke: #D6C4AE; opacity: 0.6; }
-        50%      { stroke: #8F3A44; opacity: 1; filter: drop-shadow(0 0 3px rgba(114, 47, 55, 0.35)); }
-      }
-
-      /* Column 1: Verified Contributions (Phase 1) */
-      .bottom-num-1 {
-        animation: numPulse1 6s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
-      }
-      @keyframes numPulse1 {
-        0%, 100% { fill: #722F37; filter: none; opacity: 0.92; }
-        25%      { fill: #8F3A44; filter: drop-shadow(0 2px 7px rgba(114, 47, 55, 0.28)); opacity: 1; }
-        55%      { fill: #722F37; filter: none; opacity: 0.92; }
-      }
-      .bottom-label-1 {
-        animation: labelPulse1 6s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
-      }
-      @keyframes labelPulse1 {
-        0%, 100% { opacity: 0.88; }
-        25%      { opacity: 1; }
-        55%      { opacity: 0.88; }
-      }
-
-      /* Column 2: Center Living Cadence (Phase 2) */
-      .bottom-num-2 {
-        animation: numPulse2 6s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
-      }
-      @keyframes numPulse2 {
-        0%, 100% { fill: #722F37; filter: none; opacity: 0.92; }
-        50%      { fill: #943E49; filter: drop-shadow(0 2px 8px rgba(114, 47, 55, 0.32)); opacity: 1; }
-      }
-      .bottom-label-2 {
-        animation: labelPulse2 6s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
-      }
-      @keyframes labelPulse2 {
-        0%, 100% { opacity: 0.88; }
-        50%      { opacity: 1; }
-      }
-
-      /* Column 3: Discipline Horizon (Phase 3) */
-      .bottom-num-3 {
-        animation: numPulse3 6s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
-      }
-      @keyframes numPulse3 {
-        0%, 45%  { fill: #722F37; filter: none; opacity: 0.92; }
-        75%      { fill: #8F3A44; filter: drop-shadow(0 2px 7px rgba(114, 47, 55, 0.28)); opacity: 1; }
-        100%     { fill: #722F37; filter: none; opacity: 0.92; }
-      }
-      .bottom-label-3 {
-        animation: labelPulse3 6s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
-      }
-      @keyframes labelPulse3 {
-        0%, 45%  { opacity: 0.88; }
-        75%      { opacity: 1; }
-        100%     { opacity: 0.88; }
-      }
     ]]></style>
   </defs>
 
-  <!-- Container Base & Cosmic Latte Border -->
-  <rect width="1200" height="660" rx="16" fill="url(#stealth-bg)" />
-  <rect x="1" y="1" width="1198" height="658" rx="15" fill="none" stroke="#D6C4AE" stroke-width="1.5" />
+  <rect width="1200" height="620" rx="18" fill="url(#stealth-paper)" />
+  <rect x="1" y="1" width="1198" height="618" rx="17" fill="none" stroke="#D2CBC0" stroke-width="1.5" />
 
-  <!-- ==================== HEADER STRIP ==================== -->
-  <!-- Terminal Window Control Dots -->
-  <circle cx="48" cy="48" r="6" fill="#722F37" class="beacon-dot" />
-  <circle cx="68" cy="48" r="6" fill="#A0505A" />
-  <circle cx="88" cy="48" r="6" fill="#D6C4AE" />
+  <!-- HEADER -->
+  <rect x="40" y="42" width="8" height="8" rx="2" fill="#FF4422" class="beacon-dot" />
+  <text x="58" y="50" fill="#111318" class="mono" font-size="13.5" font-weight="700" letter-spacing="1.4">&gt; GIT LOG --ONELINE --STATS // PRIVATE INFRASTRUCTURE</text>
+  <text x="1160" y="50" text-anchor="end" fill="#E03416" class="mono" font-size="11.5" font-weight="700" letter-spacing="1">STEALTH MODE // ENGAGED</text>
+  <line x1="40" y1="74" x2="1160" y2="74" stroke="#D2CBC0" stroke-width="1.1" />
 
-  <!-- Section Title -->
-  <text x="114" y="53" fill="#722F37" class="mono" font-size="14.5" font-weight="700" letter-spacing="1.5">> GIT LOG --ONELINE --STATS // CLASSIFIED ACTIVITY</text>
+  <!-- DARK TERMINAL INLAY -->
+  <g transform="translate(40, 92)">
+    <rect width="1120" height="146" rx="12" fill="url(#stealth-dark)" stroke="#242934" stroke-width="1.2" />
+    <rect width="1120" height="32" rx="12" fill="#191D26" />
+    <rect y="20" width="1120" height="12" fill="#191D26" />
+    <line x1="0" y1="32" x2="1120" y2="32" stroke="#252A36" stroke-width="1" />
 
-  <!-- Stealth Mode Telemetry (Clean, borderless, perfectly aligned) -->
-  <text x="1160" y="53" text-anchor="end" fill="#722F37" class="mono telemetry-pulse" font-size="12" font-weight="700" letter-spacing="0.8">STEALTH MODE // ENGAGED</text>
+    <text x="22" y="20.5" fill="#8E95A2" class="mono" font-size="10.5" font-weight="700" letter-spacing="0.9">TERMINAL // COMMIT_VERIFICATION.LOG</text>
+    <text x="284" y="20.5" fill="#FF4422" class="mono cursor-blink" font-size="12" font-weight="700">_</text>
+    <text x="1096" y="20.5" text-anchor="end" fill="#FF5738" class="mono" font-size="10.5" font-weight="700">PRANOV888 // PRIVATE ENGINE</text>
 
-  <!-- Header Divider Line -->
-  <line x1="40" y1="80" x2="1160" y2="80" stroke="#D6C4AE" stroke-width="1" />
-
-  <!-- ==================== STEALTH DIFF & CLASSIFIED QUOTE CARD ==================== -->
-  <g transform="translate(40, 100)">
-    <!-- Container Card -->
-    <rect width="1120" height="136" rx="10" fill="url(#card-surface)" stroke="#C7B49D" stroke-width="1.2" />
-
-    <!-- Terminal Sub-Header -->
-    <rect width="1120" height="32" rx="10" fill="#EFE3D3" />
-    <rect y="22" width="1120" height="10" fill="#EFE3D3" />
-    <line x1="0" y1="32" x2="1120" y2="32" stroke="#D6C4AE" stroke-width="1" />
-    <text x="24" y="21" fill="#886D5B" class="mono" font-size="11" font-weight="700" letter-spacing="0.8">TERMINAL // COMMIT_VERIFICATION.LOG</text>
-    <text x="296" y="21" fill="#722F37" class="mono cursor-blink" font-size="12" font-weight="700">_</text>
-    <text x="1096" y="21" text-anchor="end" fill="#722F37" class="mono" font-size="10.5" font-weight="700">PRANOV888 // PRIVATE ENGINE</text>
-
-    <!-- Dynamic 3-Message Rolling Viewport (2 stay constantly, 3rd stacks smoothly from below) -->
-    <g clip-path="url(#terminal-viewport)">
-      <!-- Message 1: Red Diff -->
+    <g clip-path="url(#term-viewport)">
       <g class="term-msg-1">
-        <rect x="24" y="44" width="1072" height="26" rx="5" fill="#FCE8E6" stroke="#F5C2C7" stroke-width="0.8" />
-        <text x="40" y="61" fill="#A81D24" class="mono" font-size="13" font-weight="700">- Contribution graph may appear suspiciously empty.</text>
+        <rect x="22" y="45" width="1076" height="27" rx="5" fill="#2A1417" stroke="#5E2328" stroke-width="0.9" />
+        <text x="38" y="62.5" fill="#FCA5A5" class="mono" font-size="12.5" font-weight="700">- Contribution graph may appear suspiciously empty.</text>
       </g>
-
-      <!-- Message 2: Green Diff -->
       <g class="term-msg-2">
-        <rect class="diff-green-pulse" x="24" y="44" width="1072" height="26" rx="5" fill="#E6F4EA" stroke="#B7E1CD" stroke-width="0.8" />
-        <text x="40" y="61" fill="#137333" class="mono" font-size="13" font-weight="700">+ Not a bug. I work in private client repositories and enterprise systems.</text>
+        <rect x="22" y="45" width="1076" height="27" rx="5" fill="#10291B" stroke="#1E5C3A" stroke-width="0.9" />
+        <text x="38" y="62.5" fill="#86EFAC" class="mono" font-size="12.5" font-weight="700">+ Not a bug. I ship inside private client repositories and enterprise systems.</text>
       </g>
-
-      <!-- Message 3: Warm Amber Verified Telemetry -->
       <g class="term-msg-3">
-        <rect x="24" y="44" width="1072" height="26" rx="5" fill="#FDF3E7" stroke="#EBD0B3" stroke-width="0.8" />
-        <text x="40" y="61" fill="#8A4B14" class="mono" font-size="13" font-weight="700">~ 1,420+ verified releases shipped across confidential client infrastructure.</text>
+        <rect x="22" y="45" width="1076" height="27" rx="5" fill="#2A1D11" stroke="#66401B" stroke-width="0.9" />
+        <text x="38" y="62.5" fill="#FDBA74" class="mono" font-size="12.5" font-weight="700">~ 1,420+ verified releases shipped across confidential client infrastructure.</text>
       </g>
     </g>
 
-    <!-- Steady Editorial Accent Line & Classified Quote (Always anchored below) -->
-    <line class="quote-bar" x1="24" y1="112" x2="24" y2="128" stroke="#722F37" stroke-width="3" stroke-linecap="round" />
-    <text x="36" y="123" fill="#4A252D" class="quote-font" font-size="14" font-weight="700">“Sorry, you can't see my contributions. My commits are classified. Think of it as stealth mode.”</text>
+    <line x1="24" y1="118" x2="24" y2="134" stroke="#FF4422" stroke-width="3" stroke-linecap="round" />
+    <text x="36" y="130" fill="#E6E4DD" class="sans" font-size="13.5" font-weight="600" font-style="italic">“Sorry, you can't see my contributions. My commits are classified. Think of it as stealth mode.”</text>
   </g>
 
-  <!-- ==================== DUAL BENTO STATS CARDS ==================== -->
-
-  <!-- Panel 1: Activity & Contribution Metrics (Left) -->
+  <!-- MIDDLE ROW: DUAL ANALYTICAL BENTO -->
+  <!-- Left Card -->
   <g transform="translate(40, 256)">
-    <!-- Surface Card -->
-    <rect width="545" height="240" rx="10" fill="url(#card-surface)" stroke="#C7B49D" stroke-width="1.2" />
+    <rect width="546" height="236" rx="12" fill="url(#stealth-sheet)" stroke="#CFC8BA" stroke-width="1.2" />
+    <text x="24" y="29" fill="#111318" class="mono" font-size="11.5" font-weight="700" letter-spacing="1">01 // REPOSITORY &amp; COMMIT METRICS</text>
+    <line x1="24" y1="42" x2="522" y2="42" stroke="#E5DFD3" stroke-width="1" />
 
-    <!-- Card Header -->
-    <text x="24" y="29" fill="#722F37" class="mono" font-size="12" font-weight="700" letter-spacing="1">01 // REPOSITORY &amp; COMMIT METRICS</text>
-    <line x1="24" y1="41" x2="521" y2="41" stroke="#D6C4AE" stroke-width="1" />
-
-    <!-- Metric Tile 1: Commits -->
-    <g transform="translate(24, 54)">
-      <rect class="tile-1" width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
-      <text x="18" y="38" fill="#722F37" class="grotesk" font-size="30" font-weight="800">1,420+</text>
-      <text x="18" y="60" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">COMMITS (PRIVATE / CLIENT)</text>
-    </g>
-
-    <!-- Metric Tile 2: PRs Merged -->
-    <g transform="translate(283, 54)">
-      <rect class="tile-2" width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
-      <text x="18" y="38" fill="#722F37" class="grotesk" font-size="30" font-weight="800">85+</text>
-      <text x="18" y="60" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">PULL REQUESTS MERGED</text>
-    </g>
-
-    <!-- Metric Tile 3: Consistency -->
-    <g transform="translate(24, 144)">
-      <rect class="tile-3" width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
-      <text x="18" y="38" fill="#722F37" class="grotesk" font-size="30" font-weight="800">99.8%</text>
-      <text x="18" y="60" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">COMMIT CONSISTENCY</text>
-    </g>
-
-    <!-- Metric Tile 4: Grade -->
-    <g transform="translate(283, 144)">
-      <rect class="tile-4" width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
-      <text x="18" y="38" fill="#722F37" class="grotesk" font-size="30" font-weight="800">A+</text>
-      <text x="18" y="60" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">CODE QUALITY &amp; QA GRADE</text>
-    </g>
-  </g>
-
-  <!-- Panel 2: Top Languages & Engine Share (Right) -->
-  <g transform="translate(615, 256)">
-    <!-- Surface Card -->
-    <rect width="545" height="240" rx="10" fill="url(#card-surface)" stroke="#C7B49D" stroke-width="1.2" />
-
-    <!-- Card Header -->
-    <text x="24" y="29" fill="#722F37" class="mono" font-size="12" font-weight="700" letter-spacing="1">02 // TOP LANGUAGES &amp; ENGINE SHARE</text>
-    <line x1="24" y1="41" x2="521" y2="41" stroke="#D6C4AE" stroke-width="1" />
-
-    <!-- Language Row 1: TypeScript (42%) -->
     <g transform="translate(24, 56)">
-      <circle cx="8" cy="11" r="5" fill="#722F37" />
-      <text x="22" y="15" fill="#241117" class="grotesk" font-size="15" font-weight="700">TypeScript</text>
-      <text x="495" y="15" text-anchor="end" fill="#722F37" class="mono" font-size="13" font-weight="700">42%</text>
-      <rect x="0" y="24" width="495" height="8" rx="4" fill="#E8DBC9" />
-      <rect x="0" y="24" width="208" height="8" rx="4" fill="#722F37" class="bar-fill bar-ts" />
+      <rect class="tile-1" width="239" height="74" rx="8" />
+      <text x="18" y="37" fill="#111318" class="sans" font-size="29" font-weight="900">1,420<tspan fill="#FF4422">+</tspan></text>
+      <text x="18" y="57" fill="#6D685F" class="mono" font-size="10" font-weight="700">COMMITS (PRIVATE / CLIENT)</text>
     </g>
 
-    <!-- Language Row 2: JavaScript (28%) -->
-    <g transform="translate(24, 100)">
-      <circle cx="8" cy="11" r="5" fill="#8A3B45" />
-      <text x="22" y="15" fill="#241117" class="grotesk" font-size="15" font-weight="700">JavaScript</text>
-      <text x="495" y="15" text-anchor="end" fill="#8A3B45" class="mono" font-size="13" font-weight="700">28%</text>
-      <rect x="0" y="24" width="495" height="8" rx="4" fill="#E8DBC9" />
-      <rect x="0" y="24" width="138" height="8" rx="4" fill="#8A3B45" class="bar-fill bar-js" />
+    <g transform="translate(283, 56)">
+      <rect class="tile-2" width="239" height="74" rx="8" />
+      <text x="18" y="37" fill="#111318" class="sans" font-size="29" font-weight="900">85<tspan fill="#FF4422">+</tspan></text>
+      <text x="18" y="57" fill="#6D685F" class="mono" font-size="10" font-weight="700">PULL REQUESTS MERGED</text>
     </g>
 
-    <!-- Language Row 3: Python (18%) -->
     <g transform="translate(24, 144)">
-      <circle cx="8" cy="11" r="5" fill="#4A252D" />
-      <text x="22" y="15" fill="#241117" class="grotesk" font-size="15" font-weight="700">Python</text>
-      <text x="495" y="15" text-anchor="end" fill="#4A252D" class="mono" font-size="13" font-weight="700">18%</text>
-      <rect x="0" y="24" width="495" height="8" rx="4" fill="#E8DBC9" />
-      <rect x="0" y="24" width="89" height="8" rx="4" fill="#4A252D" class="bar-fill bar-py" />
+      <rect class="tile-3" width="239" height="74" rx="8" />
+      <text x="18" y="37" fill="#111318" class="sans" font-size="29" font-weight="900">99.8<tspan fill="#FF4422">%</tspan></text>
+      <text x="18" y="57" fill="#6D685F" class="mono" font-size="10" font-weight="700">COMMIT CONSISTENCY</text>
     </g>
 
-    <!-- Language Row 4: UI & Design Systems (12%) -->
-    <g transform="translate(24, 188)">
-      <circle cx="8" cy="11" r="5" fill="#785A48" />
-      <text x="22" y="15" fill="#241117" class="grotesk" font-size="15" font-weight="700">UI &amp; Design Systems</text>
-      <text x="495" y="15" text-anchor="end" fill="#785A48" class="mono" font-size="13" font-weight="700">12%</text>
-      <rect x="0" y="24" width="495" height="8" rx="4" fill="#E8DBC9" />
-      <rect x="0" y="24" width="59" height="8" rx="4" fill="#785A48" class="bar-fill bar-ui" />
+    <g transform="translate(283, 144)">
+      <rect class="tile-4" width="239" height="74" rx="8" />
+      <text x="18" y="37" fill="#111318" class="sans" font-size="29" font-weight="900">A<tspan fill="#FF4422">+</tspan></text>
+      <text x="18" y="57" fill="#6D685F" class="mono" font-size="10" font-weight="700">CODE QUALITY &amp; QA GRADE</text>
     </g>
   </g>
 
-  <!-- ==================== STREAK & CRAFT MOMENTUM STRIP ==================== -->
-  <g transform="translate(40, 516)">
-    <!-- Container Sheet -->
-    <rect width="1120" height="114" rx="10" fill="url(#card-surface)" stroke="#C7B49D" stroke-width="1.2" />
+  <!-- Right Card: Multi-Segment Distribution + Bars -->
+  <g transform="translate(614, 256)">
+    <rect width="546" height="236" rx="12" fill="url(#stealth-sheet)" stroke="#CFC8BA" stroke-width="1.2" />
+    <text x="24" y="29" fill="#111318" class="mono" font-size="11.5" font-weight="700" letter-spacing="1">02 // TOP LANGUAGES &amp; ENGINE SHARE</text>
+    <line x1="24" y1="42" x2="522" y2="42" stroke="#E5DFD3" stroke-width="1" />
 
-    <!-- Top Rim Specular Chamfer -->
-    <line class="rim-sheen" x1="12" y1="0.8" x2="1108" y2="0.8" stroke="url(#rim-sheen-grad)" stroke-width="1.5" stroke-linecap="round" />
-
-    <!-- Column 1: Verified Contributions -->
-    <g transform="translate(180, 0)">
-      <text x="0" y="44" text-anchor="middle" class="grotesk bottom-num-1" font-size="34" font-weight="800">1,420+</text>
-      <text x="0" y="68" text-anchor="middle" fill="#886D5B" class="mono bottom-label-1" font-size="11" font-weight="700" letter-spacing="0.8">VERIFIED CONTRIBUTIONS</text>
-      <text x="0" y="88" text-anchor="middle" fill="#A08C7D" class="mono bottom-label-1" font-size="10.5" letter-spacing="0.5">AUG 2023 — CONTINUOUS RUN</text>
+    <!-- Multi-Segment 100% Proportional Summary Bar -->
+    <g transform="translate(24, 56)">
+      <rect x="0"   y="0" width="206" height="10" rx="3" fill="#FF4422" />
+      <rect x="210" y="0" width="137" height="10" rx="3" fill="#EA7B46" />
+      <rect x="351" y="0" width="88"  height="10" rx="3" fill="#111318" />
+      <rect x="443" y="0" width="55"  height="10" rx="3" fill="#8C867B" />
     </g>
 
-    <!-- Divider 1 -->
-    <line class="div-glow-1" x1="373" y1="20" x2="373" y2="94" stroke="#D6C4AE" stroke-width="1" />
-
-    <!-- Column 2: Kinetic Sprint Velocity -->
-    <g transform="translate(560, 0)">
-      <text x="0" y="44" text-anchor="middle" class="grotesk bottom-num-2" font-size="34" font-weight="800" letter-spacing="0.5">PERPETUAL</text>
-      <text x="0" y="68" text-anchor="middle" fill="#886D5B" class="mono bottom-label-2" font-size="11" font-weight="700" letter-spacing="0.8">MOMENTUM VELOCITY</text>
-      <text x="0" y="88" text-anchor="middle" fill="#A08C7D" class="mono bottom-label-2" font-size="10.5" letter-spacing="0.5">ACTIVE STEALTH DISCIPLINE</text>
+    <!-- Individual Telemetry Rows -->
+    <g transform="translate(24, 82)">
+      <circle cx="7" cy="9" r="4.5" fill="#FF4422" />
+      <text x="20" y="13" fill="#111318" class="sans" font-size="14" font-weight="700">TypeScript</text>
+      <text x="498" y="13" text-anchor="end" fill="#E03416" class="mono" font-size="12.5" font-weight="700">42%</text>
+      <rect x="0" y="21" width="498" height="6" rx="3" fill="#E8E2D6" />
+      <rect x="0" y="21" width="209" height="6" rx="3" fill="#FF4422" />
     </g>
 
-    <!-- Divider 2 -->
-    <line class="div-glow-2" x1="746" y1="20" x2="746" y2="94" stroke="#D6C4AE" stroke-width="1" />
+    <g transform="translate(24, 120)">
+      <circle cx="7" cy="9" r="4.5" fill="#EA7B46" />
+      <text x="20" y="13" fill="#111318" class="sans" font-size="14" font-weight="700">JavaScript</text>
+      <text x="498" y="13" text-anchor="end" fill="#B85627" class="mono" font-size="12.5" font-weight="700">28%</text>
+      <rect x="0" y="21" width="498" height="6" rx="3" fill="#E8E2D6" />
+      <rect x="0" y="21" width="139" height="6" rx="3" fill="#EA7B46" />
+    </g>
 
-    <!-- Column 3: Discipline Horizon -->
-    <g transform="translate(930, 0)">
-      <text x="0" y="44" text-anchor="middle" class="grotesk bottom-num-3" font-size="34" font-weight="800">550+ DAYS</text>
-      <text x="0" y="68" text-anchor="middle" fill="#886D5B" class="mono bottom-label-3" font-size="11" font-weight="700" letter-spacing="0.8">DISCIPLINE HORIZON</text>
-      <text x="0" y="88" text-anchor="middle" fill="#A08C7D" class="mono bottom-label-3" font-size="10.5" letter-spacing="0.5">5,600+ HOURS OF PURE CRAFT</text>
+    <g transform="translate(24, 158)">
+      <circle cx="7" cy="9" r="4.5" fill="#111318" />
+      <text x="20" y="13" fill="#111318" class="sans" font-size="14" font-weight="700">Python</text>
+      <text x="498" y="13" text-anchor="end" fill="#111318" class="mono" font-size="12.5" font-weight="700">18%</text>
+      <rect x="0" y="21" width="498" height="6" rx="3" fill="#E8E2D6" />
+      <rect x="0" y="21" width="90" height="6" rx="3" fill="#111318" />
+    </g>
+
+    <g transform="translate(24, 196)">
+      <circle cx="7" cy="9" r="4.5" fill="#8C867B" />
+      <text x="20" y="13" fill="#111318" class="sans" font-size="14" font-weight="700">UI &amp; Design Systems</text>
+      <text x="498" y="13" text-anchor="end" fill="#6D685F" class="mono" font-size="12.5" font-weight="700">12%</text>
+      <rect x="0" y="21" width="498" height="6" rx="3" fill="#E8E2D6" />
+      <rect x="0" y="21" width="60" height="6" rx="3" fill="#8C867B" />
+    </g>
+  </g>
+
+  <!-- BOTTOM HORIZON BAR (Obsidian Contrast Strip, Zero Duplicate Stats) -->
+  <g transform="translate(40, 508)">
+    <rect width="1120" height="88" rx="12" fill="url(#stealth-dark)" stroke="#242934" stroke-width="1.2" />
+
+    <g transform="translate(186, 0)" text-anchor="middle">
+      <text x="0" y="38" fill="#FAF8F4" class="sans" font-size="25" font-weight="900">AUG 2023 — NOW</text>
+      <text x="0" y="59" fill="#FF5738" class="mono" font-size="10" font-weight="700" letter-spacing="1.2">CONTINUOUS ENGINEERING RUN</text>
+    </g>
+
+    <line x1="373" y1="18" x2="373" y2="70" stroke="#252A36" stroke-width="1" />
+
+    <g transform="translate(560, 0)" text-anchor="middle">
+      <text x="0" y="38" fill="#FF4422" class="sans" font-size="25" font-weight="900" letter-spacing="0.5">PERPETUAL</text>
+      <text x="0" y="59" fill="#8E95A2" class="mono" font-size="10" font-weight="700" letter-spacing="1.2">PRIVATE CLIENT SPRINT CADENCE</text>
+    </g>
+
+    <line x1="747" y1="18" x2="747" y2="70" stroke="#252A36" stroke-width="1" />
+
+    <g transform="translate(934, 0)" text-anchor="middle">
+      <text x="0" y="38" fill="#FAF8F4" class="sans" font-size="25" font-weight="900">550+ DAYS</text>
+      <text x="0" y="59" fill="#FF5738" class="mono" font-size="10" font-weight="700" letter-spacing="1.2">DISCIPLINE HORIZON // 5,600+ HRS</text>
     </g>
   </g>
 </svg>

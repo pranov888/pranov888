@@ -1,945 +1,530 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 870" width="100%" height="auto">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 842" width="100%" height="auto">
   <defs>
-    <!-- Background Gradient: Light Mocha Cream -->
-    <linearGradient id="matrix-light-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F8F3EA" />
-      <stop offset="50%" stop-color="#F0E5D4" />
-      <stop offset="100%" stop-color="#F8F3EA" />
+    <linearGradient id="matrix-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0C0E13" />
+      <stop offset="100%" stop-color="#08090D" />
     </linearGradient>
 
-    <!-- Pill Tag Background Gradient -->
-    <linearGradient id="tag-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#FCFAF6" />
-      <stop offset="100%" stop-color="#F3E9DA" />
-    </linearGradient>
-
-    <!-- Official Python Dual Snake Gradients -->
-    <linearGradient id="py-blue" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#387EB8" />
-      <stop offset="100%" stop-color="#306998" />
-    </linearGradient>
-    <linearGradient id="py-yellow" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFE873" />
-      <stop offset="100%" stop-color="#FFD43B" />
+    <linearGradient id="brain-pod" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#171A23" />
+      <stop offset="100%" stop-color="#11131A" />
     </linearGradient>
 
     <style><![CDATA[
-      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800;900&family=Space+Mono:wght@700&display=swap');
       svg { pointer-events: none; user-select: none; }
+      .sans { font-family: 'Inter', 'SF Pro Display', 'Segoe UI', 'Lato', 'Noto Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
+      .mono { font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'DejaVu Sans Mono', ui-monospace, Menlo, Consolas, monospace; }
 
-      .mono { font-family: 'Space Mono', 'SFMono-Regular', Menlo, Monaco, Consolas, monospace; }
-      .grotesk { font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 800; }
-      .cat-title { font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 15px; font-weight: 800; fill: #722F37; letter-spacing: 0.5px; }
-      .cat-sub { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; fill: #886D5B; letter-spacing: 1.2px; }
-      .tag-text { font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; font-weight: 700; fill: #1C0F14; }
-      .tag-text-sm { font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; font-weight: 700; fill: #1C0F14; letter-spacing: -0.1px; }
-      .tag-text-xs { font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; font-weight: 700; fill: #1C0F14; letter-spacing: -0.2px; }
+      .cat-title { font-family: 'Inter', 'SF Pro Display', 'Segoe UI', 'Lato', 'Noto Sans', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 14.5px; font-weight: 800; fill: #FF5738; letter-spacing: 0.4px; }
+      .cat-sub   { font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'DejaVu Sans Mono', ui-monospace, Menlo, Consolas, monospace; font-size: 10px; font-weight: 700; fill: #747C8B; letter-spacing: 1.2px; }
+      .tag-text  { font-family: 'Inter', 'SF Pro Display', 'Segoe UI', 'Lato', 'Noto Sans', -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 700; fill: #E6E4DD; }
 
-            /* Dynamic Live Telemetry Equalizer (replaces revolving X) */
-      .pulse-live {
-        animation: livePulse 2s ease-in-out infinite;
+      .synapse-spark { animation: sparkPulse 2.4s ease-in-out infinite alternate; }
+      @keyframes sparkPulse { 0% { opacity: 0.3; } 100% { opacity: 1; } }
+
+      .shimmer-overlay {
+        opacity: 0;
+        fill: rgba(255, 68, 34, 0.08);
+        stroke: #FF4422;
+        stroke-width: 1.3px;
+        will-change: opacity;
       }
-      @keyframes livePulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.35; }
+      @keyframes calmWave {
+        0%, 100% { opacity: 0; }
+        18%      { opacity: 0.9; }
+        36%      { opacity: 0; }
       }
+      .shim-1 { animation: calmWave 12s 0.0s ease-in-out infinite; }
+      .shim-2 { animation: calmWave 12s 1.5s ease-in-out infinite; }
+      .shim-3 { animation: calmWave 12s 3.0s ease-in-out infinite; }
+      .shim-4 { animation: calmWave 12s 4.5s ease-in-out infinite; }
+      .shim-5 { animation: calmWave 12s 6.0s ease-in-out infinite; }
+      .shim-6 { animation: calmWave 12s 7.5s ease-in-out infinite; }
+      .shim-7 { animation: calmWave 12s 9.0s ease-in-out infinite; }
+      .shim-8 { animation: calmWave 12s 10.5s ease-in-out infinite; }
 
       .eq-bar-1, .eq-bar-2, .eq-bar-3, .eq-bar-4, .eq-bar-5 {
         transform-box: fill-box;
         transform-origin: 50% 100%;
       }
-      .eq-bar-1 { animation: eqBounce1 1.1s ease-in-out infinite alternate; }
-      .eq-bar-2 { animation: eqBounce2 0.85s ease-in-out infinite alternate; }
-      .eq-bar-3 { animation: eqBounce3 1.35s ease-in-out infinite alternate; }
-      .eq-bar-4 { animation: eqBounce4 0.95s ease-in-out infinite alternate; }
-      .eq-bar-5 { animation: eqBounce5 1.25s ease-in-out infinite alternate; }
-
-      @keyframes eqBounce1 { 0% { transform: scaleY(0.3); } 100% { transform: scaleY(1.0); } }
-      @keyframes eqBounce2 { 0% { transform: scaleY(0.95); } 100% { transform: scaleY(0.25); } }
-      @keyframes eqBounce3 { 0% { transform: scaleY(0.4); } 100% { transform: scaleY(0.9); } }
-      @keyframes eqBounce4 { 0% { transform: scaleY(1.0); } 100% { transform: scaleY(0.35); } }
-      @keyframes eqBounce5 { 0% { transform: scaleY(0.3); } 100% { transform: scaleY(0.85); } }
-
-      /* Living Synaptic Sparks */
-      .synapse-spark {
-        animation: sparkTwinkle 2s ease-in-out infinite alternate;
-      }
-      @keyframes sparkTwinkle {
-        0% { opacity: 0.35; }
-        100% { opacity: 1; }
-      }
-    
-      /* High Performance GPU-Accelerated Luminous Glow - Infinite Bounds (No Clipping Lines), Locked 60FPS */
-      .glow-overlay {
-        opacity: 0;
-        pointer-events: none;
-        fill: #FFFFFF;
-        stroke: #722F37;
-        stroke-width: 1.8px;
-        filter: drop-shadow(0 0 6px rgba(114, 47, 55, 0.75)) drop-shadow(0 0 12px rgba(114, 47, 55, 0.35));
-        will-change: opacity;
-      }
-
-      @keyframes smoothGlow {
-        0%, 100% { opacity: 0; }
-        15% { opacity: 1; }
-        30% { opacity: 0; }
-      }
-
-      .glow-trk-1  { animation: smoothGlow 8.4s -1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
-      .glow-trk-2  { animation: smoothGlow 11.2s -4.8s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
-      .glow-trk-3  { animation: smoothGlow 9.6s -7.1s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
-      .glow-trk-4  { animation: smoothGlow 13.5s -2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
-      .glow-trk-5  { animation: smoothGlow 7.8s -5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
-      .glow-trk-6  { animation: smoothGlow 10.4s -8.9s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
-      .glow-trk-7  { animation: smoothGlow 12.1s -3.7s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
-      .glow-trk-8  { animation: smoothGlow 9.0s -6.2s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
-      .glow-trk-9  { animation: smoothGlow 14.0s -10.1s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
-      .glow-trk-10 { animation: smoothGlow 8.0s -0.5s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
-      .glow-trk-11 { animation: smoothGlow 11.8s -4.1s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
-      .glow-trk-12 { animation: smoothGlow 10.0s -7.6s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+      .eq-bar-1 { animation: eq1 1.1s ease-in-out infinite alternate; }
+      .eq-bar-2 { animation: eq2 0.85s ease-in-out infinite alternate; }
+      .eq-bar-3 { animation: eq3 1.35s ease-in-out infinite alternate; }
+      .eq-bar-4 { animation: eq4 0.95s ease-in-out infinite alternate; }
+      .eq-bar-5 { animation: eq5 1.25s ease-in-out infinite alternate; }
+      @keyframes eq1 { 0% { transform: scaleY(0.3); } 100% { transform: scaleY(1); } }
+      @keyframes eq2 { 0% { transform: scaleY(0.95); } 100% { transform: scaleY(0.25); } }
+      @keyframes eq3 { 0% { transform: scaleY(0.4); } 100% { transform: scaleY(0.9); } }
+      @keyframes eq4 { 0% { transform: scaleY(1); } 100% { transform: scaleY(0.35); } }
+      @keyframes eq5 { 0% { transform: scaleY(0.3); } 100% { transform: scaleY(0.85); } }
     ]]></style>
-
-    <!-- Brain Centerpiece Card Background Gradient -->
-    <linearGradient id="brain-card-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFFDF9" />
-      <stop offset="50%" stop-color="#FBF4EA" />
-      <stop offset="100%" stop-color="#F5E8D6" />
-    </linearGradient>
   </defs>
 
-  <!-- Container Base -->
-  <rect width="1200" height="870" fill="url(#matrix-light-bg)" rx="16" />
-  <rect x="1" y="1" width="1198" height="868" fill="none" stroke="#D6C4AE" stroke-width="1.5" rx="15" />
+  <rect width="1200" height="842" rx="18" fill="url(#matrix-bg)" />
+  <rect x="1" y="1" width="1198" height="840" rx="17" fill="none" stroke="#222631" stroke-width="1.5" />
 
-  <!-- ==================== HEADER STRIP ==================== -->
+  <!-- HEADER -->
   <g transform="translate(40, 42)">
-    <text x="0" y="12" fill="#722F37" class="grotesk" font-size="14.5" font-weight="800" letter-spacing="1.5">CAPABILITIES &amp; TECHNICAL MATRIX // ALL STACKS</text>
-    <text x="1120" y="12" text-anchor="end" fill="#886D5B" class="mono" font-size="12" font-weight="700" letter-spacing="1">01 BRAIN · 08 CATEGORIES · 50+ TECHNOLOGIES</text>
+    <rect x="0" y="3" width="6" height="6" rx="1" fill="#FF4422" />
+    <text x="16" y="11" fill="#FAF8F4" class="sans" font-size="14.5" font-weight="800" letter-spacing="1.2">CAPABILITIES &amp; TECHNICAL MATRIX // ALL STACKS</text>
+    <text x="1120" y="11" text-anchor="end" fill="#8E95A2" class="mono" font-size="11.5" font-weight="700" letter-spacing="1">01 BRAIN · 08 CATEGORIES · 54 TECHNOLOGIES</text>
   </g>
+  <line x1="40" y1="68" x2="1160" y2="68" stroke="#20242F" stroke-width="1.2" />
 
-  <line x1="40" y1="68" x2="1160" y2="68" stroke="#D6C4AE" stroke-width="1.2" />
+  <!-- CATEGORY 00: MY BRAIN -->
+  <g transform="translate(40, 80)">
+    <rect width="1120" height="86" rx="12" fill="url(#brain-pod)" stroke="#262B38" stroke-width="1.3" />
+    <rect x="0" y="14" width="3.5" height="58" rx="1.7" fill="#FF4422" />
 
-  <!-- ======================================================== -->
-  <!-- CATEGORY 00: CORE ARCHITECTURE & LOGIC // MY BRAIN      -->
-  <!-- ======================================================== -->
-  <g transform="translate(40, 78)">
-    <!-- Master Pod Shell with Burgundy Trim (Single clean border) -->
-    <rect width="1120" height="88" rx="12" fill="url(#brain-card-grad)" stroke="#D6C4AE" stroke-width="1.4" />
-
-    <!-- Left: Brain Icon Pod -->
-    <g transform="translate(18, 16)">
-      <rect width="56" height="56" rx="10" fill="#722F37" />
-      <!-- Stylized Anatomical & Neural Brain Graphic -->
+    <!-- Brain Emblem -->
+    <g transform="translate(20, 15)">
+      <rect width="56" height="56" rx="10" fill="#FF4422" />
       <g transform="translate(13, 12)">
-        <!-- Left Hemisphere -->
-        <path d="M 15 4 C 9 4 5 7 5 12 C 2 14 1 18 2 21 C 3 25 7 28 11 29 C 13 29.5 14.5 29.5 15 29.5 Z" fill="#FAF6EE" />
-        <!-- Right Hemisphere -->
-        <path d="M 15 4 C 21 4 25 7 25 12 C 28 14 29 18 28 21 C 27 25 23 28 19 29 C 17 29.5 15.5 29.5 15 29.5 Z" fill="#FAF6EE" opacity="0.95" />
-        <!-- Fissure -->
-        <line x1="15" y1="4" x2="15" y2="29.5" stroke="#722F37" stroke-width="1.2" />
-        <!-- Sulci / Lobe folds -->
-        <path d="M 8 12 Q 12 14 15 12" fill="none" stroke="#722F37" stroke-width="1" opacity="0.7" />
-        <path d="M 5 19 Q 10 20 15 18" fill="none" stroke="#722F37" stroke-width="1" opacity="0.7" />
-        <path d="M 9 25 Q 12 24 15 26" fill="none" stroke="#722F37" stroke-width="1" opacity="0.7" />
-        
-        <path d="M 22 12 Q 18 14 15 12" fill="none" stroke="#722F37" stroke-width="1" opacity="0.7" />
-        <path d="M 25 19 Q 20 20 15 18" fill="none" stroke="#722F37" stroke-width="1" opacity="0.7" />
-        <path d="M 21 25 Q 18 24 15 26" fill="none" stroke="#722F37" stroke-width="1" opacity="0.7" />
-
-        <!-- Neural Synapse Sparks in Gold -->
-        <circle cx="11" cy="13" r="1.5" fill="#F7B93E" class="synapse-spark" />
-        <circle cx="19" cy="13" r="1.5" fill="#F7B93E" class="synapse-spark" />
-        <circle cx="8" cy="20" r="1.5" fill="#F7B93E" class="synapse-spark" />
-        <circle cx="22" cy="20" r="1.5" fill="#F7B93E" class="synapse-spark" />
-        <circle cx="15" cy="24" r="1.7" fill="#F7B93E" class="synapse-spark" />
+        <path d="M 15 4 C 9 4 5 7 5 12 C 2 14 1 18 2 21 C 3 25 7 28 11 29 C 13 29.5 14.5 29.5 15 29.5 Z" fill="#FAF8F4" />
+        <path d="M 15 4 C 21 4 25 7 25 12 C 28 14 29 18 28 21 C 27 25 23 28 19 29 C 17 29.5 15.5 29.5 15 29.5 Z" fill="#FAF8F4" opacity="0.92" />
+        <line x1="15" y1="4" x2="15" y2="29.5" stroke="#FF4422" stroke-width="1.3" />
+        <path d="M 8 12 Q 12 14 15 12 M 5 19 Q 10 20 15 18 M 9 25 Q 12 24 15 26" fill="none" stroke="#FF4422" stroke-width="1" />
+        <path d="M 22 12 Q 18 14 15 12 M 25 19 Q 20 20 15 18 M 21 25 Q 18 24 15 26" fill="none" stroke="#FF4422" stroke-width="1" />
+        <circle cx="11" cy="13" r="1.5" fill="#111318" class="synapse-spark" />
+        <circle cx="19" cy="13" r="1.5" fill="#111318" class="synapse-spark" />
+        <circle cx="8" cy="20" r="1.5" fill="#111318" class="synapse-spark" />
+        <circle cx="22" cy="20" r="1.5" fill="#111318" class="synapse-spark" />
       </g>
     </g>
 
-    <!-- Brain Title (Vertically centered against icon) -->
-    <g transform="translate(92, 24)">
-      <text x="0" y="12" fill="#722F37" font-family="'Space Mono', monospace" font-size="11" font-weight="700" letter-spacing="1.5">00 // CORE ARCHITECTURE &amp; LOGIC</text>
-      <text x="0" y="38" fill="#1C0F14" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="24" letter-spacing="-0.5">MY BRAIN</text>
+    <g transform="translate(94, 24)">
+      <text x="0" y="10" fill="#FF5738" class="mono" font-size="10.5" font-weight="700" letter-spacing="1.5">00 // CORE ARCHITECTURE &amp; LOGIC</text>
+      <text x="0" y="38" fill="#FAF8F4" class="sans" font-size="24" font-weight="900" letter-spacing="-0.5">MY BRAIN</text>
     </g>
 
-    <!-- Subtle In-Card Divider -->
-    <line x1="390" y1="14" x2="390" y2="74" stroke="#D6C4AE" stroke-width="1.2" stroke-dasharray="2,2" />
+    <line x1="392" y1="16" x2="392" y2="70" stroke="#252A36" stroke-width="1.2" stroke-dasharray="2 3" />
 
-    <!-- Right: 4 Directives in 2x2 Grid (Clean typography, perfectly aligned) -->
-    <g transform="translate(415, 23)">
-      <!-- Directive 1 -->
-      <g transform="translate(0, 0)">
-        <text x="0" y="13" fill="#1C0F14" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="13" letter-spacing="-0.1">Clean Architecture &amp; Modular Codebases</text>
-      </g>
+    <g transform="translate(420, 23)" class="sans" font-size="13" font-weight="700">
+      <text x="0" y="12" fill="#FF5738" class="mono" font-size="11">A1</text>
+      <text x="26" y="12" fill="#E6E4DD">Clean Architecture &amp; Modular Codebases</text>
 
-      <!-- Directive 2 -->
-      <g transform="translate(350, 0)">
-        <text x="0" y="13" fill="#1C0F14" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="13" letter-spacing="-0.1">Pixel-Perfect Systems &amp; Motion Ergonomics</text>
-      </g>
+      <text x="355" y="12" fill="#FF5738" class="mono" font-size="11">A2</text>
+      <text x="381" y="12" fill="#E6E4DD">Pixel-Perfect Systems &amp; Motion Ergonomics</text>
 
-      <!-- Directive 3 -->
-      <g transform="translate(0, 26)">
-        <text x="0" y="13" fill="#1C0F14" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="13" letter-spacing="-0.1">High-Throughput State &amp; Resilient APIs</text>
-      </g>
+      <text x="0" y="38" fill="#FF5738" class="mono" font-size="11">A3</text>
+      <text x="26" y="38" fill="#E6E4DD">High-Throughput State &amp; Resilient APIs</text>
 
-      <!-- Directive 4 -->
-      <g transform="translate(350, 26)">
-        <text x="0" y="13" fill="#1C0F14" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="13" letter-spacing="-0.1">Rapid Problem Synthesis &amp; Applied AI</text>
-      </g>
+      <text x="355" y="38" fill="#FF5738" class="mono" font-size="11">A4</text>
+      <text x="381" y="38" fill="#E6E4DD">Rapid Problem Synthesis &amp; Applied AI</text>
     </g>
   </g>
 
-  <!-- Architectural Grid Dividers -->
-  <!-- Horizontal Line after Category 00 -->
-  <line x1="40" y1="176" x2="1160" y2="176" stroke="#D6C4AE" stroke-width="1.2" />
+  <!-- GRID DIVIDERS -->
+  <line x1="40" y1="178" x2="1160" y2="178" stroke="#1E222D" stroke-width="1.2" />
+  <line x1="40" y1="472" x2="1160" y2="472" stroke="#1E222D" stroke-width="1.2" />
+  <line x1="40" y1="772" x2="1160" y2="772" stroke="#1E222D" stroke-width="1.2" />
 
-  <!-- Horizontal Center Line between Row 1 and Row 2 -->
-  <line x1="40" y1="478" x2="1160" y2="478" stroke="#D6C4AE" stroke-width="1.2" />
+  <line x1="320" y1="178" x2="320" y2="772" stroke="#1E222D" stroke-width="1.2" />
+  <line x1="600" y1="178" x2="600" y2="772" stroke="#1E222D" stroke-width="1.2" />
+  <line x1="880" y1="178" x2="880" y2="772" stroke="#1E222D" stroke-width="1.2" />
 
-  <!-- Horizontal Footer Line -->
-  <line x1="40" y1="780" x2="1160" y2="780" stroke="#D6C4AE" stroke-width="1.2" />
+  <g fill="#FF4422" class="mono" font-size="13" text-anchor="middle">
+    <text x="320" y="476.5">+</text><text x="600" y="476.5">+</text><text x="880" y="476.5">+</text>
+  </g>
 
-  <!-- Vertical Divider Lines (4 Columns) -->
-  <line x1="320" y1="176" x2="320" y2="780" stroke="#D6C4AE" stroke-width="1.2" />
-  <line x1="600" y1="176" x2="600" y2="780" stroke="#D6C4AE" stroke-width="1.2" />
-  <line x1="880" y1="176" x2="880" y2="780" stroke="#D6C4AE" stroke-width="1.2" />
-
-  <!-- Swiss Crosshairs on Grid Intersections -->
-  <text x="320" y="482" fill="#B7A89A" font-family="monospace" font-size="13" text-anchor="middle">+</text>
-  <text x="600" y="482" fill="#B7A89A" font-family="monospace" font-size="13" text-anchor="middle">+</text>
-  <text x="880" y="482" fill="#B7A89A" font-family="monospace" font-size="13" text-anchor="middle">+</text>
-
-  <!-- ======================================================== -->
-  <!-- ROW 1 (y: 192 to 470)                                   -->
-  <!-- ======================================================== -->
-  <!-- CELL 01: LANGUAGES -->
   <g transform="translate(50, 192)">
     <text x="0" y="18" class="cat-title">01 // LANGUAGES</text>
-    <text x="0" y="38" class="cat-sub">CORE RUNTIMES &amp; SCRIPTS</text>
-    <line x1="0" y1="48" x2="260" y2="48" stroke="#E2D4BF" stroke-width="1" />
-
-    <!-- Tags with Real Language Logos -->
+    <text x="0" y="37" class="cat-sub">CORE RUNTIMES &amp; SCRIPTS</text>
+    <line x1="0" y1="48" x2="260" y2="48" stroke="#222633" stroke-width="1" />
     <g transform="translate(0, 62)">
-      <!-- TypeScript -->
       <g transform="translate(0, 0)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-1" width="126" height="34" rx="7" />
-        <!-- Official Microsoft TypeScript Brand Vector Logo -->
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#FFFFFF" />
-          <g transform="scale(0.8333)">
-            <path fill="#3178C6" fill-rule="evenodd" d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z" />
-          </g>
-        </g>
-        <text x="34" y="22" class="tag-text">TypeScript</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-1" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#3178C6" /><text x="10" y="14.5" fill="#FFFFFF" class="sans" font-size="9.5" font-weight="900" text-anchor="middle">TS</text></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">TypeScript</text>
       </g>
-      <!-- JavaScript -->
       <g transform="translate(134, 0)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-5" width="126" height="34" rx="7" />
-        <!-- Official JavaScript Brand Vector Logo -->
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#F7DF1E" />
-          <g transform="scale(0.8333)">
-            <path fill="#000000" d="M 22.034 18.276 c -0.175 -1.095 -0.888 -2.015 -3.003 -2.873 c -0.736 -0.345 -1.554 -0.585 -1.797 -1.14 c -0.091 -0.33 -0.105 -0.51 -0.046 -0.705 c 0.15 -0.646 0.915 -0.84 1.515 -0.66 c 0.39 0.12 0.75 0.42 0.976 0.9 l 1.755 -1.125 c -0.27 -0.42 -0.404 -0.601 -0.586 -0.78 c -0.63 -0.705 -1.469 -1.065 -2.834 -1.034 l -0.705 0.089 c -0.676 0.165 -1.32 0.525 -1.71 1.005 c -1.14 1.291 -0.811 3.541 0.569 4.471 c 1.365 1.02 3.361 1.244 3.616 2.205 c 0.24 1.17 -0.87 1.545 -1.966 1.41 c -0.811 -0.18 -1.26 -0.586 -1.755 -1.336 l -1.83 1.051 c 0.21 0.48 0.45 0.689 0.81 1.109 c 1.74 1.756 6.09 1.666 6.871 -1.004 c 0.029 -0.09 0.24 -0.705 0.074 -1.65 l 0.046 0.067 z m -8.983 -7.245 h -2.248 c 0 1.938 -0.009 3.864 -0.009 5.805 c 0 1.232 0.063 2.363 -0.138 2.711 c -0.33 0.689 -1.18 0.601 -1.566 0.48 c -0.396 -0.196 -0.597 -0.466 -0.83 -0.855 c -0.063 -0.105 -0.11 -0.196 -0.127 -0.196 l -1.825 1.125 c 0.305 0.63 0.75 1.172 1.324 1.517 c 0.855 0.51 2.004 0.675 3.207 0.405 c 0.783 -0.226 1.458 -0.691 1.811 -1.411 c 0.51 -0.93 0.402 -2.07 0.397 -3.346 c 0.012 -2.054 0 -4.109 0 -6.179 l 0.004 -0.056 z" />
-          </g>
-        </g>
-        <text x="34" y="22" class="tag-text">JavaScript</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-2" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#F7DF1E" /><text x="10" y="14.5" fill="#111318" class="sans" font-size="9.5" font-weight="900" text-anchor="middle">JS</text></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">JavaScript</text>
       </g>
-
-      <!-- Python -->
       <g transform="translate(0, 42)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-9" width="126" height="34" rx="7" />
-        <!-- Official Python Software Foundation Vector Logo -->
-        <g transform="translate(7, 7)">
-          <g transform="scale(0.8333)">
-            <path fill="url(#py-blue)" d="M 11.858 0 c -0.978 0.005 -1.913 0.088 -2.736 0.234 C 6.7 0.662 6.26 1.558 6.26 3.21 v 2.182 h 5.725 v 0.727 H 4.111 c -1.664 0 -3.121 1 -3.577 2.903 c -0.526 2.181 -0.549 3.542 0 5.82 c 0.407 1.694 1.379 2.902 3.043 2.902 h 1.969 v -2.616 c 0 -1.89 1.635 -3.557 3.576 -3.557 h 5.72 c 1.591 0 2.862 -1.31 2.862 -2.91 v -5.45 c 0 -1.553 -1.309 -2.718 -2.863 -2.977 A 18 18 0 0 0 11.858 0 M 8.762 1.755 c 0.591 0 1.074 0.491 1.074 1.095 c 0 0.601 -0.483 1.087 -1.074 1.087 A 1.08 1.08 0 0 1 7.688 2.85 c 0 -0.604 0.48 -1.095 1.074 -1.095" />
-            <path fill="url(#py-yellow)" d="M 18.418 6.119 v 2.543 c 0 1.971 -1.671 3.63 -3.577 3.63 H 9.122 c -1.566 0 -2.862 1.34 -2.862 2.91 v 5.452 c 0 1.551 1.349 2.464 2.862 2.91 c 1.813 0.532 3.55 0.628 5.72 0 c 1.44 -0.418 2.862 -1.258 2.862 -2.91 V 18.47 h -5.719 v -0.727 h 8.582 c 1.664 0 2.284 -1.16 2.862 -2.903 c 0.598 -1.793 0.573 -3.518 0 -5.819 c -0.41 -1.656 -1.196 -2.903 -2.862 -2.903 z m -3.216 13.807 a 1.08 1.08 0 0 1 1.074 1.088 c 0 0.604 -0.48 1.094 -1.074 1.094 c -0.592 0 -1.075 -0.49 -1.075 -1.094 c 0 -0.601 0.483 -1.088 1.075 -1.088" />
-          </g>
-        </g>
-        <text x="34" y="22" class="tag-text">Python</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-3" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><g transform="scale(0.8333)"><path fill="#387EB8" d="M 11.858 0 c -0.978 0.005 -1.913 0.088 -2.736 0.234 C 6.7 0.662 6.26 1.558 6.26 3.21 v 2.182 h 5.725 v 0.727 H 4.111 c -1.664 0 -3.121 1 -3.577 2.903 c -0.526 2.181 -0.549 3.542 0 5.82 c 0.407 1.694 1.379 2.902 3.043 2.902 h 1.969 v -2.616 c 0 -1.89 1.635 -3.557 3.576 -3.557 h 5.72 c 1.591 0 2.862 -1.31 2.862 -2.91 v -5.45 c 0 -1.553 -1.309 -2.718 -2.863 -2.977 A 18 18 0 0 0 11.858 0 M 8.762 1.755 c 0.591 0 1.074 0.491 1.074 1.095 c 0 0.601 -0.483 1.087 -1.074 1.087 A 1.08 1.08 0 0 1 7.688 2.85 c 0 -0.604 0.48 -1.095 1.074 -1.095" /><path fill="#FFD43B" d="M 18.418 6.119 v 2.543 c 0 1.971 -1.671 3.63 -3.577 3.63 H 9.122 c -1.566 0 -2.862 1.34 -2.862 2.91 v 5.452 c 0 1.551 1.349 2.464 2.862 2.91 c 1.813 0.532 3.55 0.628 5.72 0 c 1.44 -0.418 2.862 -1.258 2.862 -2.91 V 18.47 h -5.719 v -0.727 h 8.582 c 1.664 0 2.284 -1.16 2.862 -2.903 c 0.598 -1.793 0.573 -3.518 0 -5.819 c -0.41 -1.656 -1.196 -2.903 -2.862 -2.903 z m -3.216 13.807 a 1.08 1.08 0 0 1 1.074 1.088 c 0 0.604 -0.48 1.094 -1.074 1.094 c -0.592 0 -1.075 -0.49 -1.075 -1.094 c 0 -0.601 0.483 -1.088 1.075 -1.088" /></g></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Python</text>
       </g>
-      <!-- SQL -->
       <g transform="translate(134, 42)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-3" width="126" height="34" rx="7" />
-        <!-- SQL Database Stacked Cylinders Logo -->
-        <g transform="translate(7, 7)">
-          <ellipse cx="10" cy="5" rx="7.5" ry="2.8" fill="#E8F6F8" stroke="#00758F" stroke-width="1.4" />
-          <path d="M 2.5 5 L 2.5 10 C 2.5 11.5 5.8 12.8 10 12.8 C 14.2 12.8 17.5 11.5 17.5 10 L 17.5 5" fill="none" stroke="#00758F" stroke-width="1.4" />
-          <path d="M 2.5 10 L 2.5 15 C 2.5 16.5 5.8 17.8 10 17.8 C 14.2 17.8 17.5 16.5 17.5 15 L 17.5 10" fill="none" stroke="#00758F" stroke-width="1.4" />
-        </g>
-        <text x="34" y="22" class="tag-text">SQL</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-4" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><ellipse cx="10" cy="5.5" rx="7.2" ry="2.6" fill="#0F2C38" stroke="#38BDF8" stroke-width="1.3" /><path d="M 2.8 5.5 L 2.8 10.2 C 2.8 11.6 6 12.8 10 12.8 C 14 12.8 17.2 11.6 17.2 10.2 L 17.2 5.5" fill="none" stroke="#38BDF8" stroke-width="1.3" /><path d="M 2.8 10.2 L 2.8 14.8 C 2.8 16.2 6 17.4 10 17.4 C 14 17.4 17.2 16.2 17.2 14.8 L 17.2 10.2" fill="none" stroke="#38BDF8" stroke-width="1.3" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">SQL</text>
       </g>
-
-      <!-- Bash -->
       <g transform="translate(0, 84)">
-        <rect width="260" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-7" width="260" height="34" rx="7" />
-        <!-- Official GNU Bash Terminal Vector Logo -->
-        <g transform="translate(7, 7)">
-          <svg viewBox="0 0 128 128" width="20" height="20">
-            <path fill="#FFFFFF" d="M112.205 26.129 71.8 2.142A15.326 15.326 0 0 0 64.005 0c-2.688 0-5.386.717-7.796 2.152L15.795 26.14C10.976 28.999 8 34.289 8 40.018v47.975c0 5.729 2.967 11.019 7.796 13.878L56.2 125.858A15.193 15.193 0 0 0 63.995 128a15.32 15.32 0 0 0 7.796-2.142l40.414-23.987c4.819-2.86 7.796-8.16 7.796-13.878V40.007c0-5.718-2.967-11.019-7.796-13.878z" />
-            <path fill="#293138" d="M112.205 26.129 71.8 2.142A15.326 15.326 0 0 0 64.005 0c-2.688 0-5.386.717-7.796 2.152L15.795 26.14C10.976 28.999 8 34.289 8 40.018v47.975c0 5.729 2.967 11.019 7.796 13.878L56.2 125.858A15.193 15.193 0 0 0 63.995 128a15.32 15.32 0 0 0 7.796-2.142l40.414-23.987c4.819-2.86 7.796-8.16 7.796-13.878V40.007c0-5.718-2.967-11.019-7.796-13.878zm-31.29 74.907.063 3.448c0 .418-.267.889-.588 1.06l-2.046 1.178c-.321.16-.6-.032-.6-.45l-.032-3.394c-1.745.728-3.523.9-4.647.45-.214-.086-.31-.397-.225-.76l.739-3.117c.064-.246.193-.493.364-.643a.726.726 0 0 1 .193-.139c.117-.064.235-.075.332-.032 1.22.407 2.773.214 4.272-.535 1.907-.964 3.18-2.913 3.16-4.84-.022-1.757-.964-2.474-3.267-2.496-2.934.01-5.675-.567-5.718-4.894-.032-3.555 1.81-7.26 4.744-9.595l-.032-3.48c0-.428.257-.9.589-1.07l1.98-1.264c.322-.161.6.042.6.46l.033 3.48c1.456-.578 2.72-.738 3.865-.47.247.063.364.406.257.802l-.77 3.084a1.372 1.372 0 0 1-.354.622.825.825 0 0 1-.203.15c-.108.053-.204.064-.3.053-.525-.118-1.767-.385-3.727.6-2.056 1.038-2.773 2.827-2.763 4.155.022 1.585.825 2.066 3.63 2.11 3.738.063 5.344 1.691 5.387 5.45.053 3.684-1.917 7.657-4.937 10.077zm28.206-64.787L70.89 59.86c-4.765 2.784-8.278 5.911-8.288 11.662v47.107c0 3.437 1.392 5.665 3.523 6.318a12.81 12.81 0 0 1-2.12.204c-2.239 0-4.445-.61-6.383-1.757L17.219 99.408c-3.951-2.345-6.403-6.725-6.403-11.426V40.007c0-4.7 2.452-9.08 6.403-11.426L57.634 4.594a12.555 12.555 0 0 1 6.382-1.756c2.238 0 4.444.61 6.382 1.756l40.415 23.987c3.33 1.981 5.579 5.397 6.21 9.242-1.36-2.86-4.38-3.63-7.902-1.574z" />
-            <path fill="#4FA847" d="m101.614 92.619-10.066 6.018c-.268.16-.46.332-.46.653v2.635c0 .32.214.46.481.3l10.216-6.212c.268-.16.31-.45.31-.77v-2.324c0-.322-.213-.45-.481-.3z" />
-          </svg>
-        </g>
-        <text x="34" y="22" class="tag-text">Bash &amp; CLI Scripting</text>
+        <rect width="260" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-5" width="260" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#1F2937" stroke="#4B5563" stroke-width="1" /><path d="M 5 7 L 9 10 L 5 13" fill="none" stroke="#4ADE80" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /><line x1="10.5" y1="13" x2="15" y2="13" stroke="#FAF8F4" stroke-width="1.8" stroke-linecap="round" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Bash &amp; CLI Scripting</text>
       </g>
     </g>
   </g>
 
-
-  <!-- CELL 02: INTERFACES -->
   <g transform="translate(330, 192)">
     <text x="0" y="18" class="cat-title">02 // INTERFACES</text>
-    <text x="0" y="38" class="cat-sub">FRONTEND &amp; MOTION</text>
-    <line x1="0" y1="48" x2="260" y2="48" stroke="#E2D4BF" stroke-width="1" />
-
-    <!-- Tags -->
+    <text x="0" y="37" class="cat-sub">FRONTEND &amp; MOTION</text>
+    <line x1="0" y1="48" x2="260" y2="48" stroke="#222633" stroke-width="1" />
     <g transform="translate(0, 62)">
-      <!-- React -->
       <g transform="translate(0, 0)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-2" width="126" height="34" rx="7" />
-        <!-- React Atom Logo -->
-        <g transform="translate(7, 7)">
-          <ellipse cx="10" cy="10" rx="8.5" ry="3" fill="none" stroke="#00D8FF" stroke-width="1.2" transform="rotate(30 10 10)" />
-          <ellipse cx="10" cy="10" rx="8.5" ry="3" fill="none" stroke="#00D8FF" stroke-width="1.2" transform="rotate(90 10 10)" />
-          <ellipse cx="10" cy="10" rx="8.5" ry="3" fill="none" stroke="#00D8FF" stroke-width="1.2" transform="rotate(150 10 10)" />
-          <circle cx="10" cy="10" r="1.8" fill="#00D8FF" />
-        </g>
-        <text x="34" y="22" class="tag-text">React 19</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-4" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><ellipse cx="10" cy="10" rx="8.5" ry="3.1" fill="none" stroke="#38BDF8" stroke-width="1.2" transform="rotate(30 10 10)" /><ellipse cx="10" cy="10" rx="8.5" ry="3.1" fill="none" stroke="#38BDF8" stroke-width="1.2" transform="rotate(90 10 10)" /><ellipse cx="10" cy="10" rx="8.5" ry="3.1" fill="none" stroke="#38BDF8" stroke-width="1.2" transform="rotate(150 10 10)" /><circle cx="10" cy="10" r="1.9" fill="#38BDF8" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">React 19</text>
       </g>
-      <!-- Next.js -->
       <g transform="translate(134, 0)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-6" width="126" height="34" rx="7" />
-        <!-- Next.js Logo -->
-        <g transform="translate(7, 7)">
-          <circle cx="10" cy="10" r="9.5" fill="#000000" />
-          <path d="M 6.5 14.5 L 6.5 5.5 L 8 5.5 L 13.5 13 L 13.5 5.5 L 14.8 5.5 L 14.8 14.5 L 13.5 14.5 L 8 7 L 8 14.5 Z" fill="#FFFFFF" />
-        </g>
-        <text x="34" y="22" class="tag-text">Next.js 15</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-5" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><circle cx="10" cy="10" r="9.2" fill="#000000" stroke="#4B5563" stroke-width="1" /><path d="M 6.5 14.5 L 6.5 5.5 L 8 5.5 L 14.5 14 L 13.5 14.5 L 8 7.2 L 8 14.5 Z" fill="#FFFFFF" /><line x1="13.6" y1="5.5" x2="13.6" y2="11" stroke="#FFFFFF" stroke-width="1.4" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Next.js 15</text>
       </g>
-
-      <!-- React Native -->
       <g transform="translate(0, 42)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-10" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect x="3" y="1" width="14" height="18" rx="2.5" fill="none" stroke="#61DAFB" stroke-width="1.3" />
-          <circle cx="10" cy="10" r="2.5" fill="#61DAFB" />
-          <line x1="8" y1="16" x2="12" y2="16" stroke="#61DAFB" stroke-width="1" />
-        </g>
-        <text x="34" y="22" class="tag-text-sm">React Native</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-6" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect x="4" y="1.5" width="12" height="17" rx="2.5" fill="none" stroke="#38BDF8" stroke-width="1.3" /><circle cx="10" cy="9.5" r="2.2" fill="#38BDF8" /><line x1="8" y1="15.5" x2="12" y2="15.5" stroke="#38BDF8" stroke-width="1.2" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="11.8">React Native</text>
       </g>
-      <!-- TanStack -->
       <g transform="translate(134, 42)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-4" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <polygon points="10,1 18,10 10,19 2,10" fill="#FF4154" />
-          <circle cx="10" cy="10" r="3" fill="#FFFFFF" />
-        </g>
-        <text x="34" y="22" class="tag-text">TanStack</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-7" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><polygon points="10,1.5 18.5,10 10,18.5 1.5,10" fill="#EF4444" /><circle cx="10" cy="10" r="3" fill="#FAF8F4" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">TanStack</text>
       </g>
-
-      <!-- Electron -->
       <g transform="translate(0, 84)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-8" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <circle cx="10" cy="10" r="3" fill="#47848F" />
-          <ellipse cx="10" cy="10" rx="8" ry="3" fill="none" stroke="#47848F" stroke-width="1.2" transform="rotate(45 10 10)" />
-          <ellipse cx="10" cy="10" rx="8" ry="3" fill="none" stroke="#47848F" stroke-width="1.2" transform="rotate(-45 10 10)" />
-        </g>
-        <text x="34" y="22" class="tag-text">Electron</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-8" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><circle cx="10" cy="10" r="2.6" fill="#67E8F9" /><ellipse cx="10" cy="10" rx="8.2" ry="3" fill="none" stroke="#67E8F9" stroke-width="1.2" transform="rotate(45 10 10)" /><ellipse cx="10" cy="10" rx="8.2" ry="3" fill="none" stroke="#67E8F9" stroke-width="1.2" transform="rotate(-45 10 10)" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Electron</text>
       </g>
-      <!-- Tailwind -->
       <g transform="translate(134, 84)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-12" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <path d="M 3 11 C 4.5 7 7.5 7 9 10 C 10.5 13 13 13.5 15.5 11.5 C 14 14.5 11 15 9.5 12 C 8 9 5.5 9 3 11 Z" fill="#06B6D4" />
-        </g>
-        <text x="31" y="22" class="tag-text-xs">Tailwind CSS</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-1" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><path d="M 5.5 8.5 C 6.3 5.5 8.2 4.5 10.5 5.5 C 12 6.2 12.8 7.5 14.2 7.2 C 15.2 7 15.8 6.2 16.5 5.2 C 15.7 8.2 13.8 9.2 11.5 8.2 C 10 7.5 9.2 6.2 7.8 6.5 C 6.8 6.7 6.2 7.5 5.5 8.5 Z" fill="#38BDF8" /><path d="M 3 13.5 C 3.8 10.5 5.7 9.5 8 10.5 C 9.5 11.2 10.3 12.5 11.7 12.2 C 12.7 12 13.3 11.2 14 10.2 C 13.2 13.2 11.3 14.2 9 13.2 C 7.5 12.5 6.7 11.2 5.3 11.5 C 4.3 11.7 3.7 12.5 3 13.5 Z" fill="#38BDF8" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="11.2">Tailwind CSS</text>
       </g>
-
-      <!-- GSAP -->
       <g transform="translate(0, 126)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-1" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#0AE448" />
-          <text x="10" y="14.5" fill="#000000" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="10" text-anchor="middle">G</text>
-        </g>
-        <text x="34" y="22" class="tag-text-sm">GSAP Physics</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-2" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#0AE448" /><text x="10" y="14.5" fill="#0A0B0E" class="sans" font-size="11" font-weight="900" text-anchor="middle">G</text></g>
+        <text x="33" y="21.5" class="tag-text" font-size="11.8">GSAP Physics</text>
       </g>
-      <!-- Three.js -->
       <g transform="translate(134, 126)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-5" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <polygon points="10,2 18,17 2,17" fill="none" stroke="#1C0F14" stroke-width="1.4" />
-          <line x1="10" y1="2" x2="10" y2="17" stroke="#722F37" stroke-width="1" />
-        </g>
-        <text x="34" y="22" class="tag-text-sm">Three.js / 3D</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-3" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><polygon points="10,2 18,16.5 2,16.5" fill="none" stroke="#FAF8F4" stroke-width="1.3" stroke-linejoin="round" /><polygon points="10,7 14,14 6,14" fill="none" stroke="#FF4422" stroke-width="1.1" stroke-linejoin="round" /><line x1="10" y1="2" x2="10" y2="7" stroke="#8E95A2" stroke-width="1" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="11.8">Three.js / 3D</text>
       </g>
     </g>
   </g>
 
-
-  <!-- CELL 03: SERVICES -->
   <g transform="translate(610, 192)">
     <text x="0" y="18" class="cat-title">03 // SERVICES</text>
-    <text x="0" y="38" class="cat-sub">BACKEND &amp; NETWORKING</text>
-    <line x1="0" y1="48" x2="260" y2="48" stroke="#E2D4BF" stroke-width="1" />
-
-    <!-- Tags -->
+    <text x="0" y="37" class="cat-sub">BACKEND &amp; NETWORKING</text>
+    <line x1="0" y1="48" x2="260" y2="48" stroke="#222633" stroke-width="1" />
     <g transform="translate(0, 62)">
-      <!-- Node.js -->
       <g transform="translate(0, 0)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-3" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <polygon points="10,2 18,6.5 18,15.5 10,20 2,15.5 2,6.5" fill="#339933" />
-          <text x="10" y="14" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="8" text-anchor="middle">JS</text>
-        </g>
-        <text x="34" y="22" class="tag-text">Node.js</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-7" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><polygon points="10,1.5 17.5,5.8 17.5,14.2 10,18.5 2.5,14.2 2.5,5.8" fill="#339933" /><text x="10" y="13.2" fill="#FFFFFF" class="sans" font-size="7.5" font-weight="900" text-anchor="middle">JS</text></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Node.js</text>
       </g>
-      <!-- Django REST -->
       <g transform="translate(134, 0)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-7" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#092E20" />
-          <text x="10" y="14" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="8.5" text-anchor="middle">dj</text>
-        </g>
-        <text x="34" y="22" class="tag-text-sm">Django REST</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-8" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#0C4B33" /><text x="10" y="14" fill="#FAF8F4" class="sans" font-size="9" font-weight="900" text-anchor="middle">dj</text></g>
+        <text x="33" y="21.5" class="tag-text" font-size="11.8">Django REST</text>
       </g>
-
-      <!-- Express -->
       <g transform="translate(0, 42)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-11" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#000000" />
-          <text x="10" y="14" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="8.5" text-anchor="middle">ex</text>
-        </g>
-        <text x="34" y="22" class="tag-text">Express</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-1" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#1F242E" stroke="#4B5563" stroke-width="1" /><text x="10" y="13.8" fill="#FAF8F4" class="mono" font-size="9" font-weight="700" text-anchor="middle">ex</text></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Express</text>
       </g>
-      <!-- FastAPI -->
       <g transform="translate(134, 42)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-2" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <circle cx="10" cy="10" r="9.5" fill="#059669" />
-          <path d="M 10 4 L 6 11 L 10 11 L 9 16 L 14 9 L 10 9 Z" fill="#FFFFFF" />
-        </g>
-        <text x="34" y="22" class="tag-text">FastAPI</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-2" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><circle cx="10" cy="10" r="9.2" fill="#059669" /><path d="M 10.5 4 L 6 11 L 10 11 L 9 16 L 14.2 9 L 10 9 Z" fill="#FFFFFF" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">FastAPI</text>
       </g>
-
-      <!-- Celery -->
       <g transform="translate(0, 84)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-6" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <circle cx="10" cy="10" r="9.5" fill="#37B24D" />
-          <path d="M 6 14 C 7 10 9 7 13 6 C 13 10 11 13 7 14 Z" fill="#FFFFFF" />
-        </g>
-        <text x="34" y="22" class="tag-text">Celery</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-3" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><circle cx="10" cy="10" r="9.2" fill="#37B24D" /><path d="M 6 14 C 7 9.5 9.5 6.5 14 5.5 C 13.5 10 11 13.5 6 14 Z" fill="#FFFFFF" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Celery</text>
       </g>
-      <!-- Socket.IO -->
       <g transform="translate(134, 84)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-10" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <circle cx="10" cy="10" r="9.5" fill="#010101" />
-          <path d="M 8 7 L 12 7 L 9 11 L 13 11 L 8 16 L 9.5 12 L 7 12 Z" fill="#FAF6EE" />
-        </g>
-        <text x="34" y="22" class="tag-text">Socket.IO</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-4" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><circle cx="10" cy="10" r="9" fill="#0A0B0E" stroke="#E5E7EB" stroke-width="1.3" /><path d="M 8 6.5 L 12.5 6.5 L 9.5 10.2 L 13 10.2 L 7.8 15.5 L 9.5 11.2 L 7 11.2 Z" fill="#FAF8F4" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Socket.IO</text>
       </g>
-
-      <!-- REST APIs & Webhooks -->
       <g transform="translate(0, 126)">
-        <rect width="260" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-4" width="260" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#722F37" />
-          <path d="M 4 8 L 8 8 L 8 6 L 12 10 L 8 14 L 8 12 L 4 12 Z" fill="#FAF6EE" />
-          <line x1="13" y1="10" x2="16" y2="10" stroke="#FAF6EE" stroke-width="1.5" />
-        </g>
-        <text x="34" y="22" class="tag-text">REST APIs &amp; Webhooks</text>
+        <rect width="260" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-5" width="260" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#FF4422" /><path d="M 4.5 10 L 13.5 10 M 10.5 6.5 L 14 10 L 10.5 13.5" fill="none" stroke="#FAF8F4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">REST APIs &amp; Webhooks</text>
       </g>
     </g>
   </g>
 
-
-  <!-- CELL 04: DATA & STORAGE -->
   <g transform="translate(890, 192)">
     <text x="0" y="18" class="cat-title">04 // DATA &amp; STORAGE</text>
-    <text x="0" y="38" class="cat-sub">DATABASES &amp; CACHES</text>
-    <line x1="0" y1="48" x2="260" y2="48" stroke="#E2D4BF" stroke-width="1" />
-
-    <!-- Tags -->
+    <text x="0" y="37" class="cat-sub">DATABASES &amp; CACHES</text>
+    <line x1="0" y1="48" x2="260" y2="48" stroke="#222633" stroke-width="1" />
     <g transform="translate(0, 62)">
-      <!-- PostgreSQL -->
       <g transform="translate(0, 0)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-8" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#336791" />
-          <text x="10" y="14.5" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="9" text-anchor="middle">PG</text>
-        </g>
-        <text x="34" y="22" class="tag-text-sm">PostgreSQL</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-2" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#336791" /><text x="10" y="14" fill="#FFFFFF" class="sans" font-size="8.5" font-weight="900" text-anchor="middle">PG</text></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">PostgreSQL</text>
       </g>
-      <!-- Supabase -->
       <g transform="translate(134, 0)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-12" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <circle cx="10" cy="10" r="9.5" fill="#3ECF8E" />
-          <path d="M 10 4 L 6 11 L 11 11 L 8 16 L 14 9 L 10 9 Z" fill="#1B0E13" />
-        </g>
-        <text x="34" y="22" class="tag-text">Supabase</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-3" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><circle cx="10" cy="10" r="9.2" fill="#1F2937" stroke="#3ECF8E" stroke-width="1.3" /><path d="M 10.5 4 L 6 11 L 10.5 11 L 9 16 L 14.5 9 L 10.5 9 Z" fill="#3ECF8E" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Supabase</text>
       </g>
-
-      <!-- Firebase -->
       <g transform="translate(0, 42)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-1" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <path d="M 4 16 L 8 4 L 10 8 L 8 13 Z" fill="#FFA000" />
-          <path d="M 16 16 L 12 7 L 10 10 L 14 15 Z" fill="#F57C00" />
-          <path d="M 3 16 L 10 18 L 17 16 L 10 9 Z" fill="#FFCA28" />
-        </g>
-        <text x="34" y="22" class="tag-text">Firebase</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-4" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><path d="M 4.5 15.5 L 7.8 4 L 10.5 8.5 L 7.8 13 Z" fill="#FFA000" /><path d="M 15.5 15.5 L 12.5 7 L 10 10.5 L 13.8 14.5 Z" fill="#F57C00" /><path d="M 4 15.5 L 10 17.8 L 16 15.5 L 10 9.5 Z" fill="#FFCA28" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Firebase</text>
       </g>
-      <!-- Redis -->
       <g transform="translate(134, 42)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-5" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#DC382D" />
-          <polygon points="10,4 16,7.5 10,11 4,7.5" fill="#FFFFFF" />
-          <polygon points="10,9 16,12.5 10,16 4,12.5" fill="rgba(255,255,255,0.7)" />
-        </g>
-        <text x="34" y="22" class="tag-text">Redis</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-5" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#DC382D" /><polygon points="10,4 16,7.5 10,11 4,7.5" fill="#FFFFFF" /><polygon points="10,9.5 16,13 10,16.5 4,13" fill="rgba(255,255,255,0.75)" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Redis</text>
       </g>
-
-      <!-- SQLite -->
       <g transform="translate(0, 84)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-9" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#003B57" />
-          <text x="10" y="14.5" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="8.5" text-anchor="middle">SQL</text>
-        </g>
-        <text x="34" y="22" class="tag-text">SQLite</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-6" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#0F4C81" /><text x="10" y="13.8" fill="#FAF8F4" class="sans" font-size="7.8" font-weight="900" text-anchor="middle">SQL</text></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">SQLite</text>
       </g>
-      <!-- MongoDB -->
       <g transform="translate(134, 84)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-3" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <circle cx="10" cy="10" r="9.5" fill="#47A248" />
-          <path d="M 10 3 C 8 7 6 11 10 17 C 14 11 12 7 10 3 Z" fill="#FFFFFF" />
-        </g>
-        <text x="34" y="22" class="tag-text">MongoDB</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-7" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><circle cx="10" cy="10" r="9.2" fill="#14532D" stroke="#4ADE80" stroke-width="1.2" /><path d="M 10 3.5 C 8 7.5 6.5 11.2 10 16.5 C 13.5 11.2 12 7.5 10 3.5 Z" fill="#4ADE80" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">MongoDB</text>
       </g>
     </g>
   </g>
 
-
-
-  <!-- ======================================================== -->
-  <!-- ROW 2 (y: 494 to 770)                                   -->
-  <!-- ======================================================== -->
-  <!-- CELL 05: INFRASTRUCTURE -->
-  <g transform="translate(50, 494)">
+  <g transform="translate(50, 488)">
     <text x="0" y="18" class="cat-title">05 // INFRASTRUCTURE</text>
-    <text x="0" y="38" class="cat-sub">DEVOPS &amp; DEPLOYMENT</text>
-    <line x1="0" y1="48" x2="260" y2="48" stroke="#E2D4BF" stroke-width="1" />
-
-    <!-- Tags -->
+    <text x="0" y="37" class="cat-sub">DEVOPS &amp; DEPLOYMENT</text>
+    <line x1="0" y1="48" x2="260" y2="48" stroke="#222633" stroke-width="1" />
     <g transform="translate(0, 62)">
-      <!-- Docker -->
       <g transform="translate(0, 0)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-7" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect x="3" y="8" width="3" height="3" rx="0.5" fill="#2496ED" />
-          <rect x="7" y="8" width="3" height="3" rx="0.5" fill="#2496ED" />
-          <rect x="11" y="8" width="3" height="3" rx="0.5" fill="#2496ED" />
-          <rect x="7" y="4.5" width="3" height="3" rx="0.5" fill="#2496ED" />
-          <path d="M 1 12 C 2 16 6 17 11 17 C 15 17 18 14 18 12 L 1 12 Z" fill="#2496ED" />
-        </g>
-        <text x="34" y="22" class="tag-text">Docker</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-5" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect x="3" y="8" width="3" height="3" rx="0.5" fill="#38BDF8" /><rect x="7" y="8" width="3" height="3" rx="0.5" fill="#38BDF8" /><rect x="11" y="8" width="3" height="3" rx="0.5" fill="#38BDF8" /><rect x="7" y="4.5" width="3" height="3" rx="0.5" fill="#38BDF8" /><path d="M 1.5 12 C 2.2 16 6.2 17 11.2 17 C 15.2 17 18 14 18 12 Z" fill="#38BDF8" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Docker</text>
       </g>
-      <!-- Git & CI/CD -->
       <g transform="translate(134, 0)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-11" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#F05032" />
-          <circle cx="8" cy="8" r="1.8" fill="#FFFFFF" />
-          <circle cx="13" cy="6" r="1.8" fill="#FFFFFF" />
-          <circle cx="13" cy="13" r="1.8" fill="#FFFFFF" />
-          <line x1="8" y1="8" x2="8" y2="13" stroke="#FFFFFF" stroke-width="1.3" />
-          <path d="M 8 10 Q 10 10 13 8" fill="none" stroke="#FFFFFF" stroke-width="1.3" />
-        </g>
-        <text x="34" y="22" class="tag-text-sm">Git &amp; CI/CD</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-6" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#F05032" /><circle cx="7.5" cy="7" r="1.7" fill="#FFFFFF" /><circle cx="13" cy="6.5" r="1.7" fill="#FFFFFF" /><circle cx="7.5" cy="13.5" r="1.7" fill="#FFFFFF" /><line x1="7.5" y1="7" x2="7.5" y2="13.5" stroke="#FFFFFF" stroke-width="1.4" /><path d="M 7.5 10.5 Q 10 10.5 13 8" fill="none" stroke="#FFFFFF" stroke-width="1.4" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="11.8">Git &amp; CI/CD</text>
       </g>
-
-      <!-- Linux OS -->
       <g transform="translate(0, 42)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-2" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <circle cx="10" cy="10" r="9.5" fill="#E95420" />
-          <circle cx="10" cy="8" r="3.5" fill="#FFFFFF" />
-          <ellipse cx="10" cy="13" rx="5" ry="4" fill="#FFFFFF" />
-        </g>
-        <text x="34" y="22" class="tag-text">Linux OS</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-7" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><circle cx="10" cy="10" r="9.2" fill="#EA580C" /><circle cx="10" cy="7.5" r="3.2" fill="#FFFFFF" /><ellipse cx="10" cy="13.2" rx="4.6" ry="3.6" fill="#FFFFFF" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Linux OS</text>
       </g>
-      <!-- Vercel -->
       <g transform="translate(134, 42)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-6" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#000000" />
-          <polygon points="10,4 16,15 4,15" fill="#FFFFFF" />
-        </g>
-        <text x="34" y="22" class="tag-text">Vercel</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-8" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#000000" stroke="#4B5563" stroke-width="1" /><polygon points="10,4.5 15.8,14.8 4.2,14.8" fill="#FFFFFF" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Vercel</text>
       </g>
-
-      <!-- Railway -->
       <g transform="translate(0, 84)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-10" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#0B0C0E" />
-          <line x1="5" y1="6" x2="15" y2="6" stroke="#FFFFFF" stroke-width="1.5" />
-          <line x1="5" y1="14" x2="15" y2="14" stroke="#FFFFFF" stroke-width="1.5" />
-          <line x1="8" y1="4" x2="8" y2="16" stroke="#FFFFFF" stroke-width="1.5" />
-          <line x1="12" y1="4" x2="12" y2="16" stroke="#FFFFFF" stroke-width="1.5" />
-        </g>
-        <text x="34" y="22" class="tag-text">Railway</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-1" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><circle cx="10" cy="10" r="9.2" fill="#111318" stroke="#8B5CF6" stroke-width="1.3" /><path d="M 4.5 12.5 L 15.5 12.5 M 5.5 9.5 L 14.5 9.5 M 7.5 6.5 L 12.5 6.5" stroke="#FAF8F4" stroke-width="1.4" stroke-linecap="round" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Railway</text>
       </g>
-      <!-- Cloudflare -->
       <g transform="translate(134, 84)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-4" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#F38020" />
-          <path d="M 6 14 C 4 14 3 12 5 10 C 5 8 8 7 10 9 C 11 8 14 8 14 10 C 16 10 16 14 14 14 Z" fill="#FFFFFF" />
-        </g>
-        <text x="34" y="22" class="tag-text">Cloudflare</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-2" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#F38020" /><path d="M 6 14 C 4 14 3.2 12 4.8 10.2 C 5.2 8 8 7.2 9.8 8.8 C 11 7.6 14 8 14.2 10.2 C 16 10.5 15.8 14 13.8 14 Z" fill="#FFFFFF" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Cloudflare</text>
       </g>
-
-      <!-- Postman & Nginx -->
       <g transform="translate(0, 126)">
-        <rect width="260" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-8" width="260" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#FF6C37" />
-          <circle cx="10" cy="8" r="3.5" fill="#FFFFFF" />
-          <path d="M 5 16 C 5 12 15 12 15 16 Z" fill="#FFFFFF" />
-        </g>
-        <text x="34" y="22" class="tag-text">Postman &amp; Nginx Proxy</text>
+        <rect width="260" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-3" width="260" height="34" rx="7" />
+        <g transform="translate(7, 7)"><circle cx="10" cy="10" r="9.2" fill="#FF6C37" /><circle cx="10" cy="10" r="5.2" fill="none" stroke="#FFFFFF" stroke-width="1.3" /><path d="M 10 10 L 14.5 6.5" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" /><circle cx="10" cy="10" r="1.8" fill="#FFFFFF" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Postman &amp; Nginx Proxy</text>
       </g>
     </g>
   </g>
 
-
-  <!-- CELL 06: QUALITY & DX -->
-  <g transform="translate(330, 494)">
+  <g transform="translate(330, 488)">
     <text x="0" y="18" class="cat-title">06 // QUALITY &amp; DX</text>
-    <text x="0" y="38" class="cat-sub">TESTING &amp; OBSERVABILITY</text>
-    <line x1="0" y1="48" x2="260" y2="48" stroke="#E2D4BF" stroke-width="1" />
-
-    <!-- Tags -->
+    <text x="0" y="37" class="cat-sub">TESTING &amp; OBSERVABILITY</text>
+    <line x1="0" y1="48" x2="260" y2="48" stroke="#222633" stroke-width="1" />
     <g transform="translate(0, 62)">
-      <!-- Jest -->
       <g transform="translate(0, 0)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-12" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#C21325" />
-          <text x="10" y="14.5" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="9" text-anchor="middle">J</text>
-        </g>
-        <text x="34" y="22" class="tag-text">Jest</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-8" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#C21325" /><text x="10" y="14.5" fill="#FFFFFF" class="sans" font-size="10" font-weight="900" text-anchor="middle">J</text></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Jest</text>
       </g>
-      <!-- Playwright -->
       <g transform="translate(134, 0)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-1" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <circle cx="10" cy="10" r="9.5" fill="#2EAD33" />
-          <circle cx="7" cy="9" r="2" fill="#FFFFFF" />
-          <circle cx="13" cy="9" r="2" fill="#FFFFFF" />
-          <path d="M 7 14 Q 10 16 13 14" fill="none" stroke="#FFFFFF" stroke-width="1.2" />
-        </g>
-        <text x="34" y="22" class="tag-text-sm">Playwright</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-1" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><circle cx="10" cy="10" r="9.2" fill="#2EAD33" /><circle cx="7" cy="8.5" r="1.8" fill="#FFFFFF" /><circle cx="13" cy="8.5" r="1.8" fill="#FFFFFF" /><path d="M 6.8 13.5 Q 10 16 13.2 13.5" fill="none" stroke="#FFFFFF" stroke-width="1.3" stroke-linecap="round" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Playwright</text>
       </g>
-
-      <!-- Vitest -->
       <g transform="translate(0, 42)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-5" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#FCC72B" />
-          <polygon points="10,4 6,10 10,10 8,16 14,9 10,9" fill="#241117" />
-        </g>
-        <text x="34" y="22" class="tag-text">Vitest</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-2" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#729B1B" /><polygon points="10.8,3.5 6,10.5 10,10.5 8.5,16.5 14.5,9 10.5,9" fill="#FDE047" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Vitest</text>
       </g>
-      <!-- Storybook -->
       <g transform="translate(134, 42)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-9" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#FF4785" />
-          <text x="10" y="14.5" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="9" text-anchor="middle">S</text>
-        </g>
-        <text x="34" y="22" class="tag-text">Storybook</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-3" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#FF4785" /><text x="10" y="14.5" fill="#FFFFFF" class="sans" font-size="10" font-weight="900" text-anchor="middle">S</text></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Storybook</text>
       </g>
-
-      <!-- ESLint -->
       <g transform="translate(0, 84)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-3" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <polygon points="10,2 18,6 18,14 10,18 2,14 2,6" fill="#4B32C3" />
-          <circle cx="10" cy="10" r="3" fill="#FFFFFF" />
-        </g>
-        <text x="34" y="22" class="tag-text">ESLint</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-4" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><polygon points="10,2 17.5,6 17.5,14 10,18 2.5,14 2.5,6" fill="#4B32C3" /><polygon points="10,5.5 14,7.8 14,12.2 10,14.5 6,12.2 6,7.8" fill="none" stroke="#FFFFFF" stroke-width="1.3" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">ESLint</text>
       </g>
-      <!-- Prettier -->
       <g transform="translate(134, 84)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-7" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#F7B93E" />
-          <circle cx="7" cy="8" r="2" fill="#FFFFFF" />
-          <circle cx="13" cy="8" r="2" fill="#FFFFFF" />
-          <circle cx="10" cy="13" r="2" fill="#FFFFFF" />
-        </g>
-        <text x="34" y="22" class="tag-text">Prettier</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-5" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#1F242E" stroke="#374151" stroke-width="1" /><rect x="4" y="4.5" width="9" height="2.2" rx="1" fill="#56B3B4" /><rect x="4" y="8.8" width="12" height="2.2" rx="1" fill="#F7B93E" /><rect x="4" y="13.2" width="7" height="2.2" rx="1" fill="#EA5E5E" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Prettier</text>
       </g>
-
-      <!-- Sentry Observability -->
       <g transform="translate(0, 126)">
-        <rect width="260" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-11" width="260" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#362D59" />
-          <path d="M 6 14 C 6 10 14 10 14 6 C 14 10 6 10 6 14 Z" fill="none" stroke="#FAF6EE" stroke-width="1.5" />
-        </g>
-        <text x="34" y="22" class="tag-text">Sentry Error Tracking</text>
+        <rect width="260" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-6" width="260" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#362D59" /><path d="M 10 4.5 L 15.5 14.5 L 13 14.5 C 13 12 11.2 10 9 9.5 L 10 4.5 Z M 4.5 14.5 L 6.5 11 C 8.2 11.5 9.5 12.8 9.8 14.5 Z" fill="#FAF8F4" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Sentry Error Tracking</text>
       </g>
     </g>
   </g>
 
-
-  <!-- CELL 07: PLUGS INTO -->
-  <g transform="translate(610, 494)">
-    <text x="0" y="18" class="cat-title">07 // PLUGS INTO</text>
-    <text x="0" y="38" class="cat-sub">ECOSYSTEMS &amp; PAYMENTS</text>
-    <line x1="0" y1="48" x2="260" y2="48" stroke="#E2D4BF" stroke-width="1" />
-
-    <!-- Tags -->
+  <g transform="translate(610, 488)">
+    <text x="0" y="18" class="cat-title">07 // INTEGRATIONS</text>
+    <text x="0" y="37" class="cat-sub">ECOSYSTEMS &amp; PAYMENTS</text>
+    <line x1="0" y1="48" x2="260" y2="48" stroke="#222633" stroke-width="1" />
     <g transform="translate(0, 62)">
-      <!-- WhatsApp API -->
       <g transform="translate(0, 0)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-2" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <circle cx="10" cy="10" r="9.5" fill="#25D366" />
-          <path d="M 6 14 L 7 11 C 6 9 7 7 10 7 C 13 7 14 9 14 11 C 14 13 12 14 10 14 L 6 14 Z" fill="#FFFFFF" />
-        </g>
-        <text x="31" y="22" class="tag-text-xs">WhatsApp API</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-3" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><circle cx="10" cy="10" r="9.2" fill="#25D366" /><path d="M 6.2 13.8 L 7.1 11.2 C 6.3 9.4 7.3 6.8 10 6.8 C 12.6 6.8 13.8 9 13.4 11 C 13 12.8 11.2 13.6 9.5 13.2 L 6.2 13.8 Z" fill="#FFFFFF" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="11.2">WhatsApp API</text>
       </g>
-      <!-- Razorpay -->
       <g transform="translate(134, 0)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-6" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#02042B" />
-          <polygon points="12,4 6,16 10,16 14,8 10,8" fill="#3395FF" />
-        </g>
-        <text x="34" y="22" class="tag-text">Razorpay</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-4" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#072654" /><polygon points="12.5,4 6,16 9.5,16 14.5,7.5 10.8,7.5" fill="#3395FF" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Razorpay</text>
       </g>
-
-      <!-- Stripe -->
       <g transform="translate(0, 42)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-10" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#635BFF" />
-          <text x="10" y="15" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="10" text-anchor="middle">S</text>
-        </g>
-        <text x="34" y="22" class="tag-text">Stripe</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-5" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#635BFF" /><text x="10" y="14.5" fill="#FFFFFF" class="sans" font-size="11" font-weight="900" text-anchor="middle">S</text></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Stripe</text>
       </g>
-      <!-- Google Workspace -->
       <g transform="translate(134, 42)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-4" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <circle cx="10" cy="10" r="9.5" fill="#4285F4" />
-          <text x="10" y="14.5" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="9" text-anchor="middle">G</text>
-        </g>
-        <text x="31" y="22" class="tag-text-xs">G-Workspace</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-6" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><circle cx="10" cy="10" r="9.2" fill="#FFFFFF" /><path d="M 15.2 10.2 C 15.2 9.7 15.1 9.3 15 8.9 H 10 v 2.4 h 2.9 c -0.2 0.8 -0.6 1.4 -1.3 1.8 v 1.5 h 2 c 1.1 -1 1.6 -2.5 1.6 -4.4 z" fill="#4285F4" /><path d="M 10 15.5 c 1.5 0 2.8 -0.5 3.7 -1.3 l -2 -1.5 c -0.5 0.3 -1.1 0.5 -1.7 0.5 c -1.3 0 -2.5 -0.9 -2.9 -2.1 H 5 v 1.6 c 0.9 1.7 2.8 2.8 5 2.8 z" fill="#34A853" /><path d="M 7.1 11.1 c -0.2 -0.7 -0.2 -1.5 0 -2.2 V 7.3 H 5 c -0.8 1.6 -0.8 3.8 0 5.4 l 2.1 -1.6 z" fill="#FBBC05" /><path d="M 10 6.8 c 0.8 0 1.5 0.3 2.1 0.8 l 1.6 -1.6 C 12.7 5.1 11.4 4.5 10 4.5 c -2.2 0 -4.1 1.1 -5 2.8 l 2.1 1.6 c 0.4 -1.2 1.6 -2.1 2.9 -2.1 z" fill="#EA4335" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12">G-Workspace</text>
       </g>
-
-      <!-- Slack -->
       <g transform="translate(0, 84)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-8" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#4A154B" />
-          <circle cx="7" cy="8" r="1.8" fill="#E01E5A" />
-          <circle cx="13" cy="8" r="1.8" fill="#36C5F0" />
-          <circle cx="7" cy="13" r="1.8" fill="#2EB67D" />
-          <circle cx="13" cy="13" r="1.8" fill="#ECB22E" />
-        </g>
-        <text x="34" y="22" class="tag-text">Slack APIs</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-7" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#3F0E40" /><circle cx="7" cy="7.5" r="1.8" fill="#E01E5A" /><circle cx="13" cy="7.5" r="1.8" fill="#36C5F0" /><circle cx="7" cy="12.5" r="1.8" fill="#2EB67D" /><circle cx="13" cy="12.5" r="1.8" fill="#ECB22E" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Slack APIs</text>
       </g>
-      <!-- Twilio -->
       <g transform="translate(134, 84)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-12" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <circle cx="10" cy="10" r="9.5" fill="#F22F46" />
-          <circle cx="7" cy="7" r="1.5" fill="#FFFFFF" />
-          <circle cx="13" cy="7" r="1.5" fill="#FFFFFF" />
-          <circle cx="7" cy="13" r="1.5" fill="#FFFFFF" />
-          <circle cx="13" cy="13" r="1.5" fill="#FFFFFF" />
-        </g>
-        <text x="34" y="22" class="tag-text">Twilio</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-8" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><circle cx="10" cy="10" r="9.2" fill="#F22F46" /><circle cx="7.2" cy="7.2" r="1.4" fill="#FFFFFF" /><circle cx="12.8" cy="7.2" r="1.4" fill="#FFFFFF" /><circle cx="7.2" cy="12.8" r="1.4" fill="#FFFFFF" /><circle cx="12.8" cy="12.8" r="1.4" fill="#FFFFFF" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Twilio</text>
       </g>
     </g>
   </g>
 
-
-  <!-- CELL 08: DESIGN & CREATIVE -->
-  <g transform="translate(890, 494)">
+  <g transform="translate(890, 488)">
     <text x="0" y="18" class="cat-title">08 // DESIGN &amp; CREATIVE</text>
-    <text x="0" y="38" class="cat-sub">3D, MOTION &amp; BRANDING</text>
-    <line x1="0" y1="48" x2="260" y2="48" stroke="#E2D4BF" stroke-width="1" />
-
-    <!-- Tags -->
+    <text x="0" y="37" class="cat-sub">3D, MOTION &amp; BRANDING</text>
+    <line x1="0" y1="48" x2="260" y2="48" stroke="#222633" stroke-width="1" />
     <g transform="translate(0, 62)">
-      <!-- Figma -->
       <g transform="translate(0, 0)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-1" width="126" height="34" rx="7" />
-        <!-- Official 5-color Figma Logo -->
-        <g transform="translate(7, 7)">
-          <rect x="3" y="1" width="7" height="6" rx="3" fill="#F24E1E" />
-          <rect x="10" y="1" width="7" height="6" rx="3" fill="#FF7262" />
-          <rect x="3" y="7" width="7" height="6" rx="3" fill="#A259FF" />
-          <circle cx="13.5" cy="10" r="3" fill="#1ABCFE" />
-          <rect x="3" y="13" width="7" height="6" rx="3" fill="#0ACF83" />
-        </g>
-        <text x="34" y="22" class="tag-text">Figma</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-6" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect x="4" y="2" width="6" height="5.3" rx="2.6" fill="#F24E1E" /><rect x="10" y="2" width="6" height="5.3" rx="2.6" fill="#FF7262" /><rect x="4" y="7.3" width="6" height="5.3" rx="2.6" fill="#A259FF" /><circle cx="13" cy="10" r="2.7" fill="#1ABCFE" /><rect x="4" y="12.6" width="6" height="5.3" rx="2.6" fill="#0ACF83" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Figma</text>
       </g>
-      <!-- Framer -->
       <g transform="translate(134, 0)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-5" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#0055FF" />
-          <polygon points="6,5 14,5 10,9 6,9" fill="#FFFFFF" />
-          <polygon points="6,9 14,9 14,13 10,13 6,9" fill="#FFFFFF" />
-          <polygon points="6,13 10,13 6,17" fill="#FFFFFF" />
-        </g>
-        <text x="34" y="22" class="tag-text">Framer</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-7" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#0055FF" /><polygon points="6,4.5 14,4.5 10,8.5 6,8.5" fill="#FFFFFF" /><polygon points="6,8.5 14,8.5 14,12.5 10,12.5 6,8.5" fill="#FFFFFF" /><polygon points="6,12.5 10,12.5 6,16.5" fill="#FFFFFF" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Framer</text>
       </g>
-
-      <!-- Webflow -->
       <g transform="translate(0, 42)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-9" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#146EF5" />
-          <text x="10" y="14.5" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="10" text-anchor="middle">W</text>
-        </g>
-        <text x="34" y="22" class="tag-text">Webflow</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-8" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#146EF5" /><text x="10" y="14" fill="#FFFFFF" class="sans" font-size="10.5" font-weight="900" text-anchor="middle">W</text></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Webflow</text>
       </g>
-      <!-- Blender -->
       <g transform="translate(134, 42)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-3" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#EA7600" />
-          <circle cx="10" cy="10" r="3.5" fill="#FFFFFF" />
-          <circle cx="10" cy="10" r="1.8" fill="#225796" />
-        </g>
-        <text x="34" y="22" class="tag-text-sm">Blender 3D</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-1" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#EA7600" /><circle cx="10.5" cy="10.5" r="3.6" fill="#FFFFFF" /><circle cx="10.5" cy="10.5" r="1.9" fill="#265787" /><line x1="4.5" y1="7" x2="8.5" y2="8" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" /><line x1="5" y1="13" x2="8" y2="11.5" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" /></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Blender 3D</text>
       </g>
-
-      <!-- After Effects -->
       <g transform="translate(0, 84)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-7" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#00005B" />
-          <text x="10" y="14" fill="#9999FF" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="8.5" text-anchor="middle">Ae</text>
-        </g>
-        <text x="34" y="22" class="tag-text-sm">After Effects</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-2" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#00005B" stroke="#9999FF" stroke-width="0.9" /><text x="10" y="13.8" fill="#9999FF" class="sans" font-size="8.8" font-weight="900" text-anchor="middle">Ae</text></g>
+        <text x="33" y="21.5" class="tag-text" font-size="11.8">After Effects</text>
       </g>
-      <!-- Illustrator -->
       <g transform="translate(134, 84)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-11" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#330000" />
-          <text x="10" y="14" fill="#FF9A00" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="8.5" text-anchor="middle">Ai</text>
-        </g>
-        <text x="34" y="22" class="tag-text-sm">Illustrator</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-3" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#330000" stroke="#FF9A00" stroke-width="0.9" /><text x="10" y="13.8" fill="#FF9A00" class="sans" font-size="8.8" font-weight="900" text-anchor="middle">Ai</text></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12">Illustrator</text>
       </g>
-
-      <!-- Photoshop -->
       <g transform="translate(0, 126)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-2" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#001E36" />
-          <text x="10" y="14" fill="#31A8FF" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="8.5" text-anchor="middle">Ps</text>
-        </g>
-        <text x="34" y="22" class="tag-text">Photoshop</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-4" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#001E36" stroke="#31A8FF" stroke-width="0.9" /><text x="10" y="13.8" fill="#31A8FF" class="sans" font-size="8.8" font-weight="900" text-anchor="middle">Ps</text></g>
+        <text x="33" y="21.5" class="tag-text" font-size="12.5">Photoshop</text>
       </g>
-      <!-- Premiere / InDesign -->
       <g transform="translate(134, 126)">
-        <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-6" width="126" height="34" rx="7" />
-        <g transform="translate(7, 7)">
-          <rect width="20" height="20" rx="3.5" fill="#00005B" />
-          <text x="10" y="14" fill="#EA77FF" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="8.5" text-anchor="middle">Pr</text>
-        </g>
-        <text x="31" y="22" class="tag-text-xs">Premiere / InD</text>
+        <rect width="126" height="34" rx="7" fill="#13161F" stroke="#242936" stroke-width="1.1" />
+        <rect class="shimmer-overlay shim-5" width="126" height="34" rx="7" />
+        <g transform="translate(7, 7)"><rect width="20" height="20" rx="3.5" fill="#00005B" stroke="#EA77FF" stroke-width="0.9" /><text x="10" y="13.8" fill="#EA77FF" class="sans" font-size="8.8" font-weight="900" text-anchor="middle">Pr</text></g>
+        <text x="33" y="21.5" class="tag-text" font-size="11.2">Premiere / InD</text>
       </g>
     </g>
   </g>
 
-
-  <!-- ==================== FOOTER STRIP ==================== -->
-  <g transform="translate(40, 814)">
-    <!-- Dynamic Live Signal Equalizer on Left (Borderless, clean integration) -->
-    <g transform="translate(0, 4)">
-      <rect class="eq-bar-1" x="0"  y="0" width="3" height="14" rx="1.5" fill="#722F37" />
-      <rect class="eq-bar-2" x="6"  y="0" width="3" height="14" rx="1.5" fill="#722F37" />
-      <rect class="eq-bar-3" x="12" y="0" width="3" height="14" rx="1.5" fill="#722F37" />
-      <rect class="eq-bar-4" x="18" y="0" width="3" height="14" rx="1.5" fill="#722F37" />
-      <rect class="eq-bar-5" x="24" y="0" width="3" height="14" rx="1.5" fill="#722F37" />
+  <!-- FOOTER STRIP -->
+  <g transform="translate(40, 798)">
+    <g transform="translate(0, 3)">
+      <rect class="eq-bar-1" x="0"  y="0" width="3" height="14" rx="1.5" fill="#FF4422" />
+      <rect class="eq-bar-2" x="6"  y="0" width="3" height="14" rx="1.5" fill="#FF4422" />
+      <rect class="eq-bar-3" x="12" y="0" width="3" height="14" rx="1.5" fill="#FF4422" />
+      <rect class="eq-bar-4" x="18" y="0" width="3" height="14" rx="1.5" fill="#FF4422" />
+      <rect class="eq-bar-5" x="24" y="0" width="3" height="14" rx="1.5" fill="#FF4422" />
     </g>
-
-    <!-- Engineering Discipline Mention -->
-    <text x="38" y="15" fill="#886D5B" class="mono" font-size="11.5" font-weight="700" letter-spacing="1">DISCIPLINE: INTERACTION DESIGN &amp; FRONTEND ARCHITECTURE</text>
-
-    <!-- Technical Status Telemetry on Right (Clean typography, margin-to-margin aligned) -->
-    <text x="1120" y="15" text-anchor="end" fill="#722F37" class="mono" font-size="11.5" font-weight="700" letter-spacing="0.5">STATUS: OPEN TO SHIP<tspan fill="#D6C4AE">  |  </tspan>STACK: PRODUCTION READY</text>
+    <text x="38" y="14" fill="#8E95A2" class="mono" font-size="11" font-weight="700" letter-spacing="1">DISCIPLINE: INTERACTION DESIGN &amp; FRONTEND ARCHITECTURE</text>
+    <text x="1120" y="14" text-anchor="end" fill="#FAF8F4" class="mono" font-size="11" font-weight="700" letter-spacing="0.6">STATUS: OPEN TO SHIP<tspan fill="#3A4152">  |  </tspan><tspan fill="#FF5738">STACK: PRODUCTION READY</tspan></text>
   </g>
 </svg>

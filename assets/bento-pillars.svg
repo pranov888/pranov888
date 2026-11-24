@@ -1,364 +1,317 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" width="100%" height="auto">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 556" width="100%" height="auto">
   <defs>
-    <!-- Background Card Gradient: Cream Silk -->
-    <linearGradient id="card-light-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#FCFAF6" />
-      <stop offset="100%" stop-color="#F3E9DA" />
+    <linearGradient id="bento-shell" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0D0F14" />
+      <stop offset="100%" stop-color="#08090C" />
     </linearGradient>
 
-    <!-- Celestial Planet 1: Jovian/Terrestrial Radial Gradient -->
-    <radialGradient id="planet-outer-grad" cx="35%" cy="35%" r="65%">
-      <stop offset="0%" stop-color="#FCFAF6" />
-      <stop offset="45%" stop-color="#D6BDA4" />
-      <stop offset="85%" stop-color="#8E3E4B" />
-      <stop offset="100%" stop-color="#541E26" />
-    </radialGradient>
-
-    <!-- Celestial Planet 2: Lunar Marble Radial Gradient -->
-    <radialGradient id="planet-inner-grad" cx="30%" cy="30%" r="70%">
-      <stop offset="0%" stop-color="#FAF6EE" />
-      <stop offset="50%" stop-color="#C7B49D" />
-      <stop offset="100%" stop-color="#722F37" />
-    </radialGradient>
-
-    <!-- Planetary Ring Linear Gradient -->
-    <linearGradient id="planet-ring-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#C7B49D" stop-opacity="0.9" />
-      <stop offset="50%" stop-color="#FAF6EE" stop-opacity="0.4" />
-      <stop offset="100%" stop-color="#886D5B" stop-opacity="0.8" />
+    <linearGradient id="bento-card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#14171F" />
+      <stop offset="100%" stop-color="#0E1016" />
     </linearGradient>
 
     <style><![CDATA[
-      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800;900&family=Space+Mono:wght@700&display=swap');
       svg { pointer-events: none; user-select: none; }
+      .sans { font-family: 'Inter', 'SF Pro Display', 'Segoe UI', 'Lato', 'Noto Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
+      .mono { font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'DejaVu Sans Mono', ui-monospace, Menlo, Consolas, monospace; }
 
-      .mono { font-family: 'Space Mono', 'SFMono-Regular', Menlo, Monaco, Consolas, monospace; }
-      .grotesk { font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-      .cat-tag { font-family: 'Space Mono', monospace; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; fill: #722F37; }
-      .card-title { font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 26px; font-weight: 900; letter-spacing: -0.5px; fill: #1C0F14; }
-      .card-subtitle { font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 15.5px; font-weight: 800; fill: #722F37; }
-      .card-body { font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14.5px; font-weight: 600; fill: #241117; line-height: 1.5; }
-
-      /* ==================== ANIMATIONS FOR ALL BESPOKE SHAPES ==================== */
-
-      /* SHAPE 001: BENTO WIREFRAME GRID DYNAMIC HIGHLIGHT ANIMATION */
-      .bento-base {
-        fill: rgba(214, 196, 174, 0.24);
-        stroke: #D6C4AE;
-        stroke-width: 1.4;
+      .flow-node-1 { animation: nodeLit1 6s ease-in-out infinite; }
+      .flow-node-2 { animation: nodeLit2 6s ease-in-out infinite; }
+      .flow-node-3 { animation: nodeLit3 6s ease-in-out infinite; }
+      @keyframes nodeLit1 {
+        0%, 28%   { stroke: #FF4422; fill: #1A1416; }
+        35%, 100% { stroke: #292E3B; fill: #12151C; }
       }
-      .bento-grid-float {
-        animation: floatBento 4s ease-in-out infinite alternate;
+      @keyframes nodeLit2 {
+        0%, 30%   { stroke: #292E3B; fill: #12151C; }
+        36%, 64%  { stroke: #FF4422; fill: #1A1416; }
+        70%, 100% { stroke: #292E3B; fill: #12151C; }
       }
-      @keyframes floatBento {
-        0% { transform: translateY(0px); }
+      @keyframes nodeLit3 {
+        0%, 66%   { stroke: #292E3B; fill: #12151C; }
+        72%, 96%  { stroke: #FF4422; fill: #1A1416; }
+        100%      { stroke: #292E3B; fill: #12151C; }
+      }
+      .flow-dash {
+        stroke-dasharray: 5 5;
+        animation: dashFlow 2.4s linear infinite;
+      }
+      @keyframes dashFlow {
+        from { stroke-dashoffset: 0; }
+        to   { stroke-dashoffset: -20; }
+      }
+
+      .token-float {
+        animation: floatSlow 3.8s ease-in-out infinite alternate;
+      }
+      @keyframes floatSlow {
+        0%   { transform: translateY(0px); }
         100% { transform: translateY(-5px); }
       }
-      
-      .box-highlight-1 { animation: cycleHighlight1 7.5s ease-in-out infinite; }
-      .box-highlight-2 { animation: cycleHighlight2 7.5s ease-in-out infinite; }
-      .box-highlight-3 { animation: cycleHighlight3 7.5s ease-in-out infinite; }
-      .box-highlight-4 { animation: cycleHighlight4 7.5s ease-in-out infinite; }
-      .box-highlight-5 { animation: cycleHighlight5 7.5s ease-in-out infinite; }
-
-      @keyframes cycleHighlight1 {
-        0%, 15% { stroke: #722F37; stroke-width: 2.2; fill: #FAF7F2; filter: drop-shadow(0 2px 6px rgba(114, 47, 55, 0.22)); }
-        20%, 95% { stroke: #D6C4AE; stroke-width: 1.4; fill: rgba(214, 196, 174, 0.24); filter: none; }
-        100% { stroke: #722F37; stroke-width: 2.2; fill: #FAF7F2; filter: drop-shadow(0 2px 6px rgba(114, 47, 55, 0.22)); }
+      .swatch-pulse {
+        animation: swatchBeat 4.5s ease-in-out infinite;
+      }
+      @keyframes swatchBeat {
+        0%, 100% { opacity: 0.85; }
+        50%      { opacity: 1; }
       }
 
-      @keyframes cycleHighlight2 {
-        0%, 15% { stroke: #D6C4AE; stroke-width: 1.4; fill: rgba(214, 196, 174, 0.24); filter: none; }
-        20%, 35% { stroke: #722F37; stroke-width: 2.2; fill: #FAF7F2; filter: drop-shadow(0 2px 6px rgba(114, 47, 55, 0.22)); }
-        40%, 100% { stroke: #D6C4AE; stroke-width: 1.4; fill: rgba(214, 196, 174, 0.24); filter: none; }
+      .prism-levitate {
+        animation: prismFloat 3.4s ease-in-out infinite alternate;
+      }
+      @keyframes prismFloat {
+        0%   { transform: translateY(4px); }
+        100% { transform: translateY(-7px); }
+      }
+      .spring-dot-wave {
+        animation: springDotMove 5.2s ease-in-out infinite;
+      }
+      @keyframes springDotMove {
+        0%   { transform: translate(0px, 46px); }
+        18%  { transform: translate(26px, -48px); }
+        38%  { transform: translate(58px, 26px); }
+        58%  { transform: translate(90px, -16px); }
+        78%  { transform: translate(122px, 0px); }
+        100% { transform: translate(144px, 0px); }
       }
 
-      @keyframes cycleHighlight4 {
-        0%, 35% { stroke: #D6C4AE; stroke-width: 1.4; fill: rgba(214, 196, 174, 0.24); filter: none; }
-        40%, 55% { stroke: #722F37; stroke-width: 2.2; fill: #FAF7F2; filter: drop-shadow(0 2px 6px rgba(114, 47, 55, 0.22)); }
-        60%, 100% { stroke: #D6C4AE; stroke-width: 1.4; fill: rgba(214, 196, 174, 0.24); filter: none; }
+      .deploy-orbit {
+        animation: orbitSpin 18s linear infinite;
+        transform-origin: 97px 90px;
       }
-
-      @keyframes cycleHighlight5 {
-        0%, 55% { stroke: #D6C4AE; stroke-width: 1.4; fill: rgba(214, 196, 174, 0.24); filter: none; }
-        60%, 75% { stroke: #722F37; stroke-width: 2.2; fill: #FAF7F2; filter: drop-shadow(0 2px 6px rgba(114, 47, 55, 0.22)); }
-        80%, 100% { stroke: #D6C4AE; stroke-width: 1.4; fill: rgba(214, 196, 174, 0.24); filter: none; }
+      @keyframes orbitSpin {
+        from { transform: rotate(0deg); }
+        to   { transform: rotate(360deg); }
       }
-
-      @keyframes cycleHighlight3 {
-        0%, 75% { stroke: #D6C4AE; stroke-width: 1.4; fill: rgba(214, 196, 174, 0.24); filter: none; }
-        80%, 95% { stroke: #722F37; stroke-width: 2.4; fill: #FAF7F2; filter: drop-shadow(0 3px 8px rgba(114, 47, 55, 0.24)); }
-        100% { stroke: #D6C4AE; stroke-width: 1.4; fill: rgba(214, 196, 174, 0.24); filter: none; }
+      .deploy-orbit-rev {
+        animation: orbitSpinRev 12s linear infinite;
+        transform-origin: 97px 90px;
       }
-
-      /* SHAPE 002: Modular Layers Staggered Levitation */
-      .layer-float-1 { animation: floatL1 3.5s ease-in-out infinite alternate; }
-      .layer-float-2 { animation: floatL2 3.5s ease-in-out infinite alternate 0.5s; }
-      .layer-float-3 { animation: floatL3 3.5s ease-in-out infinite alternate 1s; }
-      @keyframes floatL1 { 0% { transform: translateY(0px); } 100% { transform: translateY(-7px); } }
-      @keyframes floatL2 { 0% { transform: translateY(0px); } 100% { transform: translateY(-4px); } }
-      @keyframes floatL3 { 0% { transform: translateY(0px); } 100% { transform: translateY(-2px); } }
-
-      /* SHAPE 003: 3D SPATIAL KINETIC CUBE */
-      .outer-cage-float {
-        animation: floatCage 4.2s ease-in-out infinite alternate;
+      @keyframes orbitSpinRev {
+        from { transform: rotate(360deg); }
+        to   { transform: rotate(0deg); }
       }
-      @keyframes floatCage {
-        0% { transform: translateY(0px); }
-        100% { transform: translateY(-4px); }
+      .prod-beacon {
+        animation: prodPulse 2.2s ease-in-out infinite;
       }
-      .inner-cube-levitate {
-        animation: levitateCube 3.2s ease-in-out infinite alternate;
+      @keyframes prodPulse {
+        0%, 100% { opacity: 1; }
+        50%      { opacity: 0.35; }
       }
-      @keyframes levitateCube {
-        0% { transform: translateY(6px); }
-        100% { transform: translateY(-8px); }
-      }
-      .inner-cube-glow {
-        animation: cubeGlow 2.8s ease-in-out infinite alternate;
-      }
-      @keyframes cubeGlow {
-        0% { filter: drop-shadow(0 2px 4px rgba(114, 47, 55, 0.15)); }
-        100% { filter: drop-shadow(0 4px 12px rgba(114, 47, 55, 0.35)); }
-      }
-
-      /* SHAPE 004: Ascending Rocket & Textured Celestial Orbits */
-      .rocket-hover {
-        animation: rocketLevitate 2.8s ease-in-out infinite alternate;
-      }
-      .thrust-pulse {
-        animation: thrustFlicker 0.4s ease-in-out infinite alternate;
-      }
-      .orbit-outer {
-        animation: spinCW 24s linear infinite;
-        transform-origin: 0px 0px;
-      }
-      .orbit-inner {
-        animation: spinCCW 15s linear infinite;
-        transform-origin: 0px 0px;
-      }
-      @keyframes rocketLevitate {
-        0% { transform: translateY(3px); }
-        100% { transform: translateY(-6px); }
-      }
-      @keyframes thrustFlicker {
-        0% { transform: scaleY(0.7); opacity: 0.7; }
-        100% { transform: scaleY(1.3); opacity: 1; }
-      }
-      @keyframes spinCW { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-      @keyframes spinCCW { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
     ]]></style>
   </defs>
 
-  <!-- ==================== CARD 001: RESEARCH & LOGIC ==================== -->
-  <g transform="translate(0, 0)">
-    <rect width="285" height="520" rx="14" fill="url(#card-light-grad)" stroke="#D6C4AE" stroke-width="1.4" />
-    <text x="24" y="38" class="cat-tag">001 // RESEARCH</text>
-    <line x1="24" y1="48" x2="260" y2="48" stroke="#E4D7C5" stroke-width="1" />
-    
-    <!-- Bespoke Graphic 001: Centered, Proportional Wireframe Bento Grid with Dynamic Sequential Highlight -->
-    <g transform="translate(142.5, 130)">
-      <!-- Ground Ambient Shadow -->
-      <ellipse cx="0" cy="44" rx="46" ry="9" fill="rgba(114, 47, 55, 0.05)" />
+  <rect width="1200" height="556" rx="18" fill="url(#bento-shell)" stroke="#222631" stroke-width="1.5" />
 
-      <!-- Centered Bento Architecture -->
-      <g class="bento-grid-float">
-        <!-- Box 1 (Top-Left) -->
-        <rect x="-47" y="-36" width="40" height="24" rx="4.5" class="bento-base box-highlight-1" />
-        
-        <!-- Box 2 (Top-Right) -->
-        <rect x="-1" y="-36" width="48" height="24" rx="4.5" class="bento-base box-highlight-2" />
+  <!-- 001: RESEARCH & UX (TOP-LEFT 486px) -->
+  <g transform="translate(18, 18)">
+    <rect width="486" height="252" rx="14" fill="url(#bento-card)" stroke="#242834" stroke-width="1.2" />
 
-        <!-- Box 4 (Middle-Right) -->
-        <rect x="-1" y="-6" width="48" height="18" rx="4" class="bento-base box-highlight-4" />
+    <g transform="translate(26, 30)">
+      <text x="0" y="10" fill="#FF4422" class="mono" font-size="11" font-weight="700" letter-spacing="1.6">001 // RESEARCH</text>
+      <text x="0" y="52" fill="#FAF8F4" class="sans" font-size="26" font-weight="900" letter-spacing="-0.6">Research &amp; UX</text>
+      <text x="0" y="78" fill="#C7CCD6" class="sans" font-size="13.5" font-weight="700">Deconstruct complex flows.</text>
 
-        <!-- Box 5 (Bottom-Right) -->
-        <rect x="-1" y="18" width="48" height="18" rx="4" class="bento-base box-highlight-5" />
-
-        <!-- Box 3 (Bottom-Left: Hero Feature Block) -->
-        <rect x="-47" y="-6" width="40" height="42" rx="5.5" class="bento-base box-highlight-3" />
-      </g>
-    </g>
-
-    <!-- Content: Pranov's Research & UX Focus -->
-    <g transform="translate(24, 258)">
-      <text x="0" y="0" class="card-title">Research &amp; UX</text>
-      <text x="0" y="28" class="card-subtitle">Deconstruct complex flows.</text>
-      <text x="0" y="68" class="card-body">
+      <text x="0" y="114" fill="#8E95A2" class="sans" font-size="13" font-weight="500">
         <tspan x="0" dy="0">User research, journey maps,</tspan>
-        <tspan x="0" dy="24">and intuitive wireframing.</tspan>
-        <tspan x="0" dy="24">Turning ambiguous problems</tspan>
-        <tspan x="0" dy="24">into clear user experiences.</tspan>
+        <tspan x="0" dy="21">and wireframes turning ambiguity</tspan>
+        <tspan x="0" dy="21">into intuitive architecture.</tspan>
       </text>
+
+      <text x="0" y="198" fill="#5D6472" class="mono" font-size="10" font-weight="700" letter-spacing="1">FLOW // DISCOVERY TO PROTOTYPE</text>
+    </g>
+
+    <!-- Wireframe Flow Viewport (Cleanly Routed Outside Nodes) -->
+    <g transform="translate(268, 26)">
+      <rect width="194" height="200" rx="10" fill="#0A0B0E" stroke="#1E222D" stroke-width="1" />
+
+      <path d="M 76 58 L 76 70 L 118 70 L 118 82" fill="none" stroke="#FF4422" stroke-width="1.4" class="flow-dash" opacity="0.85" />
+      <path d="M 118 118 L 118 130 L 79 130 L 79 142" fill="none" stroke="#FF4422" stroke-width="1.4" class="flow-dash" opacity="0.85" />
+
+      <!-- Node 1 -->
+      <g transform="translate(20, 22)">
+        <rect width="112" height="36" rx="6" class="flow-node-1" stroke-width="1.4" />
+        <circle cx="14" cy="18" r="4" fill="#FF4422" />
+        <rect x="26" y="12" width="54" height="4" rx="2" fill="#E6E1D6" />
+        <rect x="26" y="21" width="36" height="3.5" rx="1.7" fill="#5D6472" />
+      </g>
+
+      <!-- Node 2 -->
+      <g transform="translate(62, 82)">
+        <rect width="112" height="36" rx="6" class="flow-node-2" stroke-width="1.4" />
+        <rect x="10" y="9" width="18" height="18" rx="3" fill="none" stroke="#8E95A2" stroke-width="1.2" />
+        <rect x="36" y="12" width="56" height="4" rx="2" fill="#E6E1D6" />
+        <rect x="36" y="21" width="40" height="3.5" rx="1.7" fill="#5D6472" />
+      </g>
+
+      <!-- Node 3 -->
+      <g transform="translate(20, 142)">
+        <rect width="118" height="36" rx="6" class="flow-node-3" stroke-width="1.4" />
+        <rect x="10" y="10" width="16" height="16" rx="4" fill="#FF4422" opacity="0.22" stroke="#FF4422" stroke-width="1.2" />
+        <path d="M 14 18 L 17 21 L 22 15" fill="none" stroke="#FF4422" stroke-width="1.5" stroke-linecap="round" />
+        <rect x="34" y="12" width="64" height="4" rx="2" fill="#FAF8F4" />
+        <rect x="34" y="21" width="42" height="3.5" rx="1.7" fill="#8E95A2" />
+      </g>
     </g>
   </g>
 
-  <!-- ==================== CARD 002: DESIGN SYSTEMS ==================== -->
-  <g transform="translate(305, 0)">
-    <rect width="285" height="520" rx="14" fill="url(#card-light-grad)" stroke="#D6C4AE" stroke-width="1.4" />
-    <text x="24" y="38" class="cat-tag">002 // SYSTEMS</text>
-    <line x1="24" y1="48" x2="260" y2="48" stroke="#E4D7C5" stroke-width="1" />
-    
-    <!-- Bespoke Graphic 002: Staggered Component Tokens & Calipers -->
-    <g transform="translate(142, 130)">
-      <!-- Bottom Layer (Architecture) -->
-      <g class="layer-float-3">
-        <polygon points="0,-18 48,6 0,30 -48,6" fill="rgba(214, 196, 174, 0.35)" stroke="#C7B49D" stroke-width="1.3" />
-      </g>
-      <!-- Middle Layer (Components) -->
-      <g class="layer-float-2">
-        <polygon points="0,-32 48,-8 0,16 -48,-8" fill="rgba(114, 47, 55, 0.12)" stroke="#886D5B" stroke-width="1.4" />
-        <line x1="0" y1="-32" x2="0" y2="16" stroke="#D6C4AE" stroke-width="1" stroke-dasharray="3 3" />
-        <line x1="-24" y1="-20" x2="24" y2="4" stroke="#D6C4AE" stroke-width="1" stroke-dasharray="3 3" />
-      </g>
-      <!-- Top Layer (Design Tokens) -->
-      <g class="layer-float-1">
-        <polygon points="0,-46 48,-22 0,2 -48,-22" fill="#FAF7F2" stroke="#722F37" stroke-width="1.8" />
-        <circle cx="0" cy="-22" r="5" fill="#722F37" />
-        <circle cx="-20" cy="-22" r="3" fill="#886D5B" />
-        <circle cx="20" cy="-22" r="3" fill="#886D5B" />
-        <!-- Caliper tick marks with clean spacing & no overlapping -->
-        <line x1="-58" y1="-38" x2="-58" y2="-6" stroke="#722F37" stroke-width="1.2" />
-        <line x1="-61" y1="-38" x2="-55" y2="-38" stroke="#722F37" stroke-width="1" />
-        <line x1="-61" y1="-6" x2="-55" y2="-6" stroke="#722F37" stroke-width="1" />
-        <line x1="-55" y1="-38" x2="-48" y2="-30" stroke="#D6C4AE" stroke-width="0.8" stroke-dasharray="2 2" />
-        <line x1="-55" y1="-6" x2="-48" y2="-14" stroke="#D6C4AE" stroke-width="0.8" stroke-dasharray="2 2" />
-        <!-- Dimension Tag: 8px (Pure Typography, No Border) -->
-        <text x="-65" y="-19" fill="#722F37" class="mono" font-size="9" font-weight="700" text-anchor="end">8px</text>
-      </g>
+  <!-- 002: DESIGN SYSTEMS (TOP-RIGHT 660px) -->
+  <g transform="translate(522, 18)">
+    <rect width="660" height="252" rx="14" fill="url(#bento-card)" stroke="#242834" stroke-width="1.2" />
+
+    <g transform="translate(28, 30)">
+      <text x="0" y="10" fill="#FF4422" class="mono" font-size="11" font-weight="700" letter-spacing="1.6">002 // SYSTEMS</text>
+      <text x="0" y="52" fill="#FAF8F4" class="sans" font-size="26" font-weight="900" letter-spacing="-0.6">Design Systems</text>
+      <text x="0" y="78" fill="#C7CCD6" class="sans" font-size="13.5" font-weight="700">Tokens, scales &amp; precision.</text>
+
+      <text x="0" y="114" fill="#8E95A2" class="sans" font-size="13" font-weight="500">
+        <tspan x="0" dy="0">Scalable component tokens connecting</tspan>
+        <tspan x="0" dy="21">Figma directly to Tailwind CSS —</tspan>
+        <tspan x="0" dy="21">enforcing contrast &amp; spatial rhythm.</tspan>
+      </text>
+
+      <text x="0" y="198" fill="#5D6472" class="mono" font-size="10" font-weight="700" letter-spacing="1">SPEC // 8PX GRID · WCAG AA+</text>
     </g>
 
-    <!-- Content: Pranov's Design Systems Focus -->
-    <g transform="translate(24, 258)">
-      <text x="0" y="0" class="card-title">Design Systems</text>
-      <text x="0" y="28" class="card-subtitle">Tokens, scales &amp; precision.</text>
-      <text x="0" y="68" class="card-body">
-        <tspan x="0" dy="0">Scalable component tokens</tspan>
-        <tspan x="0" dy="24">in Figma and Tailwind CSS.</tspan>
-        <tspan x="0" dy="24">Enforcing visual hierarchy,</tspan>
-        <tspan x="0" dy="24">accessibility &amp; consistency.</tspan>
-      </text>
+    <g transform="translate(306, 26)">
+      <rect width="328" height="200" rx="10" fill="#0A0B0E" stroke="#1E222D" stroke-width="1" />
+
+      <text x="16" y="22" fill="#6F7685" class="mono" font-size="9" font-weight="700" letter-spacing="1">COLOR TOKENS</text>
+      <g transform="translate(16, 30)">
+        <rect x="0" y="0" width="66" height="32" rx="5" fill="#171A22" stroke="#2D3342" stroke-width="1" />
+        <text x="33" y="20" text-anchor="middle" fill="#8E95A2" class="mono" font-size="8.5" font-weight="700">#0A0B0E</text>
+
+        <rect x="76" y="0" width="66" height="32" rx="5" fill="#F2EFE9" />
+        <text x="109" y="20" text-anchor="middle" fill="#111318" class="mono" font-size="8.5" font-weight="700">#F2EFE9</text>
+
+        <rect x="152" y="0" width="66" height="32" rx="5" fill="#FF4422" class="swatch-pulse" />
+        <text x="185" y="20" text-anchor="middle" fill="#FAF8F4" class="mono" font-size="8.5" font-weight="700">#FF4422</text>
+
+        <rect x="228" y="0" width="66" height="32" rx="5" fill="#2A2F3D" />
+        <text x="261" y="20" text-anchor="middle" fill="#C7CCD6" class="mono" font-size="8.5" font-weight="700">#2A2F3D</text>
+      </g>
+
+      <line x1="16" y1="78" x2="312" y2="78" stroke="#1B1F29" stroke-width="1" />
+
+      <g transform="translate(16, 92)">
+        <text x="0" y="10" fill="#6F7685" class="mono" font-size="8.5" font-weight="700">TYPE SCALE</text>
+        <text x="0" y="54" fill="#FAF8F4" class="sans" font-size="40" font-weight="900" letter-spacing="-1.5">Aa</text>
+        <text x="58" y="34" fill="#C7CCD6" class="mono" font-size="9.5" font-weight="700">68 / -2.5</text>
+        <text x="58" y="50" fill="#6F7685" class="mono" font-size="9" font-weight="700">1.25 RATIO</text>
+      </g>
+
+      <line x1="154" y1="90" x2="154" y2="184" stroke="#1B1F29" stroke-width="1" />
+
+      <g transform="translate(170, 92)">
+        <text x="0" y="10" fill="#6F7685" class="mono" font-size="8.5" font-weight="700">SPACING // 8PX</text>
+        <g transform="translate(8, 34)" class="token-float">
+          <rect x="4" y="12" width="122" height="36" rx="8" fill="#181C26" stroke="#293040" stroke-width="1" />
+          <rect x="0" y="4" width="122" height="36" rx="8" fill="#FAF8F4" />
+          <circle cx="18" cy="22" r="4.5" fill="#FF4422" />
+          <text x="30" y="26" fill="#111318" class="sans" font-size="11.5" font-weight="800">Primary CTA</text>
+
+          <line x1="-10" y1="4" x2="-10" y2="40" stroke="#FF4422" stroke-width="1" />
+          <line x1="-13" y1="4" x2="-7" y2="4" stroke="#FF4422" stroke-width="1" />
+          <line x1="-13" y1="40" x2="-7" y2="40" stroke="#FF4422" stroke-width="1" />
+          <text x="61" y="64" text-anchor="middle" fill="#FF5738" class="mono" font-size="8.5" font-weight="700">pad: 16 · r: 8px</text>
+        </g>
+      </g>
     </g>
   </g>
 
-  <!-- ==================== CARD 003: MOTION & PHYSICS ==================== -->
-  <g transform="translate(610, 0)">
-    <rect width="285" height="520" rx="14" fill="url(#card-light-grad)" stroke="#D6C4AE" stroke-width="1.4" />
-    <text x="24" y="38" class="cat-tag">003 // MOTION</text>
-    <line x1="24" y1="48" x2="260" y2="48" stroke="#E4D7C5" stroke-width="1" />
-    
-    <!-- Bespoke Graphic 003: 3D Spatial Bounding Cage & Levitation Core -->
-    <g transform="translate(142, 130)">
-      <!-- Ambient Floor Shadow -->
-      <ellipse cx="0" cy="46" rx="42" ry="12" fill="rgba(114, 47, 55, 0.06)" />
+  <!-- 003: KINETIC PHYSICS (BOTTOM-LEFT 660px) -->
+  <g transform="translate(18, 286)">
+    <rect width="660" height="252" rx="14" fill="url(#bento-card)" stroke="#242834" stroke-width="1.2" />
 
-      <!-- Outer 3D Spatial Wireframe Cage -->
-      <g class="outer-cage-float">
-        <!-- Outer Hexagon Silhouette -->
-        <polygon points="0,-48 42,-24 42,24 0,48 -42,24 -42,-24" fill="rgba(214, 196, 174, 0.12)" stroke="#C7B49D" stroke-width="1.5" stroke-linejoin="round" />
-        <!-- Internal Spatial Corner Edges meeting at Center (0, 0) -->
-        <line x1="0" y1="0" x2="0" y2="-48" stroke="#C7B49D" stroke-width="1.3" opacity="0.75" />
-        <line x1="0" y1="0" x2="-42" y2="24" stroke="#C7B49D" stroke-width="1.3" opacity="0.75" />
-        <line x1="0" y1="0" x2="42" y2="24" stroke="#C7B49D" stroke-width="1.3" opacity="0.75" />
+    <g transform="translate(26, 30)">
+      <text x="0" y="10" fill="#FF4422" class="mono" font-size="11" font-weight="700" letter-spacing="1.6">003 // MOTION</text>
+      <text x="0" y="52" fill="#FAF8F4" class="sans" font-size="26" font-weight="900" letter-spacing="-0.6">Kinetic Physics</text>
+      <text x="0" y="78" fill="#C7CCD6" class="sans" font-size="13.5" font-weight="700">Spring physics &amp; fluid easing.</text>
 
-        <!-- Interior Levitation Floor Shadow beneath Inner Cube -->
-        <ellipse cx="0" cy="22" rx="20" ry="8" fill="rgba(114, 47, 55, 0.12)" />
+      <text x="0" y="114" fill="#8E95A2" class="sans" font-size="13" font-weight="500">
+        <tspan x="0" dy="0">60fps micro-interactions, damped</tspan>
+        <tspan x="0" dy="21">harmonic spring curves, and reactive</tspan>
+        <tspan x="0" dy="21">spatial canvases built for tactility.</tspan>
+      </text>
 
-        <!-- Inner 3D Kinetic Core (Floating / Oscillating with Spring Physics) -->
-        <g class="inner-cube-levitate">
-          <g class="inner-cube-glow">
-            <!-- Left Face -->
-            <polygon points="-21,-12 0,0 0,24 -21,12" fill="rgba(114, 47, 55, 0.14)" stroke="#722F37" stroke-width="2.4" stroke-linejoin="round" />
-            <!-- Right Face -->
-            <polygon points="0,0 21,-12 21,12 0,24" fill="rgba(114, 47, 55, 0.25)" stroke="#722F37" stroke-width="2.4" stroke-linejoin="round" />
-            <!-- Top Face -->
-            <polygon points="0,-24 21,-12 0,0 -21,-12" fill="#FAF7F2" stroke="#722F37" stroke-width="2.4" stroke-linejoin="round" />
-          </g>
-        </g>
-      </g>
+      <text x="0" y="198" fill="#5D6472" class="mono" font-size="10" font-weight="700" letter-spacing="1">DAMPING // ZETA 0.72 · STIFFNESS 260</text>
     </g>
 
-    <!-- Content: Pranov's Motion Focus -->
-    <g transform="translate(24, 258)">
-      <text x="0" y="0" class="card-title">Kinetic Physics</text>
-      <text x="0" y="28" class="card-subtitle">Spring physics &amp; fluid easing.</text>
-      <text x="0" y="68" class="card-body">
-        <tspan x="0" dy="0">High-framerate micro-interactions,</tspan>
-        <tspan x="0" dy="24">natural spring-damping curves,</tspan>
-        <tspan x="0" dy="24">and reactive spatial canvases that</tspan>
-        <tspan x="0" dy="24">delight on every interaction.</tspan>
-      </text>
+    <g transform="translate(306, 26)">
+      <rect width="328" height="200" rx="10" fill="#0A0B0E" stroke="#1E222D" stroke-width="1" />
+
+      <g transform="translate(18, 24)">
+        <text x="0" y="0" fill="#6F7685" class="mono" font-size="8.5" font-weight="700">SPRING RESPONSE</text>
+        <line x1="0" y1="78" x2="144" y2="78" stroke="#252A36" stroke-width="1" stroke-dasharray="3 3" />
+        <line x1="0" y1="22" x2="0" y2="132" stroke="#252A36" stroke-width="1" />
+        <path d="M 0 124 C 14 124, 16 26, 26 28 C 38 30, 46 106, 58 104 C 70 102, 78 60, 90 62 C 102 64, 110 80, 122 78 L 144 78"
+              fill="none" stroke="#FF4422" stroke-width="2.2" stroke-linecap="round" />
+        <g class="spring-dot-wave">
+          <circle cx="0" cy="78" r="6" fill="#FF4422" opacity="0.28" />
+          <circle cx="0" cy="78" r="3.5" fill="#FAF8F4" stroke="#FF4422" stroke-width="1.5" />
+        </g>
+        <text x="0" y="154" fill="#8E95A2" class="mono" font-size="9">0ms</text>
+        <text x="144" y="154" text-anchor="end" fill="#FF5738" class="mono" font-size="9">SETTLE 320ms</text>
+      </g>
+
+      <line x1="184" y1="20" x2="184" y2="180" stroke="#1B1F29" stroke-width="1" />
+
+      <g transform="translate(256, 104)">
+        <ellipse cx="0" cy="52" rx="40" ry="11" fill="rgba(255, 68, 34, 0.08)" />
+        <polygon points="0,-54 46,-27 46,27 0,54 -46,27 -46,-27" fill="rgba(255,255,255,0.02)" stroke="#33394A" stroke-width="1.4" stroke-linejoin="round" />
+        <line x1="0" y1="0" x2="0" y2="-54" stroke="#2D3342" stroke-width="1.2" />
+        <line x1="0" y1="0" x2="-46" y2="27" stroke="#2D3342" stroke-width="1.2" />
+        <line x1="0" y1="0" x2="46" y2="27" stroke="#2D3342" stroke-width="1.2" />
+
+        <g class="prism-levitate">
+          <polygon points="-22,-12 0,0 0,25 -22,13" fill="#2A1514" stroke="#FF4422" stroke-width="1.8" stroke-linejoin="round" />
+          <polygon points="0,0 22,-12 22,13 0,25" fill="#4A1D16" stroke="#FF4422" stroke-width="1.8" stroke-linejoin="round" />
+          <polygon points="0,-25 22,-12 0,0 -22,-12" fill="#FF5738" stroke="#FAF8F4" stroke-width="1.4" stroke-linejoin="round" />
+        </g>
+      </g>
     </g>
   </g>
 
-  <!-- ==================== CARD 004: PROTOTYPE TO SHIP ==================== -->
-  <g transform="translate(915, 0)">
-    <rect width="285" height="520" rx="14" fill="url(#card-light-grad)" stroke="#D6C4AE" stroke-width="1.4" />
-    <text x="24" y="38" class="cat-tag">004 // SHIP</text>
-    <line x1="24" y1="48" x2="260" y2="48" stroke="#E4D7C5" stroke-width="1" />
-    
-    <!-- Bespoke Graphic 004: Deployment Rocket & Textured Celestial Orbits -->
-    <g transform="translate(142, 130)">
-      <!-- Outer Orbit Track & Textured Saturn-like Planet (Revolving CW in background) -->
-      <g class="orbit-outer">
-        <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="24s" repeatCount="indefinite" />
-        <circle cx="0" cy="0" r="48" fill="none" stroke="#D6C4AE" stroke-width="1.1" stroke-dasharray="4 4" opacity="0.65" />
-        <!-- Planet 1 with Ring & Atmospheric Bands -->
-        <g opacity="0.9">
-          <!-- Back half of planetary ring -->
-          <ellipse cx="48" cy="0" rx="11" ry="3.2" fill="none" stroke="url(#planet-ring-grad)" stroke-width="1.2" transform="rotate(-25 48 0)" opacity="0.75" />
-          <!-- Planet Sphere -->
-          <circle cx="48" cy="0" r="6.8" fill="url(#planet-outer-grad)" />
-          <!-- Surface atmospheric bands -->
-          <path d="M 42.5 -1.2 Q 48 1 53.5 -1.2" fill="none" stroke="#FAF6EE" stroke-width="0.8" opacity="0.55" />
-          <path d="M 43 1.5 Q 48 3.8 53 1.5" fill="none" stroke="#541E26" stroke-width="0.7" opacity="0.35" />
-          <!-- Polar highlight -->
-          <circle cx="46.5" cy="-3.5" r="1.1" fill="#FAF6EE" opacity="0.8" />
-        </g>
-      </g>
+  <!-- 004: CODE & DEPLOY (BOTTOM-RIGHT 486px) -->
+  <g transform="translate(696, 286)">
+    <rect width="486" height="252" rx="14" fill="url(#bento-card)" stroke="#242834" stroke-width="1.2" />
 
-      <!-- Inner Orbit Track & Textured Terrestrial Planet (Revolving CCW in background) -->
-      <g class="orbit-inner">
-        <animateTransform attributeName="transform" type="rotate" from="360 0 0" to="0 0 0" dur="15s" repeatCount="indefinite" />
-        <circle cx="0" cy="0" r="32" fill="none" stroke="rgba(114, 47, 55, 0.22)" stroke-width="1.1" stroke-dasharray="3 3" />
-        <!-- Planet 2 with Crater Textures -->
-        <g opacity="0.85">
-          <circle cx="-32" cy="0" r="4.6" fill="url(#planet-inner-grad)" />
-          <!-- Subtle craters -->
-          <circle cx="-33.5" cy="-1.2" r="1" fill="#541E26" opacity="0.45" />
-          <circle cx="-30.5" cy="1.2" r="0.75" fill="#541E26" opacity="0.35" />
-          <!-- Crescent specular highlight -->
-          <circle cx="-33.5" cy="-2" r="0.8" fill="#FAF6EE" opacity="0.7" />
-        </g>
-      </g>
+    <g transform="translate(26, 30)">
+      <text x="0" y="10" fill="#FF4422" class="mono" font-size="11" font-weight="700" letter-spacing="1.6">004 // SHIP</text>
+      <text x="0" y="52" fill="#FAF8F4" class="sans" font-size="26" font-weight="900" letter-spacing="-0.6">Code &amp; Deploy</text>
+      <text x="0" y="78" fill="#C7CCD6" class="sans" font-size="13.5" font-weight="700">Tested, typed &amp; deployed.</text>
 
-      <!-- Ascending Rocket Vector (Layered on top of orbits) -->
-      <g class="rocket-hover">
-        <!-- Thruster Flame -->
-        <polygon points="0,24 -4,11 4,11" fill="#FF441F" class="thrust-pulse" />
-        <polygon points="0,18 -2,11 2,11" fill="#FFAE1A" />
+      <text x="0" y="114" fill="#8E95A2" class="sans" font-size="13" font-weight="500">
+        <tspan x="0" dy="0">Type-safe architecture, containerized</tspan>
+        <tspan x="0" dy="21">services, and automated CI/CD</tspan>
+        <tspan x="0" dy="21">pipelines running reliably at scale.</tspan>
+      </text>
 
-        <!-- Rocket Body -->
-        <path d="M 0 -26 C 6 -16 8 -4 8 10 L -8 10 C -8 -4 -6 -16 0 -26 Z" fill="#FAF6EE" stroke="#722F37" stroke-width="1.8" />
-        <!-- Wings / Fins -->
-        <path d="M -8 2 L -14 11 L -8 10 Z" fill="#722F37" />
-        <path d="M 8 2 L 14 11 L 8 10 Z" fill="#722F37" />
-        <!-- Porthole Window -->
-        <circle cx="0" cy="-6" r="3" fill="#722F37" />
-        <circle cx="0" cy="-6" r="1.2" fill="#FAF6EE" />
-      </g>
+      <text x="0" y="198" fill="#5D6472" class="mono" font-size="10" font-weight="700" letter-spacing="1">PIPELINE // BUILD · TEST · EDGE</text>
     </g>
 
-    <!-- Content: Pranov's Engineering & Ship -->
-    <g transform="translate(24, 258)">
-      <text x="0" y="0" class="card-title">Code &amp; Deploy</text>
-      <text x="0" y="28" class="card-subtitle">Tested, typed &amp; deployed.</text>
-      <text x="0" y="68" class="card-body">
-        <tspan x="0" dy="0">Type-safe architecture,</tspan>
-        <tspan x="0" dy="24">containerized infrastructure,</tspan>
-        <tspan x="0" dy="24">and automated CI/CD pipelines</tspan>
-        <tspan x="0" dy="24">that run seamlessly at scale.</tspan>
-      </text>
+    <g transform="translate(268, 26)">
+      <rect width="194" height="200" rx="10" fill="#0A0B0E" stroke="#1E222D" stroke-width="1" />
+
+      <circle cx="97" cy="90" r="62" fill="none" stroke="#1E222D" stroke-width="1.2" />
+      <g class="deploy-orbit">
+        <circle cx="97" cy="90" r="62" fill="none" stroke="#3B4254" stroke-width="1.2" stroke-dasharray="4 6" />
+        <circle cx="159" cy="90" r="4" fill="#FF4422" />
+      </g>
+      <g class="deploy-orbit-rev">
+        <circle cx="97" cy="90" r="40" fill="none" stroke="#FF4422" stroke-width="1" stroke-dasharray="18 32" opacity="0.55" />
+        <circle cx="57" cy="90" r="3" fill="#FAF8F4" />
+      </g>
+
+      <polygon points="97,64 119,77 119,103 97,116 75,103 75,77" fill="#14171F" stroke="#FF4422" stroke-width="1.8" />
+      <polygon points="97,76 109,83 109,97 97,104 85,97 85,83" fill="#FF4422" opacity="0.22" />
+      <circle cx="97" cy="90" r="4.5" fill="#FAF8F4" />
+
+      <g transform="translate(18, 166)">
+        <rect width="158" height="22" rx="5" fill="#13161E" stroke="#252A36" stroke-width="1" />
+        <circle cx="14" cy="11" r="3.2" fill="#22C55E" class="prod-beacon" />
+        <text x="26" y="14.5" fill="#D5D8E0" class="mono" font-size="9" font-weight="700" letter-spacing="0.8">PROD EDGE // 200 OK</text>
+      </g>
     </g>
   </g>
 </svg>
