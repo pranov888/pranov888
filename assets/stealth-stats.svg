@@ -12,6 +12,15 @@
       <stop offset="100%" stop-color="#F2E8DC" />
     </linearGradient>
 
+    <!-- Specular Hairline Sheen Gradient for Card Rims -->
+    <linearGradient id="rim-sheen-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#722F37" stop-opacity="0" />
+      <stop offset="25%" stop-color="#FAF7F2" stop-opacity="0.85" />
+      <stop offset="50%" stop-color="#722F37" stop-opacity="0.4" />
+      <stop offset="75%" stop-color="#FAF7F2" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#722F37" stop-opacity="0" />
+    </linearGradient>
+
     <style><![CDATA[
       @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800;900&family=Space+Mono:wght@400;700&display=swap');
       svg { pointer-events: none; user-select: none; }
@@ -20,63 +29,171 @@
       .grotesk { font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
       .quote-font { font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-style: italic; }
 
-      @keyframes pulseBeacon {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.35; }
+      /* ==================== 01. HEADER TELEMETRY & BEACON ==================== */
+      .beacon-dot {
+        animation: beaconBlink 2.4s ease-in-out infinite;
       }
-      .pulse-dot {
-        animation: pulseBeacon 2.2s infinite ease-in-out;
+      @keyframes beaconBlink {
+        0%, 100% { opacity: 1; filter: drop-shadow(0 0 5px rgba(114, 47, 55, 0.75)); }
+        50%      { opacity: 0.35; filter: none; }
       }
 
-      @keyframes glowBar {
-        0%, 100% { opacity: 0.95; }
-        50% { opacity: 1; }
+      .telemetry-pulse {
+        animation: teleBreathe 3.2s ease-in-out infinite;
       }
-      .bar-fill {
-        animation: glowBar 3s ease-in-out infinite;
+      @keyframes teleBreathe {
+        0%, 100% { opacity: 0.85; filter: none; }
+        50%      { opacity: 1; filter: drop-shadow(0 0 3px rgba(114, 47, 55, 0.4)); }
       }
-    
+
+      /* ==================== 02. TERMINAL DIFF & ACCENT ==================== */
+      .cursor-blink {
+        animation: termCursor 1s step-start infinite;
+      }
+      @keyframes termCursor {
+        0%, 49%   { opacity: 1; }
+        50%, 100% { opacity: 0; }
+      }
+
+      .diff-green-pulse {
+        animation: greenSoftGlow 6s ease-in-out infinite;
+      }
+      @keyframes greenSoftGlow {
+        0%, 100% { stroke: #B7E1CD; stroke-width: 0.8px; filter: none; }
+        50%      { stroke: #34A853; stroke-width: 1.1px; filter: drop-shadow(0 1px 4px rgba(52, 168, 83, 0.18)); }
+      }
+
+      .quote-bar {
+        animation: quoteBarPulse 4s ease-in-out infinite;
+      }
+      @keyframes quoteBarPulse {
+        0%, 100% { stroke: #722F37; filter: none; }
+        50%      { stroke: #8F3A44; filter: drop-shadow(0 0 4px rgba(114, 47, 55, 0.5)); }
+      }
+
+      /* ==================== 03. METRIC QUAD-TILES (8s HOROLOGICAL SWEEP) ==================== */
+      @keyframes tileSweep {
+        0%, 18%  { stroke: #722F37; stroke-width: 1.5px; fill: #FFFFFF; filter: drop-shadow(0 2px 7px rgba(114, 47, 55, 0.18)); }
+        24%, 94% { stroke: #D8C7B2; stroke-width: 1px; fill: #FAF7F2; filter: none; }
+        100%     { stroke: #722F37; stroke-width: 1.5px; fill: #FFFFFF; filter: drop-shadow(0 2px 7px rgba(114, 47, 55, 0.18)); }
+      }
+      .tile-1 { animation: tileSweep 8s 0s ease-in-out infinite; }
+      .tile-2 { animation: tileSweep 8s -6s ease-in-out infinite; }
+      .tile-4 { animation: tileSweep 8s -4s ease-in-out infinite; }
+      .tile-3 { animation: tileSweep 8s -2s ease-in-out infinite; }
+
+      /* ==================== 04. LANGUAGE ENGINE BARS & DOTS ==================== */
+      .bar-ts { animation: barGlowTS 4s ease-in-out infinite alternate; }
+      .bar-js { animation: barGlowJS 4.4s -1.1s ease-in-out infinite alternate; }
+      .bar-py { animation: barGlowPY 4.8s -2.2s ease-in-out infinite alternate; }
+      .bar-ui { animation: barGlowUI 5.2s -3.3s ease-in-out infinite alternate; }
+
+      @keyframes barGlowTS {
+        0%   { filter: drop-shadow(0 0 0px rgba(114, 47, 55, 0)); opacity: 0.95; }
+        100% { filter: drop-shadow(0 0 5px rgba(114, 47, 55, 0.45)); opacity: 1; }
+      }
+      @keyframes barGlowJS {
+        0%   { filter: drop-shadow(0 0 0px rgba(138, 59, 69, 0)); opacity: 0.95; }
+        100% { filter: drop-shadow(0 0 5px rgba(138, 59, 69, 0.45)); opacity: 1; }
+      }
+      @keyframes barGlowPY {
+        0%   { filter: drop-shadow(0 0 0px rgba(74, 37, 45, 0)); opacity: 0.95; }
+        100% { filter: drop-shadow(0 0 4px rgba(74, 37, 45, 0.4)); opacity: 1; }
+      }
+      @keyframes barGlowUI {
+        0%   { filter: drop-shadow(0 0 0px rgba(120, 90, 72, 0)); opacity: 0.95; }
+        100% { filter: drop-shadow(0 0 4px rgba(120, 90, 72, 0.4)); opacity: 1; }
+      }
+
+      /* ==================== 05. BOTTOM 3 CONTENTS: LUXURY SYNCHRONIZED CADENCE ==================== */
+      /* Top Bevel Sheen */
+      .rim-sheen {
+        animation: sheenGlide 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      }
+      @keyframes sheenGlide {
+        0%, 100% { opacity: 0.25; }
+        50%      { opacity: 0.85; filter: drop-shadow(0 0 3px rgba(250, 247, 242, 0.8)); }
+      }
+
+      /* Divider Soft Pulses */
+      .div-glow-1 { animation: divPulse 6s 1.5s ease-in-out infinite; }
+      .div-glow-2 { animation: divPulse 6s 3.5s ease-in-out infinite; }
+      @keyframes divPulse {
+        0%, 100% { stroke: #D6C4AE; opacity: 0.6; }
+        50%      { stroke: #8F3A44; opacity: 1; filter: drop-shadow(0 0 3px rgba(114, 47, 55, 0.35)); }
+      }
+
+      /* Column 1: Verified Contributions (Phase 1) */
+      .bottom-num-1 {
+        animation: numPulse1 6s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+      }
+      @keyframes numPulse1 {
+        0%, 100% { fill: #722F37; filter: none; opacity: 0.92; }
+        25%      { fill: #8F3A44; filter: drop-shadow(0 2px 7px rgba(114, 47, 55, 0.28)); opacity: 1; }
+        55%      { fill: #722F37; filter: none; opacity: 0.92; }
+      }
+      .bottom-label-1 {
+        animation: labelPulse1 6s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+      }
+      @keyframes labelPulse1 {
+        0%, 100% { opacity: 0.88; }
+        25%      { opacity: 1; }
+        55%      { opacity: 0.88; }
+      }
+
+      /* Column 2: Center Living Flame & Perpetual Velocity (Phase 2) */
+      .bottom-num-2 {
+        animation: numPulse2 6s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+      }
+      @keyframes numPulse2 {
+        0%, 100% { fill: #722F37; filter: none; opacity: 0.92; }
+        50%      { fill: #943E49; filter: drop-shadow(0 2px 8px rgba(114, 47, 55, 0.32)); opacity: 1; }
+      }
+      .bottom-label-2 {
+        animation: labelPulse2 6s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+      }
+      @keyframes labelPulse2 {
+        0%, 100% { opacity: 0.88; }
+        50%      { opacity: 1; }
+      }
+
       /* Living Flame Core Pulse */
       .flame-alive {
         transform-origin: 0px 22px;
-        animation: flameFlicker 2.2s ease-in-out infinite alternate;
+        animation: flameFlicker 2.4s ease-in-out infinite alternate;
       }
       @keyframes flameFlicker {
-        0% { transform: scale(1) translateY(0); filter: drop-shadow(0 0 2px rgba(114, 47, 55, 0.2)); }
-        50% { transform: scale(1.08, 1.14) translateY(-1px); filter: drop-shadow(0 -1px 6px rgba(255, 68, 31, 0.4)); }
-        100% { transform: scale(0.96, 0.98) translateY(0.5px); filter: drop-shadow(0 0 2px rgba(114, 47, 55, 0.25)); }
+        0%   { transform: scale(1) translateY(0); filter: drop-shadow(0 0 2px rgba(114, 47, 55, 0.25)); }
+        50%  { transform: scale(1.07, 1.12) translateY(-1px); filter: drop-shadow(0 -1px 6px rgba(186, 60, 40, 0.45)); }
+        100% { transform: scale(0.97, 0.98) translateY(0.5px); filter: drop-shadow(0 0 2px rgba(114, 47, 55, 0.25)); }
       }
 
-      /* Language Bar Ambient Shimmer */
-      .bar-ts { animation: barGlowTS 3.8s ease-in-out infinite alternate; }
-      .bar-js { animation: barGlowJS 4.2s -1.1s ease-in-out infinite alternate; }
-      .bar-py { animation: barGlowPY 4.6s -2.2s ease-in-out infinite alternate; }
-      .bar-ui { animation: barGlowUI 5.0s -3.3s ease-in-out infinite alternate; }
-
-      @keyframes barGlowTS {
-        0% { filter: drop-shadow(0 0 0px rgba(114, 47, 55, 0)); }
-        100% { filter: drop-shadow(0 0 5px rgba(114, 47, 55, 0.45)); }
+      /* Ambient Halo Ring Behind Flame */
+      .flame-halo {
+        transform-origin: 0px 0px;
+        animation: haloBreath 2.8s ease-in-out infinite;
       }
-      @keyframes barGlowJS {
-        0% { filter: drop-shadow(0 0 0px rgba(138, 59, 69, 0)); }
-        100% { filter: drop-shadow(0 0 5px rgba(138, 59, 69, 0.45)); }
-      }
-      @keyframes barGlowPY {
-        0% { filter: drop-shadow(0 0 0px rgba(74, 37, 45, 0)); }
-        100% { filter: drop-shadow(0 0 4px rgba(74, 37, 45, 0.4)); }
-      }
-      @keyframes barGlowUI {
-        0% { filter: drop-shadow(0 0 0px rgba(120, 90, 72, 0)); }
-        100% { filter: drop-shadow(0 0 4px rgba(120, 90, 72, 0.4)); }
+      @keyframes haloBreath {
+        0%, 100% { opacity: 0.15; transform: scale(0.75); stroke-width: 0.8px; }
+        50%      { opacity: 0.65; transform: scale(1.35); stroke-width: 1.2px; filter: drop-shadow(0 0 4px rgba(186, 60, 40, 0.45)); }
       }
 
-      /* Live Terminal Activity Beacon */
-      .beacon-dot {
-        animation: beaconBlink 2.2s ease-in-out infinite;
+      /* Column 3: Discipline Horizon (Phase 3) */
+      .bottom-num-3 {
+        animation: numPulse3 6s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
       }
-      @keyframes beaconBlink {
-        0%, 100% { opacity: 1; filter: drop-shadow(0 0 4px rgba(114, 47, 55, 0.7)); }
-        50% { opacity: 0.4; filter: none; }
+      @keyframes numPulse3 {
+        0%, 45%  { fill: #722F37; filter: none; opacity: 0.92; }
+        75%      { fill: #8F3A44; filter: drop-shadow(0 2px 7px rgba(114, 47, 55, 0.28)); opacity: 1; }
+        100%     { fill: #722F37; filter: none; opacity: 0.92; }
+      }
+      .bottom-label-3 {
+        animation: labelPulse3 6s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+      }
+      @keyframes labelPulse3 {
+        0%, 45%  { opacity: 0.88; }
+        75%      { opacity: 1; }
+        100%     { opacity: 0.88; }
       }
     ]]></style>
   </defs>
@@ -95,7 +212,7 @@
   <text x="114" y="53" fill="#722F37" class="mono" font-size="14.5" font-weight="700" letter-spacing="1.5">> GIT LOG --ONELINE --STATS // CLASSIFIED ACTIVITY</text>
 
   <!-- Stealth Mode Telemetry (Clean, borderless, perfectly aligned) -->
-  <text x="1160" y="53" text-anchor="end" fill="#722F37" class="mono" font-size="12" font-weight="700" letter-spacing="0.8">STEALTH MODE // ENGAGED</text>
+  <text x="1160" y="53" text-anchor="end" fill="#722F37" class="mono telemetry-pulse" font-size="12" font-weight="700" letter-spacing="0.8">STEALTH MODE // ENGAGED</text>
 
   <!-- Header Divider Line -->
   <line x1="40" y1="80" x2="1160" y2="80" stroke="#D6C4AE" stroke-width="1" />
@@ -110,6 +227,7 @@
     <rect y="22" width="1120" height="10" fill="#EFE3D3" />
     <line x1="0" y1="32" x2="1120" y2="32" stroke="#D6C4AE" stroke-width="1" />
     <text x="24" y="21" fill="#886D5B" class="mono" font-size="11" font-weight="700" letter-spacing="0.8">TERMINAL // COMMIT_VERIFICATION.LOG</text>
+    <text x="296" y="21" fill="#722F37" class="mono cursor-blink" font-size="12" font-weight="700">_</text>
     <text x="1096" y="21" text-anchor="end" fill="#722F37" class="mono" font-size="10.5" font-weight="700">PRANOV888 // PRIVATE ENGINE</text>
 
     <!-- Red Diff Line -->
@@ -117,11 +235,11 @@
     <text x="40" y="61" fill="#A81D24" class="mono" font-size="13" font-weight="700">- Contribution graph may appear suspiciously empty.</text>
 
     <!-- Green Diff Line -->
-    <rect x="24" y="75" width="1072" height="26" rx="5" fill="#E6F4EA" stroke="#B7E1CD" stroke-width="0.8" />
+    <rect class="diff-green-pulse" x="24" y="75" width="1072" height="26" rx="5" fill="#E6F4EA" stroke="#B7E1CD" stroke-width="0.8" />
     <text x="40" y="92" fill="#137333" class="mono" font-size="13" font-weight="700">+ Not a bug. I work in private client repositories and enterprise systems.</text>
 
     <!-- Editorial Accent Line & Classified Quote -->
-    <line x1="24" y1="112" x2="24" y2="128" stroke="#722F37" stroke-width="3" stroke-linecap="round" />
+    <line class="quote-bar" x1="24" y1="112" x2="24" y2="128" stroke="#722F37" stroke-width="3" stroke-linecap="round" />
     <text x="36" y="123" fill="#4A252D" class="quote-font" font-size="14" font-weight="700">“Sorry, you can't see my contributions. My commits are classified. Think of it as stealth mode.”</text>
   </g>
 
@@ -138,28 +256,28 @@
 
     <!-- Metric Tile 1: Commits -->
     <g transform="translate(24, 54)">
-      <rect width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
+      <rect class="tile-1" width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
       <text x="18" y="38" fill="#722F37" class="grotesk" font-size="30" font-weight="800">1,420+</text>
       <text x="18" y="60" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">COMMITS (PRIVATE / CLIENT)</text>
     </g>
 
     <!-- Metric Tile 2: PRs Merged -->
     <g transform="translate(283, 54)">
-      <rect width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
+      <rect class="tile-2" width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
       <text x="18" y="38" fill="#722F37" class="grotesk" font-size="30" font-weight="800">85+</text>
       <text x="18" y="60" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">PULL REQUESTS MERGED</text>
     </g>
 
     <!-- Metric Tile 3: Consistency -->
     <g transform="translate(24, 144)">
-      <rect width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
+      <rect class="tile-3" width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
       <text x="18" y="38" fill="#722F37" class="grotesk" font-size="30" font-weight="800">99.8%</text>
       <text x="18" y="60" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">COMMIT CONSISTENCY</text>
     </g>
 
     <!-- Metric Tile 4: Grade -->
     <g transform="translate(283, 144)">
-      <rect width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
+      <rect class="tile-4" width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
       <text x="18" y="38" fill="#722F37" class="grotesk" font-size="30" font-weight="800">A+</text>
       <text x="18" y="60" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">CODE QUALITY &amp; QA GRADE</text>
     </g>
@@ -216,36 +334,43 @@
     <!-- Container Sheet -->
     <rect width="1120" height="114" rx="10" fill="url(#card-surface)" stroke="#C7B49D" stroke-width="1.2" />
 
-    <!-- Column 1: Total Contributions -->
+    <!-- Top Rim Specular Chamfer -->
+    <line class="rim-sheen" x1="12" y1="0.8" x2="1108" y2="0.8" stroke="url(#rim-sheen-grad)" stroke-width="1.5" stroke-linecap="round" />
+
+    <!-- Column 1: Verified Contributions -->
     <g transform="translate(180, 0)">
-      <text x="0" y="44" text-anchor="middle" fill="#722F37" class="grotesk" font-size="34" font-weight="800">1,420+</text>
-      <text x="0" y="68" text-anchor="middle" fill="#886D5B" class="mono" font-size="11" font-weight="700">TOTAL CONTRIBUTIONS</text>
-      <text x="0" y="88" text-anchor="middle" fill="#A08C7D" class="mono" font-size="10.5">AUG 2023 — PRESENT</text>
+      <text x="0" y="44" text-anchor="middle" class="grotesk bottom-num-1" font-size="34" font-weight="800">1,420+</text>
+      <text x="0" y="68" text-anchor="middle" fill="#886D5B" class="mono bottom-label-1" font-size="11" font-weight="700" letter-spacing="0.8">VERIFIED CONTRIBUTIONS</text>
+      <text x="0" y="88" text-anchor="middle" fill="#A08C7D" class="mono bottom-label-1" font-size="10.5" letter-spacing="0.5">AUG 2023 — CONTINUOUS RUN</text>
     </g>
 
     <!-- Divider 1 -->
-    <line x1="373" y1="20" x2="373" y2="94" stroke="#D6C4AE" stroke-width="1" />
+    <line class="div-glow-1" x1="373" y1="20" x2="373" y2="94" stroke="#D6C4AE" stroke-width="1" />
 
-    <!-- Column 2: Current Momentum Flow (Flame Emblem) -->
+    <!-- Column 2: Kinetic Sprint Velocity (Flame Emblem) -->
     <g transform="translate(560, 0)">
+      <!-- Ambient Radiant Halo Ring -->
+      <g transform="translate(0, 17)">
+        <circle cx="0" cy="0" r="11" fill="none" stroke="#BA3C28" class="flame-halo" />
+      </g>
       <!-- Flame Icon: Outer + Inner Core -->
       <g class="flame-alive">
         <path d="M 0 8 C -4 14 -6 18 -6 22 A 6 6 0 0 0 6 22 C 6 18 4 14 0 8 Z" fill="#722F37" />
         <path d="M 0 15 C -2 18 -2.5 19.5 -2.5 22 A 2.5 2.5 0 0 0 2.5 22 C 2.5 19.5 2 18 0 15 Z" fill="#FAF7F2" />
       </g>
-      <text x="0" y="56" text-anchor="middle" fill="#722F37" class="grotesk" font-size="28" font-weight="800">CONTINUOUS</text>
-      <text x="0" y="78" text-anchor="middle" fill="#886D5B" class="mono" font-size="11" font-weight="700">CURRENT SPRINT FLOW</text>
-      <text x="0" y="96" text-anchor="middle" fill="#A08C7D" class="mono" font-size="10.5">ACTIVE STEALTH DISCIPLINE</text>
+      <text x="0" y="56" text-anchor="middle" class="grotesk bottom-num-2" font-size="28" font-weight="800" letter-spacing="0.5">PERPETUAL</text>
+      <text x="0" y="78" text-anchor="middle" fill="#886D5B" class="mono bottom-label-2" font-size="11" font-weight="700" letter-spacing="0.8">MOMENTUM VELOCITY</text>
+      <text x="0" y="96" text-anchor="middle" fill="#A08C7D" class="mono bottom-label-2" font-size="10.5" letter-spacing="0.5">ACTIVE STEALTH DISCIPLINE</text>
     </g>
 
     <!-- Divider 2 -->
-    <line x1="746" y1="20" x2="746" y2="94" stroke="#D6C4AE" stroke-width="1" />
+    <line class="div-glow-2" x1="746" y1="20" x2="746" y2="94" stroke="#D6C4AE" stroke-width="1" />
 
-    <!-- Column 3: Longest Discipline Streak -->
+    <!-- Column 3: Discipline Horizon -->
     <g transform="translate(930, 0)">
-      <text x="0" y="44" text-anchor="middle" fill="#722F37" class="grotesk" font-size="34" font-weight="800">550+ DAYS</text>
-      <text x="0" y="68" text-anchor="middle" fill="#886D5B" class="mono" font-size="11" font-weight="700">DISCIPLINE STREAK</text>
-      <text x="0" y="88" text-anchor="middle" fill="#A08C7D" class="mono" font-size="10.5">5,600+ HOURS IN THE CRAFT</text>
+      <text x="0" y="44" text-anchor="middle" class="grotesk bottom-num-3" font-size="34" font-weight="800">550+ DAYS</text>
+      <text x="0" y="68" text-anchor="middle" fill="#886D5B" class="mono bottom-label-3" font-size="11" font-weight="700" letter-spacing="0.8">DISCIPLINE HORIZON</text>
+      <text x="0" y="88" text-anchor="middle" fill="#A08C7D" class="mono bottom-label-3" font-size="10.5" letter-spacing="0.5">5,600+ HOURS OF PURE CRAFT</text>
     </g>
   </g>
 </svg>
