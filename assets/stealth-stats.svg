@@ -35,6 +35,60 @@
       .bar-fill {
         animation: glowBar 3s ease-in-out infinite;
       }
+    
+      /* Living Flame Core Pulse */
+      .flame-alive {
+        transform-origin: 0px 22px;
+        animation: flameFlicker 2.2s ease-in-out infinite alternate;
+      }
+      @keyframes flameFlicker {
+        0% { transform: scale(1) translateY(0); filter: drop-shadow(0 0 2px rgba(114, 47, 55, 0.2)); }
+        50% { transform: scale(1.08, 1.14) translateY(-1px); filter: drop-shadow(0 -1px 6px rgba(255, 68, 31, 0.4)); }
+        100% { transform: scale(0.96, 0.98) translateY(0.5px); filter: drop-shadow(0 0 2px rgba(114, 47, 55, 0.25)); }
+      }
+
+      /* Language Bar Ambient Shimmer */
+      .bar-ts { animation: barGlowTS 3.8s ease-in-out infinite alternate; }
+      .bar-js { animation: barGlowJS 4.2s -1.1s ease-in-out infinite alternate; }
+      .bar-py { animation: barGlowPY 4.6s -2.2s ease-in-out infinite alternate; }
+      .bar-ui { animation: barGlowUI 5.0s -3.3s ease-in-out infinite alternate; }
+
+      @keyframes barGlowTS {
+        0% { filter: drop-shadow(0 0 0px rgba(114, 47, 55, 0)); }
+        100% { filter: drop-shadow(0 0 5px rgba(114, 47, 55, 0.45)); }
+      }
+      @keyframes barGlowJS {
+        0% { filter: drop-shadow(0 0 0px rgba(138, 59, 69, 0)); }
+        100% { filter: drop-shadow(0 0 5px rgba(138, 59, 69, 0.45)); }
+      }
+      @keyframes barGlowPY {
+        0% { filter: drop-shadow(0 0 0px rgba(74, 37, 45, 0)); }
+        100% { filter: drop-shadow(0 0 4px rgba(74, 37, 45, 0.4)); }
+      }
+      @keyframes barGlowUI {
+        0% { filter: drop-shadow(0 0 0px rgba(120, 90, 72, 0)); }
+        100% { filter: drop-shadow(0 0 4px rgba(120, 90, 72, 0.4)); }
+      }
+
+      /* Live Terminal Activity Beacon */
+      .beacon-dot {
+        animation: beaconBlink 2.2s ease-in-out infinite;
+      }
+      @keyframes beaconBlink {
+        0%, 100% { opacity: 1; filter: drop-shadow(0 0 4px rgba(114, 47, 55, 0.7)); }
+        50% { opacity: 0.4; filter: none; }
+      }
+
+      /* Metric Tile Telemetry Scan */
+      @keyframes tileGlow {
+        0%, 100% { stroke: #D8C7B2; stroke-width: 1px; filter: none; }
+        20% { stroke: #722F37; stroke-width: 1.6px; filter: drop-shadow(0 2px 7px rgba(114, 47, 55, 0.22)); }
+        40% { stroke: #D8C7B2; stroke-width: 1px; filter: none; }
+      }
+      .tile-1 { animation: tileGlow 9s 0s ease-in-out infinite; }
+      .tile-2 { animation: tileGlow 9s -2.25s ease-in-out infinite; }
+      .tile-3 { animation: tileGlow 9s -4.5s ease-in-out infinite; }
+      .tile-4 { animation: tileGlow 9s -6.75s ease-in-out infinite; }
     ]]></style>
   </defs>
 
@@ -44,7 +98,7 @@
 
   <!-- ==================== HEADER STRIP ==================== -->
   <!-- Terminal Window Control Dots -->
-  <circle cx="48" cy="48" r="6" fill="#722F37" />
+  <circle cx="48" cy="48" r="6" fill="#722F37" class="beacon-dot" />
   <circle cx="68" cy="48" r="6" fill="#A0505A" />
   <circle cx="88" cy="48" r="6" fill="#D6C4AE" />
 
@@ -95,28 +149,28 @@
 
     <!-- Metric Tile 1: Commits -->
     <g transform="translate(24, 54)">
-      <rect width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
+      <rect class="tile-1" width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
       <text x="18" y="38" fill="#722F37" class="grotesk" font-size="30" font-weight="800">1,420+</text>
       <text x="18" y="60" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">COMMITS (PRIVATE / CLIENT)</text>
     </g>
 
     <!-- Metric Tile 2: PRs Merged -->
     <g transform="translate(283, 54)">
-      <rect width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
+      <rect class="tile-2" width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
       <text x="18" y="38" fill="#722F37" class="grotesk" font-size="30" font-weight="800">85+</text>
       <text x="18" y="60" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">PULL REQUESTS MERGED</text>
     </g>
 
     <!-- Metric Tile 3: Consistency -->
     <g transform="translate(24, 144)">
-      <rect width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
+      <rect class="tile-3" width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
       <text x="18" y="38" fill="#722F37" class="grotesk" font-size="30" font-weight="800">99.8%</text>
       <text x="18" y="60" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">COMMIT CONSISTENCY</text>
     </g>
 
     <!-- Metric Tile 4: Grade -->
     <g transform="translate(283, 144)">
-      <rect width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
+      <rect class="tile-4" width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
       <text x="18" y="38" fill="#722F37" class="grotesk" font-size="30" font-weight="800">A+</text>
       <text x="18" y="60" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">CODE QUALITY &amp; QA GRADE</text>
     </g>
@@ -137,7 +191,7 @@
       <text x="22" y="15" fill="#241117" class="grotesk" font-size="15" font-weight="700">TypeScript</text>
       <text x="495" y="15" text-anchor="end" fill="#722F37" class="mono" font-size="13" font-weight="700">42%</text>
       <rect x="0" y="24" width="495" height="8" rx="4" fill="#E8DBC9" />
-      <rect x="0" y="24" width="208" height="8" rx="4" fill="#722F37" class="bar-fill" />
+      <rect x="0" y="24" width="208" height="8" rx="4" fill="#722F37" class="bar-fill bar-ts" />
     </g>
 
     <!-- Language Row 2: JavaScript (28%) -->
@@ -146,7 +200,7 @@
       <text x="22" y="15" fill="#241117" class="grotesk" font-size="15" font-weight="700">JavaScript</text>
       <text x="495" y="15" text-anchor="end" fill="#8A3B45" class="mono" font-size="13" font-weight="700">28%</text>
       <rect x="0" y="24" width="495" height="8" rx="4" fill="#E8DBC9" />
-      <rect x="0" y="24" width="138" height="8" rx="4" fill="#8A3B45" class="bar-fill" />
+      <rect x="0" y="24" width="138" height="8" rx="4" fill="#8A3B45" class="bar-fill bar-js" />
     </g>
 
     <!-- Language Row 3: Python (18%) -->
@@ -155,7 +209,7 @@
       <text x="22" y="15" fill="#241117" class="grotesk" font-size="15" font-weight="700">Python</text>
       <text x="495" y="15" text-anchor="end" fill="#4A252D" class="mono" font-size="13" font-weight="700">18%</text>
       <rect x="0" y="24" width="495" height="8" rx="4" fill="#E8DBC9" />
-      <rect x="0" y="24" width="89" height="8" rx="4" fill="#4A252D" class="bar-fill" />
+      <rect x="0" y="24" width="89" height="8" rx="4" fill="#4A252D" class="bar-fill bar-py" />
     </g>
 
     <!-- Language Row 4: UI & Design Systems (12%) -->
@@ -164,7 +218,7 @@
       <text x="22" y="15" fill="#241117" class="grotesk" font-size="15" font-weight="700">UI &amp; Design Systems</text>
       <text x="495" y="15" text-anchor="end" fill="#785A48" class="mono" font-size="13" font-weight="700">12%</text>
       <rect x="0" y="24" width="495" height="8" rx="4" fill="#E8DBC9" />
-      <rect x="0" y="24" width="59" height="8" rx="4" fill="#785A48" class="bar-fill" />
+      <rect x="0" y="24" width="59" height="8" rx="4" fill="#785A48" class="bar-fill bar-ui" />
     </g>
   </g>
 
@@ -186,8 +240,10 @@
     <!-- Column 2: Current Momentum Flow (Flame Emblem) -->
     <g transform="translate(560, 0)">
       <!-- Flame Icon: Outer + Inner Core -->
-      <path d="M 0 8 C -4 14 -6 18 -6 22 A 6 6 0 0 0 6 22 C 6 18 4 14 0 8 Z" fill="#722F37" />
-      <path d="M 0 15 C -2 18 -2.5 19.5 -2.5 22 A 2.5 2.5 0 0 0 2.5 22 C 2.5 19.5 2 18 0 15 Z" fill="#FAF7F2" />
+      <g class="flame-alive">
+        <path d="M 0 8 C -4 14 -6 18 -6 22 A 6 6 0 0 0 6 22 C 6 18 4 14 0 8 Z" fill="#722F37" />
+        <path d="M 0 15 C -2 18 -2.5 19.5 -2.5 22 A 2.5 2.5 0 0 0 2.5 22 C 2.5 19.5 2 18 0 15 Z" fill="#FAF7F2" />
+      </g>
       <text x="0" y="56" text-anchor="middle" fill="#722F37" class="grotesk" font-size="28" font-weight="800">CONTINUOUS</text>
       <text x="0" y="78" text-anchor="middle" fill="#886D5B" class="mono" font-size="11" font-weight="700">CURRENT SPRINT FLOW</text>
       <text x="0" y="96" text-anchor="middle" fill="#A08C7D" class="mono" font-size="10.5">ACTIVE STEALTH DISCIPLINE</text>

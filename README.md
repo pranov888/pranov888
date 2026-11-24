@@ -21,12 +21,12 @@
 <br/><br/>
 
 <!-- ==================== STACK MATRIX ==================== -->
-<a href="#_"><img src="https://raw.githubusercontent.com/pranov888/pranov888/main/assets/stack-matrix.svg?v=37" alt="Core Technologies &amp; Collaboration" width="100%" /></a>
+<a href="#_"><img src="https://raw.githubusercontent.com/pranov888/pranov888/main/assets/stack-matrix.svg?v=41" alt="Core Technologies &amp; Collaboration" width="100%" /></a>
 
 <br/><br/>
 
 <!-- ==================== STEALTH STATS & GIT ACTIVITY ==================== -->
-<a href="#_"><img src="https://raw.githubusercontent.com/pranov888/pranov888/main/assets/stealth-stats.svg?v=37" alt="Git Activity &amp; Classified Stealth Stats" width="100%" /></a>
+<a href="#_"><img src="https://raw.githubusercontent.com/pranov888/pranov888/main/assets/stealth-stats.svg?v=41" alt="Git Activity &amp; Classified Stealth Stats" width="100%" /></a>
 
 <br/><br/>
 
