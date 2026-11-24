@@ -59,10 +59,14 @@
         100% { opacity: 1; }
       }
     
-      /* High Performance GPU-Accelerated Luminous Glow - 0 Repaints, Locked 60FPS */
+      /* High Performance GPU-Accelerated Luminous Glow - Infinite Bounds (No Clipping Lines), Locked 60FPS */
       .glow-overlay {
         opacity: 0;
         pointer-events: none;
+        fill: #FFFFFF;
+        stroke: #722F37;
+        stroke-width: 1.8px;
+        filter: drop-shadow(0 0 6px rgba(114, 47, 55, 0.75)) drop-shadow(0 0 12px rgba(114, 47, 55, 0.35));
         will-change: opacity;
       }
 
@@ -92,12 +96,6 @@
       <stop offset="50%" stop-color="#FBF4EA" />
       <stop offset="100%" stop-color="#F5E8D6" />
     </linearGradient>
-  
-    <!-- High Performance GPU Rasterized Glow Filter (Rasterized once, zero repaint lag) -->
-    <filter id="glow-aura" x="-40%" y="-40%" width="180%" height="180%">
-      <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#722F37" flood-opacity="0.75" />
-      <feDropShadow dx="0" dy="0" stdDeviation="7" flood-color="#722F37" flood-opacity="0.35" />
-    </filter>
   </defs>
 
   <!-- Container Base -->
@@ -215,7 +213,7 @@
       <!-- TypeScript -->
       <g transform="translate(0, 0)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-1" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-1" width="126" height="34" rx="7" />
         <!-- Official TypeScript Logo Badge -->
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#3178C6" />
@@ -226,7 +224,7 @@
       <!-- JavaScript -->
       <g transform="translate(134, 0)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-5" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-5" width="126" height="34" rx="7" />
         <!-- Official JavaScript Logo Badge -->
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#F7DF1E" />
@@ -238,7 +236,7 @@
       <!-- Python -->
       <g transform="translate(0, 42)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-9" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-9" width="126" height="34" rx="7" />
         <!-- Official Python Dual Snake Vector Logo -->
         <g transform="translate(7, 7)">
           <path d="M 9.5 2 C 5.5 2 5.8 3.8 5.8 3.8 L 5.8 5.6 L 9.8 5.6 L 9.8 6.2 L 3.5 6.2 C 3.5 6.2 2 6 2 9.8 C 2 13.5 3.3 13.3 3.3 13.3 L 4.6 13.3 L 4.6 11.4 C 4.6 11.4 4.4 9 7 9 L 11.2 9 C 11.2 9 13.2 9 13.2 7 L 13.2 4 C 13.2 4 13.5 2 9.5 2 Z" fill="#3776AB" />
@@ -251,7 +249,7 @@
       <!-- SQL -->
       <g transform="translate(134, 42)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-3" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-3" width="126" height="34" rx="7" />
         <!-- SQL Database Stacked Cylinders Logo -->
         <g transform="translate(7, 7)">
           <ellipse cx="10" cy="5" rx="7.5" ry="3" fill="#FAF6EE" stroke="#00758F" stroke-width="1.3" />
@@ -264,7 +262,7 @@
       <!-- Bash -->
       <g transform="translate(0, 84)">
         <rect width="260" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-7" width="260" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-7" width="260" height="34" rx="7" />
         <!-- Official Terminal / Bash Prompt Logo -->
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#241117" />
@@ -288,7 +286,7 @@
       <!-- React -->
       <g transform="translate(0, 0)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-2" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-2" width="126" height="34" rx="7" />
         <!-- React Atom Logo -->
         <g transform="translate(7, 7)">
           <ellipse cx="10" cy="10" rx="8.5" ry="3" fill="none" stroke="#00D8FF" stroke-width="1.2" transform="rotate(30 10 10)" />
@@ -301,7 +299,7 @@
       <!-- Next.js -->
       <g transform="translate(134, 0)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-6" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-6" width="126" height="34" rx="7" />
         <!-- Next.js Logo -->
         <g transform="translate(7, 7)">
           <circle cx="10" cy="10" r="9.5" fill="#000000" />
@@ -313,7 +311,7 @@
       <!-- React Native -->
       <g transform="translate(0, 42)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-10" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-10" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect x="3" y="1" width="14" height="18" rx="2.5" fill="none" stroke="#61DAFB" stroke-width="1.3" />
           <circle cx="10" cy="10" r="2.5" fill="#61DAFB" />
@@ -324,7 +322,7 @@
       <!-- TanStack -->
       <g transform="translate(134, 42)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-4" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-4" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <polygon points="10,1 18,10 10,19 2,10" fill="#FF4154" />
           <circle cx="10" cy="10" r="3" fill="#FFFFFF" />
@@ -335,7 +333,7 @@
       <!-- Electron -->
       <g transform="translate(0, 84)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-8" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-8" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <circle cx="10" cy="10" r="3" fill="#47848F" />
           <ellipse cx="10" cy="10" rx="8" ry="3" fill="none" stroke="#47848F" stroke-width="1.2" transform="rotate(45 10 10)" />
@@ -346,7 +344,7 @@
       <!-- Tailwind -->
       <g transform="translate(134, 84)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-12" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-12" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <path d="M 3 11 C 4.5 7 7.5 7 9 10 C 10.5 13 13 13.5 15.5 11.5 C 14 14.5 11 15 9.5 12 C 8 9 5.5 9 3 11 Z" fill="#06B6D4" />
         </g>
@@ -356,7 +354,7 @@
       <!-- GSAP -->
       <g transform="translate(0, 126)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-1" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-1" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#0AE448" />
           <text x="10" y="14.5" fill="#000000" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="10" text-anchor="middle">G</text>
@@ -366,7 +364,7 @@
       <!-- Three.js -->
       <g transform="translate(134, 126)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-5" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-5" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <polygon points="10,2 18,17 2,17" fill="none" stroke="#1C0F14" stroke-width="1.4" />
           <line x1="10" y1="2" x2="10" y2="17" stroke="#722F37" stroke-width="1" />
@@ -388,7 +386,7 @@
       <!-- Node.js -->
       <g transform="translate(0, 0)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-3" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-3" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <polygon points="10,2 18,6.5 18,15.5 10,20 2,15.5 2,6.5" fill="#339933" />
           <text x="10" y="14" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="8" text-anchor="middle">JS</text>
@@ -398,7 +396,7 @@
       <!-- Django REST -->
       <g transform="translate(134, 0)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-7" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-7" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#092E20" />
           <text x="10" y="14" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="8.5" text-anchor="middle">dj</text>
@@ -409,7 +407,7 @@
       <!-- Express -->
       <g transform="translate(0, 42)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-11" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-11" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#000000" />
           <text x="10" y="14" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="8.5" text-anchor="middle">ex</text>
@@ -419,7 +417,7 @@
       <!-- FastAPI -->
       <g transform="translate(134, 42)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-2" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-2" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <circle cx="10" cy="10" r="9.5" fill="#059669" />
           <path d="M 10 4 L 6 11 L 10 11 L 9 16 L 14 9 L 10 9 Z" fill="#FFFFFF" />
@@ -430,7 +428,7 @@
       <!-- Celery -->
       <g transform="translate(0, 84)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-6" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-6" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <circle cx="10" cy="10" r="9.5" fill="#37B24D" />
           <path d="M 6 14 C 7 10 9 7 13 6 C 13 10 11 13 7 14 Z" fill="#FFFFFF" />
@@ -440,7 +438,7 @@
       <!-- Socket.IO -->
       <g transform="translate(134, 84)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-10" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-10" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <circle cx="10" cy="10" r="9.5" fill="#010101" />
           <path d="M 8 7 L 12 7 L 9 11 L 13 11 L 8 16 L 9.5 12 L 7 12 Z" fill="#FAF6EE" />
@@ -451,7 +449,7 @@
       <!-- REST APIs & Webhooks -->
       <g transform="translate(0, 126)">
         <rect width="260" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-4" width="260" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-4" width="260" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#722F37" />
           <path d="M 4 8 L 8 8 L 8 6 L 12 10 L 8 14 L 8 12 L 4 12 Z" fill="#FAF6EE" />
@@ -474,7 +472,7 @@
       <!-- PostgreSQL -->
       <g transform="translate(0, 0)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-8" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-8" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#336791" />
           <text x="10" y="14.5" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="9" text-anchor="middle">PG</text>
@@ -484,7 +482,7 @@
       <!-- Supabase -->
       <g transform="translate(134, 0)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-12" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-12" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <circle cx="10" cy="10" r="9.5" fill="#3ECF8E" />
           <path d="M 10 4 L 6 11 L 11 11 L 8 16 L 14 9 L 10 9 Z" fill="#1B0E13" />
@@ -495,7 +493,7 @@
       <!-- Firebase -->
       <g transform="translate(0, 42)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-1" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-1" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <path d="M 4 16 L 8 4 L 10 8 L 8 13 Z" fill="#FFA000" />
           <path d="M 16 16 L 12 7 L 10 10 L 14 15 Z" fill="#F57C00" />
@@ -506,7 +504,7 @@
       <!-- Redis -->
       <g transform="translate(134, 42)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-5" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-5" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#DC382D" />
           <polygon points="10,4 16,7.5 10,11 4,7.5" fill="#FFFFFF" />
@@ -518,7 +516,7 @@
       <!-- SQLite -->
       <g transform="translate(0, 84)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-9" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-9" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#003B57" />
           <text x="10" y="14.5" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="8.5" text-anchor="middle">SQL</text>
@@ -528,7 +526,7 @@
       <!-- MongoDB -->
       <g transform="translate(134, 84)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-3" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-3" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <circle cx="10" cy="10" r="9.5" fill="#47A248" />
           <path d="M 10 3 C 8 7 6 11 10 17 C 14 11 12 7 10 3 Z" fill="#FFFFFF" />
@@ -554,7 +552,7 @@
       <!-- Docker -->
       <g transform="translate(0, 0)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-7" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-7" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect x="3" y="8" width="3" height="3" rx="0.5" fill="#2496ED" />
           <rect x="7" y="8" width="3" height="3" rx="0.5" fill="#2496ED" />
@@ -567,7 +565,7 @@
       <!-- Git & CI/CD -->
       <g transform="translate(134, 0)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-11" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-11" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#F05032" />
           <circle cx="8" cy="8" r="1.8" fill="#FFFFFF" />
@@ -582,7 +580,7 @@
       <!-- Linux OS -->
       <g transform="translate(0, 42)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-2" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-2" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <circle cx="10" cy="10" r="9.5" fill="#E95420" />
           <circle cx="10" cy="8" r="3.5" fill="#FFFFFF" />
@@ -593,7 +591,7 @@
       <!-- Vercel -->
       <g transform="translate(134, 42)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-6" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-6" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#000000" />
           <polygon points="10,4 16,15 4,15" fill="#FFFFFF" />
@@ -604,7 +602,7 @@
       <!-- Railway -->
       <g transform="translate(0, 84)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-10" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-10" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#0B0C0E" />
           <line x1="5" y1="6" x2="15" y2="6" stroke="#FFFFFF" stroke-width="1.5" />
@@ -617,7 +615,7 @@
       <!-- Cloudflare -->
       <g transform="translate(134, 84)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-4" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-4" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#F38020" />
           <path d="M 6 14 C 4 14 3 12 5 10 C 5 8 8 7 10 9 C 11 8 14 8 14 10 C 16 10 16 14 14 14 Z" fill="#FFFFFF" />
@@ -628,7 +626,7 @@
       <!-- Postman & Nginx -->
       <g transform="translate(0, 126)">
         <rect width="260" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-8" width="260" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-8" width="260" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#FF6C37" />
           <circle cx="10" cy="8" r="3.5" fill="#FFFFFF" />
@@ -651,7 +649,7 @@
       <!-- Jest -->
       <g transform="translate(0, 0)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-12" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-12" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#C21325" />
           <text x="10" y="14.5" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="9" text-anchor="middle">J</text>
@@ -661,7 +659,7 @@
       <!-- Playwright -->
       <g transform="translate(134, 0)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-1" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-1" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <circle cx="10" cy="10" r="9.5" fill="#2EAD33" />
           <circle cx="7" cy="9" r="2" fill="#FFFFFF" />
@@ -674,7 +672,7 @@
       <!-- Vitest -->
       <g transform="translate(0, 42)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-5" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-5" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#FCC72B" />
           <polygon points="10,4 6,10 10,10 8,16 14,9 10,9" fill="#241117" />
@@ -684,7 +682,7 @@
       <!-- Storybook -->
       <g transform="translate(134, 42)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-9" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-9" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#FF4785" />
           <text x="10" y="14.5" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="9" text-anchor="middle">S</text>
@@ -695,7 +693,7 @@
       <!-- ESLint -->
       <g transform="translate(0, 84)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-3" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-3" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <polygon points="10,2 18,6 18,14 10,18 2,14 2,6" fill="#4B32C3" />
           <circle cx="10" cy="10" r="3" fill="#FFFFFF" />
@@ -705,7 +703,7 @@
       <!-- Prettier -->
       <g transform="translate(134, 84)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-7" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-7" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#F7B93E" />
           <circle cx="7" cy="8" r="2" fill="#FFFFFF" />
@@ -718,7 +716,7 @@
       <!-- Sentry Observability -->
       <g transform="translate(0, 126)">
         <rect width="260" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-11" width="260" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-11" width="260" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#362D59" />
           <path d="M 6 14 C 6 10 14 10 14 6 C 14 10 6 10 6 14 Z" fill="none" stroke="#FAF6EE" stroke-width="1.5" />
@@ -740,7 +738,7 @@
       <!-- WhatsApp API -->
       <g transform="translate(0, 0)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-2" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-2" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <circle cx="10" cy="10" r="9.5" fill="#25D366" />
           <path d="M 6 14 L 7 11 C 6 9 7 7 10 7 C 13 7 14 9 14 11 C 14 13 12 14 10 14 L 6 14 Z" fill="#FFFFFF" />
@@ -750,7 +748,7 @@
       <!-- Razorpay -->
       <g transform="translate(134, 0)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-6" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-6" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#02042B" />
           <polygon points="12,4 6,16 10,16 14,8 10,8" fill="#3395FF" />
@@ -761,7 +759,7 @@
       <!-- Stripe -->
       <g transform="translate(0, 42)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-10" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-10" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#635BFF" />
           <text x="10" y="15" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="10" text-anchor="middle">S</text>
@@ -771,7 +769,7 @@
       <!-- Google Workspace -->
       <g transform="translate(134, 42)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-4" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-4" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <circle cx="10" cy="10" r="9.5" fill="#4285F4" />
           <text x="10" y="14.5" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="9" text-anchor="middle">G</text>
@@ -782,7 +780,7 @@
       <!-- Slack -->
       <g transform="translate(0, 84)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-8" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-8" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#4A154B" />
           <circle cx="7" cy="8" r="1.8" fill="#E01E5A" />
@@ -795,7 +793,7 @@
       <!-- Twilio -->
       <g transform="translate(134, 84)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-12" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-12" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <circle cx="10" cy="10" r="9.5" fill="#F22F46" />
           <circle cx="7" cy="7" r="1.5" fill="#FFFFFF" />
@@ -820,7 +818,7 @@
       <!-- Figma -->
       <g transform="translate(0, 0)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-1" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-1" width="126" height="34" rx="7" />
         <!-- Official 5-color Figma Logo -->
         <g transform="translate(7, 7)">
           <rect x="3" y="1" width="7" height="6" rx="3" fill="#F24E1E" />
@@ -834,7 +832,7 @@
       <!-- Framer -->
       <g transform="translate(134, 0)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-5" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-5" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#0055FF" />
           <polygon points="6,5 14,5 10,9 6,9" fill="#FFFFFF" />
@@ -847,7 +845,7 @@
       <!-- Webflow -->
       <g transform="translate(0, 42)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-9" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-9" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#146EF5" />
           <text x="10" y="14.5" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="10" text-anchor="middle">W</text>
@@ -857,7 +855,7 @@
       <!-- Blender -->
       <g transform="translate(134, 42)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-3" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-3" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#EA7600" />
           <circle cx="10" cy="10" r="3.5" fill="#FFFFFF" />
@@ -869,7 +867,7 @@
       <!-- After Effects -->
       <g transform="translate(0, 84)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-7" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-7" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#00005B" />
           <text x="10" y="14" fill="#9999FF" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="8.5" text-anchor="middle">Ae</text>
@@ -879,7 +877,7 @@
       <!-- Illustrator -->
       <g transform="translate(134, 84)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-11" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-11" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#330000" />
           <text x="10" y="14" fill="#FF9A00" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="8.5" text-anchor="middle">Ai</text>
@@ -890,7 +888,7 @@
       <!-- Photoshop -->
       <g transform="translate(0, 126)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-2" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-2" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#001E36" />
           <text x="10" y="14" fill="#31A8FF" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="8.5" text-anchor="middle">Ps</text>
@@ -900,7 +898,7 @@
       <!-- Premiere / InDesign -->
       <g transform="translate(134, 126)">
         <rect width="126" height="34" rx="7" fill="url(#tag-grad)" stroke="#D6C4AE" stroke-width="1.2" />
-        <rect class="glow-overlay glow-trk-6" width="126" height="34" rx="7" fill="#FFFFFF" stroke="#722F37" stroke-width="1.8" filter="url(#glow-aura)" />
+        <rect class="glow-overlay glow-trk-6" width="126" height="34" rx="7" />
         <g transform="translate(7, 7)">
           <rect width="20" height="20" rx="3.5" fill="#00005B" />
           <text x="10" y="14" fill="#EA77FF" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="8.5" text-anchor="middle">Pr</text>
