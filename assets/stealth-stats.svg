@@ -78,24 +78,23 @@
 
       .term-msg-1, .term-msg-2, .term-msg-3 {
         will-change: transform, opacity;
-        animation: rollTermMsg 12s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+        animation: rollTermMsg 24s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
       }
 
-      /* 3-Message Rolling Feed: 2 stay constantly ([1,2] -> [2,3] -> [3,1]), 3rd stacks smoothly from below */
+      /* 3-Message Rolling Feed (24s cycle = 8s per step: ~6.7s calm reading hold + ~1.2s smooth glide) */
       .term-msg-1 { animation-delay: 0s; }
-      .term-msg-2 { animation-delay: -8s; }
-      .term-msg-3 { animation-delay: -4s; }
+      .term-msg-2 { animation-delay: -16s; }
+      .term-msg-3 { animation-delay: -8s; }
 
       @keyframes rollTermMsg {
-        0%, 25.5%   { transform: translateY(0px); opacity: 1; }
-        32.5%       { transform: translateY(-35px); opacity: 0; }
-        34.5%       { transform: translateY(-35px); opacity: 0; }
-        36.5%       { transform: translateY(66px); opacity: 0; }
-        60%         { transform: translateY(66px); opacity: 0; }
-        66.67%      { transform: translateY(31px); opacity: 1; }
-        92.17%      { transform: translateY(31px); opacity: 1; }
-        99.25%      { transform: translateY(0px); opacity: 1; }
-        100%        { transform: translateY(0px); opacity: 1; }
+        0%, 28%      { transform: translateY(0px); opacity: 1; }
+        33%          { transform: translateY(-35px); opacity: 0; }
+        35%          { transform: translateY(-35px); opacity: 0; }
+        37%          { transform: translateY(66px); opacity: 0; }
+        62%          { transform: translateY(66px); opacity: 0; }
+        66.67%       { transform: translateY(31px); opacity: 1; }
+        94.67%       { transform: translateY(31px); opacity: 1; }
+        99.67%, 100% { transform: translateY(0px); opacity: 1; }
       }
 
       /* ==================== 03. METRIC QUAD-TILES (8s HOROLOGICAL SWEEP) ==================== */
