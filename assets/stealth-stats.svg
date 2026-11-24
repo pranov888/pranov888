@@ -78,17 +78,6 @@
         0%, 100% { opacity: 1; filter: drop-shadow(0 0 4px rgba(114, 47, 55, 0.7)); }
         50% { opacity: 0.4; filter: none; }
       }
-
-      /* Metric Tile Telemetry Scan */
-      @keyframes tileGlow {
-        0%, 100% { stroke: #D8C7B2; stroke-width: 1px; filter: none; }
-        20% { stroke: #722F37; stroke-width: 1.6px; filter: drop-shadow(0 2px 7px rgba(114, 47, 55, 0.22)); }
-        40% { stroke: #D8C7B2; stroke-width: 1px; filter: none; }
-      }
-      .tile-1 { animation: tileGlow 9s 0s ease-in-out infinite; }
-      .tile-2 { animation: tileGlow 9s -2.25s ease-in-out infinite; }
-      .tile-3 { animation: tileGlow 9s -4.5s ease-in-out infinite; }
-      .tile-4 { animation: tileGlow 9s -6.75s ease-in-out infinite; }
     ]]></style>
   </defs>
 
@@ -149,28 +138,28 @@
 
     <!-- Metric Tile 1: Commits -->
     <g transform="translate(24, 54)">
-      <rect class="tile-1" width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
+      <rect width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
       <text x="18" y="38" fill="#722F37" class="grotesk" font-size="30" font-weight="800">1,420+</text>
       <text x="18" y="60" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">COMMITS (PRIVATE / CLIENT)</text>
     </g>
 
     <!-- Metric Tile 2: PRs Merged -->
     <g transform="translate(283, 54)">
-      <rect class="tile-2" width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
+      <rect width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
       <text x="18" y="38" fill="#722F37" class="grotesk" font-size="30" font-weight="800">85+</text>
       <text x="18" y="60" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">PULL REQUESTS MERGED</text>
     </g>
 
     <!-- Metric Tile 3: Consistency -->
     <g transform="translate(24, 144)">
-      <rect class="tile-3" width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
+      <rect width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
       <text x="18" y="38" fill="#722F37" class="grotesk" font-size="30" font-weight="800">99.8%</text>
       <text x="18" y="60" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">COMMIT CONSISTENCY</text>
     </g>
 
     <!-- Metric Tile 4: Grade -->
     <g transform="translate(283, 144)">
-      <rect class="tile-4" width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
+      <rect width="238" height="78" rx="8" fill="#FAF7F2" stroke="#D8C7B2" stroke-width="1" />
       <text x="18" y="38" fill="#722F37" class="grotesk" font-size="30" font-weight="800">A+</text>
       <text x="18" y="60" fill="#886D5B" class="mono" font-size="10.5" font-weight="700">CODE QUALITY &amp; QA GRADE</text>
     </g>

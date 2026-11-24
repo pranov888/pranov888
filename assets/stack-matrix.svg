@@ -59,21 +59,24 @@
         100% { opacity: 1; }
       }
     
-      /* Individual Pseudo-Random Skill Box Dynamic Glow */
+      /* Individual Pseudo-Random Skill Box Dynamic Glow - Full Body Luminous Bloom */
       @keyframes skillGlow {
         0%, 100% {
           stroke: #D6C4AE;
           stroke-width: 1.2px;
+          fill: url(#tag-grad);
           filter: none;
         }
         14% {
           stroke: #722F37;
           stroke-width: 1.8px;
-          filter: drop-shadow(0 2px 7px rgba(114, 47, 55, 0.32));
+          fill: #FFFFFF;
+          filter: drop-shadow(0 0 6px rgba(114, 47, 55, 0.8)) drop-shadow(0 0 15px rgba(114, 47, 55, 0.35));
         }
         28% {
           stroke: #D6C4AE;
           stroke-width: 1.2px;
+          fill: url(#tag-grad);
           filter: none;
         }
       }
