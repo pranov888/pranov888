@@ -21,6 +21,11 @@
       <stop offset="100%" stop-color="#722F37" stop-opacity="0" />
     </linearGradient>
 
+    <!-- Terminal Viewport Clip Path (enables dynamic stacking from below) -->
+    <clipPath id="terminal-viewport">
+      <rect x="20" y="34" width="1080" height="96" rx="4" />
+    </clipPath>
+
     <style><![CDATA[
       @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800;900&family=Space+Mono:wght@400;700&display=swap');
       svg { pointer-events: none; user-select: none; }
@@ -46,7 +51,7 @@
         50%      { opacity: 1; filter: drop-shadow(0 0 3px rgba(114, 47, 55, 0.4)); }
       }
 
-      /* ==================== 02. TERMINAL DIFF & ACCENT ==================== */
+      /* ==================== 02. DYNAMIC TERMINAL MESSAGE STACKING FROM BELOW ==================== */
       .cursor-blink {
         animation: termCursor 1s step-start infinite;
       }
@@ -69,6 +74,63 @@
       @keyframes quoteBarPulse {
         0%, 100% { stroke: #722F37; filter: none; }
         50%      { stroke: #8F3A44; filter: drop-shadow(0 0 4px rgba(114, 47, 55, 0.5)); }
+      }
+
+      .term-msg-1, .term-msg-2, .term-msg-3,
+      .term-msg-4, .term-msg-5, .term-msg-6 {
+        will-change: transform, opacity;
+      }
+
+      /* Set 1 Keyframes (12s master loop, starts resting at t=0) */
+      .term-msg-1 { animation: stackMsg1 12s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
+      .term-msg-2 { animation: stackMsg2 12s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
+      .term-msg-3 { animation: stackMsg3 12s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
+
+      @keyframes stackMsg1 {
+        0%, 38%   { transform: translateY(0px); opacity: 1; }
+        42%       { transform: translateY(-30px); opacity: 0; }
+        44%, 86%  { transform: translateY(36px); opacity: 0; }
+        92%, 100% { transform: translateY(0px); opacity: 1; }
+      }
+
+      @keyframes stackMsg2 {
+        0%, 38%   { transform: translateY(0px); opacity: 1; }
+        42%       { transform: translateY(-30px); opacity: 0; }
+        44%, 89%  { transform: translateY(36px); opacity: 0; }
+        95%, 100% { transform: translateY(0px); opacity: 1; }
+      }
+
+      @keyframes stackMsg3 {
+        0%, 38%   { transform: translateY(0px); opacity: 1; }
+        42%       { transform: translateY(-30px); opacity: 0; }
+        44%, 92%  { transform: translateY(36px); opacity: 0; }
+        98%, 100% { transform: translateY(0px); opacity: 1; }
+      }
+
+      /* Set 2 Keyframes (12s master loop, stacks from below at 50%) */
+      .term-msg-4 { animation: stackMsg4 12s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
+      .term-msg-5 { animation: stackMsg5 12s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
+      .term-msg-6 { animation: stackMsg6 12s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
+
+      @keyframes stackMsg4 {
+        0%, 38%   { transform: translateY(36px); opacity: 0; }
+        44%, 86%  { transform: translateY(0px); opacity: 1; }
+        90%       { transform: translateY(-30px); opacity: 0; }
+        92%, 100% { transform: translateY(36px); opacity: 0; }
+      }
+
+      @keyframes stackMsg5 {
+        0%, 41%   { transform: translateY(36px); opacity: 0; }
+        47%, 86%  { transform: translateY(0px); opacity: 1; }
+        90%       { transform: translateY(-30px); opacity: 0; }
+        92%, 100% { transform: translateY(36px); opacity: 0; }
+      }
+
+      @keyframes stackMsg6 {
+        0%, 44%   { transform: translateY(36px); opacity: 0; }
+        50%, 86%  { transform: translateY(0px); opacity: 1; }
+        90%       { transform: translateY(-30px); opacity: 0; }
+        92%, 100% { transform: translateY(36px); opacity: 0; }
       }
 
       /* ==================== 03. METRIC QUAD-TILES (8s HOROLOGICAL SWEEP) ==================== */
@@ -141,7 +203,7 @@
         55%      { opacity: 0.88; }
       }
 
-      /* Column 2: Center Living Flame & Perpetual Velocity (Phase 2) */
+      /* Column 2: Center Living Cadence (Phase 2) */
       .bottom-num-2 {
         animation: numPulse2 6s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
       }
@@ -156,7 +218,6 @@
         0%, 100% { opacity: 0.88; }
         50%      { opacity: 1; }
       }
-
 
       /* Column 3: Discipline Horizon (Phase 3) */
       .bottom-num-3 {
@@ -210,17 +271,46 @@
     <text x="296" y="21" fill="#722F37" class="mono cursor-blink" font-size="12" font-weight="700">_</text>
     <text x="1096" y="21" text-anchor="end" fill="#722F37" class="mono" font-size="10.5" font-weight="700">PRANOV888 // PRIVATE ENGINE</text>
 
-    <!-- Red Diff Line -->
-    <rect x="24" y="44" width="1072" height="26" rx="5" fill="#FCE8E6" stroke="#F5C2C7" stroke-width="0.8" />
-    <text x="40" y="61" fill="#A81D24" class="mono" font-size="13" font-weight="700">- Contribution graph may appear suspiciously empty.</text>
+    <!-- Dynamic Stacking Terminal Log Viewport -->
+    <g clip-path="url(#terminal-viewport)">
+      <!-- Set 1: Classified Stealth Commits (Stacks smoothly from below) -->
+      <g>
+        <!-- Message 1: Red Diff -->
+        <g class="term-msg-1">
+          <rect x="24" y="44" width="1072" height="26" rx="5" fill="#FCE8E6" stroke="#F5C2C7" stroke-width="0.8" />
+          <text x="40" y="61" fill="#A81D24" class="mono" font-size="13" font-weight="700">- Contribution graph may appear suspiciously empty.</text>
+        </g>
+        <!-- Message 2: Green Diff -->
+        <g class="term-msg-2">
+          <rect class="diff-green-pulse" x="24" y="75" width="1072" height="26" rx="5" fill="#E6F4EA" stroke="#B7E1CD" stroke-width="0.8" />
+          <text x="40" y="92" fill="#137333" class="mono" font-size="13" font-weight="700">+ Not a bug. I work in private client repositories and enterprise systems.</text>
+        </g>
+        <!-- Message 3: Classified Quote -->
+        <g class="term-msg-3">
+          <line class="quote-bar" x1="24" y1="112" x2="24" y2="128" stroke="#722F37" stroke-width="3" stroke-linecap="round" />
+          <text x="36" y="123" fill="#4A252D" class="quote-font" font-size="14" font-weight="700">“Sorry, you can't see my contributions. My commits are classified. Think of it as stealth mode.”</text>
+        </g>
+      </g>
 
-    <!-- Green Diff Line -->
-    <rect class="diff-green-pulse" x="24" y="75" width="1072" height="26" rx="5" fill="#E6F4EA" stroke="#B7E1CD" stroke-width="0.8" />
-    <text x="40" y="92" fill="#137333" class="mono" font-size="13" font-weight="700">+ Not a bug. I work in private client repositories and enterprise systems.</text>
-
-    <!-- Editorial Accent Line & Classified Quote -->
-    <line class="quote-bar" x1="24" y1="112" x2="24" y2="128" stroke="#722F37" stroke-width="3" stroke-linecap="round" />
-    <text x="36" y="123" fill="#4A252D" class="quote-font" font-size="14" font-weight="700">“Sorry, you can't see my contributions. My commits are classified. Think of it as stealth mode.”</text>
+      <!-- Set 2: Enterprise Telemetry & Production Reality (Stacks smoothly from below) -->
+      <g>
+        <!-- Message 1: Context Pill -->
+        <g class="term-msg-4">
+          <rect x="24" y="44" width="1072" height="26" rx="5" fill="#FDF3E7" stroke="#F0D5BA" stroke-width="0.8" />
+          <text x="40" y="61" fill="#884A12" class="mono" font-size="13" font-weight="700">~ Public activity graphs only reflect a fraction of enterprise engineering.</text>
+        </g>
+        <!-- Message 2: Green Diff -->
+        <g class="term-msg-5">
+          <rect class="diff-green-pulse" x="24" y="75" width="1072" height="26" rx="5" fill="#E6F4EA" stroke="#B7E1CD" stroke-width="0.8" />
+          <text x="40" y="92" fill="#137333" class="mono" font-size="13" font-weight="700">+ 1,420+ production commits maintained across private enterprise infrastructure.</text>
+        </g>
+        <!-- Message 3: Philosophy Quote -->
+        <g class="term-msg-6">
+          <line class="quote-bar" x1="24" y1="112" x2="24" y2="128" stroke="#722F37" stroke-width="3" stroke-linecap="round" />
+          <text x="36" y="123" fill="#4A252D" class="quote-font" font-size="14" font-weight="700">“True craftsmanship is proven in production, where performance and reliability matter most.”</text>
+        </g>
+      </g>
+    </g>
   </g>
 
   <!-- ==================== DUAL BENTO STATS CARDS ==================== -->
