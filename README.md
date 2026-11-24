@@ -11,7 +11,7 @@
 <br/><br/>
 
 <!-- ==================== CORE PILLARS BENTO ==================== -->
-<a href="#_"><img src="https://raw.githubusercontent.com/pranov888/pranov888/main/assets/bento-pillars.svg?v=37" alt="001-004 Core Design &amp; Engineering Pillars" width="100%" /></a>
+<a href="#_"><img src="https://raw.githubusercontent.com/pranov888/pranov888/main/assets/bento-pillars.svg?v=38" alt="001-004 Core Design &amp; Engineering Pillars" width="100%" /></a>
 
 <br/><br/>
 
