@@ -44,77 +44,55 @@
       }
 
       /* Kinetic Differentiated Card Movements (8s Cycle) */
-      .roll-num-1 { animation: rollCraft 8s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
-      .roll-num-2 { animation: rollShipped 8s cubic-bezier(0.2, 0.9, 0.3, 1) infinite; }
-      .roll-num-3 { animation: rollFidelity 8s cubic-bezier(0.12, 0.8, 0.2, 1) infinite; }
-      .roll-num-4 { animation: rollDedication 8s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
+      .roll-num-1 { animation: rollCraft 8s cubic-bezier(0.25, 1, 0.5, 1) infinite; }
+      .roll-num-2 { animation: rollShipped 8s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
+      .roll-num-3 { animation: rollFidelity 8s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+      .roll-num-4 { animation: rollDedication 8s cubic-bezier(0.2, 1, 0.3, 1) infinite; }
 
-      /* 01 CRAFT: Calibrated Precision Meter (Mechanical Ticks & Elastic Settle) */
+      /* 01 CRAFT: Rhythmic Calibrated Stepping (Clean Center Stops) */
       @keyframes rollCraft {
-        0%, 4%   { transform: translateY(300px); }
-        7.2%     { transform: translateY(193px); }
-        8.5%, 11%{ transform: translateY(200px); }
-        13.8%    { transform: translateY(93px); }
-        15%, 18% { transform: translateY(100px); }
-        22%      { transform: translateY(-7px); }
-        23.5%    { transform: translateY(2px); }
-        25%, 88% { transform: translateY(0px); }
-        94%, 100%{ transform: translateY(300px); }
+        0%, 5%   { transform: translateY(360px); }
+        8.5%, 12%{ transform: translateY(240px); }
+        15.5%, 19%{ transform: translateY(120px); }
+        23%, 90% { transform: translateY(0px); }
+        95%, 100%{ transform: translateY(360px); }
       }
 
-      /* 02 SHIPPED: High-Velocity Tachometer Burst (Rapid Acceleration & Rubbery Snap) */
+      /* 02 SHIPPED: High-Velocity Continuous Odometer Spin */
       @keyframes rollShipped {
-        0%, 12%  { transform: translateY(300px); }
-        16%      { transform: translateY(225px); }
-        20%      { transform: translateY(110px); }
-        24.5%    { transform: translateY(-11px); }
-        26.5%    { transform: translateY(4px); }
-        28.5%, 88%{ transform: translateY(0px); }
-        94.5%, 100%{ transform: translateY(300px); }
+        0%, 14%  { transform: translateY(360px); }
+        28%, 90% { transform: translateY(0px); }
+        95%, 100%{ transform: translateY(360px); }
       }
 
-      /* 03 FIDELITY: 60FPS Continuous Fluid Inertia (Frictionless Aerodynamic Glide) */
+      /* 03 FIDELITY: 60FPS Fluid Momentum Surge */
       @keyframes rollFidelity {
-        0%, 20%  { transform: translateY(300px); }
-        25%      { transform: translateY(240px); }
-        30%      { transform: translateY(155px); }
-        35%      { transform: translateY(70px); }
-        40%      { transform: translateY(10px); }
-        42.5%    { transform: translateY(-2px); }
-        44%, 88% { transform: translateY(0px); }
-        95%, 100%{ transform: translateY(300px); }
+        0%, 22%  { transform: translateY(360px); }
+        29%, 33% { transform: translateY(120px); }
+        40%, 90% { transform: translateY(0px); }
+        95%, 100%{ transform: translateY(360px); }
       }
 
-      /* 04 DEDICATION: Grand Finale Surge (Majestic Crescendo & Spring Landing) */
+      /* 04 DEDICATION: Grand Finale Surge & Hero Reveal */
       @keyframes rollDedication {
-        0%, 32%  { transform: translateY(300px); }
-        36%      { transform: translateY(190px); }
-        37.5%, 40%{ transform: translateY(200px); }
-        44%      { transform: translateY(90px); }
-        45.5%, 48%{ transform: translateY(100px); }
-        52.5%    { transform: translateY(-14px); }
-        54.5%    { transform: translateY(6px); }
-        56%      { transform: translateY(-2px); }
-        57%, 88% { transform: translateY(0px); }
-        95.5%, 100%{ transform: translateY(300px); }
+        0%, 34%  { transform: translateY(360px); }
+        41%, 45% { transform: translateY(120px); }
+        52%, 90% { transform: translateY(0px); }
+        95%, 100%{ transform: translateY(360px); }
       }
 
-      /* Celestial Floating Star with Hero Flare */
+      /* Celestial Floating Star with Synchronized Hero Flare */
       .star-float {
         animation: starPulse 8s ease-in-out infinite;
         transform-origin: 1146px 48px;
       }
       @keyframes starPulse {
-        0%, 30%  { transform: translateY(0px) rotate(0deg) scale(1); }
-        35%      { transform: translateY(-4px) rotate(25deg) scale(1.08); }
-        42%      { transform: translateY(-1px) rotate(15deg) scale(0.98); }
-        48%      { transform: translateY(-3px) rotate(35deg) scale(1.05); }
-        51%      { transform: translateY(-6px) rotate(90deg) scale(1.3); }
-        54%      { transform: translateY(-3px) rotate(270deg) scale(1.35); }
-        57%      { transform: translateY(0px) rotate(360deg) scale(1.1); }
-        62%      { transform: translateY(-2px) rotate(380deg) scale(1); }
-        88%      { transform: translateY(0px) rotate(360deg) scale(1); }
-        96%, 100%{ transform: translateY(0px) rotate(0deg) scale(1); }
+        0%, 45%  { transform: translateY(0px) rotate(0deg) scale(1); }
+        48%      { transform: translateY(-4px) rotate(45deg) scale(1.15); }
+        52%      { transform: translateY(-2px) rotate(360deg) scale(1.25); }
+        56%      { transform: translateY(0px) rotate(360deg) scale(1); }
+        88%      { transform: translateY(-3px) rotate(375deg) scale(1.05); }
+        95%, 100%{ transform: translateY(0px) rotate(0deg) scale(1); }
       }
 
       /* Subtle Specular Rim Accent on Hero Card */
@@ -122,17 +100,17 @@
         animation: borderGlow 8s ease-in-out infinite;
       }
       @keyframes borderGlow {
-        0%, 50%  { stroke: rgba(250, 246, 238, 0.2); stroke-width: 1; }
-        54%      { stroke: rgba(250, 246, 238, 0.6); stroke-width: 1.5; }
-        60%      { stroke: rgba(250, 246, 238, 0.2); stroke-width: 1; }
+        0%, 48%  { stroke: rgba(250, 246, 238, 0.2); stroke-width: 1; }
+        52%      { stroke: rgba(250, 246, 238, 0.6); stroke-width: 1.5; }
+        58%      { stroke: rgba(250, 246, 238, 0.2); stroke-width: 1; }
         100%     { stroke: rgba(250, 246, 238, 0.2); stroke-width: 1; }
       }
     ]]></style>
 
-    <clipPath id="clip-metric-1"><rect x="-10" y="32" width="240" height="74" /></clipPath>
-    <clipPath id="clip-metric-2"><rect x="-10" y="32" width="240" height="74" /></clipPath>
-    <clipPath id="clip-metric-3"><rect x="-10" y="32" width="260" height="74" /></clipPath>
-    <clipPath id="clip-metric-4"><rect x="-10" y="32" width="240" height="74" /></clipPath>
+    <clipPath id="clip-metric-1"><rect x="-10" y="20" width="240" height="94" /></clipPath>
+    <clipPath id="clip-metric-2"><rect x="-10" y="20" width="240" height="94" /></clipPath>
+    <clipPath id="clip-metric-3"><rect x="-10" y="20" width="260" height="94" /></clipPath>
+    <clipPath id="clip-metric-4"><rect x="-10" y="20" width="240" height="94" /></clipPath>
   </defs>
 
   <!-- Container Base with Light Mocha Cream -->
@@ -160,9 +138,9 @@
     <!-- Ultra Bold Large Number -->
     <g clip-path="url(#clip-metric-1)">
       <g class="roll-num-1">
-        <text x="0" y="-202" fill="#241117" class="heavy-num" font-size="82">0.5<tspan fill="#722F37">+</tspan></text>
-        <text x="0" y="-102" fill="#241117" class="heavy-num" font-size="82">0.8<tspan fill="#722F37">+</tspan></text>
-        <text x="0" y="-2" fill="#241117" class="heavy-num" font-size="82">1.0<tspan fill="#722F37">+</tspan></text>
+        <text x="0" y="-262" fill="#241117" class="heavy-num" font-size="82">0.5<tspan fill="#722F37">+</tspan></text>
+        <text x="0" y="-142" fill="#241117" class="heavy-num" font-size="82">0.8<tspan fill="#722F37">+</tspan></text>
+        <text x="0" y="-22" fill="#241117" class="heavy-num" font-size="82">1.0<tspan fill="#722F37">+</tspan></text>
         <text x="0" y="98" fill="#241117" class="heavy-num" font-size="82">1.5<tspan fill="#722F37">+</tspan></text>
       </g>
     </g>
@@ -187,9 +165,9 @@
     <!-- Ultra Bold Large Number -->
     <g clip-path="url(#clip-metric-2)">
       <g class="roll-num-2">
-        <text x="0" y="-202" fill="#241117" class="heavy-num" font-size="88">08<tspan fill="#722F37">+</tspan></text>
-        <text x="0" y="-102" fill="#241117" class="heavy-num" font-size="88">16<tspan fill="#722F37">+</tspan></text>
-        <text x="0" y="-2" fill="#241117" class="heavy-num" font-size="88">24<tspan fill="#722F37">+</tspan></text>
+        <text x="0" y="-262" fill="#241117" class="heavy-num" font-size="88">08<tspan fill="#722F37">+</tspan></text>
+        <text x="0" y="-142" fill="#241117" class="heavy-num" font-size="88">16<tspan fill="#722F37">+</tspan></text>
+        <text x="0" y="-22" fill="#241117" class="heavy-num" font-size="88">24<tspan fill="#722F37">+</tspan></text>
         <text x="0" y="98" fill="#241117" class="heavy-num" font-size="88">30<tspan fill="#722F37">+</tspan></text>
       </g>
     </g>
@@ -214,9 +192,9 @@
     <!-- Ultra Bold Large Number -->
     <g clip-path="url(#clip-metric-3)">
       <g class="roll-num-3">
-        <text x="0" y="-202" fill="#241117" class="heavy-num" font-size="88">24<tspan font-size="52" fill="#722F37">FPS</tspan></text>
-        <text x="0" y="-102" fill="#241117" class="heavy-num" font-size="88">30<tspan font-size="52" fill="#722F37">FPS</tspan></text>
-        <text x="0" y="-2" fill="#241117" class="heavy-num" font-size="88">48<tspan font-size="52" fill="#722F37">FPS</tspan></text>
+        <text x="0" y="-262" fill="#241117" class="heavy-num" font-size="88">24<tspan font-size="52" fill="#722F37">FPS</tspan></text>
+        <text x="0" y="-142" fill="#241117" class="heavy-num" font-size="88">30<tspan font-size="52" fill="#722F37">FPS</tspan></text>
+        <text x="0" y="-22" fill="#241117" class="heavy-num" font-size="88">48<tspan font-size="52" fill="#722F37">FPS</tspan></text>
         <text x="0" y="98" fill="#241117" class="heavy-num" font-size="88">60<tspan font-size="52" fill="#722F37">FPS</tspan></text>
       </g>
     </g>
@@ -250,9 +228,9 @@
     <!-- Ultra Bold Large Number (Short & punchy, no clipping) -->
     <g clip-path="url(#clip-metric-4)">
       <g class="roll-num-4">
-        <text x="0" y="-202" fill="#FAF6EE" class="heavy-num" font-size="80">1.2k<tspan font-size="52" fill="#FAF6EE">+</tspan></text>
-        <text x="0" y="-102" fill="#FAF6EE" class="heavy-num" font-size="80">2.4k<tspan font-size="52" fill="#FAF6EE">+</tspan></text>
-        <text x="0" y="-2" fill="#FAF6EE" class="heavy-num" font-size="80">3.8k<tspan font-size="52" fill="#FAF6EE">+</tspan></text>
+        <text x="0" y="-262" fill="#FAF6EE" class="heavy-num" font-size="80">1.2k<tspan font-size="52" fill="#FAF6EE">+</tspan></text>
+        <text x="0" y="-142" fill="#FAF6EE" class="heavy-num" font-size="80">2.4k<tspan font-size="52" fill="#FAF6EE">+</tspan></text>
+        <text x="0" y="-22" fill="#FAF6EE" class="heavy-num" font-size="80">3.8k<tspan font-size="52" fill="#FAF6EE">+</tspan></text>
         <text x="0" y="98" fill="#FAF6EE" class="heavy-num" font-size="80">5.6k<tspan font-size="52" fill="#FAF6EE">+</tspan></text>
       </g>
     </g>
