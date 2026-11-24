@@ -43,49 +43,89 @@
         line-height: 1.4;
       }
 
-      /* Subtle Floating Star */
+      /* Kinetic Differentiated Card Movements (8s Cycle) */
+      .roll-num-1 { animation: rollCraft 8s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
+      .roll-num-2 { animation: rollShipped 8s cubic-bezier(0.2, 0.9, 0.3, 1) infinite; }
+      .roll-num-3 { animation: rollFidelity 8s cubic-bezier(0.12, 0.8, 0.2, 1) infinite; }
+      .roll-num-4 { animation: rollDedication 8s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
+
+      /* 01 CRAFT: Calibrated Precision Meter (Mechanical Ticks & Elastic Settle) */
+      @keyframes rollCraft {
+        0%, 4%   { transform: translateY(300px); }
+        7.2%     { transform: translateY(193px); }
+        8.5%, 11%{ transform: translateY(200px); }
+        13.8%    { transform: translateY(93px); }
+        15%, 18% { transform: translateY(100px); }
+        22%      { transform: translateY(-7px); }
+        23.5%    { transform: translateY(2px); }
+        25%, 88% { transform: translateY(0px); }
+        94%, 100%{ transform: translateY(300px); }
+      }
+
+      /* 02 SHIPPED: High-Velocity Tachometer Burst (Rapid Acceleration & Rubbery Snap) */
+      @keyframes rollShipped {
+        0%, 12%  { transform: translateY(300px); }
+        16%      { transform: translateY(225px); }
+        20%      { transform: translateY(110px); }
+        24.5%    { transform: translateY(-11px); }
+        26.5%    { transform: translateY(4px); }
+        28.5%, 88%{ transform: translateY(0px); }
+        94.5%, 100%{ transform: translateY(300px); }
+      }
+
+      /* 03 FIDELITY: 60FPS Continuous Fluid Inertia (Frictionless Aerodynamic Glide) */
+      @keyframes rollFidelity {
+        0%, 20%  { transform: translateY(300px); }
+        25%      { transform: translateY(240px); }
+        30%      { transform: translateY(155px); }
+        35%      { transform: translateY(70px); }
+        40%      { transform: translateY(10px); }
+        42.5%    { transform: translateY(-2px); }
+        44%, 88% { transform: translateY(0px); }
+        95%, 100%{ transform: translateY(300px); }
+      }
+
+      /* 04 DEDICATION: Grand Finale Surge (Majestic Crescendo & Spring Landing) */
+      @keyframes rollDedication {
+        0%, 32%  { transform: translateY(300px); }
+        36%      { transform: translateY(190px); }
+        37.5%, 40%{ transform: translateY(200px); }
+        44%      { transform: translateY(90px); }
+        45.5%, 48%{ transform: translateY(100px); }
+        52.5%    { transform: translateY(-14px); }
+        54.5%    { transform: translateY(6px); }
+        56%      { transform: translateY(-2px); }
+        57%, 88% { transform: translateY(0px); }
+        95.5%, 100%{ transform: translateY(300px); }
+      }
+
+      /* Celestial Floating Star with Hero Flare */
       .star-float {
-        animation: starLevitate 3s infinite ease-in-out alternate;
+        animation: starPulse 8s ease-in-out infinite;
         transform-origin: 1146px 48px;
       }
-      @keyframes starLevitate {
-        0% { transform: translateY(0px) rotate(0deg); }
-        100% { transform: translateY(-5px) rotate(45deg); }
+      @keyframes starPulse {
+        0%, 30%  { transform: translateY(0px) rotate(0deg) scale(1); }
+        35%      { transform: translateY(-4px) rotate(25deg) scale(1.08); }
+        42%      { transform: translateY(-1px) rotate(15deg) scale(0.98); }
+        48%      { transform: translateY(-3px) rotate(35deg) scale(1.05); }
+        51%      { transform: translateY(-6px) rotate(90deg) scale(1.3); }
+        54%      { transform: translateY(-3px) rotate(270deg) scale(1.35); }
+        57%      { transform: translateY(0px) rotate(360deg) scale(1.1); }
+        62%      { transform: translateY(-2px) rotate(380deg) scale(1); }
+        88%      { transform: translateY(0px) rotate(360deg) scale(1); }
+        96%, 100%{ transform: translateY(0px) rotate(0deg) scale(1); }
       }
 
-      /* Kinetic Dynamic Number Rolls */
-      .roll-num-1 { animation: roll1 7s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
-      .roll-num-2 { animation: roll2 7s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
-      .roll-num-3 { animation: roll3 7s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
-      .roll-num-4 { animation: roll4 7s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
-
-      @keyframes roll1 {
-        0%, 6%   { transform: translateY(240px); }
-        14%, 20% { transform: translateY(160px); }
-        28%, 34% { transform: translateY(80px); }
-        42%, 92% { transform: translateY(0px); }
-        100%     { transform: translateY(240px); }
+      /* Subtle Specular Rim Accent on Hero Card */
+      .burgundy-border {
+        animation: borderGlow 8s ease-in-out infinite;
       }
-      @keyframes roll2 {
-        0%, 8%   { transform: translateY(240px); }
-        16%, 22% { transform: translateY(160px); }
-        30%, 36% { transform: translateY(80px); }
-        44%, 92% { transform: translateY(0px); }
-        100%     { transform: translateY(240px); }
-      }
-      @keyframes roll3 {
-        0%, 10%  { transform: translateY(240px); }
-        18%, 24% { transform: translateY(160px); }
-        32%, 38% { transform: translateY(80px); }
-        46%, 92% { transform: translateY(0px); }
-        100%     { transform: translateY(240px); }
-      }
-      @keyframes roll4 {
-        0%, 12%  { transform: translateY(240px); }
-        20%, 26% { transform: translateY(160px); }
-        34%, 40% { transform: translateY(80px); }
-        48%, 92% { transform: translateY(0px); }
-        100%     { transform: translateY(240px); }
+      @keyframes borderGlow {
+        0%, 50%  { stroke: rgba(250, 246, 238, 0.2); stroke-width: 1; }
+        54%      { stroke: rgba(250, 246, 238, 0.6); stroke-width: 1.5; }
+        60%      { stroke: rgba(250, 246, 238, 0.2); stroke-width: 1; }
+        100%     { stroke: rgba(250, 246, 238, 0.2); stroke-width: 1; }
       }
     ]]></style>
 
@@ -120,9 +160,9 @@
     <!-- Ultra Bold Large Number -->
     <g clip-path="url(#clip-metric-1)">
       <g class="roll-num-1">
-        <text x="0" y="-142" fill="#241117" class="heavy-num" font-size="82">0.5<tspan fill="#722F37">+</tspan></text>
-        <text x="0" y="-62" fill="#241117" class="heavy-num" font-size="82">0.8<tspan fill="#722F37">+</tspan></text>
-        <text x="0" y="18" fill="#241117" class="heavy-num" font-size="82">1.0<tspan fill="#722F37">+</tspan></text>
+        <text x="0" y="-202" fill="#241117" class="heavy-num" font-size="82">0.5<tspan fill="#722F37">+</tspan></text>
+        <text x="0" y="-102" fill="#241117" class="heavy-num" font-size="82">0.8<tspan fill="#722F37">+</tspan></text>
+        <text x="0" y="-2" fill="#241117" class="heavy-num" font-size="82">1.0<tspan fill="#722F37">+</tspan></text>
         <text x="0" y="98" fill="#241117" class="heavy-num" font-size="82">1.5<tspan fill="#722F37">+</tspan></text>
       </g>
     </g>
@@ -147,9 +187,9 @@
     <!-- Ultra Bold Large Number -->
     <g clip-path="url(#clip-metric-2)">
       <g class="roll-num-2">
-        <text x="0" y="-142" fill="#241117" class="heavy-num" font-size="88">08<tspan fill="#722F37">+</tspan></text>
-        <text x="0" y="-62" fill="#241117" class="heavy-num" font-size="88">16<tspan fill="#722F37">+</tspan></text>
-        <text x="0" y="18" fill="#241117" class="heavy-num" font-size="88">24<tspan fill="#722F37">+</tspan></text>
+        <text x="0" y="-202" fill="#241117" class="heavy-num" font-size="88">08<tspan fill="#722F37">+</tspan></text>
+        <text x="0" y="-102" fill="#241117" class="heavy-num" font-size="88">16<tspan fill="#722F37">+</tspan></text>
+        <text x="0" y="-2" fill="#241117" class="heavy-num" font-size="88">24<tspan fill="#722F37">+</tspan></text>
         <text x="0" y="98" fill="#241117" class="heavy-num" font-size="88">30<tspan fill="#722F37">+</tspan></text>
       </g>
     </g>
@@ -174,9 +214,9 @@
     <!-- Ultra Bold Large Number -->
     <g clip-path="url(#clip-metric-3)">
       <g class="roll-num-3">
-        <text x="0" y="-142" fill="#241117" class="heavy-num" font-size="88">24<tspan font-size="52" fill="#722F37">FPS</tspan></text>
-        <text x="0" y="-62" fill="#241117" class="heavy-num" font-size="88">30<tspan font-size="52" fill="#722F37">FPS</tspan></text>
-        <text x="0" y="18" fill="#241117" class="heavy-num" font-size="88">48<tspan font-size="52" fill="#722F37">FPS</tspan></text>
+        <text x="0" y="-202" fill="#241117" class="heavy-num" font-size="88">24<tspan font-size="52" fill="#722F37">FPS</tspan></text>
+        <text x="0" y="-102" fill="#241117" class="heavy-num" font-size="88">30<tspan font-size="52" fill="#722F37">FPS</tspan></text>
+        <text x="0" y="-2" fill="#241117" class="heavy-num" font-size="88">48<tspan font-size="52" fill="#722F37">FPS</tspan></text>
         <text x="0" y="98" fill="#241117" class="heavy-num" font-size="88">60<tspan font-size="52" fill="#722F37">FPS</tspan></text>
       </g>
     </g>
@@ -196,7 +236,7 @@
   <!-- ==================== COLUMN 4: DEEP BURGUNDY HIGHLIGHT CARD ==================== -->
   <!-- Card Background with Rounded Corners -->
   <rect x="914" y="14" width="272" height="252" rx="10" fill="url(#burgundy-card-grad)" />
-  <rect x="915" y="15" width="270" height="250" rx="9" fill="none" stroke="rgba(250, 246, 238, 0.2)" stroke-width="1" />
+  <rect x="915" y="15" width="270" height="250" rx="9" fill="none" stroke="rgba(250, 246, 238, 0.2)" stroke-width="1" class="burgundy-border" />
 
   <!-- Floating Star -->
   <g class="star-float">
@@ -210,9 +250,9 @@
     <!-- Ultra Bold Large Number (Short & punchy, no clipping) -->
     <g clip-path="url(#clip-metric-4)">
       <g class="roll-num-4">
-        <text x="0" y="-142" fill="#FAF6EE" class="heavy-num" font-size="80">1.2k<tspan font-size="52" fill="#FAF6EE">+</tspan></text>
-        <text x="0" y="-62" fill="#FAF6EE" class="heavy-num" font-size="80">2.4k<tspan font-size="52" fill="#FAF6EE">+</tspan></text>
-        <text x="0" y="18" fill="#FAF6EE" class="heavy-num" font-size="80">3.8k<tspan font-size="52" fill="#FAF6EE">+</tspan></text>
+        <text x="0" y="-202" fill="#FAF6EE" class="heavy-num" font-size="80">1.2k<tspan font-size="52" fill="#FAF6EE">+</tspan></text>
+        <text x="0" y="-102" fill="#FAF6EE" class="heavy-num" font-size="80">2.4k<tspan font-size="52" fill="#FAF6EE">+</tspan></text>
+        <text x="0" y="-2" fill="#FAF6EE" class="heavy-num" font-size="80">3.8k<tspan font-size="52" fill="#FAF6EE">+</tspan></text>
         <text x="0" y="98" fill="#FAF6EE" class="heavy-num" font-size="80">5.6k<tspan font-size="52" fill="#FAF6EE">+</tspan></text>
       </g>
     </g>
