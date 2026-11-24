@@ -41,7 +41,12 @@
 
       /* ==================== ANIMATIONS FOR ALL BESPOKE SHAPES ==================== */
 
-      /* SHAPE 001: BENTO WIREFRAME GRID ANIMATION */
+      /* SHAPE 001: BENTO WIREFRAME GRID DYNAMIC HIGHLIGHT ANIMATION */
+      .bento-base {
+        fill: rgba(214, 196, 174, 0.24);
+        stroke: #D6C4AE;
+        stroke-width: 1.4;
+      }
       .bento-grid-float {
         animation: floatBento 4s ease-in-out infinite alternate;
       }
@@ -49,28 +54,41 @@
         0% { transform: translateY(0px); }
         100% { transform: translateY(-5px); }
       }
-      .active-card-pulse {
-        animation: activePulse 2.8s ease-in-out infinite alternate;
+      
+      .box-highlight-1 { animation: cycleHighlight1 7.5s ease-in-out infinite; }
+      .box-highlight-2 { animation: cycleHighlight2 7.5s ease-in-out infinite; }
+      .box-highlight-3 { animation: cycleHighlight3 7.5s ease-in-out infinite; }
+      .box-highlight-4 { animation: cycleHighlight4 7.5s ease-in-out infinite; }
+      .box-highlight-5 { animation: cycleHighlight5 7.5s ease-in-out infinite; }
+
+      @keyframes cycleHighlight1 {
+        0%, 15% { stroke: #722F37; stroke-width: 2.2; fill: #FAF7F2; filter: drop-shadow(0 2px 6px rgba(114, 47, 55, 0.22)); }
+        20%, 95% { stroke: #D6C4AE; stroke-width: 1.4; fill: rgba(214, 196, 174, 0.24); filter: none; }
+        100% { stroke: #722F37; stroke-width: 2.2; fill: #FAF7F2; filter: drop-shadow(0 2px 6px rgba(114, 47, 55, 0.22)); }
       }
-      @keyframes activePulse {
-        0% { filter: drop-shadow(0 2px 5px rgba(114, 47, 55, 0.08)); }
-        100% { filter: drop-shadow(0 6px 16px rgba(114, 47, 55, 0.24)); }
+
+      @keyframes cycleHighlight2 {
+        0%, 15% { stroke: #D6C4AE; stroke-width: 1.4; fill: rgba(214, 196, 174, 0.24); filter: none; }
+        20%, 35% { stroke: #722F37; stroke-width: 2.2; fill: #FAF7F2; filter: drop-shadow(0 2px 6px rgba(114, 47, 55, 0.22)); }
+        40%, 100% { stroke: #D6C4AE; stroke-width: 1.4; fill: rgba(214, 196, 174, 0.24); filter: none; }
       }
-      .lead-dot-pulse {
-        animation: leadDotPulse 2.2s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
-        transform-origin: -48px 18px;
+
+      @keyframes cycleHighlight4 {
+        0%, 35% { stroke: #D6C4AE; stroke-width: 1.4; fill: rgba(214, 196, 174, 0.24); filter: none; }
+        40%, 55% { stroke: #722F37; stroke-width: 2.2; fill: #FAF7F2; filter: drop-shadow(0 2px 6px rgba(114, 47, 55, 0.22)); }
+        60%, 100% { stroke: #D6C4AE; stroke-width: 1.4; fill: rgba(214, 196, 174, 0.24); filter: none; }
       }
-      @keyframes leadDotPulse {
-        0% { transform: scale(0.7); opacity: 0.9; }
-        100% { transform: scale(1.8); opacity: 0; }
+
+      @keyframes cycleHighlight5 {
+        0%, 55% { stroke: #D6C4AE; stroke-width: 1.4; fill: rgba(214, 196, 174, 0.24); filter: none; }
+        60%, 75% { stroke: #722F37; stroke-width: 2.2; fill: #FAF7F2; filter: drop-shadow(0 2px 6px rgba(114, 47, 55, 0.22)); }
+        80%, 100% { stroke: #D6C4AE; stroke-width: 1.4; fill: rgba(214, 196, 174, 0.24); filter: none; }
       }
-      .conduit-flow {
-        stroke-dasharray: 4 3;
-        animation: conduitDash 1.8s linear infinite;
-      }
-      @keyframes conduitDash {
-        from { stroke-dashoffset: 0; }
-        to { stroke-dashoffset: -14; }
+
+      @keyframes cycleHighlight3 {
+        0%, 75% { stroke: #D6C4AE; stroke-width: 1.4; fill: rgba(214, 196, 174, 0.24); filter: none; }
+        80%, 95% { stroke: #722F37; stroke-width: 2.4; fill: #FAF7F2; filter: drop-shadow(0 3px 8px rgba(114, 47, 55, 0.24)); }
+        100% { stroke: #D6C4AE; stroke-width: 1.4; fill: rgba(214, 196, 174, 0.24); filter: none; }
       }
 
       /* SHAPE 002: Modular Layers Staggered Levitation */
@@ -138,35 +156,27 @@
     <text x="24" y="38" class="cat-tag">001 // RESEARCH</text>
     <line x1="24" y1="48" x2="260" y2="48" stroke="#E4D7C5" stroke-width="1" />
     
-    <!-- Bespoke Graphic 001: Big, Clean Wireframe Bento Architecture -->
-    <g transform="translate(136, 130)">
-      <!-- Ambient Ground Shadow -->
-      <ellipse cx="6" cy="48" rx="52" ry="10" fill="rgba(114, 47, 55, 0.05)" />
+    <!-- Bespoke Graphic 001: Centered, Proportional Wireframe Bento Grid with Dynamic Sequential Highlight -->
+    <g transform="translate(142.5, 130)">
+      <!-- Ground Ambient Shadow -->
+      <ellipse cx="0" cy="44" rx="46" ry="9" fill="rgba(114, 47, 55, 0.05)" />
 
-      <!-- Floating Bento Architecture Group -->
+      <!-- Centered Bento Architecture -->
       <g class="bento-grid-float">
-        <!-- Top Row -->
-        <!-- Card 1 (Top-Left) -->
-        <rect x="-24" y="-38" width="44" height="26" rx="5" fill="rgba(214, 196, 174, 0.28)" stroke="#D6C4AE" stroke-width="1.6" />
-        <!-- Card 2 (Top-Right) -->
-        <rect x="27" y="-38" width="54" height="26" rx="5" fill="rgba(214, 196, 174, 0.28)" stroke="#D6C4AE" stroke-width="1.6" />
+        <!-- Box 1 (Top-Left) -->
+        <rect x="-47" y="-36" width="40" height="24" rx="4.5" class="bento-base box-highlight-1" />
+        
+        <!-- Box 2 (Top-Right) -->
+        <rect x="-1" y="-36" width="48" height="24" rx="4.5" class="bento-base box-highlight-2" />
 
-        <!-- Bottom Row -->
-        <!-- Card 4 (Bottom-Right Upper) -->
-        <rect x="27" y="-5" width="54" height="20" rx="5" fill="rgba(214, 196, 174, 0.28)" stroke="#D6C4AE" stroke-width="1.6" />
-        <!-- Card 5 (Bottom-Right Lower) -->
-        <rect x="27" y="22" width="54" height="20" rx="5" fill="rgba(214, 196, 174, 0.28)" stroke="#D6C4AE" stroke-width="1.6" />
+        <!-- Box 4 (Middle-Right) -->
+        <rect x="-1" y="-6" width="48" height="18" rx="4" class="bento-base box-highlight-4" />
 
-        <!-- Card 3 (Bottom-Left: Prominent Active Focus Card - Clean & Bold) -->
-        <g class="active-card-pulse">
-          <rect x="-24" y="-5" width="44" height="47" rx="6" fill="#FAF7F2" stroke="#722F37" stroke-width="2.4" />
-        </g>
+        <!-- Box 5 (Bottom-Right) -->
+        <rect x="-1" y="18" width="48" height="18" rx="4" class="bento-base box-highlight-5" />
 
-        <!-- User Research Lead-in Node & Dashed Conduit -->
-        <circle cx="-48" cy="18" r="8" fill="none" stroke="#722F37" stroke-width="1" class="lead-dot-pulse" />
-        <line x1="-42" y1="18" x2="-24" y2="18" stroke="#722F37" stroke-width="2.2" class="conduit-flow" />
-        <circle cx="-48" cy="18" r="4.5" fill="#722F37" />
-        <circle cx="-48" cy="18" r="1.8" fill="#FAF6EE" />
+        <!-- Box 3 (Bottom-Left: Hero Feature Block) -->
+        <rect x="-47" y="-6" width="40" height="42" rx="5.5" class="bento-base box-highlight-3" />
       </g>
     </g>
 
