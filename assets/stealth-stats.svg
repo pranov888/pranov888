@@ -157,26 +157,6 @@
         50%      { opacity: 1; }
       }
 
-      /* Living Flame Core Pulse */
-      .flame-alive {
-        transform-origin: 0px 22px;
-        animation: flameFlicker 2.4s ease-in-out infinite alternate;
-      }
-      @keyframes flameFlicker {
-        0%   { transform: scale(1) translateY(0); filter: drop-shadow(0 0 2px rgba(114, 47, 55, 0.25)); }
-        50%  { transform: scale(1.07, 1.12) translateY(-1px); filter: drop-shadow(0 -1px 6px rgba(186, 60, 40, 0.45)); }
-        100% { transform: scale(0.97, 0.98) translateY(0.5px); filter: drop-shadow(0 0 2px rgba(114, 47, 55, 0.25)); }
-      }
-
-      /* Ambient Halo Ring Behind Flame */
-      .flame-halo {
-        transform-origin: 0px 0px;
-        animation: haloBreath 2.8s ease-in-out infinite;
-      }
-      @keyframes haloBreath {
-        0%, 100% { opacity: 0.15; transform: scale(0.75); stroke-width: 0.8px; }
-        50%      { opacity: 0.65; transform: scale(1.35); stroke-width: 1.2px; filter: drop-shadow(0 0 4px rgba(186, 60, 40, 0.45)); }
-      }
 
       /* Column 3: Discipline Horizon (Phase 3) */
       .bottom-num-3 {
@@ -347,20 +327,11 @@
     <!-- Divider 1 -->
     <line class="div-glow-1" x1="373" y1="20" x2="373" y2="94" stroke="#D6C4AE" stroke-width="1" />
 
-    <!-- Column 2: Kinetic Sprint Velocity (Flame Emblem) -->
+    <!-- Column 2: Kinetic Sprint Velocity -->
     <g transform="translate(560, 0)">
-      <!-- Ambient Radiant Halo Ring -->
-      <g transform="translate(0, 17)">
-        <circle cx="0" cy="0" r="11" fill="none" stroke="#BA3C28" class="flame-halo" />
-      </g>
-      <!-- Flame Icon: Outer + Inner Core -->
-      <g class="flame-alive">
-        <path d="M 0 8 C -4 14 -6 18 -6 22 A 6 6 0 0 0 6 22 C 6 18 4 14 0 8 Z" fill="#722F37" />
-        <path d="M 0 15 C -2 18 -2.5 19.5 -2.5 22 A 2.5 2.5 0 0 0 2.5 22 C 2.5 19.5 2 18 0 15 Z" fill="#FAF7F2" />
-      </g>
-      <text x="0" y="56" text-anchor="middle" class="grotesk bottom-num-2" font-size="28" font-weight="800" letter-spacing="0.5">PERPETUAL</text>
-      <text x="0" y="78" text-anchor="middle" fill="#886D5B" class="mono bottom-label-2" font-size="11" font-weight="700" letter-spacing="0.8">MOMENTUM VELOCITY</text>
-      <text x="0" y="96" text-anchor="middle" fill="#A08C7D" class="mono bottom-label-2" font-size="10.5" letter-spacing="0.5">ACTIVE STEALTH DISCIPLINE</text>
+      <text x="0" y="44" text-anchor="middle" class="grotesk bottom-num-2" font-size="34" font-weight="800" letter-spacing="0.5">PERPETUAL</text>
+      <text x="0" y="68" text-anchor="middle" fill="#886D5B" class="mono bottom-label-2" font-size="11" font-weight="700" letter-spacing="0.8">MOMENTUM VELOCITY</text>
+      <text x="0" y="88" text-anchor="middle" fill="#A08C7D" class="mono bottom-label-2" font-size="10.5" letter-spacing="0.5">ACTIVE STEALTH DISCIPLINE</text>
     </g>
 
     <!-- Divider 2 -->
